@@ -1,28 +1,29 @@
 ---
 const pricing = [
   {
-    name: 'Basic',
-    description: 'For development, staging, and small production projects.',
-    periodicity: '/month',
-    price: '$10',
-    action: 'Buy Now',
-    features: ['5 Seats', '1,000 Projects', 'Lifetime access', 'Community Support'],
+    name: 'Primera visita',
+    description: 'En la primera visita evauluaremos tu caso y crearemos un plan personalizado.',
+    periodicity: '/primera vez',
+    price: '120€',
+    action: 'Adquirir',
+    features: ['Primer contacto', 'Evaluación', 'Plan personalizado', 'Resolución de dudas'],
   },
   {
-    name: 'Pro',
-    description: 'For high-scale and mission critical projects.',
-    isFlagged: true,
-    periodicity: '/month',
-    price: '$25',
-    action: 'Buy Now',
+    name: 'Visita de seguimiento',
+    description: 'Visitas de seguimiento para resolver tus dudadas y comprobar tu progreso.',
+    isFlagged: false,
+    periodicity: '/visita',
+    price: '55€',
+    action: 'Adquirir',
     features: ['10 Seats', '10,000 Projects', 'Lifetime access', 'Email Support', 'Free updates'],
   },
   {
-    name: 'Team',
-    description: 'For teams with more security, support, and performance needs.',
+    name: '¡Oferta!',
+    description: 'Primera visita + 4 visitas de seguimiento. ',
     periodicity: '',
-    price: 'Custom',
-    action: 'Buy Now',
+    isFlagged: true,
+    price: '299€',
+    action: 'Adquirir',
     features: [
       'Unlimited Seats',
       'Unlimited Projects',
@@ -77,7 +78,7 @@ const pricing = [
               href="#"
               class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              Buy now
+              Adquirir
             </a>
           </div>
         ))
