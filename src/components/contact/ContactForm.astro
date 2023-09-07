@@ -15,7 +15,7 @@ if (Astro.request.method === "POST") {
       errors.email += "Email no válido.";
     } 
     if (typeof phone !== "string" || phone.length < 6) {
-      errors.phone += "Telefono no válido.";
+      errors.phone += "Teléfono no válido.";
     }
     const hasErrors = Object.values(errors).some(msg => msg)
     if (!hasErrors) {
