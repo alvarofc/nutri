@@ -1,22 +1,24 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const services = [
   {
     step: '01',
-    name: 'Primera visita',
-    description:
-      'Mi objetivo es conocerte, saber cuál es tu situación actual y qué es lo que quieres conseguir. ',
+    name: t('services.step1.name'),
+    description: t('services.step1.description'),
   },
   {
     step: '02',
-    name: 'Plan',
-    description:
-      'Desarrollaré un plan hecho a medida para tí y tus objetivos. Lo repasaremos juntos para asegurarnos de que lo entiendes y te sientes cómodo con él.',
+    name: t('services.step2.name'),
+    description: t('services.step2.description'),
   },
   {
     step: '03',
-    name: 'Seguimiento',
-    description:
-      'Realizaremos un seguimiento para ver cómo te encuentras y si es necesario, ajustaremos el plan para que siga siendo efectivo.',
+    name: t('services.step3.name'),
+    description: t('services.step3.description'),
   },
 ];
 ---
@@ -24,7 +26,7 @@ const services = [
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col gap-12 sm:gap-16">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">¿Cómo trabajo?</h2>
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t('services.title')}</h2>
       <div class="grid gap-8 lg:grid-cols-3">
         {
           services.map((service) => (

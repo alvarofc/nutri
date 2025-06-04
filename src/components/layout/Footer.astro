@@ -1,10 +1,13 @@
 ---
-import alex from '/assets/Alexandra.svg'
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const bottomLinks = [
   {
-    header: 'Social',
+    header: t('footer.social'),
     links: [
-      
       {
         name: 'Twitter',
         href: 'https://twitter.com/',
@@ -23,57 +26,56 @@ const bottomLinks = [
     ],
   },
   {
-    header: 'Company',
+    header: t('footer.company'),
     links: [
       {
-        name: 'Home',
-        href: '/',
+        name: t('nav.home'),
+        href: getLocalizedPath('/', lang),
         isExternal: false,
       },
       {
-        name: 'Sobre mí',
-        href: '/about',
+        name: t('nav.about'),
+        href: getLocalizedPath('/about', lang),
         isExternal: false,
       },
       {
-        name: 'Precios',
-        href: '/pricing',
+        name: t('nav.pricing'),
+        href: getLocalizedPath('/pricing', lang),
         isExternal: false,
       },
       {
-        name: 'Contacto',
-        href: '/contact',
+        name: t('nav.contact'),
+        href: getLocalizedPath('/contact', lang),
         isExternal: false,
       },
     ],
   },
   {
-    header: 'Legal',
+    header: t('footer.legal'),
     links: [
       {
-        name: 'Privacidad',
-        href: '/privacy',
+        name: t('footer.privacy'),
+        href: getLocalizedPath('/privacy', lang),
         isExternal: false,
       },
-      
     ],
   },
 ];
 ---
 
 <footer
-  class="bg-primary-500/10 dark:bg-primary-400/10 mt-16 py-16 lg:mt-20 lg:py-20"
-  aria-labelledby="footer-heading"
+  class="bg-stone-500/10 dark:bg-primary-400/10 mt-16 py-16 lg:mt-20 lg:py-20"
+  aria-="footer-heading"
 >
-  <h2 id="footer-heading" class="sr-only">Footer</h2>
+  <h2 id="footer-heading" class="sr-only">{t('footer.heading')}</h2>
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col justify-between gap-12 sm:gap-16 lg:flex-row">
       <div class="flex max-w-sm flex-col items-start gap-6 sm:gap-8">
-        <img src={alex} alt="Aleandra logo" class="w-40">
+        <img src="/assets/alexandra-2.png" alt={t('footer.logo.alt')} class="w-40">
         <!-- <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
          Alexandra es una profesional con formación oficial e inscrita en el Colegio de Dietistas Nutricionistas de Madrid.
         </p> -->
-        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© 2023 Alexandra Ivanova</p>
+        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© {new Date().getFullYear()} Alexandra Ivanova. {t('footer.rights')}</p>
       </div>
 
       <!-- Bottom links -->

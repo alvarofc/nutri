@@ -11,7 +11,7 @@ module.exports = {
       current: 'currentColor',
       transparent: 'transparent',
       white: '#ffffff',
-      primary: colors.stone,
+      primary: colors.cyan,
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],

@@ -4,6 +4,7 @@ import '@fontsource/inter/latin-500.css';
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
 
 interface Props {
   description: string;
@@ -11,10 +12,12 @@ interface Props {
 }
 
 const { description, title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!DOCTYPE html>
-<html lang="en" x-cloak x-data :class="{ 'dark': $store.theme.isDark }">
+<html lang={lang} x-cloak x-data :class="{ 'dark': $store.theme.isDark }">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -29,7 +32,7 @@ const { description, title } = Astro.props;
     <ViewTransitions />
   </head>
   <body
-    class="bg-primary-50 text-primary-950 dark:bg-primary-950 dark:text-primary-200 antialiased transition"
+    class="bg-stone-50 text-primary-950 dark:bg-primary-950 dark:text-primary-200 antialiased transition"
   >
     <Header />
     <main>
@@ -41,35 +44,23 @@ const { description, title } = Astro.props;
         display: none !important;
       }
     </style>
-    <script>
-      import Alpine from 'alpinejs';
-      import collapse from '@alpinejs/collapse';
-
-      Alpine.plugin(collapse);
-
-      Alpine.store('theme', {
-        init() {
-          this.isDark = (() => {
-            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-              return localStorage.getItem('theme') === 'dark';
-            }
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              return true;
-            }
-            return false;
-          })();
-        },
-
-        isDark: false,
-
-        toggle() {
-          this.isDark = !this.isDark;
-          localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
-        },
+    
+    <!-- Alpine.js and plugins from CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.12.3/dist/cdn.min.js"></script>
+    
+    <script is:inline>
+      // Initialize Alpine.js store for theme
+      document.addEventListener('alpine:init', () => {
+        Alpine.store('theme', {
+          isDark: localStorage.getItem('theme') === 'dark' || 
+                 (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+          toggle() {
+            this.isDark = !this.isDark;
+            localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+          }
+        });
       });
-
-      window.Alpine = Alpine;
-      Alpine.start();
     </script>
   </body>
 </html>

@@ -1,4 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const stats = [
   {
     name: 'Years',
@@ -27,24 +32,21 @@ const stats = [
         width="576"
         height="864"
         src="/assets/about.webp"
-        alt="Our experts working together"
+        alt={t('about.mission.image.alt')}
       />
       <div class="flex flex-col gap-10">
         <!-- Mission description -->
         <div class="space-y-8 sm:space-y-12">
-          <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Mi misión</h2>
+          <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t('about.mission.title')}</h2>
           <div class="space-y-6">
             <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-              Desde muy pequeña he sabido que mi pasión es ayudar a las personas mediante la salud. Por eso, me esforcé al máximo 
-              para poder obtener excelencia académica y así poder acceder a una carrera que me permitiera cumplir mi sueño. Tras el bachillerato, donde obtuve la mejor media de mi centro 
-              y matrícula de honor, empecé la carrera de Ciencias Biomédicas en la Universidad Autónoma de Barcelona. 
+              {t('about.mission.paragraph1')}
             </p>
             <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-              Tras un año cursando la carrera entendí que quería tratar directamente con los pacientes y comencé a estudiar la carrera de Nutrición Humana y Dietética en la Universidad Europea de Madrid.
-              Durante la carrera, he realizado prácticas en diferentes centros de salud, como el Hospital Nostra Senyora de Meritxell o el Hospital de la Santa Creu i Sant Pau de Barcelona tratando de primera mano a decenas de pacientes.
+              {t('about.mission.paragraph2')}
             </p>
             <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-              En esta nueva etapa quiero aplicar todo lo aprendido en la carrera y en las prácticas para ayudar a las personas a mejorar su salud y su calidad de vida.
+              {t('about.mission.paragraph3')}
             </p>
           </div>
         </div>

@@ -1,0 +1,78 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+let allPosts = await Astro.glob('../posts/*.md');
+let tags = new Set<string>();
+let filteredPosts = allPosts.filter((post) => {
+  post.frontmatter.tags.forEach((tag: string) => tags.add(tag));
+  return post;
+});
+let selectedTag = ''
+---
+
+<Layout title="Blog" description="Alexandra's blog • Ideas, recommendations and tips I like to share.">
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div class="flex flex-col gap-16">
+        <div class="flex flex-col gap-4 text-center sm:gap-6">
+          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">Blog</h1>
+          <p
+            class="mx-auto max-w-xl text-lg text-primary-950/70 dark:text-primary-200/70 sm:text-xl"
+          >
+            Ideas, recommendations and tips I like to share.
+          </p>
+        </div>
+        <div>
+          {
+            [...tags].map((tag) => (
+              <button onclick={`selectedTag = '${tag}'`}>
+                <span class="bg-gray-200 text-gray-700 mr-2 inline-block rounded-full bg-primary-200 px-3 py-1 text-sm font-semibold">
+                  #{tag}
+                </span>
+              </button>
+            ))
+          }
+        </div>
+        <div class="grid gap-8 lg:grid-cols-3">
+          {
+            filteredPosts.map((post) => (
+              <figure class="h-auto rounded-lg bg-white p-4 shadow-md">
+                <img
+                  src={post.frontmatter.imgUrl}
+                  alt={post.frontmatter.imgAlt}
+                  class="h-48 w-full rounded-t-lg object-cover"
+                />
+                <figcaption class="mt-4">
+                  <h3 class="text-xl font-semibold">{post.frontmatter.title}</h3>
+                  <p class="text-gray-500">
+                    {post.frontmatter.pubDate.substring(0, 10)} • {post.frontmatter.author}
+                  </p>
+                  <p class="text-gray-700 mt-2">{post.frontmatter.description}</p>
+                  <div class="mt-4">
+                    {post.frontmatter.tags.map((tag:string) => (
+                      <a href={`/en/blog/${tag}`}>
+                        <span class="bg-gray-200 text-gray-700 mr-2 inline-block rounded-full bg-primary-200 px-3 py-1 text-sm font-semibold">
+                          #{tag}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                  <a
+                    href={post.url?.replace(/^\/blog/, '/en/blog')}
+                    class="hover:text-blue-800 mt-4 inline-block rounded-full bg-primary-400 p-4 text-white"
+                  >
+                    Read more
+                  </a>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

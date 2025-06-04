@@ -1,39 +1,42 @@
 ---
-import alex from '/assets/Alexandra.svg'
+import { getLangFromUrl, useTranslations, getLocalizedPath, languages } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const links = [
   {
     ref: '01',
-    name: 'Home',
-    href: '/',
+    name: t('nav.home'),
+    href: getLocalizedPath('/', lang),
   },
   {
     ref: '02',
-    name: 'Sobre mí',
-    href: '/about',
+    name: t('nav.about'),
+    href: getLocalizedPath('/about', lang),
   },
   {
     ref: '03',
-    name: 'Precios',
-    href: '/pricing',
+    name: t('nav.pricing'),
+    href: getLocalizedPath('/pricing', lang),
   },
   {
     ref: '04',
-    name: 'Contacto',
-    href: '/contact',
+    name: t('nav.contact'),
+    href: getLocalizedPath('/contact', lang),
   },
   {
     ref: '05',
-    name: 'Blog',
-    href: '/blog',
+    name: t('nav.blog'),
+    href: getLocalizedPath('/blog', lang),
   },
-
 ];
 ---
 
 <header
   x-data="{ open: false }"
   class="transition"
-  :class="{ 'bg-primary-500/10 dark:bg-primary-400/10': open, 'bg-primary-50 dark:bg-primary-950': !(open) }"
+  :class="{ 'bg-primary-500/10 dark:bg-primary-400/10': open, 'bg-stone-50 dark:bg-primary-950': !(open) }"
 >
   <div
     class="mx-auto flex max-w-2xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:max-w-7xl lg:px-8"
@@ -41,19 +44,30 @@ const links = [
     <!-- Brand logo -->
     <div class="flex  items-center">
       <a
-        href="/"
+        href={getLocalizedPath('/', lang)}
         class="focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 rounded-md focus-visible:outline focus-visible:outline-2"
       >
         <span class="sr-only">Alexandra</span>
-        <img src={alex} alt="Aleandra logo" class="w-40">
+        <img src="/assets/alexandra-2.png" alt={t('header.logo.alt')} class="w-40">
       </a>
       <div class=" ml-4 ">
-        <p>| IB0000</p>
+        <p>| MAD01541</p>
       </div>
     </div>
 
     <!-- Actions -->
     <div class="-mr-2 flex items-center space-x-2 sm:space-x-3">
+      <!-- Language switcher -->
+      <div class="flex items-center space-x-2">
+        {Object.entries(languages).map(([code, name]) => (
+          <a 
+            href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
+            class={`text-sm font-medium ${lang === code ? 'text-primary-600 dark:text-primary-400 font-bold' : 'text-primary-950 dark:text-primary-200 hover:text-primary-600 dark:hover:text-primary-400'}`}
+          >
+            {name}
+          </a>
+        ))}
+      </div>
       <!-- Toggle theme mode -->
    
 
@@ -67,7 +81,7 @@ const links = [
         aria-expanded="false"
         :aria-expanded="open.toString()"
       >
-        <span class="sr-only">Toggle menu</span>
+        <span class="sr-only">{t('header.toggle.menu')}</span>
         <svg
           x-cloak
           class="h-8 w-8"
@@ -112,7 +126,7 @@ const links = [
         <p
           class="text-primary-950/70 dark:text-primary-200/70 max-w-sm text-xl italic leading-loose"
         >
-          Actualmente estoy finalizando mis estudios en Nutrición Humana y Dietética en la Universidad Europea de Madrid. Estaré encantada de atenderte una vez termine mi formación.
+          {t('header.menu.message')}
         </p>
       </div>
 
