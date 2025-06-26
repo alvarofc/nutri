@@ -1,7 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-let allPosts = await Astro.glob('./posts/*.md');
+const posts = import.meta.glob('./posts/*.md');
+let allPosts = await Promise.all(
+  Object.entries(posts).map(async ([path, resolver]) => {
+    const post = await resolver();
+    return { ...post, url: path.replace(/\.md$/, '') };
+  })
+);
 let tags = new Set();
 let filteredPosts = allPosts.filter((post) => {
   post.frontmatter.tags.forEach((tag) => tags.add(tag));

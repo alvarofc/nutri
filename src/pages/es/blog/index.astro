@@ -5,7 +5,13 @@ import { getLangFromUrl, useTranslations } from '../../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-let allPosts = await Astro.glob('../posts/*.md');
+const posts = import.meta.glob('../../../blog/posts/*.md');
+let allPosts = await Promise.all(
+  Object.entries(posts).map(async ([path, resolver]) => {
+    const post = await resolver();
+    return { ...post, url: path.replace(/\.md$/, '').replace(/^\.\.\/\.\.\/\.\.\/blog/, '/blog') };
+  })
+);
 let tags = new Set<string>();
 let filteredPosts = allPosts.filter((post) => {
   post.frontmatter.tags.forEach((tag: string) => tags.add(tag));
