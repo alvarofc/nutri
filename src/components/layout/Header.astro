@@ -56,7 +56,7 @@ const links = [
         <img 
           src="/assets/alexandra-2.png" 
           alt={t('header.logo.alt')} 
-          class="w-28"
+          class="w-20 md:w-28"
           itemprop="logo"
           width="160"
           height="40"
@@ -70,12 +70,13 @@ const links = [
 
     <!-- Actions -->
     <div class="-mr-2 flex items-center space-x-2 sm:space-x-3">
-      <!-- Language switcher -->
-      <div class="flex items-center space-x-2">
+      <!-- Language switcher - only visible on desktop -->
+      <div class="hidden md:flex items-center space-x-2">
         {Object.entries(languages).map(([code, name]) => (
           <a 
             href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
-            class={`text-sm font-medium ${lang === code ? 'text-primary-600 dark:text-primary-400 font-bold' : 'text-primary-950 dark:text-primary-200 hover:text-primary-600 dark:hover:text-primary-400'}`}
+            class={`px-2 py-1 text-sm font-medium rounded-md transition ${lang === code ? 'bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-400 font-bold' : 'text-primary-950 dark:text-primary-200 hover:bg-primary-50 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400'}`}
+            aria-current={lang === code ? 'page' : undefined}
           >
             {name}
           </a>
@@ -133,6 +134,23 @@ const links = [
     x-collapse.duration.500ms
   >
     <div class="grid grid-cols-1 gap-16 pb-24 pt-6 lg:grid-cols-2 lg:pt-12">
+      <!-- Mobile language switcher - inside menu -->
+      <div class="mb-1 md:hidden border-b border-primary-900/10 dark:border-primary-300/10 pb-1">
+        <p class="text-sm font-medium text-primary-950/70 dark:text-primary-200/70 mb-1">
+          {t('language')}:
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {Object.entries(languages).map(([code, name]) => (
+            <a 
+              href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
+              class={`px-3 py-2 text-sm font-medium rounded-md transition ${lang === code ? 'bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-400 font-bold' : 'text-primary-950 dark:text-primary-200 hover:bg-primary-50 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400'}`}
+              aria-current={lang === code ? 'page' : undefined}
+            >
+              {name}
+            </a>
+          ))}
+        </div>
+      </div>
       <div
         class="bg-primary-500/10 dark:bg-primary-400/10 hidden items-center justify-center rounded-3xl px-6 py-8 lg:flex"
       >

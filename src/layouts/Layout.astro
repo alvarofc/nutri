@@ -66,15 +66,22 @@ const socialImageURL = new URL(image, site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={lang} />
     <meta property="og:site_name" content="Alexandra Nutritionist" />
+    <meta property="og:article:author" content="Alexandra" />
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={socialImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@alexandranutri" />
+    <meta name="twitter:creator" content="@alexandranutri" />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content={title} />
     
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
