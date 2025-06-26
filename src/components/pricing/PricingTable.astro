@@ -1,63 +1,179 @@
 ---
-const pricing = [
-  {
-    name: 'Primera visita',
-    description: 'En la primera visita evauluaremos tu caso y crearemos un plan personalizado.',
-    periodicity: '/primera vez',
-    price: '120€',
-    action: 'Adquirir',
-    features: ['Primer contacto', 'Evaluación', 'Plan personalizado', 'Resolución de dudas'],
-  },
-  {
-    name: 'Visita de seguimiento',
-    description: 'Visitas de seguimiento para resolver tus dudadas y comprobar tu progreso.',
-    isFlagged: false,
-    periodicity: '/visita',
-    price: '55€',
-    action: 'Adquirir',
-    features: ['10 Seats', '10,000 Projects', 'Lifetime access', 'Email Support', 'Free updates'],
-  },
-  {
-    name: '¡Oferta!',
-    description: 'Primera visita + 4 visitas de seguimiento. ',
-    periodicity: '',
-    isFlagged: true,
-    price: '299€',
-    action: 'Adquirir',
-    features: [
-      'Unlimited Seats',
-      'Unlimited Projects',
-      'Lifetime access',
-      'Email and Chat Support',
-      'High-Performance',
-      'Free updates',
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Data structure for both languages
+const pricingData = {
+  en: {
+    sections: {
+      individual: "INDIVIDUAL SESSIONS",
+      packages: "PACKAGES"
+    },
+    // Individual sessions
+    individualSessions: [
+      {
+        name: 'First Visit',
+        description: 'Complete evaluation and creation of a personalized plan.',
+        price: '79€',
+        action: 'Book',
+        features: ['Initial assessment', 'Medical history', 'Personalized plan', 'Q&A session'],
+      },
+      {
+        name: 'Second visit',
+        description: 'Follow-up on the plan and necessary adjustments.',
+        price: '59€',
+        action: 'Book',
+        features: ['Plan review', 'Personalized adjustments', 'Q&A session', 'Progress tracking'],
+      },
+      {
+        name: 'Follow-ups',
+        description: 'Follow-up visits to check your progress.',
+        price: '59€',
+        action: 'Book',
+        features: ['Progress evaluation', 'Plan adjustments', 'Q&A session', 'Ongoing support'],
+      },
+    ],
+    // Packages
+    packages: [
+      {
+        name: '"ROOTS OF CHANGE" Package',
+        description: '3 sessions (1st visit + 2nd visit + 1 follow-up visit)',
+        isFlagged: true,
+        originalPrice: '197€',
+        price: '177€',
+        action: 'Purchase',
+        features: [
+          'Save 20€',
+          'Start your journey with a firm step',
+          'Valid for 3 months',
+        ],
+      },
+      {
+        name: '"CIRCLE OF TRUST" Package',
+        description: '5 sessions (1st visit + 2nd visit + 3 follow-up visits)',
+        isFlagged: true,
+        originalPrice: '315€',
+        price: '275€',
+        action: 'Purchase',
+        features: [
+          'Save 40€',
+          'Invest in real solutions',
+          'Valid for 5 months',
+        ],
+      },
+      {
+        name: '"NOURISH TO SHINE" Package',
+        description: '8 sessions (1st visit + 2nd visit + 6 follow-up visits)',
+        isFlagged: true,
+        originalPrice: '492€',
+        price: '422€',
+        action: 'Purchase',
+        features: [
+          'Save 70€',
+          'Commit to your long-term well-being',
+          'Valid for 8 months',
+        ],
+      },
     ],
   },
-];
+  es: {
+    sections: {
+      individual: "SESIONES INDIVIDUALES",
+      packages: "BONOS"
+    },
+    // Sesiones individuales
+    individualSessions: [
+      {
+        name: 'Primera Visita',
+        description: 'Evaluación completa y creación de un plan personalizado.',
+        price: '79€',
+        action: 'Reservar',
+        features: ['Evaluación inicial', 'Historia clínica', 'Plan personalizado', 'Resolución de dudas'],
+      },
+      {
+        name: 'Segunda visita',
+        description: 'Seguimiento del plan y ajustes necesarios.',
+        price: '59€',
+        action: 'Reservar',
+        features: ['Revisión del plan', 'Ajustes personalizados', 'Resolución de dudas', 'Seguimiento de progreso'],
+      },
+      {
+        name: 'Seguimientos',
+        description: 'Visitas de seguimiento para comprobar tu progreso.',
+        price: '59€',
+        action: 'Reservar',
+        features: ['Evaluación de progreso', 'Ajustes al plan', 'Resolución de dudas', 'Apoyo continuo'],
+      },
+    ],
+    // Bonos
+    packages: [
+      {
+        name: 'Bono "RAÍCES DE CAMBIO"',
+        description: '3 sesiones (1ª visita + 2ª visita + 1 visita de seguimiento)',
+        isFlagged: true,
+        originalPrice: '197€',
+        price: '177€',
+        action: 'Adquirir',
+        features: [
+          'Ahorra 20€',
+          'Empieza tu camino con paso firme',
+          'Válido durante 3 meses',
+        ],
+      },
+      {
+        name: 'Bono "CÍRCULO DE CONFIANZA"',
+        description: '5 sesiones (1ª visita + 2ª visita + 3 visitas de seguimiento)',
+        isFlagged: true,
+        originalPrice: '315€',
+        price: '275€',
+        action: 'Adquirir',
+        features: [
+          'Ahorra 40€',
+          'Inviertes en soluciones verdaderas',
+          'Válido durante 5 meses',
+        ],
+      },
+      {
+        name: 'Bono "NUTRIR PARA BRILLAR"',
+        description: '8 sesiones (1ª visita + 2ª visita + 6 visitas de seguimiento)',
+        isFlagged: true,
+        originalPrice: '492€',
+        price: '422€',
+        action: 'Adquirir',
+        features: [
+          'Ahorra 70€',
+          'Compromiso con tu bienestar a largo plazo',
+          'Válido durante 8 meses',
+        ],
+      },
+    ],
+  },
+};
+
+// Get the data for the current language
+const currentData = pricingData[lang] || pricingData.es;
+const individualSessions = currentData.individualSessions;
+const packages = currentData.packages;
 ---
 
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="-mt-8 grid gap-8 lg:mt-0 lg:grid-cols-3">
+    <!-- Individual Sessions -->
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold text-center mb-8">{currentData.sections.individual}</h2>
+      <div class="grid gap-8 lg:grid-cols-3">
       {
-        pricing.map((item) => (
-          <div
-            class:list={[
-              'relative flex flex-col gap-8 rounded-3xl p-8',
-              item.isFlagged && 'bg-primary-500/10 dark:bg-primary-400/10',
-            ]}
-          >
+        individualSessions.map((item) => (
+          <div class="relative flex flex-col gap-8 rounded-3xl p-8 border border-gray-200 dark:border-gray-800">
             <div class="flex-1">
-              <h2 class="text-xl font-medium">{item.name}</h2>
+              <h3 class="text-xl font-medium">{item.name}</h3>
               <p class="mt-4 flex items-baseline">
                 <span class="text-4xl font-medium tracking-tight">{item.price}</span>
-                <span class="text-primary-950/70 dark:text-primary-200/70 ml-1 text-sm font-medium">
-                  {item.periodicity}
-                </span>
               </p>
               <p class="text-primary-950/70 dark:text-primary-200/70 mt-6">{item.description}</p>
 
-              <ul role="list" class="mt-6 space-y-6">
+              <ul role="list" class="mt-6 space-y-4">
                 {item.features.map((feature) => (
                   <li class="flex gap-3">
                     <svg
@@ -75,14 +191,59 @@ const pricing = [
               </ul>
             </div>
             <a
-              href="#"
+              href="/contact"
               class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              Adquirir
+              {item.action}
             </a>
           </div>
         ))
       }
+      </div>
+    </div>
+    
+    <!-- Packages/Bonos -->
+    <div>
+      <h2 class="text-3xl font-bold text-center mb-8">{currentData.sections.packages}</h2>
+      <div class="grid gap-8 lg:grid-cols-3">
+        {
+          packages.map((item) => (
+            <div class="relative flex flex-col gap-8 rounded-3xl p-8 bg-primary-500/10 dark:bg-primary-400/10 border border-primary-200 dark:border-primary-800">
+              <div class="flex-1">
+                <h3 class="text-xl font-medium">{item.name}</h3>
+                <p class="mt-4 flex flex-col">
+                  <span class="text-lg line-through text-gray-500">{item.originalPrice}</span>
+                  <span class="text-4xl font-medium tracking-tight">{item.price}</span>
+                </p>
+                <p class="text-primary-950/70 dark:text-primary-200/70 mt-6">{item.description}</p>
+
+                <ul role="list" class="mt-6 space-y-4">
+                  {item.features.map((feature) => (
+                    <li class="flex gap-3">
+                      <svg
+                        class="text-primary-600 dark:text-primary-400 h-6 w-6 flex-shrink-0"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z" />
+                      </svg>
+                      <span class="text-primary-600 dark:text-primary-400 font-medium">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a
+                href="/contact"
+                class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                {item.action}
+              </a>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>

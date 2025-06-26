@@ -54,15 +54,15 @@ export const ui = {
     'about.mission.paragraph2': 'After a year studying the degree, I understood that I wanted to deal directly with patients and I began to study the degree in Human Nutrition and Dietetics at the European University of Madrid. During my career, I have done internships in different health centers, such as the Nostra Senyora de Meritxell Hospital or the Hospital de la Santa Creu i Sant Pau in Barcelona, treating dozens of patients first-hand.',
     'about.mission.paragraph3': 'In this new stage, I want to apply everything I have learned in my career and internships to help people improve their health and quality of life.',
     'about.mission.image.alt': 'Our experts working together',
-    'about.values.title': 'Our Values',
+    'about.values.title': 'My Values',
     'about.values.excellence.name': 'Excellence',
-    'about.values.excellence.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    'about.values.excellence.description': 'I strive to deliver the highest quality in everything I do, continuously seeking improvement to provide the best possible care and results for my clients.',
     'about.values.innovation.name': 'Innovation',
-    'about.values.innovation.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    'about.values.innovation.description': 'I embrace new ideas and scientific advances in nutrition, always updating my knowledge to offer modern, effective solutions tailored to each individual.',
     'about.values.teamwork.name': 'Teamwork',
-    'about.values.teamwork.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    'about.values.teamwork.description': 'I believe in the power of collaboration—working closely with clients and other professionals to achieve shared goals and lasting positive change.',
     'about.values.respect.name': 'Respect',
-    'about.values.respect.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    'about.values.respect.description': 'I treat every person with empathy, understanding, and respect for their unique needs, values, and circumstances.',
     'about.team.title': 'Meet our team',
     'about.team.member1.name': 'Floyd Lowe',
     'about.team.member1.job': 'Senior Designer',
@@ -70,15 +70,15 @@ export const ui = {
     'about.team.member2.job': 'Principal Designer',
     'about.team.member3.name': 'Emily Mitchell',
     'about.team.member3.job': 'Senior Developer',
-    'about.section.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate.',
+    'about.section.description': 'As a dietitian-nutritionist, I immerse myself to the maximum to make sure each person I accompany feels heard, understood and motivated. Through a rigorous anamnesis I identify the factors that are at the root of the problem, so I can design an integrative, sustainable and scientifically supported approach. I believe that when the patient understands what happens in their body, they empower themselves. That is why I explain in simple language the mechanisms of the pathophysiology involved. For me, the therapeutic relationship is as important as the nutritional treatment since when there is confidence, there is adherence and with it, true progress.',
     'about.section.cta': 'Learn more',
     
     // Contact page
     'contact.title': 'Contact',
     'contact.subtitle': 'Get in touch with me',
     'contact.address.label': 'Address',
-    'contact.address.line1': 'Teodoro Canet 2',
-    'contact.address.line2': 'Alcudia, IB, 07400',
+    'contact.address.line1': 'Cruz del Sur 24',
+    'contact.address.line2': 'Madrid, 28007',
     'contact.phone.label': 'Phone',
     'contact.phone.number': '+34 644 381 191',
     'contact.email.label': 'Email',
@@ -96,7 +96,15 @@ export const ui = {
     
     // Pricing page
     'pricing.title': 'Pricing',
-    'pricing.subtitle': 'Choose the plan that fits your needs',
+    'pricing.subtitle': 'Choose the plan that fits your needs or get a better price with our packages.',
+    'pricing.individual.title': 'First Visit',
+    'pricing.individual.second': 'Second Visit',
+    'pricing.individual.followup': 'Follow-ups',
+    'pricing.package.roots': '"ROOTS OF CHANGE" Package',
+    'pricing.package.circle': '"CIRCLE OF TRUST" Package',
+    'pricing.package.nourish': '"NOURISH TO SHINE" Package',
+    'pricing.action.book': 'Book',
+    'pricing.action.purchase': 'Purchase',
     
     // Expertise section
     'expertise.title': 'Specialties',
@@ -124,7 +132,7 @@ export const ui = {
     // Header
     'header.logo.alt': 'Alexandra logo',
     'header.toggle.menu': 'Toggle menu',
-    'header.menu.message': 'I am currently finishing my studies in Human Nutrition and Dietetics at the European University of Madrid. I will be happy to assist you once I complete my training.',
+    'header.menu.message': 'Ready to start your journey towards a healthier, happier you? Let’s work together to achieve your nutrition and wellness goals!',
     
 
   },
@@ -176,24 +184,24 @@ export const ui = {
     'about.mission.paragraph2': 'Tras un año cursando la carrera entendí que quería tratar directamente con los pacientes y comencé a estudiar la carrera de Nutrición Humana y Dietética en la Universidad Europea de Madrid. Durante la carrera, he realizado prácticas en diferentes centros de salud, como el Hospital Nostra Senyora de Meritxell o el Hospital de la Santa Creu i Sant Pau de Barcelona tratando de primera mano a decenas de pacientes.',
     'about.mission.paragraph3': 'En esta nueva etapa quiero aplicar todo lo aprendido en la carrera y en las prácticas para ayudar a las personas a mejorar su salud y su calidad de vida.',
     'about.mission.image.alt': 'Nuestros expertos trabajando juntos',
-    'about.values.title': 'Nuestros Valores',
+    'about.values.title': 'Mis Valores',
     'about.values.excellence.name': 'Excelencia',
-    'about.values.excellence.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    'about.values.excellence.description': 'Me esfuerzo por ofrecer la máxima calidad en todo lo que hago, buscando siempre mejorar para proporcionar el mejor cuidado y los mejores resultados a mis pacientes.',
     'about.values.innovation.name': 'Innovación',
-    'about.values.innovation.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    'about.values.innovation.description': 'Adopto nuevas ideas y avances científicos en nutrición, actualizando constantemente mis conocimientos para ofrecer soluciones modernas y eficaces adaptadas a cada persona.',
     'about.values.teamwork.name': 'Trabajo en equipo',
-    'about.values.teamwork.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    'about.values.teamwork.description': 'Creo en el poder de la colaboración, trabajando estrechamente con los pacientes y otros profesionales para lograr objetivos comunes y cambios positivos duraderos.',
     'about.values.respect.name': 'Respeto',
-    'about.values.respect.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-    'about.section.description': 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate.',
+    'about.values.respect.description': 'Trato a cada persona con empatía, comprensión y respeto por sus necesidades, valores y circunstancias únicas.',
+    'about.section.description': 'Como dietista-nutricionista, me implico al máximo para que cada persna que acompaño se sienta escuchada, comprendida y motivada. A través de una anamnesis rigurosa identifico los factores que están en la raíz del problema, para así diseñar un abordaje integral, sostenible y respaldado científicamente. Creo que cuando el paciente entiende lo que ocurre en su cuerpo, se empodera. Por eso explico con un lenguaje sencillo los mecanismos fisiopatológicos implicados. Para mí, la relación terapéutica es tan importante como el tratamiento nutricional ya que cuando hay confianza, hay adherencia y con ella, verdadero progreso.',
     'about.section.cta': 'Saber más',
     
     // Contact page
     'contact.title': 'Contacto',
     'contact.subtitle': 'Ponte en contacto conmigo',
     'contact.address.label': 'Dirección',
-    'contact.address.line1': 'Teodoro Canet 2',
-    'contact.address.line2': 'Alcudia, IB, 07400',
+    'contact.address.line1': 'Cruz del Sur 24',
+    'contact.address.line2': 'Madrid, 28007',
     'contact.phone.label': 'Teléfono',
     'contact.phone.number': '+34 644 381 191',
     'contact.email.label': 'Email',
@@ -211,7 +219,15 @@ export const ui = {
     
     // Pricing page
     'pricing.title': 'Precios',
-    'pricing.subtitle': 'Elige el plan que se adapte a tus necesidades',
+    'pricing.subtitle': 'Puedes adquirir por separado o conseguir un mejor precio comprando el paquete de oferta.',
+    'pricing.individual.title': 'Primera Visita',
+    'pricing.individual.second': 'Segunda visita',
+    'pricing.individual.followup': 'Seguimientos',
+    'pricing.package.roots': 'Bono "RAÍCES DE CAMBIO"',
+    'pricing.package.circle': 'Bono "CÍRCULO DE CONFIANZA"',
+    'pricing.package.nourish': 'Bono "NUTRIR PARA BRILLAR"',
+    'pricing.action.book': 'Reservar',
+    'pricing.action.purchase': 'Adquirir',
     
     // Expertise section
     'expertise.title': 'Especialidades',
@@ -239,7 +255,7 @@ export const ui = {
     // Header
     'header.logo.alt': 'Logo de Alexandra',
     'header.toggle.menu': 'Alternar menú',
-    'header.menu.message': 'Actualmente estoy finalizando mis estudios en Nutrición Humana y Dietética en la Universidad Europea de Madrid. Estaré encantada de atenderte una vez termine mi formación.',
+    'header.menu.message': '¿Listo para comenzar tu viaje hacia una salud y bienestar mejorados? ¡Vamos a trabajar juntos para lograr tus metas nutricionales y de bienestar!',
   },
 } as const;
 

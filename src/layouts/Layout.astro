@@ -9,11 +9,26 @@ import { getLangFromUrl, useTranslations } from '../i18n/ui';
 interface Props {
   description: string;
   title: string;
+  image?: string;
+  canonicalUrl?: string;
+  keywords?: string;
+  type?: 'website' | 'article';
 }
 
-const { description, title } = Astro.props;
+const { 
+  description, 
+  title, 
+  image = '/images/social-card.jpg', 
+  canonicalUrl = Astro.url.pathname,
+  keywords = 'nutrition, dietitian, health, wellness, diet',
+  type = 'website'
+} = Astro.props;
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const site = Astro.site || 'https://alexandranutri.com';
+const canonicalURL = new URL(canonicalUrl, site);
+const socialImageURL = new URL(image, site);
 ---
 
 <!DOCTYPE html>
@@ -21,15 +36,135 @@ const t = useTranslations(lang);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Alexandra" />
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Hreflang Tags -->
+    <link rel="alternate" hreflang="es" href={new URL(Astro.url.pathname.replace(/^\/en\//, '/es/').replace(/^\/(?!es\/)/, '/es/'), site)} />
+    <link rel="alternate" hreflang="en" href={new URL(Astro.url.pathname.replace(/^\/es\//, '/en/').replace(/^\/(?!en\/)/, '/en/'), site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(Astro.url.pathname.replace(/^\/es\//, '/en/').replace(/^\/(?!en\/)/, '/en/'), site)} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:locale" content={lang} />
+    <meta property="og:site_name" content="Alexandra Nutritionist" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImageURL} />
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    
     <ViewTransitions />
+    
+    <!-- Structured Data / JSON-LD - Professional Service -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": lang === 'es' ? "Alexandra Nutricionista" : "Alexandra Nutritionist",
+      "url": site,
+      "logo": new URL("/assets/alexandra-2.png", site).toString(),
+      "image": socialImageURL.toString(),
+      "description": description,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Madrid",
+        "addressRegion": "Comunidad de Madrid",
+        "postalCode": "28007",
+        "addressCountry": lang === 'es' ? "España" : "Spain"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "40.4168",
+        "longitude": "-3.7038"
+      },
+      "telephone": "+34-644-381-191",
+      "priceRange": "€€",
+      "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00",
+      "sameAs": [
+        "https://www.facebook.com/alexandranutri",
+        "https://www.instagram.com/alexandranutri",
+        "https://twitter.com/alexandranutri"
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Madrid"
+        },
+        {
+          "@type": "Country",
+          "name": lang === 'es' ? "España" : "Spain"
+        }
+      ]
+    })}></script>
+    
+    <!-- Structured Data / JSON-LD - Local Business -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": lang === 'es' ? "Alexandra Nutricionista" : "Alexandra Nutritionist",
+      "image": socialImageURL.toString(),
+      "@id": new URL("#LocalBusiness", site).toString(),
+      "url": site,
+      "telephone": "+34-644-381-191",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Cruz del Sur 24",
+        "addressLocality": "Madrid",
+        "postalCode": "28007",
+        "addressRegion": "Comunidad de Madrid",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.4168,
+        "longitude": -3.7038
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/alexandranutri",
+        "https://www.instagram.com/alexandranutri",
+        "https://twitter.com/alexandranutri"
+      ]
+    })}></script>
   </head>
   <body
     class="bg-stone-50 text-primary-950 dark:bg-primary-950 dark:text-primary-200 antialiased transition"
