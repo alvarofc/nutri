@@ -312,14 +312,21 @@ export function useTranslations(lang: keyof typeof ui) {
 
 // Get URL for the same page in a different language
 export function getLocalizedPath(path: string, lang: keyof typeof ui) {
-  // Remove the language prefix if it exists
-  const pathWithoutLang = path.replace(/^\/(en|es)\//, '/');
+  // Remove the language prefix if it exists (with or without trailing slash)
+  let pathWithoutLang = path.replace(/^\/(en|es)(?=\/|$)/, '');
 
-  // If it's the homepage, handle it specially
+  if (pathWithoutLang === '') {
+    pathWithoutLang = '/';
+  }
+
+  if (lang === defaultLang) {
+    return pathWithoutLang;
+  }
+
   if (pathWithoutLang === '/' || pathWithoutLang === '') {
     return `/${lang}/`;
   }
 
-  // For other pages, add the language prefix
-  return `/${lang}${pathWithoutLang}`;
+  const normalizedPath = pathWithoutLang.startsWith('/') ? pathWithoutLang : `/${pathWithoutLang}`;
+  return `/${lang}${normalizedPath}`;
 }

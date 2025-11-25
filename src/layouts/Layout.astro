@@ -4,7 +4,7 @@ import '@fontsource/inter/latin-500.css';
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/ui';
+import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/ui';
 
 interface Props {
   description: string;
@@ -29,6 +29,8 @@ const t = useTranslations(lang);
 const site = Astro.site || 'https://alexandranutri.com';
 const canonicalURL = new URL(canonicalUrl, site);
 const socialImageURL = new URL(image, site);
+const esAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'es'), site);
+const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site);
 ---
 
 <!DOCTYPE html>
@@ -56,9 +58,9 @@ const socialImageURL = new URL(image, site);
     <link rel="canonical" href={canonicalURL} />
     
     <!-- Hreflang Tags -->
-    <link rel="alternate" hreflang="es" href={new URL(Astro.url.pathname.replace(/^\/en\//, '/es/').replace(/^\/(?!es\/)/, '/es/'), site)} />
-    <link rel="alternate" hreflang="en" href={new URL(Astro.url.pathname.replace(/^\/es\//, '/en/').replace(/^\/(?!en\/)/, '/en/'), site)} />
-    <link rel="alternate" hreflang="x-default" href={new URL(Astro.url.pathname.replace(/^\/es\//, '/en/').replace(/^\/(?!en\/)/, '/en/'), site)} />
+    <link rel="alternate" hreflang="es" href={esAlternateURL} />
+    <link rel="alternate" hreflang="en" href={enAlternateURL} />
+    <link rel="alternate" hreflang="x-default" href={esAlternateURL} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
@@ -205,6 +207,52 @@ const socialImageURL = new URL(image, site);
           }
         });
       });
+    </script>
+
+    <script is:inline>
+      (function () {
+        if (typeof window === 'undefined') {
+          return;
+        }
+
+        var STORAGE_KEY = 'preferredLanguage';
+
+        function persistLanguagePreference(lang) {
+          if (!lang) {
+            return;
+          }
+
+          try {
+            localStorage.setItem(STORAGE_KEY, lang);
+          } catch (error) {
+            /* Ignore persistence errors */
+          }
+
+          try {
+            sessionStorage.setItem(STORAGE_KEY, lang);
+          } catch (error) {
+            /* Ignore persistence errors */
+          }
+        }
+
+        document.addEventListener(
+          'click',
+          function (event) {
+            var target = event.target;
+            if (!(target instanceof Element)) {
+              return;
+            }
+
+            var langTrigger = target.closest('[data-lang-preference]');
+            if (!langTrigger) {
+              return;
+            }
+
+            persistLanguagePreference(langTrigger.getAttribute('data-lang-preference'));
+          },
+          true
+        );
+      })();
     </script>
   </body>
 </html>

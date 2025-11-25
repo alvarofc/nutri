@@ -17,15 +17,41 @@ const t = useTranslations(lang);
   title={t('home.page.title')}
 >
   <script slot="head" is:inline>
-    (function() {
-      var lang = navigator.language || navigator.userLanguage;
-      if (lang && lang.startsWith('en')) {
+    (function () {
+      if (typeof window === 'undefined') {
+        return;
+      }
+
+      var path = window.location.pathname;
+      if (path !== '/' && path !== '/index.html') {
+        return;
+      }
+
+      var storedPreference = null;
+      try {
+        storedPreference = sessionStorage.getItem('preferredLanguage');
+      } catch (error) {
+        storedPreference = null;
+      }
+
+      if (!storedPreference) {
+        try {
+          storedPreference = localStorage.getItem('preferredLanguage');
+        } catch (error) {
+          storedPreference = null;
+        }
+      }
+
+      var browserLang = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || '';
+      var targetLang = (storedPreference || browserLang).toLowerCase();
+
+      if (targetLang.startsWith('en')) {
+        document.documentElement.style.opacity = '0';
         window.location.replace('/en/');
-      } else if (window.location.pathname === '/') {
-        window.history.replaceState(null, '', '/es/');
       }
     })();
   </script>
+
 
   <Hero />
   <Services />

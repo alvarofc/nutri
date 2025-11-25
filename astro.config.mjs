@@ -12,7 +12,7 @@ export default defineConfig({
     defaultLocale: 'es',
     locales: ['en', 'es'],
     routing: {
-      prefixDefaultLocale: true
+      prefixDefaultLocale: false
     }
   },
   integrations: [tailwind(), compress(), sitemap({
