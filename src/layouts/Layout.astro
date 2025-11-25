@@ -88,6 +88,8 @@ const socialImageURL = new URL(image, site);
     
     <ViewTransitions />
     
+    <slot name="head" />
+
     <!-- Structured Data / JSON-LD - Professional Service -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

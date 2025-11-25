@@ -1,23 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script is:inline>
-        (function() {
-            var lang = navigator.language || navigator.userLanguage;
-            var target = '/es/';
-            if (lang && lang.startsWith('en')) {
-                target = '/en/';
-            }
-            window.location.replace(target);
-        })();
-    </script>
-    <noscript>
-        <meta http-equiv="refresh" content="0;url=/es/" />
-    </noscript>
-</head>
-<body>
-</body>
-</html>
+---
+import About from '../components/home/About.astro';
+import Cta from '../components/home/Cta.astro';
+import Expertise from '../components/home/Expertise.astro';
+import Hero from '../components/home/Hero.astro';
+import Services from '../components/home/Services.astro';
+import Testimonials from '../components/home/Testimonials.astro';
+import Layout from '../layouts/Layout.astro';
+import { useTranslations } from '../i18n/ui';
+
+const lang = 'es';
+const t = useTranslations(lang);
+---
+
+<Layout
+  description={t('home.description')}
+  title={t('home.page.title')}
+>
+  <script slot="head" is:inline>
+    (function() {
+      var lang = navigator.language || navigator.userLanguage;
+      if (lang && lang.startsWith('en')) {
+        window.location.replace('/en/');
+      } else if (window.location.pathname === '/') {
+        window.history.replaceState(null, '', '/es/');
+      }
+    })();
+  </script>
+
+  <Hero />
+  <Services />
+  <Expertise />
+  <About />
+  <Testimonials />
+  <Cta />
+</Layout>
