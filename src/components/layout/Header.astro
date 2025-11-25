@@ -50,7 +50,7 @@ const links = [
         href={getLocalizedPath('/', lang)}
         class="focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 rounded-md focus-visible:outline focus-visible:outline-2"
         itemprop="url"
-        aria-label="Alexandra Nutritionist Homepage"
+        aria-label={t('header.homepage.aria')}
       >
         <span class="sr-only">Alexandra</span>
         <img 
@@ -64,7 +64,7 @@ const links = [
         >
       </a>
       <div class="ml-4">
-        <p itemprop="memberOf">| MAD01541</p>
+        <p itemprop="memberOf">{t('header.registration')}</p>
       </div>
     </div>
 
@@ -168,7 +168,7 @@ const links = [
         class="divide-primary-900/10 dark:divide-primary-300/10 flex flex-col gap-1 divide-y" 
         itemscope 
         itemtype="https://schema.org/SiteNavigationElement"
-        aria-label="Main Navigation"
+        aria-label={t('header.navigation.aria')}
       >
         {
           links.map((link) => (

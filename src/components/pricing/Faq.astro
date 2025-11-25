@@ -3,88 +3,45 @@ import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const faqData = {
-  en: {
-    title: "Frequently Asked Questions",
-    questions: [
-      {
-        id: 'faq-1',
-        title: 'What is included in the first visit?',
-        answer: 'The first visit includes a complete assessment of your current health status, medical history, lifestyle habits, and nutritional needs. We will discuss your goals and create a personalized nutrition plan tailored to your specific needs.',
-      },
-      {
-        id: 'faq-2',
-        title: 'How long are the consultation sessions?',
-        answer: 'The first consultation typically lasts around 60 minutes to allow for a comprehensive assessment. Follow-up sessions are usually 30-45 minutes depending on your needs.',
-      },
-      {
-        id: 'faq-3',
-        title: 'Do you offer online consultations?',
-        answer: 'Yes, I offer both in-person and online consultations to accommodate your preferences and schedule. Online sessions are conducted through a secure video platform.',
-      },
-      {
-        id: 'faq-4',
-        title: 'How many follow-up sessions will I need?',
-        answer: 'The number of follow-up sessions varies depending on your individual goals and progress. Some clients achieve their goals with just a few sessions, while others benefit from ongoing support. Our package options are designed to accommodate different needs.',
-      },
-      {
-        id: 'faq-5',
-        title: 'What payment methods do you accept?',
-        answer: 'I accept credit/debit cards, bank transfers, and cash payments for in-person consultations. For online sessions, payment must be made in advance via bank transfer or credit card.',
-      },
-      {
-        id: 'faq-6',
-        title: 'What is your cancellation policy?',
-        answer: 'If you need to cancel or reschedule an appointment, please provide at least 24 hours notice. Late cancellations or missed appointments may be subject to a cancellation fee.',
-      },
-    ],
+const questions = [
+  {
+    id: 'faq-1',
+    title: t('faq.q1.title'),
+    answer: t('faq.q1.answer'),
   },
-  es: {
-    title: "Preguntas Frecuentes",
-    questions: [
-      {
-        id: 'faq-1',
-        title: '¿Qué incluye la primera visita?',
-        answer: 'La primera visita incluye una evaluación completa de tu estado de salud actual, historial médico, hábitos de vida y necesidades nutricionales. Hablaremos sobre tus objetivos y crearemos un plan de nutrición personalizado adaptado a tus necesidades específicas.',
-      },
-      {
-        id: 'faq-2',
-        title: '¿Cuánto duran las sesiones de consulta?',
-        answer: 'La primera consulta suele durar unos 60 minutos para permitir una evaluación completa. Las sesiones de seguimiento suelen durar entre 30 y 45 minutos, dependiendo de tus necesidades.',
-      },
-      {
-        id: 'faq-3',
-        title: '¿Ofreces consultas online?',
-        answer: 'Sí, ofrezco consultas tanto presenciales como online para adaptarme a tus preferencias y horario. Las sesiones online se realizan a través de una plataforma de video segura.',
-      },
-      {
-        id: 'faq-4',
-        title: '¿Cuántas sesiones de seguimiento necesitaré?',
-        answer: 'El número de sesiones de seguimiento varía según tus objetivos individuales y tu progreso. Algunos clientes logran sus objetivos con solo unas pocas sesiones, mientras que otros se benefician de un apoyo continuo. Nuestras opciones de bonos están diseñadas para adaptarse a diferentes necesidades.',
-      },
-      {
-        id: 'faq-5',
-        title: '¿Qué métodos de pago aceptas?',
-        answer: 'Acepto tarjetas de crédito/débito, transferencias bancarias y pagos en efectivo para consultas presenciales. Para sesiones online, el pago debe realizarse por adelantado mediante transferencia bancaria o tarjeta de crédito.',
-      },
-      {
-        id: 'faq-6',
-        title: '¿Cuál es tu política de cancelación?',
-        answer: 'Si necesitas cancelar o reprogramar una cita, por favor avisa con al menos 24 horas de antelación. Las cancelaciones tardías o las citas perdidas pueden estar sujetas a una tarifa de cancelación.',
-      },
-    ],
+  {
+    id: 'faq-2',
+    title: t('faq.q2.title'),
+    answer: t('faq.q2.answer'),
   },
-};
-
-const currentFaqData = faqData[lang] || faqData.es;
-const questions = currentFaqData.questions;
+  {
+    id: 'faq-3',
+    title: t('faq.q3.title'),
+    answer: t('faq.q3.answer'),
+  },
+  {
+    id: 'faq-4',
+    title: t('faq.q4.title'),
+    answer: t('faq.q4.answer'),
+  },
+  {
+    id: 'faq-5',
+    title: t('faq.q5.title'),
+    answer: t('faq.q5.answer'),
+  },
+  {
+    id: 'faq-6',
+    title: t('faq.q6.title'),
+    answer: t('faq.q6.answer'),
+  },
+];
 ---
 
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
       <div>
-        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{currentFaqData.title}</h2>
+        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t('faq.title')}</h2>
       </div>
       <div class="lg:col-span-2">
         <dl

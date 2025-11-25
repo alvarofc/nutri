@@ -4,11 +4,15 @@ import Faq from '../components/pricing/Faq.astro';
 import Heading from '../components/pricing/Heading.astro';
 import PricingTable from '../components/pricing/PricingTable.astro';
 import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout
-  description="Precios, tarifas y planes de Alexandra."
-  title="Precios · Alexandra"
+  description={t('pricing.page.description')}
+  title={t('pricing.page.title')}
 >
   <Heading />
   <PricingTable />

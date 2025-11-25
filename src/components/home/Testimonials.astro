@@ -1,25 +1,27 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const testimonials = [
   {
-    name: 'Pilar Sierra',
-    description: 'Jefa nutrición y dietética Nostra Senyora de Meritxell', 
+    name: t('testimonials.pilar.name'),
+    description: t('testimonials.pilar.description'), 
     image: '/assets/testimonial-1.webp',
-    message:
-      '“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”',
+    message: t('testimonials.pilar.message'),
   },
   {
-    name: 'Rosa Spencer',
-    description: 'Team Leader',
+    name: t('testimonials.rosa.name'),
+    description: t('testimonials.rosa.description'),
     image: '/assets/testimonial-2.webp',
-    message:
-      '“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”',
+    message: t('testimonials.rosa.message'),
   },
   {
-    name: 'Christina Upton',
-    description: 'Manager',
+    name: t('testimonials.christina.name'),
+    description: t('testimonials.christina.description'),
     image: '/assets/testimonial-3.webp',
-    message:
-      '“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”',
+    message: t('testimonials.christina.message'),
   },
 ];
 ---
@@ -28,7 +30,7 @@ const testimonials = [
   <div class="v mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col items-center gap-12 lg:gap-20">
       <h2 class="mx-auto max-w-xl text-center text-3xl font-medium tracking-tight sm:text-4xl">
-        Recomendada por pacientes y los mejores profesionales
+        {t('testimonials.title')}
       </h2>
       <div
         class="divide-primary-900/10 dark:divide-primary-300/10 grid divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0"

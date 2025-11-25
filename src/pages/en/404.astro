@@ -1,14 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <Layout
-  description="Page not found. Please check the URL in the address bar and try again."
-  title="Not found · Alexandra"
+  description={t('404.description')}
+  title={`${t('404.title')} · Alexandra`}
 >
   <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -16,17 +16,17 @@ const t = useTranslations(lang);
         <div class="flex flex-col gap-4 sm:gap-6">
           <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
             <div>404</div>
-            <div>Page not found</div>
+            <div>{t('404.title')}</div>
           </h1>
           <p class="text-primary-950/70 dark:text-primary-200/70 text-lg sm:text-xl">
-            Please check the URL in the address bar and try again.
+            {t('404.description')}
           </p>
         </div>
         <a
-          href="/en"
+          href={getLocalizedPath('/', lang)}
           class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
-          Go back home
+          {t('404.button')}
         </a>
       </div>
     </div>

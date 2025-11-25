@@ -1,167 +1,95 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Data structure for both languages
-const pricingData = {
-  en: {
-    sections: {
-      individual: "INDIVIDUAL SESSIONS",
-      packages: "PACKAGES"
-    },
-    // Individual sessions
-    individualSessions: [
-      {
-        name: 'First Visit',
-        description: 'Complete evaluation and creation of a personalized plan.',
-        price: '79€',
-        action: 'Book',
-        features: ['Initial assessment', 'Medical history', 'Personalized plan', 'Q&A session'],
-      },
-      {
-        name: 'Second visit',
-        description: 'Follow-up on the plan and necessary adjustments.',
-        price: '59€',
-        action: 'Book',
-        features: ['Plan review', 'Personalized adjustments', 'Q&A session', 'Progress tracking'],
-      },
-      {
-        name: 'Follow-ups',
-        description: 'Follow-up visits to check your progress.',
-        price: '59€',
-        action: 'Book',
-        features: ['Progress evaluation', 'Plan adjustments', 'Q&A session', 'Ongoing support'],
-      },
-    ],
-    // Packages
-    packages: [
-      {
-        name: '"ROOTS OF CHANGE" Package',
-        description: '3 sessions (1st visit + 2nd visit + 1 follow-up visit)',
-        isFlagged: true,
-        originalPrice: '197€',
-        price: '177€',
-        action: 'Purchase',
-        features: [
-          'Save 20€',
-          'Start your journey with a firm step',
-          'Valid for 3 months',
-        ],
-      },
-      {
-        name: '"CIRCLE OF TRUST" Package',
-        description: '5 sessions (1st visit + 2nd visit + 3 follow-up visits)',
-        isFlagged: true,
-        originalPrice: '315€',
-        price: '275€',
-        action: 'Purchase',
-        features: [
-          'Save 40€',
-          'Invest in real solutions',
-          'Valid for 5 months',
-        ],
-      },
-      {
-        name: '"NOURISH TO SHINE" Package',
-        description: '8 sessions (1st visit + 2nd visit + 6 follow-up visits)',
-        isFlagged: true,
-        originalPrice: '492€',
-        price: '422€',
-        action: 'Purchase',
-        features: [
-          'Save 70€',
-          'Commit to your long-term well-being',
-          'Valid for 8 months',
-        ],
-      },
+const individualSessions = [
+  {
+    name: t('pricing.individual.title'),
+    description: t('pricing.first.description'),
+    price: '79€',
+    action: t('pricing.action.book'),
+    features: [
+      t('pricing.first.features.0'),
+      t('pricing.first.features.1'),
+      t('pricing.first.features.2'),
+      t('pricing.first.features.3'),
     ],
   },
-  es: {
-    sections: {
-      individual: "SESIONES INDIVIDUALES",
-      packages: "BONOS"
-    },
-    // Sesiones individuales
-    individualSessions: [
-      {
-        name: 'Primera Visita',
-        description: 'Evaluación completa y creación de un plan personalizado.',
-        price: '79€',
-        action: 'Reservar',
-        features: ['Evaluación inicial', 'Historia clínica', 'Plan personalizado', 'Resolución de dudas'],
-      },
-      {
-        name: 'Segunda visita',
-        description: 'Seguimiento del plan y ajustes necesarios.',
-        price: '59€',
-        action: 'Reservar',
-        features: ['Revisión del plan', 'Ajustes personalizados', 'Resolución de dudas', 'Seguimiento de progreso'],
-      },
-      {
-        name: 'Seguimientos',
-        description: 'Visitas de seguimiento para comprobar tu progreso.',
-        price: '59€',
-        action: 'Reservar',
-        features: ['Evaluación de progreso', 'Ajustes al plan', 'Resolución de dudas', 'Apoyo continuo'],
-      },
-    ],
-    // Bonos
-    packages: [
-      {
-        name: 'Bono "RAÍCES DE CAMBIO"',
-        description: '3 sesiones (1ª visita + 2ª visita + 1 visita de seguimiento)',
-        isFlagged: true,
-        originalPrice: '197€',
-        price: '177€',
-        action: 'Adquirir',
-        features: [
-          'Ahorra 20€',
-          'Empieza tu camino con paso firme',
-          'Válido durante 3 meses',
-        ],
-      },
-      {
-        name: 'Bono "CÍRCULO DE CONFIANZA"',
-        description: '5 sesiones (1ª visita + 2ª visita + 3 visitas de seguimiento)',
-        isFlagged: true,
-        originalPrice: '315€',
-        price: '275€',
-        action: 'Adquirir',
-        features: [
-          'Ahorra 40€',
-          'Inviertes en soluciones verdaderas',
-          'Válido durante 5 meses',
-        ],
-      },
-      {
-        name: 'Bono "NUTRIR PARA BRILLAR"',
-        description: '8 sesiones (1ª visita + 2ª visita + 6 visitas de seguimiento)',
-        isFlagged: true,
-        originalPrice: '492€',
-        price: '422€',
-        action: 'Adquirir',
-        features: [
-          'Ahorra 70€',
-          'Compromiso con tu bienestar a largo plazo',
-          'Válido durante 8 meses',
-        ],
-      },
+  {
+    name: t('pricing.individual.second'),
+    description: t('pricing.second.description'),
+    price: '59€',
+    action: t('pricing.action.book'),
+    features: [
+      t('pricing.second.features.0'),
+      t('pricing.second.features.1'),
+      t('pricing.second.features.2'),
+      t('pricing.second.features.3'),
     ],
   },
-};
+  {
+    name: t('pricing.individual.followup'),
+    description: t('pricing.followup.description'),
+    price: '59€',
+    action: t('pricing.action.book'),
+    features: [
+      t('pricing.followup.features.0'),
+      t('pricing.followup.features.1'),
+      t('pricing.followup.features.2'),
+      t('pricing.followup.features.3'),
+    ],
+  },
+];
 
-// Get the data for the current language
-const currentData = pricingData[lang] || pricingData.es;
-const individualSessions = currentData.individualSessions;
-const packages = currentData.packages;
+const packages = [
+  {
+    name: t('pricing.package.roots'),
+    description: t('pricing.roots.description'),
+    isFlagged: true,
+    originalPrice: '197€',
+    price: '177€',
+    action: t('pricing.action.purchase'),
+    features: [
+      t('pricing.roots.features.0'),
+      t('pricing.roots.features.1'),
+      t('pricing.roots.features.2'),
+    ],
+  },
+  {
+    name: t('pricing.package.circle'),
+    description: t('pricing.circle.description'),
+    isFlagged: true,
+    originalPrice: '315€',
+    price: '275€',
+    action: t('pricing.action.purchase'),
+    features: [
+      t('pricing.circle.features.0'),
+      t('pricing.circle.features.1'),
+      t('pricing.circle.features.2'),
+    ],
+  },
+  {
+    name: t('pricing.package.nourish'),
+    description: t('pricing.nourish.description'),
+    isFlagged: true,
+    originalPrice: '492€',
+    price: '422€',
+    action: t('pricing.action.purchase'),
+    features: [
+      t('pricing.nourish.features.0'),
+      t('pricing.nourish.features.1'),
+      t('pricing.nourish.features.2'),
+    ],
+  },
+];
 ---
 
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <!-- Individual Sessions -->
     <div class="mb-12">
-      <h2 class="text-3xl font-bold text-center mb-8">{currentData.sections.individual}</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">{t('pricing.sections.individual')}</h2>
       <div class="grid gap-8 lg:grid-cols-3">
       {
         individualSessions.map((item) => (
@@ -191,7 +119,7 @@ const packages = currentData.packages;
               </ul>
             </div>
             <a
-              href="/contact"
+              href={getLocalizedPath('/contact', lang)}
               class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               {item.action}
@@ -204,7 +132,7 @@ const packages = currentData.packages;
     
     <!-- Packages/Bonos -->
     <div>
-      <h2 class="text-3xl font-bold text-center mb-8">{currentData.sections.packages}</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">{t('pricing.sections.packages')}</h2>
       <div class="grid gap-8 lg:grid-cols-3">
         {
           packages.map((item) => (
@@ -235,7 +163,7 @@ const packages = currentData.packages;
                 </ul>
               </div>
               <a
-                href="/contact"
+                href={getLocalizedPath('/contact', lang)}
                 class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 {item.action}
