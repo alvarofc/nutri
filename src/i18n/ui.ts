@@ -10,7 +10,7 @@ export const ui = {
     // Navigation
     'nav.home': 'Home',
     'nav.about': 'About',
-    'nav.blog': 'Blog',
+    'nav.blog': 'Journal',
     'nav.pricing': 'Pricing',
     'nav.contact': 'Contact',
 
@@ -34,6 +34,7 @@ export const ui = {
       'I help you achieve your health and wellness goals through personalized nutrition plans.',
     'home.hero.image.alt': 'Hero image showing healthy nutrition',
     'home.page.title': 'Alexandra · Your nutritionist',
+    'home.trust.title': 'Certified & Registered Member of',
 
     // Services section
     'services.title': 'How I work',
@@ -120,25 +121,25 @@ export const ui = {
     'pricing.action.purchase': 'Purchase',
 
     // Expertise section
-    'expertise.title': 'Specialties',
+    'expertise.title': 'Supporting Your Health',
     'expertise.maternity': 'Maternity & Pregnancy',
     'expertise.maternity.desc':
-      'Specialized nutrition plans for mothers before, during, and after pregnancy to ensure optimal health for both mother and baby.',
+      "Supporting you through every stage of motherhood with nutrition that adapts to your body's changing needs—before conception, during pregnancy, and through postpartum recovery.",
     'expertise.diabetes': 'Diabetes',
     'expertise.diabetes.desc':
-      'Personalized dietary strategies to manage blood sugar levels and improve quality of life for those with diabetes.',
-    'expertise.renal': 'Renal',
+      'Empowering you to take control of your blood sugar through personalized nutrition strategies that fit your lifestyle and help you feel your best every day.',
+    'expertise.renal': 'Kidney Health',
     'expertise.renal.desc':
-      'Specialized nutrition plans for those with kidney conditions to maintain kidney function and overall health.',
+      "Working alongside your medical treatment to protect your kidney health with evidence-based nutrition that reduces strain and supports your body's natural healing.",
     'expertise.oncology': 'Oncology',
     'expertise.oncology.desc':
-      'Supportive nutrition strategies for cancer patients to maintain strength during treatment and recovery.',
+      'Helping you maintain your strength and resilience during treatment with nutrition that supports your immune system, manages side effects, and aids in recovery.',
     'expertise.eating': 'Eating Disorders',
     'expertise.eating.desc':
-      'Compassionate and evidence-based nutrition therapy for those recovering from eating disorders.',
+      'Supporting your recovery with a compassionate, non-judgmental approach to rebuilding a healthy relationship with food and your body.',
     'expertise.weight': 'Weight Management',
     'expertise.weight.desc':
-      'Sustainable weight management strategies focused on health improvement rather than just numbers on a scale.',
+      'Focusing on sustainable changes that improve your overall health, energy, and confidence—without restrictive diets or shame.',
 
     // 404 page
     '404.title': 'Page not found',
@@ -262,7 +263,7 @@ export const ui = {
     // Navigation
     'nav.home': 'Inicio',
     'nav.about': 'Sobre mí',
-    'nav.blog': 'Blog',
+    'nav.blog': 'Journal',
     'nav.pricing': 'Precios',
     'nav.contact': 'Contacto',
 
@@ -286,6 +287,7 @@ export const ui = {
       'Te ayudo a alcanzar tus objetivos de salud y bienestar a través de planes de nutrición personalizados.',
     'home.hero.image.alt': 'Imagen principal mostrando nutrición saludable',
     'home.page.title': 'Alexandra · Tu nutricionista',
+    'home.trust.title': 'Miembro Colegiado y Certificado de',
 
     // Services section
     'services.title': '¿Cómo trabajo?',
@@ -365,25 +367,25 @@ export const ui = {
     'pricing.action.purchase': 'Adquirir',
 
     // Expertise section
-    'expertise.title': 'Especialidades',
+    'expertise.title': 'Cuidando Tu Salud',
     'expertise.maternity': 'Maternidad & Embarazo',
     'expertise.maternity.desc':
-      'Planes de nutrición especializados para madres antes, durante y después del embarazo para garantizar una salud óptima tanto para la madre como para el bebé.',
+      'Acompañándote en cada etapa de la maternidad con una nutrición que se adapta a las necesidades cambiantes de tu cuerpo—antes de la concepción, durante el embarazo y en la recuperación postparto.',
     'expertise.diabetes': 'Diabetes',
     'expertise.diabetes.desc':
-      'Estrategias dietéticas personalizadas para controlar los niveles de azúcar en sangre y mejorar la calidad de vida de las personas con diabetes.',
-    'expertise.renal': 'Renal',
+      'Empoderándote para que tomes el control de tu azúcar en sangre mediante estrategias de nutrición personalizadas que se ajustan a tu estilo de vida y te ayudan a sentirte mejor cada día.',
+    'expertise.renal': 'Salud Renal',
     'expertise.renal.desc':
-      'Planes de nutrición especializados para personas con afecciones renales para mantener la función renal y la salud general.',
-    'expertise.oncology': 'Oncológico',
+      'Trabajando junto a tu tratamiento médico para proteger tu salud renal con una nutrición basada en evidencia que reduce la carga y apoya la curación natural de tu cuerpo.',
+    'expertise.oncology': 'Oncología',
     'expertise.oncology.desc':
-      'Estrategias nutricionales de apoyo para pacientes con cáncer para mantener la fuerza durante el tratamiento y la recuperación.',
-    'expertise.eating': 'Trastorno de la Conducta Alimentaria',
+      'Ayudándote a mantener tu fuerza y resiliencia durante el tratamiento con una nutrición que fortalece tu sistema inmunológico, maneja los efectos secundarios y favorece la recuperación.',
+    'expertise.eating': 'Trastornos de la Conducta Alimentaria',
     'expertise.eating.desc':
-      'Terapia nutricional compasiva y basada en evidencia para aquellos que se recuperan de trastornos alimentarios.',
-    'expertise.weight': 'Adelgazamiento',
+      'Apoyando tu recuperación con un enfoque compasivo y sin juicios para reconstruir una relación saludable con la comida y tu cuerpo.',
+    'expertise.weight': 'Control de Peso',
     'expertise.weight.desc':
-      'Estrategias sostenibles de control de peso centradas en la mejora de la salud más que en números en una báscula.',
+      'Enfocándome en cambios sostenibles que mejoran tu salud general, energía y confianza—sin dietas restrictivas ni culpa.',
 
     // 404 page
     '404.title': 'Página no encontrada',

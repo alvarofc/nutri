@@ -9,34 +9,68 @@ const services = [
     step: '01',
     name: t('services.step1.name'),
     description: t('services.step1.description'),
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
   },
   {
     step: '02',
     name: t('services.step2.name'),
     description: t('services.step2.description'),
+    image: "https://images.unsplash.com/photo-1544367563-12123d8965cd?auto=format&fit=crop&q=80&w=800"
   },
   {
     step: '03',
     name: t('services.step3.name'),
     description: t('services.step3.description'),
+    image: "https://images.unsplash.com/photo-1576091160550-217358c7db81?auto=format&fit=crop&q=80&w=800"
   },
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col gap-12 sm:gap-16">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t('services.title')}</h2>
-      <div class="grid gap-8 lg:grid-cols-3">
+<section class="py-24 sm:py-32 bg-stone-50 dark:bg-blue-950">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-16">
+      <div class="flex flex-col sm:flex-row justify-between items-baseline border-b border-blue-900/10 dark:border-white/10 pb-8">
+        <h2 class="text-4xl sm:text-5xl font-serif font-light text-blue-950 dark:text-white">
+          {t('services.title')}
+        </h2>
+        <p class="text-blue-900/60 dark:text-blue-200/60 mt-4 sm:mt-0">
+          THE METHODOLOGY
+        </p>
+      </div>
+      
+      <!-- Minimalist List Layout -->
+      <div class="flex flex-col divide-y divide-blue-900/10 dark:divide-white/10 border-t border-b border-blue-900/10 dark:border-white/10">
         {
-          services.map((service) => (
-            <div class="bg-primary-500/10 dark:bg-primary-400/10 flex flex-col gap-12 rounded-3xl px-6 py-8">
-              <p class="text-sm">{service.step}</p>
-              <div class="flex flex-col gap-4">
-                <h3 class="text-xl font-medium">{service.name}</h3>
-                <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
+          services.map((service, index) => (
+            <div class="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center cursor-default">
+              
+              <!-- Number -->
+              <div class="lg:col-span-2">
+                <span class="font-serif text-5xl sm:text-6xl text-blue-900/20 dark:text-white/20 group-hover:text-blue-900 dark:group-hover:text-white transition-colors duration-500">
+                  {service.step}
+                </span>
+              </div>
+              
+              <!-- Content -->
+              <div class="lg:col-span-5">
+                <h3 class="text-3xl font-serif font-medium mb-4 text-blue-950 dark:text-white group-hover:translate-x-2 transition-transform duration-300">
+                  {service.name}
+                </h3>
+                <p class="text-lg text-blue-900/70 dark:text-blue-100/70 max-w-md">
                   {service.description}
                 </p>
+              </div>
+
+              <!-- Visual (Reveals on Hover for Desktop) -->
+              <div class="lg:col-span-5 hidden lg:block opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-4 group-hover:translate-x-0">
+                 <div class="aspect-[4/3] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                   <img src={service.image} alt={service.name} class="w-full h-full object-cover" />
+                 </div>
+              </div>
+
+              <!-- Mobile Image (Always visible) -->
+              <div class="lg:hidden w-full aspect-[3/2] overflow-hidden grayscale mt-4">
+                 <img src={service.image} alt={service.name} class="w-full h-full object-cover" />
               </div>
             </div>
           ))

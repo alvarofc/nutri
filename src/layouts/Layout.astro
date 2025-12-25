@@ -1,6 +1,10 @@
 ---
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-500.css';
+import '@fontsource/halant/latin-400.css';
+import '@fontsource/halant/latin-500.css';
+import '@fontsource/halant/latin-600.css';
+import '@fontsource/halant/latin-700.css';
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
@@ -178,7 +182,7 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
     })}></script>
   </head>
   <body
-    class="bg-stone-50 text-primary-950 dark:bg-primary-950 dark:text-primary-200 antialiased transition"
+    class="bg-stone-50 text-blue-950 dark:bg-blue-950 dark:text-blue-200 antialiased transition"
   >
     <Header />
     <main>

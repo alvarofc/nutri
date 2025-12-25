@@ -24,45 +24,42 @@ const stats = [
 ];
 ---
 
-<section class="py-16 sm:py-20">
+<section class="py-24 sm:py-32 bg-stone-50">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
-      <img
-        class="mx-auto h-auto w-full max-w-xl rounded-3xl"
-        width="576"
-        height="864"
-        src="/assets/about.webp"
-        alt={t('about.mission.image.alt')}
-      />
-      <div class="flex flex-col gap-10">
-        <!-- Mission description -->
-        <div class="space-y-8 sm:space-y-12">
-          <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t('about.mission.title')}</h2>
-          <div class="space-y-6">
-            <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-              {t('about.mission.paragraph1')}
-            </p>
-            <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-              {t('about.mission.paragraph2')}
-            </p>
-            <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-              {t('about.mission.paragraph3')}
-            </p>
-          </div>
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-24 items-start">
+      
+      <!-- Image Side -->
+      <div class="relative order-2 lg:order-1">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-stone-100">
+          <img
+            class="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            src="/assets/about.webp"
+            alt={t('about.mission.image.alt')}
+          />
         </div>
-
-        <!-- Stats -->
-        <!-- <dl class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {
-            stats.map((stat) => (
-              <div class="border-primary-900/10 dark:border-primary-300/10 rounded-3xl border p-6">
-                <dt class="text-base">{stat.name}</dt>
-                <dd class="text-3xl font-medium tracking-tight">{stat.value}</dd>
-              </div>
-            ))
-          }
-        </dl> -->
+        <!-- Decorative element -->
+        <div class="absolute -bottom-12 -left-12 -z-10 h-full w-full border border-blue-900/10"></div>
       </div>
+
+      <!-- Text Side -->
+      <div class="flex flex-col gap-10 order-1 lg:order-2 lg:sticky lg:top-32">
+        <h2 class="font-serif text-4xl sm:text-5xl text-blue-950 leading-tight">
+          {t('about.mission.title')}
+        </h2>
+        
+        <div class="space-y-8 text-lg font-light leading-relaxed text-blue-900/80">
+          <p class="first-letter:text-5xl first-letter:font-serif first-letter:text-blue-950 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
+            {t('about.mission.paragraph1')}
+          </p>
+          <p>
+            {t('about.mission.paragraph2')}
+          </p>
+          <p>
+            {t('about.mission.paragraph3')}
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

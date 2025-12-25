@@ -56,7 +56,7 @@ if (Astro.request.method === "POST") {
             name="full-name"
             id="full-name"
             autocomplete="name"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
+            class="hover:ring-blue-900 focus:ring-blue-900 dark:hover:ring-blue-800 dark:focus:ring-blue-800 bg-white dark:bg-primary-950 ring-blue-900/40 dark:ring-blue-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder={t('contact.form.name')}
             required
           />
@@ -71,7 +71,7 @@ if (Astro.request.method === "POST") {
             name="email"
             id="email"
             autocomplete="email"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
+            class="hover:ring-blue-900 focus:ring-blue-900 dark:hover:ring-blue-800 dark:focus:ring-blue-800 bg-white dark:bg-primary-950 ring-blue-900/40 dark:ring-blue-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder={t('contact.form.email')}
             required
           />
@@ -84,7 +84,7 @@ if (Astro.request.method === "POST") {
             name="phone"
             id="phone"
             autocomplete="tel"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
+            class="hover:ring-blue-900 focus:ring-blue-900 dark:hover:ring-blue-800 dark:focus:ring-blue-800 bg-white dark:bg-primary-950 ring-blue-900/40 dark:ring-blue-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder={t('contact.form.phone')}
             pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
             required
@@ -98,13 +98,13 @@ if (Astro.request.method === "POST") {
             name="message"
             id="message"
             rows="3"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
+            class="hover:ring-blue-900 focus:ring-blue-900 dark:hover:ring-blue-800 dark:focus:ring-blue-800 bg-white dark:bg-primary-950 ring-blue-900/40 dark:ring-blue-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
             placeholder={t('contact.form.message')} required></textarea>
         </div>
 
         <div>
           <button
-            class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            class="bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-800 dark:text-white inline-flex items-center justify-center border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             type="submit"
           >
             {t('contact.form.submit')}

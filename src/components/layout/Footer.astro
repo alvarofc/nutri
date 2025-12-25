@@ -64,7 +64,7 @@ const bottomLinks = [
 ---
 
 <footer
-  class="bg-stone-500/10 dark:bg-primary-400/10 mt-16 py-16 lg:mt-20 lg:py-20"
+  class="bg-blue-900 mt-16 py-16 lg:mt-20 lg:py-20 text-white"
   aria-labelledby="footer-heading"
 >
   <h2 id="footer-heading" class="sr-only">{t('footer.heading')}</h2>
@@ -72,10 +72,10 @@ const bottomLinks = [
     <div class="flex flex-col justify-between gap-12 sm:gap-16 lg:flex-row">
       <div class="flex max-w-sm flex-col items-start gap-6 sm:gap-8">
         <img src="/assets/alexandra-2.png" alt={t('footer.logo.alt')} class="w-40">
-        <!-- <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
+        <!-- <p class="text-blue-200 text-base">
          Alexandra es una profesional con formación oficial e inscrita en el Colegio de Dietistas Nutricionistas de Madrid.
         </p> -->
-        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© {new Date().getFullYear()} Alexandra Ivanova. {t('footer.rights')}</p>
+        <p class="text-blue-200 text-sm">© {new Date().getFullYear()} Alexandra Ivanova. {t('footer.rights')}</p>
       </div>
 
       <!-- Bottom links -->
@@ -83,13 +83,13 @@ const bottomLinks = [
         {
           bottomLinks.map((group) => (
             <div class="flex flex-col gap-4">
-              <p class="text-base font-medium">{group.header}</p>
+              <p class="text-base font-medium text-white">{group.header}</p>
               <ul role="list" class="flex flex-col gap-3">
                 {group.links.map((link) => (
                   <li>
                     <a
                       href={link.href}
-                      class="focus-visible:outline-primary-950 dark:focus-visible:outline-primary-200 inline-flex items-center gap-1 rounded-md text-base hover:underline focus-visible:outline focus-visible:outline-2"
+                      class="focus-visible:outline-white inline-flex items-center gap-1 rounded-md text-base text-blue-200 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2"
                       target={link.isExternal ? '_blank' : undefined}
                       rel={link.isExternal ? 'noopener' : undefined}
                     >

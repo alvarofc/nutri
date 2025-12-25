@@ -38,54 +38,51 @@ const features = [
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t('expertise.title')}</h2>
-      <div class="lg:col-span-2">
-        <dl
-          class="-mt-3"
-          x-data="{ selected: null, toggle(value) { this.selected = this.selected === value ? null : value } }"
-        >
+<section class="py-24 sm:py-32 bg-blue-950 text-white overflow-hidden">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
+      
+      <!-- Sticky Header -->
+      <div class="lg:w-1/3">
+        <div class="lg:sticky lg:top-32">
+          <h2 class="text-4xl sm:text-5xl font-serif font-light mb-6 text-white">
+            {t('expertise.title')}
+          </h2>
+          <p class="text-lg text-blue-200/80 leading-relaxed mb-8 max-w-md">
+            Specialized care tailored to your unique biological needs. We treat the root cause, not just the symptoms.
+          </p>
+          <div class="hidden lg:block w-12 h-px bg-blue-500"></div>
+        </div>
+      </div>
+
+      <!-- Editorial List -->
+      <div class="lg:w-2/3">
+        <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
           {
             features.map((feature, index) => (
-              <div
-                class="rounded-3xl px-4 transition"
-                x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected }, get isNextOpen() { return (this.id + 1) === this.selected } }`}
-                x-bind:class="{ 'bg-primary-500/10 dark:bg-primary-400/10': isOpen }"
-              >
-                <dt
-                  class="border-b text-lg transition"
-                  x-cloak
-                  x-bind:class="{ 'border-transparent': isOpen || isNextOpen, 'border-primary-900/10 dark:border-primary-300/10': !(isOpen || isNextOpen) }"
-                >
+              <div class="group relative border-t border-white/10 py-10 transition-all duration-500 hover:bg-white/5 px-4 sm:px-6">
+                <dt>
                   <button
-                    type="button"
-                    class="group block w-full py-6 text-left transition focus-visible:outline-none"
+                    class="flex flex-col items-start w-full text-left focus:outline-none h-full justify-between"
                     aria-controls={feature.id}
-                    x-on:click="toggle(id)"
-                    aria-expanded="false"
-                    x-bind:aria-expanded="isOpen.toString()"
                   >
-                    <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
-                      <span class="font-medium">{feature.name}</span>
-                      <span class="ml-6 flex h-7 items-center">
-                        <svg
-                          class="text-primary-600 dark:text-primary-400 h-6 w-6 rotate-0 transform transition duration-200 ease-in-out"
-                          x-bind:class="{ '-rotate-180': isOpen, 'rotate-0': !isOpen }"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" />
-                        </svg>
+                    <div class="w-full">
+                      <div class="flex justify-between items-start w-full mb-4">
+                        <span class="text-xs font-bold text-blue-400 tracking-widest font-mono">
+                          {(index + 1).toString().padStart(2, '0')}
+                        </span>
+                        <span class="text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          →
+                        </span>
+                      </div>
+                      <span class="block text-2xl sm:text-3xl font-serif font-light text-white group-hover:translate-x-2 transition-transform duration-300 mb-4">
+                        {feature.name}
                       </span>
                     </div>
                   </button>
                 </dt>
-                <dd class="pb-6 pr-6" id={feature.id} x-show="isOpen" x-cloak x-collapse>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
+                <dd class="mt-2">
+                  <p class="text-base text-blue-200/70 leading-relaxed opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-75">
                     {feature.description}
                   </p>
                 </dd>
@@ -93,6 +90,7 @@ const features = [
             ))
           }
         </dl>
+        <div class="border-t border-white/10"></div>
       </div>
     </div>
   </div>

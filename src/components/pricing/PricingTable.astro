@@ -93,7 +93,7 @@ const packages = [
       <div class="grid gap-8 lg:grid-cols-3">
       {
         individualSessions.map((item) => (
-          <div class="relative flex flex-col gap-8 rounded-3xl p-8 border border-gray-200 dark:border-gray-800">
+          <div class="relative flex flex-col gap-8 p-8 border border-gray-200 dark:border-gray-800">
             <div class="flex-1">
               <h3 class="text-xl font-medium">{item.name}</h3>
               <p class="mt-4 flex items-baseline">
@@ -105,7 +105,7 @@ const packages = [
                 {item.features.map((feature) => (
                   <li class="flex gap-3">
                     <svg
-                      class="text-primary-600 dark:text-primary-400 h-6 w-6 flex-shrink-0"
+                      class="text-blue-900 dark:text-blue-400 h-6 w-6 flex-shrink-0"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
@@ -120,7 +120,7 @@ const packages = [
             </div>
             <a
               href={getLocalizedPath('/contact', lang)}
-              class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              class="bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-800 dark:text-white inline-flex w-full items-center justify-center border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               {item.action}
             </a>
@@ -136,7 +136,7 @@ const packages = [
       <div class="grid gap-8 lg:grid-cols-3">
         {
           packages.map((item) => (
-            <div class="relative flex flex-col gap-8 rounded-3xl p-8 bg-primary-500/10 dark:bg-primary-400/10 border border-primary-200 dark:border-primary-800">
+            <div class="relative flex flex-col gap-8 p-8 bg-blue-900/5 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800">
               <div class="flex-1">
                 <h3 class="text-xl font-medium">{item.name}</h3>
                 <p class="mt-4 flex flex-col">
@@ -149,7 +149,7 @@ const packages = [
                   {item.features.map((feature) => (
                     <li class="flex gap-3">
                       <svg
-                        class="text-primary-600 dark:text-primary-400 h-6 w-6 flex-shrink-0"
+                        class="text-blue-900 dark:text-blue-400 h-6 w-6 flex-shrink-0"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
@@ -157,14 +157,14 @@ const packages = [
                       >
                         <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z" />
                       </svg>
-                      <span class="text-primary-600 dark:text-primary-400 font-medium">{feature}</span>
+                      <span class="text-blue-900 dark:text-blue-400 font-medium">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <a
                 href={getLocalizedPath('/contact', lang)}
-                class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                class="bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-800 dark:text-white inline-flex w-full items-center justify-center border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 {item.action}
               </a>

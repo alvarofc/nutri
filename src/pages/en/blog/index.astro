@@ -17,67 +17,69 @@ let filteredPosts = allPosts.filter((post) => {
   post.frontmatter.tags.forEach((tag: string) => tags.add(tag));
   return post;
 });
-let selectedTag = ''
 ---
 
-<Layout title="Blog" description="Alexandra's blog • Ideas, recommendations and tips I like to share.">
-  <section class="py-16 sm:py-20">
-    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-      <div class="flex flex-col gap-16">
-        <div class="flex flex-col gap-4 text-center sm:gap-6">
-          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">Blog</h1>
-          <p
-            class="mx-auto max-w-xl text-lg text-primary-950/70 dark:text-primary-200/70 sm:text-xl"
-          >
+<Layout title="Journal" description="Alexandra's journal • Ideas, recommendations and tips I like to share.">
+  <section class="py-24 sm:py-32 bg-stone-50">
+    <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+      
+      <!-- Header -->
+      <div class="flex flex-col gap-12 border-b border-blue-900/10 pb-12 mb-16 lg:flex-row lg:items-end lg:justify-between">
+        <div class="flex flex-col gap-6">
+          <h1 class="text-6xl font-serif text-blue-950 sm:text-7xl md:text-8xl">Journal</h1>
+          <p class="max-w-xl text-xl text-blue-900/60 font-light">
             Ideas, recommendations and tips I like to share.
           </p>
         </div>
-        <div>
+        
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-4 lg:justify-end">
           {
             [...tags].map((tag) => (
-              <button onclick={`selectedTag = '${tag}'`}>
-                <span class="bg-gray-200 text-gray-700 mr-2 inline-block rounded-full bg-primary-200 px-3 py-1 text-sm font-semibold">
-                  #{tag}
-                </span>
-              </button>
+              <a href={`/en/blog/${tag}`} class="px-4 py-2 text-sm uppercase tracking-widest text-blue-950 border border-blue-900/20 hover:bg-blue-900 hover:text-white transition-colors">
+                {tag}
+              </a>
             ))
           }
         </div>
-        <div class="grid gap-8 lg:grid-cols-3">
-          {
-            filteredPosts.map((post) => (
-              <figure class="h-auto rounded-lg bg-white p-4 shadow-md">
+      </div>
+
+      <!-- Grid -->
+      <div class="grid gap-x-8 gap-y-20 lg:grid-cols-3">
+        {
+          filteredPosts.map((post) => (
+            <article class="flex flex-col group">
+              <a href={post.url?.replace(/^\/blog/, '/en/blog')} class="block overflow-hidden">
                 <img
                   src={post.frontmatter.imgUrl}
                   alt={post.frontmatter.imgAlt}
-                  class="h-48 w-full rounded-t-lg object-cover"
+                  class="aspect-[4/5] w-full object-cover bg-stone-200 transition-transform duration-500 group-hover:scale-105"
                 />
-                <figcaption class="mt-4">
-                  <h3 class="text-xl font-semibold">{post.frontmatter.title}</h3>
-                  <p class="text-gray-500">
-                    {post.frontmatter.pubDate.substring(0, 10)} • {post.frontmatter.author}
-                  </p>
-                  <p class="text-gray-700 mt-2">{post.frontmatter.description}</p>
-                  <div class="mt-4">
-                    {post.frontmatter.tags.map((tag:string) => (
-                      <a href={`/en/blog/${tag}`}>
-                        <span class="bg-gray-200 text-gray-700 mr-2 inline-block rounded-full bg-primary-200 px-3 py-1 text-sm font-semibold">
-                          #{tag}
-                        </span>
-                      </a>
-                    ))}
-                  </div>
-                  <a
-                    href={post.url?.replace(/^\/blog/, '/en/blog')}
-                    class="hover:text-blue-800 mt-4 inline-block rounded-full bg-primary-400 p-4 text-white"
-                  >
-                    Read more
+              </a>
+              <div class="mt-8 flex flex-col gap-4">
+                <div class="flex items-center gap-4 text-xs font-medium tracking-widest text-blue-900/50 uppercase">
+                  <time datetime={post.frontmatter.pubDate}>{post.frontmatter.pubDate.substring(0, 10)}</time>
+                  <span>•</span>
+                  <span>{post.frontmatter.tags[0]}</span>
+                </div>
+                <h3 class="text-3xl font-serif text-blue-950 leading-tight group-hover:underline decoration-1 underline-offset-4">
+                  <a href={post.url?.replace(/^\/blog/, '/en/blog')}>
+                    {post.frontmatter.title}
                   </a>
-                </figcaption>
-              </figure>
-            ))
-          }
-        </div>
+                </h3>
+                <p class="text-blue-900/70 text-lg leading-relaxed line-clamp-3">
+                  {post.frontmatter.description}
+                </p>
+                <a
+                  href={post.url?.replace(/^\/blog/, '/en/blog')}
+                  class="mt-4 text-sm font-bold tracking-widest uppercase border-b border-blue-900/30 pb-1 self-start group-hover:border-blue-900 transition-colors"
+                >
+                  Read Article
+                </a>
+              </div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>

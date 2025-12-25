@@ -1,0 +1,54 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const partners = [
+  {
+    name: "Colegio de Dietistas",
+    acronym: "CODINMA"
+  },
+  {
+    name: "Universidad Complutense",
+    acronym: "UCM"
+  },
+  {
+    name: "Academia Española",
+    acronym: "AEDN"
+  },
+  {
+    name: "Nutrition Research",
+    acronym: "ISNS"
+  }
+];
+---
+
+<section class="py-12 border-b border-primary-900/5 dark:border-primary-100/5 bg-white dark:bg-primary-950">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center gap-6 text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-blue-900/60 dark:text-blue-200/60">
+        {t('home.trust.title')}
+      </p>
+      
+      <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        {partners.map(partner => (
+          <div class="flex items-center gap-3 group">
+             <!-- Generic Seal Icon -->
+             <svg class="h-8 w-8 text-blue-900 dark:text-blue-300" viewBox="0 0 24 24" fill="currentColor">
+               <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+             </svg>
+             <div class="text-left">
+               <span class="block text-lg font-serif font-bold text-blue-900 dark:text-white leading-none">
+                 {partner.acronym}
+               </span>
+               <span class="block text-[0.6rem] uppercase tracking-wider text-blue-800/70 dark:text-blue-200/70 mt-1">
+                 {partner.name}
+               </span>
+             </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
