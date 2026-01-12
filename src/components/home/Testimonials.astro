@@ -29,9 +29,10 @@ const testimonials = [
 <section class="py-16 sm:py-20">
   <div class="v mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col items-center gap-12 lg:gap-20">
-      <h2 class="mx-auto max-w-xl text-center text-3xl font-medium tracking-tight sm:text-4xl">
-        {t('testimonials.title')}
-      </h2>
+      <div class="flex flex-col items-center gap-6">
+        <span class="h-px w-48 bg-blue-900/30 dark:bg-white/30"></span>
+        <div class="mx-auto max-w-2xl text-center text-4xl sm:text-5xl font-serif font-light text-blue-950 dark:text-white leading-snug" set:html={t('testimonials.title')} />
+      </div>
       <div
         class="divide-blue-900/10 dark:divide-blue-300/10 grid divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0"
       >

@@ -24,31 +24,33 @@ const stats = [
 ];
 ---
 
-<section class="py-24 sm:py-32 bg-stone-50">
+<section class="bg-stone-50 py-24 sm:py-32">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-2 lg:gap-24 items-start">
-      
+    <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-24">
       <!-- Image Side -->
       <div class="relative order-2 lg:order-1">
-        <div class="relative aspect-[3/4] w-full overflow-hidden bg-stone-100">
+        <div class="bg-stone-100 relative aspect-[3/4] w-full overflow-hidden">
           <img
             class="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-            src="/assets/about.webp"
+            src="/assets/alex-front.webp"
             alt={t('about.mission.image.alt')}
           />
         </div>
         <!-- Decorative element -->
-        <div class="absolute -bottom-12 -left-12 -z-10 h-full w-full border border-blue-900/10"></div>
+        <div class="absolute -bottom-12 -left-12 -z-10 h-full w-full border border-blue-900/10">
+        </div>
       </div>
 
       <!-- Text Side -->
-      <div class="flex flex-col gap-10 order-1 lg:order-2 lg:sticky lg:top-32">
-        <h2 class="font-serif text-4xl sm:text-5xl text-blue-950 leading-tight">
+      <div class="order-1 flex flex-col gap-10 lg:sticky lg:top-32 lg:order-2">
+        <h2 class="font-serif text-4xl leading-tight text-blue-950 sm:text-5xl">
           {t('about.mission.title')}
         </h2>
-        
+
         <div class="space-y-8 text-lg font-light leading-relaxed text-blue-900/80">
-          <p class="first-letter:text-5xl first-letter:font-serif first-letter:text-blue-950 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
+          <p
+            class="first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px] first-letter:font-serif first-letter:text-5xl first-letter:text-blue-950"
+          >
             {t('about.mission.paragraph1')}
           </p>
           <p>
@@ -59,7 +61,6 @@ const stats = [
           </p>
         </div>
       </div>
-
     </div>
   </div>
 </section>

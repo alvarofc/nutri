@@ -11,7 +11,7 @@ export const ui = {
     'nav.home': 'Home',
     'nav.about': 'About',
     'nav.blog': 'Journal',
-    'nav.pricing': 'Pricing',
+    'nav.pricing': 'Book',
     'nav.contact': 'Contact',
 
     // Footer
@@ -38,6 +38,7 @@ export const ui = {
 
     // Services section
     'services.title': 'How I work',
+    'services.methodology': 'THE METHODOLOGY',
     'services.step1.name': 'First visit',
     'services.step1.description':
       'My goal is to get to know you, understand your current situation and what you want to achieve.',
@@ -108,7 +109,7 @@ export const ui = {
     'contact.form.error.phone': 'Invalid phone number.',
 
     // Pricing page
-    'pricing.title': 'Pricing',
+    'pricing.title': 'Book Your Session',
     'pricing.subtitle':
       'Choose the plan that fits your needs or get a better price with our packages.',
     'pricing.individual.title': 'First Visit',
@@ -122,6 +123,8 @@ export const ui = {
 
     // Expertise section
     'expertise.title': 'Supporting Your Health',
+    'expertise.description':
+      'Specialized care tailored to your unique biological needs. We treat the root cause, not just the symptoms.',
     'expertise.maternity': 'Maternity & Pregnancy',
     'expertise.maternity.desc':
       "Supporting you through every stage of motherhood with nutrition that adapts to your body's changing needs—before conception, during pregnancy, and through postpartum recovery.",
@@ -164,7 +167,8 @@ export const ui = {
     'social.facebook': 'Facebook',
 
     // Testimonials
-    'testimonials.title': 'Recommended by patients and the best professionals',
+    'testimonials.title':
+      'Recommended by <strong class="font-medium">patients</strong> and the best <strong class="font-medium">professionals</strong>',
     'testimonials.pilar.name': 'Pilar Sierra',
     'testimonials.pilar.description': 'Head of Nutrition and Dietetics Nostra Senyora de Meritxell',
     'testimonials.pilar.message':
@@ -264,7 +268,7 @@ export const ui = {
     'nav.home': 'Inicio',
     'nav.about': 'Sobre mí',
     'nav.blog': 'Journal',
-    'nav.pricing': 'Precios',
+    'nav.pricing': 'Reserva',
     'nav.contact': 'Contacto',
 
     // Footer
@@ -291,6 +295,7 @@ export const ui = {
 
     // Services section
     'services.title': '¿Cómo trabajo?',
+    'services.methodology': 'METODOLOGÍA',
     'services.step1.name': 'Primera visita',
     'services.step1.description':
       'Mi objetivo es conocerte, saber cuál es tu situación actual y qué es lo que quieres conseguir.',
@@ -354,7 +359,7 @@ export const ui = {
     'contact.form.error.phone': 'Teléfono no válido.',
 
     // Pricing page
-    'pricing.title': 'Precios',
+    'pricing.title': 'Reserva tu Cita',
     'pricing.subtitle':
       'Puedes adquirir por separado o conseguir un mejor precio comprando el paquete de oferta.',
     'pricing.individual.title': 'Primera Visita',
@@ -368,6 +373,8 @@ export const ui = {
 
     // Expertise section
     'expertise.title': 'Cuidando Tu Salud',
+    'expertise.description':
+      'Cuidado especializado adaptado a tus necesidades biológicas únicas. Tratamos la causa raíz, no solo los síntomas.',
     'expertise.maternity': 'Maternidad & Embarazo',
     'expertise.maternity.desc':
       'Acompañándote en cada etapa de la maternidad con una nutrición que se adapta a las necesidades cambiantes de tu cuerpo—antes de la concepción, durante el embarazo y en la recuperación postparto.',
@@ -411,7 +418,8 @@ export const ui = {
     'social.facebook': 'Facebook',
 
     // Testimonials
-    'testimonials.title': 'Recomendada por pacientes y los mejores profesionales',
+    'testimonials.title':
+      'Recomendada por <strong class="font-medium">pacientes</strong> y los mejores <strong class="font-medium">profesionales</strong>',
     'testimonials.pilar.name': 'Pilar Sierra',
     'testimonials.pilar.description': 'Jefa nutrición y dietética Nostra Senyora de Meritxell',
     'testimonials.pilar.message':
