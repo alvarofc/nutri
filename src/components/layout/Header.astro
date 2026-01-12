@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations, getLocalizedPath, languages } from '../../i18n/ui';
+import Logo from './Logo.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -36,7 +37,7 @@ const links = [
 <header
   x-data="{ open: false }"
   class="site-header sticky top-0 z-50 w-full border-b border-white/10 transition"
-  :class="{ 'bg-blue-900': open, 'bg-blue-900/95 backdrop-blur-md': !(open) }"
+  :class="{ 'header-gradient-solid': open, 'header-gradient backdrop-blur-md': !(open) }"
   role="banner"
   itemscope
   itemtype="https://schema.org/WPHeader"
@@ -47,28 +48,8 @@ const links = [
     <!-- Brand logo -->
     <div
       class="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center"
-      itemscope
-      itemtype="https://schema.org/Organization"
     >
-      <a
-        href={getLocalizedPath('/', lang)}
-        class="rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
-        itemprop="url"
-        aria-label={t('header.homepage.aria')}
-      >
-        <div class="flex w-full flex-col items-center">
-          <span
-            class="whitespace-nowrap text-center font-serif text-xl uppercase leading-none tracking-ultra-tight text-white md:text-2xl"
-          >
-            TU NUTRI ALEXANDRA
-          </span>
-          <span
-            class="mt-1 whitespace-nowrap border-t border-blue-200/30 pt-1 text-center font-sans text-[0.65rem] uppercase tracking-widest text-blue-100 md:text-xs"
-          >
-            Smart Anti-inflammatory Nutrition
-          </span>
-        </div>
-      </a>
+      <Logo />
       <div class="absolute left-full top-1/2 ml-4 hidden -translate-y-1/2 pl-4 md:block">
         <p itemprop="memberOf" class="whitespace-nowrap text-blue-200"></p>
       </div>
@@ -82,7 +63,7 @@ const links = [
           Object.entries(languages).map(([code, name]) => (
             <a
               href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
-              class={`rounded-md px-2 py-1 text-sm font-medium transition ${
+              class={`rounded-md px-2 py-1 text-sm font-medium font-sans transition ${
                 lang === code
                   ? 'bg-white/10 font-bold text-white'
                   : 'text-blue-100 hover:bg-white/5 hover:text-white'
@@ -156,7 +137,7 @@ const links = [
             Object.entries(languages).map(([code, name]) => (
               <a
                 href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
-                class={`rounded-md px-3 py-2 text-sm font-medium transition ${
+                class={`rounded-md px-3 py-2 text-sm font-medium font-sans transition ${
                   lang === code
                     ? 'bg-white/10 font-bold text-white'
                     : 'text-blue-100 hover:bg-white/5 hover:text-white'
@@ -187,13 +168,13 @@ const links = [
           links.map((link) => (
             <a
               href={link.href}
-              class="group inline-flex py-6 text-3xl font-medium tracking-tight text-white transition focus-visible:outline-none sm:py-8 sm:text-4xl"
+              class="group inline-flex py-6 text-3xl font-medium tracking-tight text-white transition focus-visible:outline-none sm:py-8 sm:text-4xl font-serif"
               itemprop="url"
               aria-label={link.name}
             >
               <div class="flex flex-1 items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-white">
                 <div class="flex items-center gap-6">
-                  <span class="text-xs text-blue-300">{link.ref}</span>
+                  <span class="font-sans text-xs text-blue-300">{link.ref}</span>
                   <span class="group-hover:underline">{link.name}</span>
                 </div>
                 <svg

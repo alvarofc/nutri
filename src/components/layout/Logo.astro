@@ -1,0 +1,28 @@
+---
+import { getLangFromUrl, getLocalizedPath, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div
+  class="flex w-full flex-col items-center"
+  itemscope
+  itemtype="https://schema.org/Organization"
+>
+  <a
+    href={getLocalizedPath('/', lang)}
+    class="rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+    itemprop="url"
+    aria-label={t('header.homepage.aria')}
+  >
+    <div class="flex w-full flex-col items-center justify-center">
+      <span
+        class="whitespace-nowrap text-center font-header-main text-xl uppercase leading-none tracking-wider text-white md:text-2xl"
+        style="text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4), 0 0 45px rgba(255, 255, 255, 0.2);"
+      >
+        TU NUTRI ALEXANDRA
+      </span>
+    </div>
+  </a>
+</div>

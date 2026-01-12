@@ -1,6 +1,12 @@
 ---
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-500.css';
+import '@fontsource/cinzel/latin-400.css';
+import '@fontsource/cinzel/latin-500.css';
+import '@fontsource/cinzel/latin-600.css';
+import '@fontsource/cinzel/latin-700.css';
+import '@fontsource/libre-baskerville/latin-400.css';
+import '@fontsource/libre-baskerville/latin-700.css';
 import '@fontsource/halant/latin-400.css';
 import '@fontsource/halant/latin-500.css';
 import '@fontsource/halant/latin-600.css';
@@ -192,6 +198,25 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
     <style is:global>
       [x-cloak] {
         display: none !important;
+      }
+      
+      /* Header background: gradient from #465C98 (top) to blue-900 (bottom), subtle */
+      .header-gradient {
+        background: linear-gradient(
+          to bottom,
+          rgb(70 92 152 / 0.95) 0%,
+          rgb(40 60 120 / 0.95) 10%,
+          rgb(11 18 71 / 0.95) 100%
+        );
+      }
+      
+      .header-gradient-solid {
+        background: linear-gradient(
+          to bottom,
+          rgb(70 92 152) 0%,
+          rgb(40 60 120) 10%,
+          rgb(11 18 71) 100%
+        );
       }
     </style>
     

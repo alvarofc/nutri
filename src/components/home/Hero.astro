@@ -5,11 +5,11 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="bg-stone-50 dark:bg-blue-950 min-h-[90vh] flex flex-col pt-24 sm:pt-32 border-b border-blue-900/10">
+<section class="bg-stone-50 dark:bg-blue-950 min-h-[90vh] flex flex-col justify-center border-b border-blue-900/10">
   <!-- Massive Headline -->
-  <div class="px-4 sm:px-6 lg:px-8 max-w-[100vw]">
-    <h1 class="font-serif font-light text-5xl sm:text-7xl lg:text-8xl leading-[0.9] tracking-tight text-blue-950 dark:text-white mb-8 sm:mb-12 max-w-6xl">
-      {t('home.title')}
+  <div class="px-4 sm:px-6 lg:px-8 max-w-[100vw] flex justify-center my-8 sm:my-12">
+    <h1 class="font-header-sub font-light text-3xl sm:text-4xl lg:text-5xl leading-[1.2] tracking-tight text-blue-950 dark:text-white text-center lg:whitespace-nowrap">
+      Smart Anti-inflammatory Nutrition
     </h1>
   </div>
 
