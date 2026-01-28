@@ -15,6 +15,22 @@ module.exports = {
       stone: colors.stone,
       primary: colors.cyan,
       pink: colors.pink,
+      // Light, feminine, professional palette
+      brand: {
+        black: '#1a1a1a',
+        dark: '#2d2d2d',
+        charcoal: '#404040',
+        gray: '#6b6b6b',
+        muted: '#8a8a8a',
+        light: '#d4d4d4',
+        cream: '#faf9f7',
+        ivory: '#f5f4f0',
+        white: '#ffffff',
+        accent: '#7d9b76', // Sage green - sophisticated & natural
+        'accent-light': '#a8c4a0',
+        blush: '#e8d5d5', // Soft pink accent
+        rose: '#c9a9a9', // Dusty rose
+      },
       blue: {
         50: '#f0f4ff',
         100: '#e0e7ff',
@@ -30,10 +46,11 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['Inter', 'sans-serif'],
+      sans: ['Montserrat', 'ABCDiatype', 'Assistant', 'sans-serif'],
       serif: ['Halant', 'serif'],
-      'header-main': ['Cinzel', 'serif'],
+      'header-main': ['Montserrat', 'sans-serif'],
       'header-sub': ['Libre Baskerville', 'serif'],
+      display: ['Montserrat', 'sans-serif'],
     },
     letterSpacing: {
       tighter: '-0.05em',
@@ -44,6 +61,7 @@ module.exports = {
       widest: '0.1em',
       'ultra-tight': '-0.06em',
       'hero-wide': '0.05em',
+      'ultra-wide': '0.2em',
     },
     fontSize: {
       xs: ['0.75rem', '1rem'],
@@ -58,7 +76,25 @@ module.exports = {
       '6xl': ['3.75rem', '4.25rem'],
       '7xl': ['4.5rem', '5rem'],
       '8xl': ['6rem', '6.5rem'],
+      '9xl': ['8rem', '8.5rem'],
       display: ['8rem', '8rem'],
+      hero: ['clamp(2.5rem, 8vw, 6rem)', '1'],
+    },
+    extend: {
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'slide-up': 'slideUp 0.6s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
     },
   },
 };

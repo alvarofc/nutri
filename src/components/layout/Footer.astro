@@ -5,116 +5,135 @@ import Logo from './Logo.astro';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const bottomLinks = [
+const footerLinks = [
   {
-    header: t('footer.social'),
-    links: [
-      {
-        name: t('social.twitter'),
-        href: 'https://twitter.com/',
-        isExternal: true,
-      },
-      {
-        name: t('social.instagram'),
-        href: 'https://instagram.com/tu.nutri.alexandra',
-        isExternal: true,
-      },
-      {
-        name: t('social.facebook'),
-        href: 'https://facebook.com/',
-        isExternal: true,
-      },
-    ],
+    name: t('nav.home'),
+    href: getLocalizedPath('/', lang),
   },
   {
-    header: t('footer.company'),
-    links: [
-      {
-        name: t('nav.home'),
-        href: getLocalizedPath('/', lang),
-        isExternal: false,
-      },
-      {
-        name: t('nav.about'),
-        href: getLocalizedPath('/about', lang),
-        isExternal: false,
-      },
-      {
-        name: t('nav.pricing'),
-        href: getLocalizedPath('/pricing', lang),
-        isExternal: false,
-      },
-      {
-        name: t('nav.contact'),
-        href: getLocalizedPath('/contact', lang),
-        isExternal: false,
-      },
-    ],
+    name: t('nav.about'),
+    href: getLocalizedPath('/about', lang),
   },
   {
-    header: t('footer.legal'),
-    links: [
-      {
-        name: t('footer.privacy'),
-        href: getLocalizedPath('/privacy', lang),
-        isExternal: false,
-      },
-    ],
+    name: t('nav.pricing'),
+    href: getLocalizedPath('/pricing', lang),
   },
+  {
+    name: t('nav.contact'),
+    href: getLocalizedPath('/contact', lang),
+  },
+  {
+    name: t('footer.privacy'),
+    href: getLocalizedPath('/privacy', lang),
+  },
+];
+
+const socials = [
+  { name: 'Instagram', href: 'https://instagram.com/tu.nutri.alexandra' },
+  { name: 'Facebook', href: 'https://facebook.com/' },
 ];
 ---
 
-<footer
-  class="bg-blue-900 mt-16 py-16 lg:mt-20 lg:py-20 text-white"
-  aria-labelledby="footer-heading"
->
+<footer class="bg-brand-cream border-t border-brand-light/50" aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">{t('footer.heading')}</h2>
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col justify-between gap-12 sm:gap-16 lg:flex-row">
-      <div class="flex max-w-sm flex-col items-start gap-6 sm:gap-8">
-        <div class="flex flex-col items-start">
+  
+  <!-- Main Footer Content -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+      
+      <!-- Left: Brand & Tagline -->
+      <div class="lg:col-span-5">
+        <div class="mb-6">
           <Logo />
         </div>
-        <!-- <p class="text-blue-200 text-base">
-         Alexandra es una profesional con formación oficial e inscrita en el Colegio de Dietistas Nutricionistas de Madrid.
-        </p> -->
-        <p class="text-blue-200 text-sm">© {new Date().getFullYear()} Alexandra Ivanova. {t('footer.rights')}</p>
+        <p class="text-brand-muted text-base max-w-sm mb-8">
+          {lang === 'es' 
+            ? 'Nutrición basada en ciencia. Resultados reales. Sin dietas restrictivas.'
+            : 'Science-based nutrition. Real results. No restrictive diets.'}
+        </p>
+        
+        <!-- Social Links -->
+        <div class="flex gap-4">
+          {socials.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-medium text-brand-muted hover:text-brand-accent transition-colors"
+            >
+              {social.name}
+            </a>
+          ))}
+        </div>
       </div>
 
-      <!-- Bottom links -->
-      <div class="grid max-w-xl flex-1 grid-cols-1 gap-8 sm:grid-cols-3">
-        {
-          bottomLinks.map((group) => (
-            <div class="flex flex-col gap-4">
-              <p class="text-base font-medium text-white">{group.header}</p>
-              <ul role="list" class="flex flex-col gap-3">
-                {group.links.map((link) => (
-                  <li>
-                    <a
-                      href={link.href}
-                      class="focus-visible:outline-white inline-flex items-center gap-1 rounded-md text-base text-blue-200 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2"
-                      target={link.isExternal ? '_blank' : undefined}
-                      rel={link.isExternal ? 'noopener' : undefined}
-                    >
-                      {link.name}
-                      {link.isExternal && (
-                        <svg
-                          class="h-4 w-4"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path d="M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z" />
-                        </svg>
-                      )}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+      <!-- Right: Navigation Links -->
+      <div class="lg:col-span-7">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-xs font-medium uppercase tracking-widest text-brand-muted mb-6">
+              {t('footer.company')}
+            </h3>
+            <ul class="space-y-4">
+              {footerLinks.slice(0, 3).map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-sm text-brand-gray hover:text-brand-accent transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- More Links -->
+          <div>
+            <h3 class="text-xs font-medium uppercase tracking-widest text-brand-muted mb-6">
+              {t('footer.legal')}
+            </h3>
+            <ul class="space-y-4">
+              {footerLinks.slice(3).map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-sm text-brand-gray hover:text-brand-accent transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-xs font-medium uppercase tracking-widest text-brand-muted mb-6">
+              {t('contact.title')}
+            </h3>
+            <ul class="space-y-4 text-sm text-brand-gray">
+              <li>{t('contact.address.line1')}</li>
+              <li>{t('contact.address.line2')}</li>
+              <li class="text-brand-black font-medium">{t('contact.phone.number')}</li>
+              <li class="text-brand-accent">{t('contact.email.address')}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-brand-light/50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-brand-muted">
+        <p>© {new Date().getFullYear()} Alexandra Ivanova. {t('footer.rights')}</p>
+        <p class="flex items-center gap-2">
+          <span class="w-2 h-2 bg-brand-accent rounded-full"></span>
+          <span>MAD01541 · {lang === 'es' ? 'Dietista-Nutricionista Colegiada' : 'Registered Dietitian-Nutritionist'}</span>
+        </p>
       </div>
     </div>
   </div>

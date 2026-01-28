@@ -26,48 +26,54 @@ const testimonials = [
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="v mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col items-center gap-12 lg:gap-20">
-      <div class="flex flex-col items-center gap-6">
-        <span class="h-px w-48 bg-blue-900/30 dark:bg-white/30"></span>
-        <div class="mx-auto max-w-2xl text-center text-4xl sm:text-5xl font-serif font-light text-blue-950 dark:text-white leading-snug" set:html={t('testimonials.title')} />
-      </div>
-      <div
-        class="divide-blue-900/10 dark:divide-blue-300/10 grid divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0"
-      >
-        {
-          testimonials.map((testimonial) => (
-            <figure class="mx-auto flex max-w-lg flex-col items-center gap-6 py-8 lg:px-8 lg:py-0">
-              <div class="flex flex-row gap-2">
-                {[...Array(5)].map(() => (
-                  <svg
-                    class="text-blue-900 dark:text-blue-400 h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" />
-                  </svg>
-                ))}
-              </div>
-              <blockquote class="text-primary-950/70 dark:text-primary-200/70 text-center text-lg italic leading-loose">
-                <p>{testimonial.message}</p>
-              </blockquote>
-              <figcaption class="flex flex-col gap-4">
-                <img class="mx-auto h-8 w-8 rounded-full" src={testimonial.image} alt="" />
-                <div class="text-center">
-                  <div class="text-base font-medium">{testimonial.name}</div>
-                  <div class="text-primary-950/70 dark:text-primary-200/70 text-sm">
-                    {testimonial.description}
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          ))
-        }
-      </div>
+<section class="bg-white py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="inline-block px-4 py-1.5 bg-brand-blush text-brand-rose text-xs font-medium uppercase tracking-widest rounded-full mb-4">
+        {lang === 'es' ? 'Testimonios' : 'Testimonials'}
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-brand-black max-w-2xl mx-auto" set:html={t('testimonials.title')} />
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial, index) => (
+        <div class="bg-brand-cream rounded-2xl p-8 flex flex-col">
+          <!-- Stars -->
+          <div class="flex gap-1 mb-6">
+            {[...Array(5)].map(() => (
+              <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="flex-1 mb-8">
+            <p class="text-brand-gray font-light leading-relaxed italic">
+              {testimonial.message}
+            </p>
+          </blockquote>
+
+          <!-- Author -->
+          <div class="flex items-center gap-4 pt-6 border-t border-brand-light">
+            <img 
+              src={testimonial.image} 
+              alt={testimonial.name}
+              class="w-12 h-12 rounded-full object-cover"
+            />
+            <div>
+              <p class="font-medium text-brand-black text-sm">
+                {testimonial.name}
+              </p>
+              <p class="text-xs text-brand-muted">
+                {testimonial.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>

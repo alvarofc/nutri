@@ -6,13 +6,13 @@ const t = useTranslations(lang);
 const ctaData = {
   en: {
     title: "Still have questions?",
-    description: "Please describe your case to receive a better response.",
-    buttonText: "Contact"
+    description: "Please describe your case to receive a personalized response. I'm here to help you on your wellness journey.",
+    buttonText: "Get in Touch"
   },
   es: {
     title: "¿Todavía tienes dudas?",
-    description: "Por favor, describe tu caso para recibir una mejor respuesta.",
-    buttonText: "Contacta"
+    description: "Por favor, describe tu caso para recibir una respuesta personalizada. Estoy aquí para ayudarte en tu camino hacia el bienestar.",
+    buttonText: "Contáctame"
   }
 };
 
@@ -20,23 +20,36 @@ const currentCtaData = ctaData[lang] || ctaData.es;
 const contactPath = lang === 'en' ? '/en/contact' : '/contact';
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
-    <div
-      class="bg-blue-900/5 dark:bg-blue-900/20 flex flex-col items-center gap-8 px-5 py-16 sm:gap-10"
-    >
-      <div class="flex flex-col gap-4 sm:gap-6">
-        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{currentCtaData.title}</h2>
-        <p class="text-primary-950/70 dark:text-primary-200/70 mx-auto max-w-2xl text-lg">
-          {currentCtaData.description}
-        </p>
+<section class="py-20 sm:py-28 bg-white">
+  <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-4xl lg:px-8">
+    <div class="bg-brand-accent rounded-3xl px-8 py-16 sm:px-12 sm:py-20">
+      <div class="flex flex-col items-center gap-8">
+        <!-- Icon -->
+        <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+        </div>
+        
+        <div class="flex flex-col gap-4">
+          <h2 class="font-serif text-3xl sm:text-4xl text-white">
+            {currentCtaData.title}
+          </h2>
+          <p class="text-white/80 text-lg max-w-xl leading-relaxed">
+            {currentCtaData.description}
+          </p>
+        </div>
+        
+        <a
+          href={contactPath}
+          class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-medium text-brand-accent transition hover:bg-brand-ivory hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          {currentCtaData.buttonText}
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
       </div>
-      <a
-        href={contactPath}
-        class="bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-800 dark:text-white inline-flex items-center justify-center border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-      >
-        {currentCtaData.buttonText}
-      </a>
     </div>
   </div>
 </section>

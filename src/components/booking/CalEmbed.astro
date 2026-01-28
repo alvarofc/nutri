@@ -1,0 +1,102 @@
+---
+interface Props {
+  calLink: string;
+  locale?: 'en' | 'es';
+  brandColor?: string;
+}
+
+const { 
+  calLink, 
+  locale = 'en',
+  brandColor = '#000000'
+} = Astro.props;
+
+const embedId = 'cal-booking-embed';
+---
+
+<div 
+  id={embedId}
+  class="w-full min-h-[700px] rounded-2xl overflow-hidden"
+  data-cal-link={calLink}
+  data-cal-locale={locale}
+  data-cal-brand-color={brandColor}
+></div>
+
+<script>
+  function initCalEmbed() {
+    const container = document.getElementById('cal-booking-embed');
+    if (!container) return;
+
+    // Get base cal link from data attribute
+    const baseCalLink = container.dataset.calLink || '';
+    const locale = container.dataset.calLocale || 'en';
+    const brandColor = container.dataset.calBrandColor || '#000000';
+
+    // Read event type from URL query param (client-side)
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventType = urlParams.get('type');
+
+    // Build full cal link with event type if present
+    const fullCalLink = eventType ? `${baseCalLink}/${eventType}` : baseCalLink;
+    const namespace = eventType || 'default';
+
+    // Cal.com embed script loader
+    (function (C: any, A: string, L: string) {
+      let p = function (a: any, ar: any) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          let script = d.createElement("script");
+          script.src = A;
+          d.head.appendChild(script);
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const ns = ar[1];
+          api.q = api.q || [];
+          if (typeof ns === "string") {
+            cal.ns[ns] = api;
+            p(api, ar);
+          } else {
+            p(cal, ar);
+          }
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    const Cal = (window as any).Cal;
+
+    // Initialize Cal.com with namespace
+    Cal("init", namespace, { origin: "https://cal.com" });
+
+    // Render inline embed with specific event type
+    Cal.ns[namespace]("inline", {
+      elementOrSelector: `#cal-booking-embed`,
+      calLink: fullCalLink,
+      layout: "month_view",
+      config: {
+        locale: locale,
+      }
+    });
+
+    // Apply styling
+    Cal.ns[namespace]("ui", {
+      theme: "light",
+      hideEventTypeDetails: false,
+    });
+  }
+
+  // Run on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCalEmbed);
+  } else {
+    initCalEmbed();
+  }
+</script>

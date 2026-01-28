@@ -7,190 +7,154 @@ const t = useTranslations(lang);
 
 const links = [
   {
-    ref: '01',
-    name: t('nav.home'),
-    href: getLocalizedPath('/', lang),
-  },
-  {
-    ref: '02',
     name: t('nav.about'),
     href: getLocalizedPath('/about', lang),
   },
   {
-    ref: '03',
     name: t('nav.pricing'),
     href: getLocalizedPath('/pricing', lang),
   },
   {
-    ref: '04',
     name: t('nav.contact'),
     href: getLocalizedPath('/contact', lang),
   },
   {
-    ref: '05',
     name: t('nav.blog'),
     href: getLocalizedPath('/blog', lang),
   },
 ];
+
+const bookingPath = getLocalizedPath('/booking', lang);
 ---
 
 <header
   x-data="{ open: false }"
-  class="site-header sticky top-0 z-50 w-full border-b border-white/10 transition"
-  :class="{ 'header-gradient-solid': open, 'header-gradient backdrop-blur-md': !(open) }"
+  class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-black/5"
   role="banner"
   itemscope
   itemtype="https://schema.org/WPHeader"
 >
-  <div
-    class="relative mx-auto flex max-w-2xl items-center justify-end px-4 py-4 sm:px-6 sm:py-6 lg:max-w-7xl lg:px-8"
-  >
-    <!-- Brand logo -->
-    <div
-      class="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center"
-    >
+  <div class="mx-auto max-w-7xl">
+    <div class="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <!-- Left: Logo -->
       <Logo />
-      <div class="absolute left-full top-1/2 ml-4 hidden -translate-y-1/2 pl-4 md:block">
-        <p itemprop="memberOf" class="whitespace-nowrap text-blue-200"></p>
-      </div>
-    </div>
 
-    <!-- Actions -->
-    <div class="-mr-2 flex items-center space-x-2 sm:space-x-3">
-      <!-- Language switcher - only visible on desktop -->
-      <div class="hidden items-center space-x-2 md:flex">
-        {
-          Object.entries(languages).map(([code, name]) => (
+      <!-- Center: Navigation Links (Desktop) -->
+      <nav class="hidden lg:flex items-center gap-8" aria-label={t('header.navigation.aria')}>
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm font-medium text-brand-black/70 hover:text-brand-accent transition-colors"
+          >
+            {link.name}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Right: Actions -->
+      <div class="hidden lg:flex items-center gap-6">
+        <!-- Language Switcher -->
+        <div class="flex items-center gap-2">
+          {Object.entries(languages).map(([code, name]) => (
             <a
               href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
-              class={`rounded-md px-2 py-1 text-sm font-medium font-sans transition ${
+              class={`text-xs font-medium uppercase tracking-wide transition-colors ${
                 lang === code
-                  ? 'bg-white/10 font-bold text-white'
-                  : 'text-blue-100 hover:bg-white/5 hover:text-white'
+                  ? 'text-brand-black'
+                  : 'text-brand-muted hover:text-brand-black'
               }`}
               aria-current={lang === code ? 'page' : undefined}
               data-lang-preference={code}
             >
-              {name}
+              {code}
             </a>
-          ))
-        }
-      </div>
-      <!-- Toggle theme mode -->
+          ))}
+        </div>
 
-      <!-- Toggle menu -->
+        <!-- CTA Button -->
+        <a
+          href={bookingPath}
+          class="bg-brand-accent text-white px-6 py-2.5 text-sm font-medium rounded-full hover:bg-brand-accent/90 transition-colors"
+        >
+          {t('nav.booking')}
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
       <button
         type="button"
-        class="inline-flex h-14 w-14 items-center justify-center rounded-full text-blue-100 ring-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2"
+        class="lg:hidden inline-flex items-center justify-center w-10 h-10 text-brand-black"
         @click="open = !open"
-        @mousedown="if (open) $event.preventDefault()"
-        aria-controls="website-menu"
-        aria-expanded="false"
+        aria-controls="mobile-menu"
         :aria-expanded="open.toString()"
       >
         <span class="sr-only">{t('header.toggle.menu')}</span>
         <svg
-          x-cloak
-          class="h-8 w-8"
-          :class="{ 'hidden': open, 'block': !(open) }"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
+          x-show="!open"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
-          aria-hidden="true"
         >
-          <path d="M19 8H5V10H19V8ZM19 14H5V16H19V14Z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
         <svg
+          x-show="open"
           x-cloak
-          class="h-8 w-8"
-          :class="{ 'block': open, 'hidden': !(open) }"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
-          aria-hidden="true"
         >
-          <path
-            d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
-          ></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
     </div>
   </div>
 
-  <!-- Menu content -->
+  <!-- Mobile Menu -->
   <div
-    class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8"
-    id="website-menu"
-    x-cloak
+    id="mobile-menu"
     x-show="open"
+    x-cloak
     x-collapse
-    x-collapse.duration.500ms
+    class="lg:hidden bg-white border-t border-brand-black/5"
   >
-    <div class="grid grid-cols-1 gap-16 pb-24 pt-6 lg:grid-cols-2 lg:pt-12">
-      <!-- Mobile language switcher - inside menu -->
-      <div class="mb-1 border-b border-white/10 pb-1 md:hidden">
-        <p class="mb-1 text-sm font-medium text-blue-200/70">
-          {t('language')}:
-        </p>
-        <div class="flex flex-wrap gap-2">
-          {
-            Object.entries(languages).map(([code, name]) => (
-              <a
-                href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
-                class={`rounded-md px-3 py-2 text-sm font-medium font-sans transition ${
-                  lang === code
-                    ? 'bg-white/10 font-bold text-white'
-                    : 'text-blue-100 hover:bg-white/5 hover:text-white'
-                }`}
-                aria-current={lang === code ? 'page' : undefined}
-                data-lang-preference={code}
-              >
-                {name}
-              </a>
-            ))
-          }
-        </div>
-      </div>
-      <div class="hidden items-center justify-center rounded-3xl bg-white/5 px-6 py-8 lg:flex">
-        <p class="max-w-sm text-xl italic leading-loose text-blue-100/90">
-          {t('header.menu.message')}
-        </p>
+    <nav class="flex flex-col px-6 py-8 gap-6">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="text-lg font-medium text-brand-black hover:text-brand-accent transition-colors"
+        >
+          {link.name}
+        </a>
+      ))}
+      
+      <!-- Mobile Language Switcher -->
+      <div class="flex items-center gap-4 pt-6 border-t border-brand-black/10">
+        {Object.entries(languages).map(([code, name]) => (
+          <a
+            href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
+            class={`text-sm font-medium ${
+              lang === code ? 'text-brand-black' : 'text-brand-muted'
+            }`}
+            data-lang-preference={code}
+          >
+            {name}
+          </a>
+        ))}
       </div>
 
-      <!-- Navigation -->
-      <nav
-        class="flex flex-col gap-1 divide-y divide-white/10"
-        itemscope
-        itemtype="https://schema.org/SiteNavigationElement"
-        aria-label={t('header.navigation.aria')}
+      <!-- Mobile CTA -->
+      <a
+        href={bookingPath}
+        class="mt-4 bg-brand-accent text-white px-6 py-4 text-center font-medium rounded-full"
       >
-        {
-          links.map((link) => (
-            <a
-              href={link.href}
-              class="group inline-flex py-6 text-3xl font-medium tracking-tight text-white transition focus-visible:outline-none sm:py-8 sm:text-4xl font-serif"
-              itemprop="url"
-              aria-label={link.name}
-            >
-              <div class="flex flex-1 items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-white">
-                <div class="flex items-center gap-6">
-                  <span class="font-sans text-xs text-blue-300">{link.ref}</span>
-                  <span class="group-hover:underline">{link.name}</span>
-                </div>
-                <svg
-                  class="h-6 w-6 text-blue-300 sm:h-8 sm:w-8"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
-                </svg>
-              </div>
-            </a>
-          ))
-        }
-      </nav>
-    </div>
+        {t('nav.booking')}
+      </a>
+    </nav>
   </div>
 </header>
+
+<!-- Spacer for fixed header -->
+<div class="h-[72px]"></div>

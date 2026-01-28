@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CalEmbed from '../../components/booking/CalEmbed.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout
+  title={t('booking.page.title')}
+  description={t('booking.page.description')}
+  keywords="book nutrition consultation, schedule appointment, nutrition booking Madrid, dietitian appointment"
+  type="website"
+  canonicalUrl="/en/booking"
+>
+  <section class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <p class="text-sm font-medium tracking-widest text-brand-accent uppercase mb-4">
+          {t('booking.label')}
+        </p>
+        <h1 id="booking-title" class="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium text-brand-black mb-6">
+          {t('booking.title')}
+        </h1>
+        <p class="text-lg text-brand-muted max-w-2xl mx-auto">
+          {t('booking.subtitle')}
+        </p>
+      </div>
+
+      <!-- Cal.com Embed (reads ?type= param client-side) -->
+      <div class="max-w-4xl mx-auto">
+        <CalEmbed 
+          calLink="alvaro-fc"
+          locale="en"
+          brandColor="#000000"
+        />
+      </div>
+
+      <!-- Additional Info -->
+      <div class="mt-16 max-w-2xl mx-auto text-center">
+        <p class="text-sm text-brand-muted">
+          {t('booking.info')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Update page title based on event type (client-side)
+    const eventTypeNames: Record<string, string> = {
+      'first-visit': 'First Visit',
+      'second-visit': 'Second Visit',
+      'followup': 'Follow-up',
+      'roots-package': 'Roots of Change Package',
+      'circle-package': 'Circle of Trust Package',
+      'nourish-package': 'Nourish to Shine Package',
+    };
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventType = urlParams.get('type');
+    
+    if (eventType && eventTypeNames[eventType]) {
+      const titleEl = document.getElementById('booking-title');
+      if (titleEl) {
+        titleEl.textContent = eventTypeNames[eventType];
+      }
+    }
+  </script>
+</Layout>

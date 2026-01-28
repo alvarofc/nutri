@@ -1,10 +1,16 @@
 ---
-import '@fontsource/inter/latin-400.css';
-import '@fontsource/inter/latin-500.css';
-import '@fontsource/cinzel/latin-400.css';
-import '@fontsource/cinzel/latin-500.css';
-import '@fontsource/cinzel/latin-600.css';
-import '@fontsource/cinzel/latin-700.css';
+import '@fontsource/assistant/latin-300.css';
+import '@fontsource/assistant/latin-400.css';
+import '@fontsource/assistant/latin-500.css';
+import '@fontsource/assistant/latin-600.css';
+import '@fontsource/assistant/latin-700.css';
+import '@fontsource/assistant/latin-800.css';
+import '@fontsource/montserrat/latin-400.css';
+import '@fontsource/montserrat/latin-500.css';
+import '@fontsource/montserrat/latin-600.css';
+import '@fontsource/montserrat/latin-700.css';
+import '@fontsource/montserrat/latin-800.css';
+import '@fontsource/montserrat/latin-900.css';
 import '@fontsource/libre-baskerville/latin-400.css';
 import '@fontsource/libre-baskerville/latin-700.css';
 import '@fontsource/halant/latin-400.css';
@@ -187,9 +193,7 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
       ]
     })}></script>
   </head>
-  <body
-    class="bg-stone-50 text-blue-950 dark:bg-blue-950 dark:text-blue-200 antialiased transition"
-  >
+  <body class="bg-brand-cream text-brand-black antialiased">
     <Header />
     <main>
       <slot />
@@ -200,23 +204,21 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
         display: none !important;
       }
       
-      /* Header background: gradient from #465C98 (top) to blue-900 (bottom), subtle */
-      .header-gradient {
-        background: linear-gradient(
-          to bottom,
-          rgb(70 92 152 / 0.95) 0%,
-          rgb(40 60 120 / 0.95) 10%,
-          rgb(11 18 71 / 0.95) 100%
-        );
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
       }
       
-      .header-gradient-solid {
-        background: linear-gradient(
-          to bottom,
-          rgb(70 92 152) 0%,
-          rgb(40 60 120) 10%,
-          rgb(11 18 71) 100%
-        );
+      /* Selection color */
+      ::selection {
+        background-color: #8fa98f;
+        color: white;
+      }
+      
+      /* Focus styles */
+      *:focus-visible {
+        outline: 2px solid #8fa98f;
+        outline-offset: 2px;
       }
     </style>
     

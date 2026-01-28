@@ -5,47 +5,56 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const values = [
-  [
-    {
-      ref: '01',
-      name: t('about.values.excellence.name'),
-      description: t('about.values.excellence.description'),
-    },
-    {
-      ref: '02',
-      name: t('about.values.innovation.name'),
-      description: t('about.values.innovation.description'),
-    },
-  ],
-  [
-    {
-      ref: '03',
-      name: t('about.values.teamwork.name'),
-      description: t('about.values.teamwork.description'),
-    },
-    {
-      ref: '04',
-      name: t('about.values.respect.name'),
-      description: t('about.values.respect.description'),
-    },
-  ],
+  {
+    emoji: '✨',
+    name: t('about.values.excellence.name'),
+    description: t('about.values.excellence.description'),
+  },
+  {
+    emoji: '💡',
+    name: t('about.values.innovation.name'),
+    description: t('about.values.innovation.description'),
+  },
+  {
+    emoji: '🤝',
+    name: t('about.values.teamwork.name'),
+    description: t('about.values.teamwork.description'),
+  },
+  {
+    emoji: '💚',
+    name: t('about.values.respect.name'),
+    description: t('about.values.respect.description'),
+  },
 ];
 ---
 
-<section class="py-24 sm:py-32 bg-stone-50 border-t border-blue-900/10">
+<section class="py-20 sm:py-28 bg-brand-ivory">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col gap-16">
-      <h2 class="font-serif text-4xl sm:text-5xl text-blue-950">{t('about.values.title')}</h2>
+    <div class="flex flex-col gap-12">
+      <!-- Header -->
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-4 py-1.5 text-sm font-medium text-brand-accent mb-4">
+          {lang === 'en' ? 'My Values' : 'Mis Valores'}
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-brand-black">
+          {t('about.values.title')}
+        </h2>
+      </div>
       
-      <div class="grid gap-x-12 gap-y-16 lg:grid-cols-2">
+      <!-- Values Grid -->
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {
-          values.flat().map((value) => (
-            <div class="flex flex-col gap-6 group border-t border-blue-900/10 pt-8 transition-colors hover:border-blue-900/40">
-              <span class="font-mono text-sm text-blue-900/50">{value.ref}</span>
-              <h3 class="font-serif text-3xl text-blue-950">{value.name}</h3>
-              <p class="text-lg font-light leading-relaxed text-blue-900/70 max-w-md">
-                {value.description}
-              </p>
+          values.map((value) => (
+            <div class="group bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div class="flex flex-col gap-4">
+                <span class="text-4xl">{value.emoji}</span>
+                <h3 class="font-serif text-xl text-brand-black group-hover:text-brand-accent transition-colors">
+                  {value.name}
+                </h3>
+                <p class="text-brand-muted leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
             </div>
           ))
         }

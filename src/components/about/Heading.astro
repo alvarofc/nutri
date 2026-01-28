@@ -5,14 +5,20 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="py-24 sm:py-32 bg-stone-50 border-b border-blue-900/10">
+<section class="py-20 sm:py-28 bg-brand-cream">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col gap-8">
-      <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl text-blue-950 leading-[0.9] tracking-tight">
+    <div class="flex flex-col items-center text-center gap-6">
+      <!-- Badge -->
+      <span class="inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-4 py-1.5 text-sm font-medium text-brand-accent">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-accent"></span>
+        {lang === 'en' ? 'My Story' : 'Mi Historia'}
+      </span>
+      
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-brand-black leading-tight tracking-tight max-w-3xl">
         {t('about.heading.title')}
       </h1>
-      <div class="w-full h-px bg-blue-900/20 max-w-xs"></div>
-      <p class="text-xl sm:text-2xl font-light text-blue-900/80 max-w-2xl leading-relaxed">
+      
+      <p class="text-lg sm:text-xl text-brand-muted max-w-2xl leading-relaxed">
         {t('about.heading.subtitle')}
       </p>
     </div>

@@ -5,25 +5,42 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
-    <div
-      class="bg-blue-900/5 dark:bg-blue-900/20 flex flex-col items-center gap-8 px-5 py-16 sm:gap-10"
-    >
-      <div class="flex flex-col gap-4 sm:gap-6">
-        <h2 class="mx-auto max-w-sm text-3xl font-medium tracking-tight sm:text-4xl">
+<section class="bg-brand-ivory py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="relative bg-brand-accent rounded-3xl text-white p-12 sm:p-16 lg:p-20 text-center overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+      
+      <div class="relative z-10">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium mb-6 max-w-2xl mx-auto">
           {t('cta.title')}
         </h2>
-        <p class="text-primary-950/70 dark:text-primary-200/70 mx-auto max-w-2xl text-lg">
-          {t('cta.description')}
+        
+        <p class="text-lg text-white/80 font-light max-w-xl mx-auto mb-10">
+          {lang === 'es' 
+            ? 'Agenda tu primera consulta y comienza tu transformación hacia una vida más saludable.'
+            : 'Book your first consultation and start your transformation towards a healthier life.'}
         </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={getLocalizedPath('/pricing', lang)}
+            class="inline-flex items-center justify-center gap-2 bg-white text-brand-accent px-8 py-4 text-sm font-medium rounded-full hover:bg-brand-cream transition-colors"
+          >
+            <span>{t('cta.contact')}</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a
+            href={getLocalizedPath('/contact', lang)}
+            class="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-8 py-4 text-sm font-medium rounded-full hover:bg-white/10 transition-colors"
+          >
+            <span>{t('cta.button')}</span>
+          </a>
+        </div>
       </div>
-      <a
-        href={getLocalizedPath('/contact', lang)}
-        class="bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-800 dark:text-white inline-flex items-center justify-center border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-      >
-        {t('cta.button')}
-      </a>
     </div>
   </div>
 </section>

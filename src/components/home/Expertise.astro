@@ -1,5 +1,6 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import { Baby, Droplet, HeartPulse, Scale, ShieldPlus, Utensils } from 'lucide-astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -9,89 +10,108 @@ const features = [
     id: 'expertise-1',
     name: t('expertise.maternity'),
     description: t('expertise.maternity.desc'),
+    icon: 'maternity',
   },
   {
     id: 'expertise-2',
     name: t('expertise.diabetes'),
     description: t('expertise.diabetes.desc'),
+    icon: 'diabetes',
   },
   {
     id: 'expertise-3',
     name: t('expertise.renal'),
     description: t('expertise.renal.desc'),
+    icon: 'renal',
   },
   {
     id: 'expertise-4',
     name: t('expertise.oncology'),
     description: t('expertise.oncology.desc'),
+    icon: 'oncology',
   },
   {
     id: 'expertise-5',
     name: t('expertise.eating'),
     description: t('expertise.eating.desc'),
+    icon: 'eating',
   },
   {
     id: 'expertise-6',
     name: t('expertise.weight'),
     description: t('expertise.weight.desc'),
+    icon: 'weight',
   },
 ];
 ---
 
-<section class="py-24 sm:py-32 bg-blue-950 text-white overflow-hidden">
+<section class="bg-white py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
-      
-      <!-- Sticky Header -->
-      <div class="lg:w-1/3">
-        <div class="lg:sticky lg:top-32">
-          <h2 class="text-4xl sm:text-5xl font-serif font-light mb-6 text-white">
-            {t('expertise.title')}
-          </h2>
-          <p class="text-lg text-blue-200/80 leading-relaxed mb-8 max-w-md">
-            {t('expertise.description')}
-          </p>
-          <div class="hidden lg:block w-12 h-px bg-blue-500"></div>
-        </div>
-      </div>
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="inline-block px-4 py-1.5 bg-brand-blush text-brand-rose text-xs font-medium uppercase tracking-widest rounded-full mb-4">
+        {lang === 'es' ? 'Especialidades' : 'Specialties'}
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-brand-black mb-4">
+        {t('expertise.title')}
+      </h2>
+      <p class="text-brand-muted max-w-xl mx-auto">
+        {t('expertise.description')}
+      </p>
+    </div>
 
-      <!-- Editorial List -->
-      <div class="lg:w-2/3">
-        <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
-          {
-            features.map((feature, index) => (
-              <div class="group relative border-t border-white/10 py-10 transition-all duration-500 hover:bg-white/5 px-4 sm:px-6">
-                <dt>
-                  <button
-                    class="flex flex-col items-start w-full text-left focus:outline-none h-full justify-between"
-                    aria-controls={feature.id}
-                  >
-                    <div class="w-full">
-                      <div class="flex justify-between items-start w-full mb-4">
-                        <span class="text-xs font-bold text-blue-400 tracking-widest font-mono">
-                          {(index + 1).toString().padStart(2, '0')}
-                        </span>
-                        <span class="text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          →
-                        </span>
-                      </div>
-                      <span class="block text-2xl sm:text-3xl font-serif font-light text-white group-hover:translate-x-2 transition-transform duration-300 mb-4">
-                        {feature.name}
-                      </span>
-                    </div>
-                  </button>
-                </dt>
-                <dd class="mt-2">
-                  <p class="text-base text-blue-200/70 leading-relaxed opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-75">
-                    {feature.description}
-                  </p>
-                </dd>
-              </div>
-            ))
-          }
-        </dl>
-        <div class="border-t border-white/10"></div>
-      </div>
+    <!-- Categories Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((feature, index) => (
+        <div 
+          class="group p-6 sm:p-8 bg-brand-cream rounded-2xl hover:bg-brand-accent/5 transition-colors duration-300 cursor-pointer"
+        >
+          <!-- Icon -->
+          <div class="w-12 h-12 mb-4 flex items-center justify-center text-brand-accent">
+            {feature.icon === 'maternity' && (
+              <Baby class="w-8 h-8" />
+            )}
+            {feature.icon === 'diabetes' && (
+              <HeartPulse class="w-8 h-8" />
+            )}
+            {feature.icon === 'renal' && (
+              <Droplet class="w-8 h-8" />
+            )}
+            {feature.icon === 'oncology' && (
+              <ShieldPlus class="w-8 h-8" />
+            )}
+            {feature.icon === 'eating' && (
+              <Utensils class="w-8 h-8" />
+            )}
+            {feature.icon === 'weight' && (
+              <Scale class="w-8 h-8" />
+            )}
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-lg font-serif font-medium text-brand-black mb-3 group-hover:text-brand-accent transition-colors">
+            {feature.name}
+          </h3>
+
+          <!-- Description -->
+          <p class="text-sm text-brand-muted leading-relaxed">
+            {feature.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 text-center">
+      <a
+        href={getLocalizedPath('/contact', lang)}
+        class="inline-flex items-center gap-2 bg-brand-accent text-white px-8 py-4 text-sm font-medium rounded-full hover:bg-brand-accent/90 transition-colors"
+      >
+        <span>{lang === 'es' ? 'Agenda tu consulta' : 'Book your consultation'}</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
     </div>
   </div>
 </section>

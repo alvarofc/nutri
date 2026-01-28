@@ -37,56 +37,68 @@ const questions = [
 ];
 ---
 
-<section class="py-16 sm:py-20">
+<section class="py-20 sm:py-28 bg-brand-ivory">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
+    <div class="grid gap-12 lg:grid-cols-3 lg:gap-16">
+      <!-- Header -->
       <div>
-        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">{t('faq.title')}</h2>
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-4 py-1.5 text-sm font-medium text-brand-accent mb-4">
+          FAQ
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-brand-black leading-tight">
+          {t('faq.title')}
+        </h2>
+        <p class="mt-4 text-brand-muted leading-relaxed">
+          {lang === 'en' ? "Can't find what you're looking for? Feel free to contact me directly." : '¿No encuentras lo que buscas? No dudes en contactarme directamente.'}
+        </p>
       </div>
+      
+      <!-- Accordion -->
       <div class="lg:col-span-2">
         <dl
-          class="-mt-3"
+          class="space-y-4"
           x-data="{ selected: null, toggle(value) { this.selected = this.selected === value ? null : value } }"
         >
           {
             questions.map((question, index) => (
               <div
-                class="rounded-3xl px-4 transition"
-                x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected }, get isNextOpen() { return (this.id + 1) === this.selected } }`}
-                x-bind:class="{ 'bg-blue-900/5 dark:bg-blue-900/10': isOpen }"
+                class="bg-white rounded-2xl overflow-hidden transition-shadow hover:shadow-md"
+                x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected } }`}
               >
-                <dt
-                  class="border-b text-lg transition"
-                  x-cloak
-                  x-bind:class="{ 'border-transparent': isOpen || isNextOpen, 'border-blue-900/10 dark:border-blue-300/10': !(isOpen || isNextOpen) }"
-                >
+                <dt>
                   <button
                     type="button"
-                    class="group block w-full py-6 text-left transition focus-visible:outline-none"
+                    class="group flex w-full items-center justify-between px-6 py-5 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-inset rounded-2xl"
                     aria-controls={question.id}
                     x-on:click="toggle(id)"
                     aria-expanded="false"
                     x-bind:aria-expanded="isOpen.toString()"
                   >
-                    <div class="group-focus-visible:outline-blue-950 dark:group-focus-visible:outline-blue-200 flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
-                      <span class="font-medium">{question.title}</span>
-                      <span class="ml-6 flex h-7 items-center">
-                        <svg
-                          class="text-blue-900 dark:text-blue-400 h-6 w-6 rotate-0 transform transition duration-200 ease-in-out"
-                          x-bind:class="{ '-rotate-180': isOpen, 'rotate-0': !isOpen }"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" />
-                        </svg>
-                      </span>
-                    </div>
+                    <span class="font-medium text-brand-black group-hover:text-brand-accent transition-colors">
+                      {question.title}
+                    </span>
+                    <span class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-brand-ivory group-hover:bg-brand-accent/10 transition-colors">
+                      <svg
+                        class="text-brand-accent h-5 w-5 transform transition duration-200 ease-out"
+                        x-bind:class="{ 'rotate-180': isOpen }"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" />
+                      </svg>
+                    </span>
                   </button>
                 </dt>
-                <dd class="pb-6 pr-6" id={question.id} x-show="isOpen" x-cloak x-collapse>
-                  <p class="text-blue-900/70 dark:text-blue-200/70 text-base">
+                <dd 
+                  class="px-6 pb-5" 
+                  id={question.id} 
+                  x-show="isOpen" 
+                  x-cloak 
+                  x-collapse
+                >
+                  <p class="text-brand-muted leading-relaxed">
                     {question.answer}
                   </p>
                 </dd>

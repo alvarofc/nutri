@@ -3,54 +3,51 @@ import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
-const stats = [
-  {
-    name: t('stats.years'),
-    value: '9',
-  },
-  {
-    name: t('stats.experts'),
-    value: '15',
-  },
-  {
-    name: t('stats.projects'),
-    value: '122',
-  },
-  {
-    name: t('stats.awards'),
-    value: "'9'",
-  },
-];
 ---
 
-<section class="bg-stone-50 py-24 sm:py-32">
+<section class="bg-white py-20 sm:py-28">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-24">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
       <!-- Image Side -->
       <div class="relative order-2 lg:order-1">
-        <div class="bg-stone-100 relative aspect-[3/4] w-full overflow-hidden">
+        <div class="relative aspect-[4/5] w-full overflow-hidden rounded-3xl">
           <img
             class="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
             src="/assets/alex-front.webp"
             alt={t('about.mission.image.alt')}
           />
+          <!-- Decorative gradient overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-black/10 to-transparent"></div>
         </div>
-        <!-- Decorative element -->
-        <div class="absolute -bottom-12 -left-12 -z-10 h-full w-full border border-blue-900/10">
+        
+        <!-- Floating credential badge -->
+        <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center">
+              <svg class="w-6 h-6 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-brand-black text-sm">{lang === 'en' ? 'Certified' : 'Certificada'}</p>
+              <p class="text-brand-muted text-xs">{lang === 'en' ? 'Professional Nutritionist' : 'Nutricionista Profesional'}</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Text Side -->
-      <div class="order-1 flex flex-col gap-10 lg:sticky lg:top-32 lg:order-2">
-        <h2 class="font-serif text-4xl leading-tight text-blue-950 sm:text-5xl">
+      <div class="order-1 flex flex-col gap-8 lg:order-2">
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand-blush/50 px-4 py-1.5 text-sm font-medium text-brand-rose w-fit">
+          {lang === 'en' ? 'About Me' : 'Sobre Mí'}
+        </span>
+        
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight text-brand-black">
           {t('about.mission.title')}
         </h2>
 
-        <div class="space-y-8 text-lg font-light leading-relaxed text-blue-900/80">
-          <p
-            class="first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px] first-letter:font-serif first-letter:text-5xl first-letter:text-blue-950"
-          >
+        <div class="space-y-6 text-lg leading-relaxed text-brand-muted">
+          <p class="first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-serif first-letter:text-5xl first-letter:text-brand-accent first-letter:leading-none">
             {t('about.mission.paragraph1')}
           </p>
           <p>
@@ -59,6 +56,22 @@ const stats = [
           <p>
             {t('about.mission.paragraph3')}
           </p>
+        </div>
+        
+        <!-- Stats row -->
+        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-gray/20">
+          <div class="text-center">
+            <p class="font-serif text-3xl text-brand-accent">9+</p>
+            <p class="text-sm text-brand-muted">{lang === 'en' ? 'Years' : 'Años'}</p>
+          </div>
+          <div class="text-center">
+            <p class="font-serif text-3xl text-brand-accent">500+</p>
+            <p class="text-sm text-brand-muted">{lang === 'en' ? 'Clients' : 'Clientes'}</p>
+          </div>
+          <div class="text-center">
+            <p class="font-serif text-3xl text-brand-accent">98%</p>
+            <p class="text-sm text-brand-muted">{lang === 'en' ? 'Satisfaction' : 'Satisfacción'}</p>
+          </div>
         </div>
       </div>
     </div>
