@@ -23,24 +23,34 @@ const team = [
 ];
 ---
 
-<section class="py-24 sm:py-32 bg-stone-50 border-t border-blue-900/10">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+<section class="relative py-24 sm:py-32 overflow-hidden border-t border-brand-accent/10">
+  <!-- Soft lavender to peach gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#E8E4F0] via-[#F0E6E8] to-[#F5E6DC]"></div>
+  
+  <!-- Radial gradient for warm center glow -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(248,200,180,0.4)_0%,_transparent_70%)]"></div>
+  
+  <!-- Soft purple accents on sides -->
+  <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#DCD4EA]/50 to-transparent"></div>
+  <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#DCD4EA]/50 to-transparent"></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col gap-16">
-      <h2 class="font-serif text-4xl sm:text-5xl text-blue-950">{t('team.title')}</h2>
+      <h2 class="font-serif text-4xl sm:text-5xl text-brand-black">{t('team.title')}</h2>
       
       <ul role="list" class="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
         {
           team.map((item) => (
             <li class="group">
-              <div class="aspect-[3/4] w-full overflow-hidden bg-stone-100 mb-6">
+              <div class="aspect-[3/4] w-full overflow-hidden bg-white/50 rounded-2xl mb-6">
                 <img 
                   class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105" 
                   src={item.image} 
                   alt={item.name} 
                 />
               </div>
-              <h3 class="font-serif text-2xl text-blue-950">{item.name}</h3>
-              <p class="text-blue-900/60 font-light mt-1">{item.job}</p>
+              <h3 class="font-serif text-2xl text-brand-black">{item.name}</h3>
+              <p class="text-brand-muted font-light mt-1">{item.job}</p>
             </li>
           ))
         }

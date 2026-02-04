@@ -28,9 +28,9 @@ export const ui = {
     'cta.learn': 'Learn more',
 
     // Home page
-    'home.title': 'Nutrition that transforms your life',
+    'home.title': 'Smart Anti-inflammatory Nutrition',
     'home.subtitle':
-      "Hello! I'm Alexandra Ivanova, <strong>Dietitian-Nutritionist</strong> (MAD01541), specialized in <strong>hormonal health</strong> and relationship with food.\n\nI help you understand what's happening in your body and what it needs, so that eating becomes a pleasure that also takes care of your hormones, your digestion, and your energy.\n\nI love translating <strong>nutrition science</strong> into realistic guidelines and small changes that fit into your routine.\n\nShall we start?",
+      "Hi! I'm Alexandra Ivanova, Dietitian-Nutritionist (MAD01541), specialized in hormonal health and relationship with food.\n\nI love translating nutrition science into realistic guidelines and small changes that fit into your routine.\n\nThat's why I help you understand what's happening in your body and what it needs, so that eating becomes a pleasure that also takes care of your hormones, your digestion, and your energy.\n\nShall we start?",
     'home.description':
       'I help you achieve your health and wellness goals through personalized nutrition plans.',
     'home.hero.image.alt': 'Hero image showing healthy nutrition',
@@ -267,10 +267,13 @@ export const ui = {
     // Booking page
     'booking.label': 'Book Online',
     'booking.title': 'Schedule Your Consultation',
-    'booking.subtitle': 'Choose the type of consultation that fits your needs and select a convenient time slot. Payment is processed securely through the booking system.',
-    'booking.info': 'After booking, you will receive a confirmation email with all the details. Online consultations will include a video call link.',
+    'booking.subtitle':
+      'Choose the type of consultation that fits your needs and select a convenient time slot. Payment is processed securely through the booking system.',
+    'booking.info':
+      'After booking, you will receive a confirmation email with all the details. Online consultations will include a video call link.',
     'booking.page.title': 'Book Appointment · Alexandra',
-    'booking.page.description': 'Book your nutrition consultation with Alexandra. Choose from initial consultations, follow-ups, or packages.',
+    'booking.page.description':
+      'Book your nutrition consultation with Alexandra. Choose from initial consultations, follow-ups, or packages.',
     'nav.booking': 'Book Now',
   },
   es: {
@@ -295,9 +298,9 @@ export const ui = {
     'cta.learn': 'Saber más',
 
     // Home page
-    'home.title': 'Nutrición que transforma tu vida',
+    'home.title': 'Smart Anti-inflammatory Nutrition',
     'home.subtitle':
-      '¡Hola! Soy Alexandra Ivanova, <strong>Dietista-Nutricionista</strong> (MAD01541), especializada en <strong>salud hormonal</strong> y relación con la comida.\n\nTe acompaño a entender qué le ocurre a tu cuerpo y qué necesita, para que comer sea un placer que también cuide de tus hormonas, tu digestión y tu energía.\n\nMe encanta traducir la <strong>ciencia de la nutrición</strong> en pautas realistas y pequeños cambios que caben en tu rutina.\n\n¿Empezamos?',
+      '¡Hola! Soy Alexandra Ivanova, Dietista-Nutricionista (MAD01541), especializada en salud hormonal y relación con la comida.\n\nMe encanta traducir la ciencia de la nutrición en pautas realistas y pequeños cambios que caben en tu rutina.\n\nPor eso, te acompaño a entender qué le ocurre a tu cuerpo y qué necesita, para que comer sea un placer que también cuide de tus hormonas, tu digestión y tu energía.\n\n¿Empezamos?',
     'home.description':
       'Te ayudo a alcanzar tus objetivos de salud y bienestar a través de planes de nutrición personalizados.',
     'home.hero.image.alt': 'Imagen principal mostrando nutrición saludable',
@@ -529,10 +532,13 @@ export const ui = {
     // Booking page
     'booking.label': 'Reserva Online',
     'booking.title': 'Agenda tu Consulta',
-    'booking.subtitle': 'Elige el tipo de consulta que mejor se adapte a tus necesidades y selecciona un horario disponible. El pago se procesa de forma segura a través del sistema de reservas.',
-    'booking.info': 'Tras la reserva, recibirás un email de confirmación con todos los detalles. Las consultas online incluirán un enlace para la videollamada.',
+    'booking.subtitle':
+      'Elige el tipo de consulta que mejor se adapte a tus necesidades y selecciona un horario disponible. El pago se procesa de forma segura a través del sistema de reservas.',
+    'booking.info':
+      'Tras la reserva, recibirás un email de confirmación con todos los detalles. Las consultas online incluirán un enlace para la videollamada.',
     'booking.page.title': 'Reservar Cita · Alexandra',
-    'booking.page.description': 'Reserva tu consulta de nutrición con Alexandra. Elige entre consultas iniciales, seguimientos o bonos.',
+    'booking.page.description':
+      'Reserva tu consulta de nutrición con Alexandra. Elige entre consultas iniciales, seguimientos o bonos.',
     'nav.booking': 'Reservar',
   },
 } as const;

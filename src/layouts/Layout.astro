@@ -211,14 +211,55 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
       
       /* Selection color */
       ::selection {
-        background-color: #8fa98f;
+        background-color: #2E2367;
         color: white;
       }
       
       /* Focus styles */
       *:focus-visible {
-        outline: 2px solid #8fa98f;
+        outline: 2px solid #2E2367;
         outline-offset: 2px;
+      }
+      
+      /* CTA Gradient Button Animation */
+      .cta-gradient-btn {
+        background: #2E2367;
+        transition: all 0.4s ease;
+      }
+      
+      .cta-gradient-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #2E2367 0%, #4a3b8f 25%, #6B5B95 40%, #C9A9A9 50%, #6B5B95 60%, #4a3b8f 75%, #2E2367 100%);
+        background-size: 300% 300%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: inherit;
+        animation: gradient-shift 3s ease infinite;
+        animation-play-state: paused;
+      }
+      
+      .cta-gradient-btn:hover::before {
+        opacity: 1;
+        animation-play-state: running;
+      }
+      
+      .cta-gradient-btn:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 20px rgba(46, 35, 103, 0.3);
+      }
+      
+      @keyframes gradient-shift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
     </style>
     

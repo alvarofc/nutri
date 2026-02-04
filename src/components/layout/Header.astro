@@ -74,9 +74,9 @@ const bookingPath = getLocalizedPath('/booking', lang);
         <!-- CTA Button -->
         <a
           href={bookingPath}
-          class="bg-brand-accent text-white px-6 py-2.5 text-sm font-medium rounded-full hover:bg-brand-accent/90 transition-colors"
+          class="cta-gradient-btn relative overflow-hidden bg-brand-accent text-white px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300"
         >
-          {t('nav.booking')}
+          <span class="relative z-10">{t('nav.booking')}</span>
         </a>
       </div>
 
@@ -148,9 +148,9 @@ const bookingPath = getLocalizedPath('/booking', lang);
       <!-- Mobile CTA -->
       <a
         href={bookingPath}
-        class="mt-4 bg-brand-accent text-white px-6 py-4 text-center font-medium rounded-full"
+        class="cta-gradient-btn relative overflow-hidden mt-4 bg-brand-accent text-white px-6 py-4 text-center font-medium rounded-full transition-all duration-300"
       >
-        {t('nav.booking')}
+        <span class="relative z-10">{t('nav.booking')}</span>
       </a>
     </nav>
   </div>

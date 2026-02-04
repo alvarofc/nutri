@@ -26,8 +26,8 @@ module.exports = {
         cream: '#faf9f7',
         ivory: '#f5f4f0',
         white: '#ffffff',
-        accent: '#7d9b76', // Sage green - sophisticated & natural
-        'accent-light': '#a8c4a0',
+        accent: '#2E2367', // Deep purple - sophisticated & elegant
+        'accent-light': '#4a3b8f',
         blush: '#e8d5d5', // Soft pink accent
         rose: '#c9a9a9', // Dusty rose
       },
