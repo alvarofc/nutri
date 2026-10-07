@@ -20,8 +20,8 @@ Go to Google Calendar → **Create → Appointment schedule**, and create one sc
 
 Settings for each schedule:
 
-- **Booked appointment settings → Payment → Require payment**: connect Stripe the first time, then set the price in EUR.
-- **Booking window → Minimum notice**: 24 hours, which matches the cancellation policy.
+- **Booked appointment settings → Payment → Require payment** (paid schedules only): connect Stripe the first time, then set the price in EUR. Leave payment **off** for *Seguimiento (bono)*, since the patient has already paid through the bono.
+- **Booking window → Minimum notice**: 24 hours, so nobody books a slot at the last minute. This only limits new bookings; it does not stop cancellations.
 - **Location**: Google Meet for online visits, or the clinic address.
 - **Description**: paste the policy. "El importe no es reembolsable. Puedes cambiar la cita avisando con al menos 24 horas de antelación."
 
@@ -47,7 +47,11 @@ Appointment schedules can't sell bundles, so the bono is sold with a Stripe **Pa
 
 While that value is empty, `/booking` shows a "contact me" fallback instead of the calendar.
 
-## 5. Before going live
+## 5. Cancellations
+
+Google lets patients cancel or reschedule from their confirmation email at any time; it can't enforce the 24-hour rule. The policy is enforced through payments instead: refunds are never automatic, so a late cancellation or no-show simply isn't refunded. If someone reschedules within 24 hours, cancel the new booking and let them know.
+
+## 6. Before going live
 
 - Make one real booking at a temporary price of 1 € and check the full flow: slot → Stripe checkout → confirmation email → event in your calendar. Then refund it from Stripe and set the real price again.
 - Refunds are never automatic. Google leaves them to you, and you issue them from the Stripe dashboard.
