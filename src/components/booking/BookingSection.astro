@@ -1,0 +1,68 @@
+---
+import GoogleBookingEmbed from './GoogleBookingEmbed.astro';
+import { INITIAL_ASSESSMENT_PRICE, INITIAL_ASSESSMENT_SCHEDULE_URL } from '../../config/booking';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const nextSteps = [t('booking.next.0'), t('booking.next.1'), t('booking.next.2')];
+const policy = [t('booking.policy.0'), t('booking.policy.1'), t('booking.policy.2')];
+---
+
+<section class="py-20 sm:py-28 bg-brand-cream">
+  <div class="mx-auto grid max-w-2xl gap-12 px-4 sm:px-6 lg:max-w-7xl lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:px-8">
+    <!-- Intro -->
+    <header class="flex flex-col gap-6 lg:col-span-5">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full bg-brand-accent/10 px-4 py-1.5 text-sm font-medium text-brand-accent">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-accent"></span>
+        {t('booking.label')}
+      </span>
+      <h1 class="font-serif text-4xl leading-tight tracking-tight text-brand-black sm:text-5xl">
+        {t('booking.title')}
+      </h1>
+      <p class="text-lg leading-relaxed text-brand-muted">{t('booking.subtitle')}</p>
+
+      <div class="flex items-baseline justify-between gap-6 border-y border-brand-gray/20 py-5">
+        <p class="flex flex-col gap-1">
+          <span class="font-serif text-xl text-brand-black">{t('pricing.assessment.title')}</span>
+          <span class="text-sm text-brand-muted">{t('pricing.assessment.duration')}</span>
+        </p>
+        <p class="font-serif text-3xl text-brand-accent">{INITIAL_ASSESSMENT_PRICE}</p>
+      </div>
+    </header>
+
+    <!-- Calendar -->
+    <div class="lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
+      <GoogleBookingEmbed scheduleUrl={INITIAL_ASSESSMENT_SCHEDULE_URL} lang={lang} />
+    </div>
+
+    <!-- Details -->
+    <div class="flex flex-col gap-10 lg:col-span-5">
+      <div>
+        <h2 class="text-xs font-medium uppercase tracking-widest text-brand-accent">{t('booking.next.title')}</h2>
+        <ol role="list" class="mt-5 space-y-4">
+          {nextSteps.map((step, i) => (
+            <li class="flex gap-4">
+              <span class="w-6 flex-shrink-0 font-serif text-lg leading-6 tabular-nums text-brand-rose" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class="text-brand-charcoal leading-6">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-xs font-medium uppercase tracking-widest text-brand-accent">{t('booking.policy.title')}</h2>
+        <ul role="list" class="mt-5 space-y-3 text-sm leading-relaxed text-brand-muted">
+          {policy.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <p class="rounded-2xl bg-brand-blush/40 px-5 py-4 text-sm leading-relaxed text-brand-charcoal">
+        {t('booking.patients')}
+      </p>
+    </div>
+  </div>
+</section>

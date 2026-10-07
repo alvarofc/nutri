@@ -1,0 +1,59 @@
+---
+import { getLocalizedPath, useTranslations } from '../../i18n/ui';
+
+interface Props {
+  scheduleUrl: string;
+  lang: 'en' | 'es';
+}
+
+const { scheduleUrl, lang } = Astro.props;
+const t = useTranslations(lang);
+
+let src: string | null = null;
+if (scheduleUrl) {
+  const url = new URL(scheduleUrl);
+  url.searchParams.set('gv', 'true');
+  url.searchParams.set('hl', lang);
+  src = url.toString();
+}
+---
+
+{
+  src ? (
+    <div class="flex flex-col gap-3">
+      <div class="relative overflow-hidden rounded-3xl bg-white ring-1 ring-brand-gray/10 shadow-sm">
+        <!-- Google's page is transparent, so the placeholder is hidden once it loads -->
+        <p class="absolute inset-0 grid place-items-center text-sm text-brand-muted" aria-hidden="true">
+          {t('booking.loading')}
+        </p>
+        <iframe
+          src={src}
+          title={t('booking.iframe.title')}
+          onload="this.previousElementSibling?.remove()"
+          class="relative block h-[1300px] w-full border-0 sm:h-[980px]"
+        />
+      </div>
+      <a
+        href={src}
+        target="_blank"
+        rel="noopener"
+        class="self-end inline-flex items-center gap-1.5 text-sm text-brand-muted underline-offset-4 transition hover:text-brand-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+      >
+        {t('booking.open')}
+        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5h5v5m0-5L10 14M19 14v5H5V5h5" />
+        </svg>
+      </a>
+    </div>
+  ) : (
+    <div class="flex min-h-[420px] flex-col items-center justify-center gap-6 rounded-3xl bg-white px-8 py-16 text-center ring-1 ring-brand-gray/10">
+      <p class="max-w-sm text-lg leading-relaxed text-brand-muted">{t('booking.unavailable')}</p>
+      <a
+        href={getLocalizedPath('/contact', lang)}
+        class="inline-flex items-center justify-center rounded-full bg-brand-accent px-8 py-3 text-base font-medium text-white transition hover:bg-brand-accent/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+      >
+        {t('booking.unavailable.cta')}
+      </a>
+    </div>
+  )
+}

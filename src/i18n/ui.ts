@@ -111,16 +111,9 @@ export const ui = {
 
     // Pricing page
     'pricing.title': 'Book Your Session',
-    'pricing.subtitle':
-      'Choose the plan that fits your needs or get a better price with our packages.',
-    'pricing.individual.title': 'First Visit',
-    'pricing.individual.second': 'Second Visit',
-    'pricing.individual.followup': 'Follow-ups',
-    'pricing.package.roots': '"ROOTS OF CHANGE" Package',
-    'pricing.package.circle': '"CIRCLE OF TRUST" Package',
-    'pricing.package.nourish': '"NOURISH TO SHINE" Package',
-    'pricing.action.book': 'Book',
-    'pricing.action.purchase': 'Purchase',
+    'pricing.subtitle': 'An initial process to understand your case in depth, then follow-ups at the pace your body needs.',
+    'pricing.action.book': 'Book initial assessment',
+    'pricing.private': 'Booking link sent privately after your initial assessment',
 
     // Expertise section
     'expertise.title': 'Supporting Your Health',
@@ -205,56 +198,43 @@ export const ui = {
     'stats.awards': 'Awards',
 
     // Pricing sections
-    'pricing.sections.individual': 'INDIVIDUAL SESSIONS',
-    'pricing.sections.packages': 'PACKAGES',
-    'pricing.first.description': 'Complete evaluation and creation of a personalized plan.',
-    'pricing.first.features.0': 'Initial assessment',
-    'pricing.first.features.1': 'Medical history',
-    'pricing.first.features.2': 'Personalized plan',
-    'pricing.first.features.3': 'Q&A session',
-    'pricing.second.description': 'Follow-up on the plan and necessary adjustments.',
-    'pricing.second.features.0': 'Plan review',
-    'pricing.second.features.1': 'Personalized adjustments',
-    'pricing.second.features.2': 'Q&A session',
-    'pricing.second.features.3': 'Progress tracking',
-    'pricing.followup.description': 'Follow-up visits to check your progress.',
-    'pricing.followup.features.0': 'Progress evaluation',
-    'pricing.followup.features.1': 'Plan adjustments',
-    'pricing.followup.features.2': 'Q&A session',
-    'pricing.followup.features.3': 'Ongoing support',
-    'pricing.roots.description': '3 sessions (1st visit + 2nd visit + 1 follow-up visit)',
-    'pricing.roots.features.0': 'Save 20€',
-    'pricing.roots.features.1': 'Start your journey with a firm step',
-    'pricing.roots.features.2': 'Valid for 3 months',
-    'pricing.circle.description': '5 sessions (1st visit + 2nd visit + 3 follow-up visits)',
-    'pricing.circle.features.0': 'Save 40€',
-    'pricing.circle.features.1': 'Invest in real solutions',
-    'pricing.circle.features.2': 'Valid for 5 months',
-    'pricing.nourish.description': '8 sessions (1st visit + 2nd visit + 6 follow-up visits)',
-    'pricing.nourish.features.0': 'Save 70€',
-    'pricing.nourish.features.1': 'Commit to your long-term well-being',
-    'pricing.nourish.features.2': 'Valid for 8 months',
+    'pricing.sections.initial': 'Initial process',
+    'pricing.sections.continuity': 'Continuity',
+    'pricing.assessment.title': 'Initial assessment',
+    'pricing.assessment.duration': '75–80 min',
+    'pricing.assessment.description': 'We review your history, symptoms, habits, sleep, digestion, energy, lab tests and medication to understand your case in depth.',
+    'pricing.plan.title': 'Design + delivery of your personalized plan',
+    'pricing.plan.duration': '60 min',
+    'pricing.plan.description': 'Within 5 working days of the assessment. I explain what is happening in your body and hand over your nutrition plan, guidelines and, if needed, supplementation.',
+    'pricing.followup.title': 'Follow-up',
+    'pricing.followup.duration': '45 min',
+    'pricing.followup.description': 'We review your progress, adjust the plan and consolidate habits. Every 2 to 6 weeks, depending on your case.',
+    'pricing.bundle.title': '4 follow-up bundle',
+    'pricing.bundle.duration': '4 × 45 min',
+    'pricing.bundle.description': 'Four follow-up sessions to keep your progress steady.',
+    'pricing.bundle.saving': '60 € per session · save 20 €',
+    'pricing.policy': 'Payment is made when booking and is non-refundable. You can reschedule up to 24 hours before your appointment. Follow-ups can be booked up to 4 months after your last visit.',
 
     // FAQ
     'faq.title': 'Frequently Asked Questions',
     'faq.q1.title': 'What is included in the first visit?',
     'faq.q1.answer':
-      'The first visit includes a complete assessment of your current health status, medical history, lifestyle habits, and nutritional needs. We will discuss your goals and create a personalized nutrition plan tailored to your specific needs.',
+      'A 75–80 minute clinical and nutritional assessment: we review your symptoms, sleep, digestion, energy, physical activity, medical history, medication and lab tests, and agree on short- and long-term goals. Your personalized plan is delivered and explained in the second visit.',
     'faq.q2.title': 'How long are the consultation sessions?',
     'faq.q2.answer':
-      'The first consultation typically lasts around 60 minutes to allow for a comprehensive assessment. Follow-up sessions are usually 30-45 minutes depending on your needs.',
+      'The initial assessment lasts 75–80 minutes, the personalized plan session 60 minutes and follow-ups 45 minutes.',
     'faq.q3.title': 'Do you offer online consultations?',
     'faq.q3.answer':
       'Yes, I offer both in-person and online consultations to accommodate your preferences and schedule. Online sessions are conducted through a secure video platform.',
     'faq.q4.title': 'How many follow-up sessions will I need?',
     'faq.q4.answer':
-      'The number of follow-up sessions varies depending on your individual goals and progress. Some clients achieve their goals with just a few sessions, while others benefit from ongoing support. Our package options are designed to accommodate different needs.',
+      'It depends on your goals and progress. Follow-ups usually take place every 2 to 6 weeks, and the 4 follow-up bundle brings the price down to 60 € per session.',
     'faq.q5.title': 'What payment methods do you accept?',
     'faq.q5.answer':
-      'I accept credit/debit cards, bank transfers, and cash payments for in-person consultations. For online sessions, payment must be made in advance via bank transfer or credit card.',
+      'Payment is made online when you book, by credit/debit card, Apple Pay or Google Pay, processed securely by Stripe.',
     'faq.q6.title': 'What is your cancellation policy?',
     'faq.q6.answer':
-      'If you need to cancel or reschedule an appointment, please provide at least 24 hours notice. Late cancellations or missed appointments may be subject to a cancellation fee.',
+      'Fees are non-refundable because the slot is reserved exclusively for you. You can reschedule with at least 24 hours notice; with less notice it is not possible to cancel or reschedule (except force majeure), and a missed appointment counts as completed.',
 
     // Page metadata
     'about.page.description': 'Find information about my story, values, goals and more.',
@@ -266,14 +246,24 @@ export const ui = {
 
     // Booking page
     'booking.label': 'Book Online',
-    'booking.title': 'Schedule Your Consultation',
-    'booking.subtitle':
-      'Choose the type of consultation that fits your needs and select a convenient time slot. Payment is processed securely through the booking system.',
-    'booking.info':
-      'After booking, you will receive a confirmation email with all the details. Online consultations will include a video call link.',
+    'booking.title': 'Book your initial assessment',
+    'booking.subtitle': 'Choose a time that suits you. Payment is processed securely by Stripe when you confirm.',
+    'booking.next.title': 'What happens next',
+    'booking.next.0': 'You receive a confirmation email with all the details.',
+    'booking.next.1': 'Within 5 working days of your assessment we meet again to go through your personalized plan. I send you that booking link myself.',
+    'booking.next.2': 'Follow-ups are booked through a private link, at the pace your case needs.',
+    'booking.policy.title': 'Before booking',
+    'booking.policy.0': 'Payment is made when booking. The slot is reserved for you and requires preparation, so it is non-refundable.',
+    'booking.policy.1': 'You can reschedule with at least 24 hours notice. With less notice it is not possible to cancel or reschedule (except force majeure).',
+    'booking.policy.2': 'If you do not attend and do not let me know in time, the consultation is considered completed.',
+    'booking.patients': 'Already a patient? Use the private link I sent you by email or WhatsApp.',
+    'booking.iframe.title': 'Initial assessment booking calendar',
+    'booking.loading': 'Loading availability…',
+    'booking.open': 'Open in a new tab',
+    'booking.unavailable': 'Online booking opens soon. Write to me and I will find a time for you.',
+    'booking.unavailable.cta': 'Contact me',
     'booking.page.title': 'Book Appointment · Alexandra',
-    'booking.page.description':
-      'Book your nutrition consultation with Alexandra. Choose from initial consultations, follow-ups, or packages.',
+    'booking.page.description': 'Book your initial nutrition assessment with Alexandra and pay securely online.',
     'nav.booking': 'Book Now',
   },
   es: {
@@ -374,16 +364,9 @@ export const ui = {
 
     // Pricing page
     'pricing.title': 'Reserva tu Cita',
-    'pricing.subtitle':
-      'Puedes adquirir por separado o conseguir un mejor precio comprando el paquete de oferta.',
-    'pricing.individual.title': 'Primera Visita',
-    'pricing.individual.second': 'Segunda visita',
-    'pricing.individual.followup': 'Seguimientos',
-    'pricing.package.roots': 'Bono "RAÍCES DE CAMBIO"',
-    'pricing.package.circle': 'Bono "CÍRCULO DE CONFIANZA"',
-    'pricing.package.nourish': 'Bono "NUTRIR PARA BRILLAR"',
-    'pricing.action.book': 'Reservar',
-    'pricing.action.purchase': 'Adquirir',
+    'pricing.subtitle': 'Un proceso inicial para entender tu caso en profundidad y, después, seguimientos al ritmo que necesita tu cuerpo.',
+    'pricing.action.book': 'Reservar valoración inicial',
+    'pricing.private': 'Recibirás el enlace de reserva tras tu valoración inicial',
 
     // Expertise section
     'expertise.title': 'Cuidando Tu Salud',
@@ -469,56 +452,43 @@ export const ui = {
     'stats.awards': 'Premios',
 
     // Pricing sections
-    'pricing.sections.individual': 'SESIONES INDIVIDUALES',
-    'pricing.sections.packages': 'BONOS',
-    'pricing.first.description': 'Evaluación completa y creación de un plan personalizado.',
-    'pricing.first.features.0': 'Evaluación inicial',
-    'pricing.first.features.1': 'Historia clínica',
-    'pricing.first.features.2': 'Plan personalizado',
-    'pricing.first.features.3': 'Resolución de dudas',
-    'pricing.second.description': 'Seguimiento del plan y ajustes necesarios.',
-    'pricing.second.features.0': 'Revisión del plan',
-    'pricing.second.features.1': 'Ajustes personalizados',
-    'pricing.second.features.2': 'Resolución de dudas',
-    'pricing.second.features.3': 'Seguimiento de progreso',
-    'pricing.followup.description': 'Visitas de seguimiento para comprobar tu progreso.',
-    'pricing.followup.features.0': 'Evaluación de progreso',
-    'pricing.followup.features.1': 'Ajustes al plan',
-    'pricing.followup.features.2': 'Resolución de dudas',
-    'pricing.followup.features.3': 'Apoyo continuo',
-    'pricing.roots.description': '3 sesiones (1ª visita + 2ª visita + 1 visita de seguimiento)',
-    'pricing.roots.features.0': 'Ahorra 20€',
-    'pricing.roots.features.1': 'Empieza tu camino con paso firme',
-    'pricing.roots.features.2': 'Válido durante 3 meses',
-    'pricing.circle.description': '5 sesiones (1ª visita + 2ª visita + 3 visitas de seguimiento)',
-    'pricing.circle.features.0': 'Ahorra 40€',
-    'pricing.circle.features.1': 'Inviertes en soluciones verdaderas',
-    'pricing.circle.features.2': 'Válido durante 5 meses',
-    'pricing.nourish.description': '8 sesiones (1ª visita + 2ª visita + 6 visitas de seguimiento)',
-    'pricing.nourish.features.0': 'Ahorra 70€',
-    'pricing.nourish.features.1': 'Compromiso con tu bienestar a largo plazo',
-    'pricing.nourish.features.2': 'Válido durante 8 meses',
+    'pricing.sections.initial': 'Proceso inicial',
+    'pricing.sections.continuity': 'Continuidad',
+    'pricing.assessment.title': 'Valoración inicial',
+    'pricing.assessment.duration': '75–80 min',
+    'pricing.assessment.description': 'Revisamos tu historia, síntomas, hábitos, descanso, digestión, energía, analíticas y medicación para entender tu caso en profundidad.',
+    'pricing.plan.title': 'Diseño + entrega del plan personalizado',
+    'pricing.plan.duration': '60 min',
+    'pricing.plan.description': 'En un plazo de 5 días laborables tras la valoración. Te explico qué está sucediendo en tu cuerpo y te entrego tu plan de alimentación, pautas y, si procede, suplementación.',
+    'pricing.followup.title': 'Seguimiento',
+    'pricing.followup.duration': '45 min',
+    'pricing.followup.description': 'Revisamos tu evolución, ajustamos el plan y consolidamos hábitos. Cada 2 a 6 semanas, según tu caso.',
+    'pricing.bundle.title': 'Bono 4 seguimientos',
+    'pricing.bundle.duration': '4 × 45 min',
+    'pricing.bundle.description': 'Cuatro sesiones de seguimiento para mantener tu progreso constante.',
+    'pricing.bundle.saving': '60 €/sesión · ahorro de 20 €',
+    'pricing.policy': 'El importe se abona al reservar y no es reembolsable. Puedes cambiar la cita avisando con al menos 24 horas de antelación. Las citas de seguimiento pueden reservarse hasta 4 meses tras la última visita.',
 
     // FAQ
     'faq.title': 'Preguntas Frecuentes',
     'faq.q1.title': '¿Qué incluye la primera visita?',
     'faq.q1.answer':
-      'La primera visita incluye una evaluación completa de tu estado de salud actual, historial médico, hábitos de vida y necesidades nutricionales. Hablaremos sobre tus objetivos y crearemos un plan de nutrición personalizado adaptado a tus necesidades específicas.',
+      'Una anamnesis clínico-nutricional de 75-80 minutos: exploramos tus síntomas, descanso, digestión, energía y actividad física, revisamos tu historia clínica, medicación y analíticas, y acordamos objetivos a corto y largo plazo. Tu plan personalizado se entrega y se explica en la segunda visita.',
     'faq.q2.title': '¿Cuánto duran las sesiones de consulta?',
     'faq.q2.answer':
-      'La primera consulta suele durar unos 60 minutos para permitir una evaluación completa. Las sesiones de seguimiento suelen durar entre 30 y 45 minutos, dependiendo de tus necesidades.',
+      'La valoración inicial dura 75-80 minutos, la entrega del plan personalizado 60 minutos y los seguimientos 45 minutos.',
     'faq.q3.title': '¿Ofreces consultas online?',
     'faq.q3.answer':
       'Sí, ofrezco consultas tanto presenciales como online para adaptarme a tus preferencias y horario. Las sesiones online se realizan a través de una plataforma de video segura.',
     'faq.q4.title': '¿Cuántas sesiones de seguimiento necesitaré?',
     'faq.q4.answer':
-      'El número de sesiones de seguimiento varía según tus objetivos individuales y tu progreso. Algunos clientes logran sus objetivos con solo unas pocas sesiones, mientras que otros se benefician de un apoyo continuo. Nuestras opciones de bonos están diseñadas para adaptarse a diferentes necesidades.',
+      'Depende de tus objetivos y de tu evolución. Los seguimientos suelen hacerse cada 2 a 6 semanas, y con el bono de 4 seguimientos cada sesión sale a 60 €.',
     'faq.q5.title': '¿Qué métodos de pago aceptas?',
     'faq.q5.answer':
-      'Acepto tarjetas de crédito/débito, transferencias bancarias y pagos en efectivo para consultas presenciales. Para sesiones online, el pago debe realizarse por adelantado mediante transferencia bancaria o tarjeta de crédito.',
+      'El pago se realiza online al reservar, con tarjeta de crédito/débito, Apple Pay o Google Pay, procesado de forma segura por Stripe.',
     'faq.q6.title': '¿Cuál es tu política de cancelación?',
     'faq.q6.answer':
-      'Si necesitas cancelar o reprogramar una cita, por favor avisa con al menos 24 horas de antelación. Las cancelaciones tardías o las citas perdidas pueden estar sujetas a una tarifa de cancelación.',
+      'El importe no es reembolsable porque ese horario queda reservado exclusivamente para ti. Puedes cambiar la cita avisando con al menos 24 horas de antelación; con menos tiempo no es posible cancelar ni reprogramar (salvo fuerza mayor), y si no asistes la consulta se considera realizada.',
 
     // Page metadata
     'about.page.description': 'Encuentra información sobre mi historia, valores, objetivos y más.',
@@ -531,14 +501,24 @@ export const ui = {
 
     // Booking page
     'booking.label': 'Reserva Online',
-    'booking.title': 'Agenda tu Consulta',
-    'booking.subtitle':
-      'Elige el tipo de consulta que mejor se adapte a tus necesidades y selecciona un horario disponible. El pago se procesa de forma segura a través del sistema de reservas.',
-    'booking.info':
-      'Tras la reserva, recibirás un email de confirmación con todos los detalles. Las consultas online incluirán un enlace para la videollamada.',
+    'booking.title': 'Reserva tu valoración inicial',
+    'booking.subtitle': 'Elige el horario que mejor te encaje. El pago se procesa de forma segura con Stripe al confirmar.',
+    'booking.next.title': 'Qué pasa después',
+    'booking.next.0': 'Recibes un email de confirmación con todos los detalles.',
+    'booking.next.1': 'En un plazo de 5 días laborables tras tu valoración nos vemos para entregarte tu plan personalizado. Ese enlace de reserva te lo envío yo.',
+    'booking.next.2': 'Los seguimientos se reservan con un enlace privado, al ritmo que necesite tu caso.',
+    'booking.policy.title': 'Antes de reservar',
+    'booking.policy.0': 'El importe se abona al reservar. Ese horario queda exclusivamente para ti y requiere preparación previa, por eso no es reembolsable.',
+    'booking.policy.1': 'Puedes cambiar la cita avisando con al menos 24 horas de antelación. Con menos tiempo no es posible cancelar ni reprogramar (salvo fuerza mayor).',
+    'booking.policy.2': 'Si no asistes y no avisas a tiempo, la consulta se considera realizada.',
+    'booking.patients': '¿Ya eres paciente? Usa el enlace privado que te envié por email o WhatsApp.',
+    'booking.iframe.title': 'Calendario de reserva de la valoración inicial',
+    'booking.loading': 'Cargando disponibilidad…',
+    'booking.open': 'Abrir en una pestaña nueva',
+    'booking.unavailable': 'La reserva online estará disponible muy pronto. Escríbeme y buscamos un hueco para ti.',
+    'booking.unavailable.cta': 'Escríbeme',
     'booking.page.title': 'Reservar Cita · Alexandra',
-    'booking.page.description':
-      'Reserva tu consulta de nutrición con Alexandra. Elige entre consultas iniciales, seguimientos o bonos.',
+    'booking.page.description': 'Reserva tu valoración nutricional inicial con Alexandra y paga de forma segura online.',
     'nav.booking': 'Reservar',
   },
 } as const;
