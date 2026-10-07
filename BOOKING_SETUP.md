@@ -14,7 +14,7 @@ Go to Google Calendar → **Create → Appointment schedule**, and create one sc
 | Schedule | Duration | Price | Published on the website? |
 | --- | --- | --- | --- |
 | Valoración inicial | 80 min | 75 € | **Yes**, this is the only public one |
-| Plan personalizado | 60 min | 70 € | No. Send it by email or WhatsApp after the first visit |
+| Diseño + plan personalizado | 60 min | 70 € | No. Send it by email or WhatsApp after the first visit |
 | Seguimiento | 45 min | 65 € | No. Send it privately |
 | Seguimiento (bono) | 45 min | none | No. Send it only to patients who bought the bono |
 
