@@ -9,16 +9,10 @@ const posts = import.meta.glob('./posts/*.md');
 let allPosts = await Promise.all(
   Object.entries(posts).map(async ([path, resolver]) => {
     const post = await resolver();
-    // Transform "./posts/first-post.md" -> "/blog/posts/first-post"
-    // Or if the file structure expects "/blog/first-post", we need to check where the pages are generated.
-    // Astro pages at src/pages/blog/posts/*.md would be /blog/posts/*
-    // But wait, src/pages/blog/posts/ exists?
-    // Let's check the file list again.
-    // src/pages/blog/posts/firs-post.md
-    // So the URL is /blog/posts/firs-post
     return { ...post, url: path.replace(/\.md$/, '').replace(/^\./, '/blog') };
   })
 );
+allPosts.sort((a, b) => (a.frontmatter.order ?? 99) - (b.frontmatter.order ?? 99));
 let tags = new Set<string>();
 let filteredPosts = allPosts.filter((post) => {
   post.frontmatter.tags.forEach((tag: string) => tags.add(tag));
@@ -53,9 +47,9 @@ let filteredPosts = allPosts.filter((post) => {
         <div class="flex flex-wrap gap-4 lg:justify-end">
           {
             [...tags].map((tag) => (
-              <a href={`/blog/${tag}`} class="px-4 py-2 text-sm uppercase tracking-widest text-brand-black border border-brand-accent/20 rounded-full hover:bg-brand-accent hover:text-white transition-colors">
+              <span class="px-4 py-2 text-sm uppercase tracking-widest text-brand-black border border-brand-accent/20 rounded-full">
                 {tag}
-              </a>
+              </span>
             ))
           }
         </div>
@@ -67,11 +61,17 @@ let filteredPosts = allPosts.filter((post) => {
           filteredPosts.map((post) => (
             <article class="flex flex-col group">
               <a href={post.url} class="block overflow-hidden rounded-2xl">
-                <img
-                  src={post.frontmatter.imgUrl}
-                  alt={post.frontmatter.imgAlt}
-                  class="aspect-[4/5] w-full object-cover bg-white/50 transition-transform duration-500 group-hover:scale-105"
-                />
+                {post.frontmatter.imgUrl ? (
+                  <img
+                    src={post.frontmatter.imgUrl}
+                    alt={post.frontmatter.imgAlt}
+                    class="aspect-[4/5] w-full object-cover bg-white/50 transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div class="aspect-[4/5] w-full bg-gradient-to-br from-[#DCD4EA] via-[#E9DDE6] to-[#F0D9D9] flex items-center justify-center p-8 text-center transition-transform duration-500 group-hover:scale-105">
+                    <span class="text-brand-accent/70 text-xs font-medium uppercase tracking-[0.3em]">{post.frontmatter.tags[0]}</span>
+                  </div>
+                )}
               </a>
               <div class="mt-8 flex flex-col gap-4">
                 <div class="flex items-center gap-4 text-xs font-medium tracking-widest text-brand-muted uppercase">

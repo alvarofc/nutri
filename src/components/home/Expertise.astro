@@ -1,117 +1,311 @@
 ---
-import { Baby, Droplet, HeartPulse, Scale, ShieldPlus, Utensils } from 'lucide-astro';
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
+import { Check } from 'lucide-astro';
+import { getLangFromUrl, getLocalizedPath } from '../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const es = lang === 'es';
 
-const features = [
+const cards = [
   {
-    id: 'expertise-1',
-    name: t('expertise.maternity'),
-    description: t('expertise.maternity.desc'),
-    icon: 'maternity',
+    page: '/digestion',
+    title: es ? 'Mi digestión me condiciona' : 'My digestion holds me back',
+    items: es
+      ? [
+          'Sientes que tu digestión condiciona tu día a día',
+          'Digestiones pesadas, hinchazón y gases',
+          'Acidez, estreñimiento o diarrea',
+          'Esa sensación de que «todo me sienta mal»',
+        ]
+      : [
+          'You feel your digestion shapes your whole day',
+          'Heavy digestion, bloating and gas',
+          'Heartburn, constipation or diarrhoea',
+          'That feeling that “everything upsets me”',
+        ],
+    help: es
+      ? 'Tus síntomas tienen una causa. La buscamos juntas y trabajamos desde la raíz, sin parches.'
+      : 'Your symptoms have a cause. We look for it together and work from the root, with no quick fixes.',
   },
   {
-    id: 'expertise-2',
-    name: t('expertise.diabetes'),
-    description: t('expertise.diabetes.desc'),
-    icon: 'diabetes',
+    title: es ? 'Mis ciclos y mis hormonas' : 'My cycle and my hormones',
+    items: es
+      ? [
+          'Convives con reglas dolorosas o síndrome premenstrual',
+          'SOP, endometriosis o adenomiosis',
+          'Hipotiroidismo u otra alteración hormonal',
+          'Quieres acompañar tu cuerpo desde la nutrición',
+        ]
+      : [
+          'You live with painful periods or PMS',
+          'PCOS, endometriosis or adenomyosis',
+          'Hypothyroidism or another hormonal imbalance',
+          'You want to support your body through nutrition',
+        ],
+    help: es
+      ? 'Te explico cómo se relacionan tu alimentación, tu intestino y tus hormonas, y acompañamos tu tratamiento médico desde la nutrición.'
+      : 'I explain how your diet, your gut and your hormones are connected, and we support your medical treatment through nutrition.',
   },
   {
-    id: 'expertise-3',
-    name: t('expertise.renal'),
-    description: t('expertise.renal.desc'),
-    icon: 'renal',
+    title: es ? 'Mi cuerpo ya no es el de antes' : 'My body is not what it used to be',
+    items: es
+      ? [
+          'Estás en perimenopausia o menopausia',
+          'Notas peor sueño y más cansancio',
+          'Más hinchazón y antojos',
+          'Cambios en tu cuerpo',
+          'Has escuchado que la alimentación influye muchísimo',
+        ]
+      : [
+          'You are in perimenopause or menopause',
+          'You notice poorer sleep and more tiredness',
+          'More bloating and cravings',
+          'Changes in your body',
+          'You’ve heard that food makes a huge difference',
+        ],
+    help: es
+      ? 'Te ayudo a entender qué está cambiando y a cuidar tu energía, tu descanso y tu cuerpo con la alimentación.'
+      : 'I help you understand what is changing and look after your energy, rest and body through food.',
   },
   {
-    id: 'expertise-4',
-    name: t('expertise.oncology'),
-    description: t('expertise.oncology.desc'),
-    icon: 'oncology',
+    title: es ? 'Mi analítica ha salido alterada' : 'My blood tests came back off',
+    items: es
+      ? [
+          'En tu última analítica ha aparecido algún parámetro alterado',
+          'Glucosa, colesterol, hierro o hígado graso',
+          'Te han dicho que «comas mejor»',
+          'Pero nadie te ha explicado cómo hacerlo de una forma realista',
+        ]
+      : [
+          'Your latest blood test shows an altered value',
+          'Glucose, cholesterol, iron or fatty liver',
+          'You’ve been told to “eat better”',
+          'But nobody has explained how to do it realistically',
+        ],
+    help: es
+      ? 'Te explico qué significan tus resultados y los convertimos en un plan realista, coordinado con tu médico.'
+      : 'I explain what your results mean and we turn them into a realistic plan, coordinated with your doctor.',
   },
   {
-    id: 'expertise-5',
-    name: t('expertise.eating'),
-    description: t('expertise.eating.desc'),
-    icon: 'eating',
+    title: es ? 'Comer me genera estrés' : 'Eating stresses me out',
+    items: es
+      ? [
+          'Quieres mejorar tu relación con la comida',
+          'Comes por estrés o ansiedad',
+          'Sientes culpa después de comer',
+          'Quieres perder peso o mejorar tu composición corporal sin restricciones, dietas ni culpa',
+        ]
+      : [
+          'You want a better relationship with food',
+          'You eat when stressed or anxious',
+          'You feel guilty after eating',
+          'You want to lose weight or improve your body composition without restriction, diets or guilt',
+        ],
+    help: es
+      ? 'Puedo acompañarte para adquirir una alimentación más tranquila, consciente y flexible. Una alimentación que realmente disfrutes.'
+      : 'I can support you towards calmer, more mindful and flexible eating. Eating you truly enjoy.',
   },
   {
-    id: 'expertise-6',
-    name: t('expertise.weight'),
-    description: t('expertise.weight.desc'),
-    icon: 'weight',
+    title: es ? 'Quiero cuidarme, pero no llego a todo' : 'I want to look after myself, but I can’t do it all',
+    items: es
+      ? [
+          'Sabes que quieres cuidarte, pero no tienes tiempo',
+          'Llegas cansada e improvisas comidas',
+          'Picas más de lo que te gustaría',
+          'Sientes que no tienes tiempo para organizarte',
+        ]
+      : [
+          'You know you want to look after yourself, but you have no time',
+          'You get home tired and improvise meals',
+          'You snack more than you’d like',
+          'You feel you have no time to get organised',
+        ],
+    help: es
+      ? 'Te ayudo a crear soluciones sencillas, prácticas y realistas.'
+      : 'I help you create simple, practical and realistic solutions.',
   },
 ];
+
+const maternity = {
+  title: es ? 'Embarazo, posparto y búsqueda de embarazo' : 'Pregnancy, postpartum and trying to conceive',
+  items: es
+    ? [
+        'Estás en búsqueda de embarazo',
+        'Estás embarazada o dando el pecho',
+        'Estás en el posparto',
+      ]
+    : [
+        'You are trying to conceive',
+        'You are pregnant or breastfeeding',
+        'You are in the postpartum period',
+      ],
+  help: es
+    ? 'Quieres acompañar tu cuerpo con una nutrición adaptada a esta etapa.'
+    : 'You want to support your body with nutrition adapted to this stage.',
+};
+
+const cta = es ? 'Empezar por aquí' : 'Start here';
+const href = getLocalizedPath('/pricing', lang);
 ---
 
 <section class="bg-white py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div class="text-center mb-16">
-      <span class="inline-block px-4 py-1.5 bg-brand-blush text-brand-rose text-xs font-medium uppercase tracking-widest rounded-full mb-4">
-        {lang === 'es' ? 'Especialidades' : 'Specialties'}
+      <span class="inline-block px-4 py-1.5 bg-brand-accent/10 text-brand-accent text-xs font-medium uppercase tracking-widest rounded-full mb-4">
+        {es ? 'En qué puedo ayudarte' : 'How I can help'}
       </span>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-brand-black mb-4">
-        {t('expertise.title')}
+        {es ? '¿Qué te trae por aquí?' : 'What brings you here?'}
       </h2>
       <p class="text-brand-muted max-w-xl mx-auto">
-        {t('expertise.description')}
+        {es
+          ? 'Elige la situación que más se parece a la tuya. Te explico qué puede estar pasando y por dónde empezar.'
+          : 'Choose the situation that sounds most like yours. I’ll explain what may be going on and where to start.'}
       </p>
     </div>
 
-    <!-- Categories Grid -->
+    <!-- Problem cards: flip on hover / focus / tap -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {features.map((feature, index) => (
-        <div 
-          class="group p-6 sm:p-8 bg-brand-cream rounded-2xl hover:bg-brand-accent/5 transition-colors duration-300 cursor-pointer"
-        >
-          <!-- Icon -->
-          <div class="w-12 h-12 mb-4 flex items-center justify-center text-brand-accent">
-            {feature.icon === 'maternity' && (
-              <Baby class="w-8 h-8" />
-            )}
-            {feature.icon === 'diabetes' && (
-              <HeartPulse class="w-8 h-8" />
-            )}
-            {feature.icon === 'renal' && (
-              <Droplet class="w-8 h-8" />
-            )}
-            {feature.icon === 'oncology' && (
-              <ShieldPlus class="w-8 h-8" />
-            )}
-            {feature.icon === 'eating' && (
-              <Utensils class="w-8 h-8" />
-            )}
-            {feature.icon === 'weight' && (
-              <Scale class="w-8 h-8" />
-            )}
+      {cards.map((card) => (
+        <div class="flip" tabindex="0" data-flip>
+          <div class="flip-inner">
+            <!-- Front -->
+            <div class="flip-face flex flex-col p-6 sm:p-8 bg-brand-cream rounded-2xl">
+              <h3 class="text-2xl font-serif font-medium text-brand-black mb-4">
+                {card.title}
+              </h3>
+
+              <ul class="space-y-2">
+                {card.items.map((item) => (
+                  <li class="flex gap-2.5 text-sm text-brand-gray leading-relaxed">
+                    <Check class="w-4 h-4 mt-0.5 shrink-0 text-brand-accent" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Back -->
+            <div class="flip-face flip-back rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center text-center gap-6">
+              <p class="text-base text-brand-gray leading-relaxed max-w-xs">{card.help}</p>
+              <a
+                href={card.page ? getLocalizedPath(card.page, lang) : href}
+                class="inline-flex items-center gap-2 text-sm font-medium text-brand-accent hover:gap-3 transition-all"
+              >
+                <span>{card.page ? (es ? 'Saber más' : 'Learn more') : cta}</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+            </div>
           </div>
-
-          <!-- Title -->
-          <h3 class="text-lg font-serif font-medium text-brand-black mb-3 group-hover:text-brand-accent transition-colors">
-            {feature.name}
-          </h3>
-
-          <!-- Description -->
-          <p class="text-sm text-brand-muted leading-relaxed">
-            {feature.description}
-          </p>
         </div>
       ))}
+
+      <!-- Pregnancy and postpartum: wide card -->
+      <div class="flip sm:col-span-2 lg:col-span-3" tabindex="0" data-flip>
+        <div class="flip-inner">
+          <div class="flip-face p-6 sm:p-8 bg-brand-blush/40 rounded-2xl grid gap-8 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h3 class="text-2xl sm:text-3xl font-serif font-medium text-brand-black">
+                {maternity.title}
+              </h3>
+            </div>
+            <ul class="space-y-2">
+              {maternity.items.map((item) => (
+                <li class="flex gap-2.5 text-sm text-brand-gray leading-relaxed">
+                  <Check class="w-4 h-4 mt-0.5 shrink-0 text-brand-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="flip-face flip-back rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center text-center gap-6">
+            <p class="text-base text-brand-gray leading-relaxed max-w-md">{maternity.help}</p>
+            <a
+              href={href}
+              class="inline-flex items-center gap-2 text-sm font-medium text-brand-accent hover:gap-3 transition-all"
+            >
+              <span>{cta}</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- CTA -->
-    <div class="mt-12 text-center">
+    <!-- Closing line -->
+    <div class="mt-12 text-center max-w-2xl mx-auto">
+      <p class="text-2xl sm:text-3xl font-serif text-brand-black leading-snug mb-2">
+        {es ? '¿Te reconoces en alguna de estas situaciones?' : 'Do you recognise yourself in any of these situations?'}
+      </p>
+      <p class="text-brand-muted">
+        {es ? 'Podemos empezar por entender qué necesita tu cuerpo.' : 'We can start by understanding what your body needs.'}
+      </p>
       <a
-        href={getLocalizedPath('/contact', lang)}
-        class="inline-flex items-center gap-2 bg-brand-accent text-white px-8 py-4 text-sm font-medium rounded-full hover:bg-brand-accent/90 transition-colors"
+        href={href}
+        class="cta-gradient-btn group relative overflow-hidden mt-8 inline-flex items-center justify-center gap-2 bg-brand-accent text-white px-8 py-4 text-sm font-medium rounded-full transition-all duration-300"
       >
-        <span>{lang === 'es' ? 'Agenda tu consulta' : 'Book your consultation'}</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <span class="relative z-10">{es ? 'Agenda tu valoración inicial' : 'Book your initial assessment'}</span>
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
         </svg>
       </a>
     </div>
   </div>
 </section>
+
+<style>
+  .flip {
+    perspective: 1200px;
+    outline: none;
+  }
+  .flip-inner {
+    display: grid;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+  /* Both faces share the same grid cell, so the card is as tall as the taller face */
+  .flip-face {
+    grid-area: 1 / 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-back {
+    transform: rotateY(180deg);
+    /* Same gradient as the "¿Cómo trabajo?" section */
+    background:
+      radial-gradient(ellipse at center, rgba(248, 200, 180, 0.5) 0%, transparent 70%),
+      linear-gradient(to right, rgba(220, 212, 234, 0.6) 0%, transparent 33%),
+      linear-gradient(to left, rgba(220, 212, 234, 0.6) 0%, transparent 33%),
+      linear-gradient(to bottom, #E8E4F0, #F0E6E8, #F5E6DC);
+  }
+  .flip:hover .flip-inner,
+  .flip:focus-within .flip-inner,
+  .flip.is-flipped .flip-inner {
+    transform: rotateY(180deg);
+  }
+  .flip:focus-visible .flip-face:not(.flip-back) {
+    box-shadow: 0 0 0 2px rgba(46, 35, 103, 0.35);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .flip-inner {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Touch screens have no hover: tap a card to flip it (links keep working).
+  if (window.matchMedia('(hover: none)').matches) {
+    document.querySelectorAll('[data-flip]').forEach((card) => {
+      card.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).closest('a')) return;
+        card.classList.toggle('is-flipped');
+      });
+    });
+  }
+</script>

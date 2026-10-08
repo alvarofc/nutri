@@ -16,9 +16,11 @@ import Layout from './Layout.astro';
       <h1 class="text-5xl font-serif text-blue-950 sm:text-6xl md:text-7xl leading-tight mb-8">
         {frontmatter.title}
       </h1>
-      <h2 class="text-2xl text-blue-900/60 font-light leading-relaxed">
-        {frontmatter.subtitle}
-      </h2>
+      {frontmatter.subtitle && (
+        <h2 class="text-2xl text-blue-900/60 font-light leading-relaxed">
+          {frontmatter.subtitle}
+        </h2>
+      )}
       
       <div class="mt-8 flex flex-wrap justify-center gap-2">
         {
@@ -32,13 +34,15 @@ import Layout from './Layout.astro';
     </div>
 
     <!-- Featured Image -->
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20">
-      <img
-        src={frontmatter.imgUrl}
-        alt={frontmatter.imgAlt}
-        class="w-full aspect-video object-cover bg-stone-100"
-      />
-    </div>
+    {frontmatter.imgUrl && (
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20">
+        <img
+          src={frontmatter.imgUrl}
+          alt={frontmatter.imgAlt}
+          class="w-full aspect-video object-cover bg-stone-100"
+        />
+      </div>
+    )}
 
     <!-- Content -->
     <div class="mx-auto max-w-3xl px-6 lg:px-8 prose prose-lg prose-slate prose-headings:font-serif prose-headings:text-blue-950 prose-p:text-blue-900/80 prose-a:text-blue-900 prose-a:no-underline prose-a:border-b prose-a:border-blue-900/30 hover:prose-a:border-blue-900 prose-img:rounded-none">

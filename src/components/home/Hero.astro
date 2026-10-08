@@ -6,30 +6,21 @@ const t = useTranslations(lang);
 
 // Social links
 const socials = [
-  { name: 'Instagram', href: 'https://instagram.com/tu.nutri.alexandra', icon: 'instagram' },
-  { name: 'Facebook', href: 'https://facebook.com/', icon: 'facebook' },
+  { name: 'Instagram', href: 'https://www.instagram.com/tunutrialexandra/', icon: 'instagram' },
 ];
 ---
 
 <section class="relative bg-brand-cream overflow-hidden">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-72px)] py-16 lg:py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-72px)] pt-16 pb-8 lg:pt-24 lg:pb-10">
       
       <!-- Left: Content -->
       <div class="order-2 lg:order-1">
-        <!-- Announcement Badge -->
-        <div class="mb-6">
-          <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-blush/50 text-brand-accent text-xs font-medium uppercase tracking-widest rounded-full">
-            <span class="w-1.5 h-1.5 bg-brand-accent rounded-full animate-pulse"></span>
-            {lang === 'es' ? 'Citas Disponibles' : 'Now Booking'}
-          </span>
-        </div>
-
         <!-- Hero Headline -->
-        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6">
-          <span class="text-brand-black">Smart</span>{' '}
-          <span class="text-brand-accent whitespace-nowrap">Anti-inflammatory</span>{' '}
-          <span class="text-brand-rose">Nutrition</span>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl leading-[1.05] text-brand-accent mb-8">
+          <span class="block">Smart</span>
+          <span class="block italic whitespace-nowrap">Anti-inflammatory</span>
+          <span class="block">Nutrition</span>
         </h1>
 
         <!-- Subtitle -->

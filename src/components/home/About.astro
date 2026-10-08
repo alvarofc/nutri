@@ -5,64 +5,60 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="bg-brand-cream py-20 sm:py-28 overflow-hidden">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      
-      <!-- Left: Image -->
-      <div class="relative">
-        <div class="aspect-[4/5] rounded-2xl overflow-hidden">
-          <img 
-            src="/assets/about.webp" 
-            alt="Alexandra Ivanova"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <!-- Decorative elements -->
-        <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-blush rounded-full blur-3xl opacity-60"></div>
-        <div class="absolute -top-6 -left-6 w-32 h-32 bg-brand-accent/20 rounded-full blur-2xl"></div>
-      </div>
+<section class="bg-brand-cream pt-20 sm:pt-28 pb-20 sm:pb-28 overflow-hidden">
+  <!-- Message first -->
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+    <span class="block max-w-3xl mx-auto lg:max-w-none lg:w-max lg:relative lg:left-1/2 lg:-translate-x-1/2 lg:whitespace-nowrap text-sm sm:text-base font-semibold uppercase tracking-[0.16em] leading-relaxed text-brand-accent mb-8">
+      {lang === 'es'
+        ? 'Dietista-Nutricionista integrativa y especialista en salud hormonal'
+        : 'Integrative Dietitian-Nutritionist and hormonal health specialist'}
+    </span>
 
-      <!-- Right: Content -->
-      <div>
-        <span class="inline-block px-4 py-1.5 bg-brand-accent/10 text-brand-accent text-xs font-medium uppercase tracking-widest rounded-full mb-6">
-          {lang === 'es' ? 'Conóceme' : 'About Me'}
-        </span>
-        
-        <h2 class="text-3xl sm:text-4xl font-serif font-medium text-brand-black mb-6">
-          {t('about.section.title')}
-        </h2>
-        
-        <p class="text-brand-gray leading-relaxed mb-8">
-          {t('about.section.description')}
-        </p>
+    <h2 class="text-4xl sm:text-5xl lg:text-6xl italic leading-[1.12] text-brand-black">
+      {lang === 'es'
+        ? '“Considero que una buena relación con la comida es clave para ser feliz”'
+        : '“I believe a good relationship with food is key to being happy”'}
+    </h2>
+  </div>
 
-        <!-- Stats Row -->
-        <div class="grid grid-cols-3 gap-6 py-8 border-y border-brand-light mb-8">
-          <div class="text-center">
-            <span class="block text-3xl font-serif font-medium text-brand-accent">5+</span>
-            <span class="text-xs uppercase tracking-widest text-brand-muted">{lang === 'es' ? 'Años' : 'Years'}</span>
-          </div>
-          <div class="text-center">
-            <span class="block text-3xl font-serif font-medium text-brand-accent">200+</span>
-            <span class="text-xs uppercase tracking-widest text-brand-muted">{lang === 'es' ? 'Pacientes' : 'Patients'}</span>
-          </div>
-          <div class="text-center">
-            <span class="block text-3xl font-serif font-medium text-brand-accent">100%</span>
-            <span class="text-xs uppercase tracking-widest text-brand-muted">{lang === 'es' ? 'Pasión' : 'Passion'}</span>
-          </div>
-        </div>
+  <!-- Smaller photo over a tinted band, with the section title set large behind it -->
+  <div
+    class="relative mt-16 sm:mt-20 pt-[calc(var(--about-title)*0.52)]"
+    style="--about-title: clamp(3.5rem, 11vw, 9rem)"
+  >
+    <div class="absolute inset-x-0 top-0 bottom-[16%] bg-[#ECE9F1]"></div>
 
-        <a
-          href={getLocalizedPath('/about', lang)}
-          class="inline-flex items-center gap-2 text-brand-accent font-medium hover:gap-3 transition-all"
-        >
-          <span>{t('about.section.cta')}</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
-      </div>
+    <span
+      aria-hidden="true"
+      class="absolute inset-x-0 top-0 text-center uppercase whitespace-nowrap leading-[0.9] text-white select-none"
+      style="font-size: var(--about-title); font-family: 'Cormorant', serif; font-weight: 300; letter-spacing: -0.02em"
+    >
+      {t('about.section.title')}
+    </span>
+
+    <div class="relative z-10 mx-auto w-[min(62vw,16.5rem)] aspect-square overflow-hidden rounded-2xl">
+      <img
+        src="/assets/sobre-mi.jpg"
+        alt="Alexandra Ivanova"
+        class="w-full h-full object-cover"
+      />
     </div>
+  </div>
+
+  <!-- Text -->
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16 text-center">
+    <p class="text-brand-gray text-lg leading-relaxed max-w-3xl mx-auto mb-10">
+      {t('about.section.description')}
+    </p>
+
+    <a
+      href={getLocalizedPath('/about', lang)}
+      class="inline-flex items-center gap-2 text-brand-accent font-medium hover:gap-3 transition-all"
+    >
+      <span>{t('about.section.cta')}</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+      </svg>
+    </a>
   </div>
 </section>

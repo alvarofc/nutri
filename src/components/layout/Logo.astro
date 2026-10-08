@@ -11,7 +11,7 @@ const t = useTranslations(lang);
   itemtype="https://schema.org/Organization"
 >
   <a
-    href={getLocalizedPath('/', lang)}
+    href={`/${lang}/`}
     class="group flex flex-col items-center"
     itemprop="url"
     aria-label={t('header.homepage.aria')}
@@ -22,7 +22,7 @@ const t = useTranslations(lang);
       Alexandra
     </span>
     <span class="block text-[0.7rem] sm:text-xs uppercase tracking-widest text-brand-muted">
-      {lang === 'es' ? 'Nutricionista' : 'Nutritionist'}
+      {lang === 'es' ? 'Tu nutricionista' : 'Your nutritionist'}
     </span>
   </a>
 </div>

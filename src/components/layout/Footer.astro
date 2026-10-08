@@ -29,8 +29,7 @@ const footerLinks = [
 ];
 
 const socials = [
-  { name: 'Instagram', href: 'https://instagram.com/tu.nutri.alexandra' },
-  { name: 'Facebook', href: 'https://facebook.com/' },
+  { name: 'Instagram', href: 'https://www.instagram.com/tunutrialexandra/' },
 ];
 ---
 
@@ -43,15 +42,9 @@ const socials = [
       
       <!-- Left: Brand & Tagline -->
       <div class="lg:col-span-5">
-        <div class="mb-6">
+        <div class="mb-8">
           <Logo />
         </div>
-        <p class="text-brand-muted text-base max-w-sm mb-8">
-          {lang === 'es' 
-            ? 'Nutrición basada en ciencia. Resultados reales. Sin dietas restrictivas.'
-            : 'Science-based nutrition. Real results. No restrictive diets.'}
-        </p>
-        
         <!-- Social Links -->
         <div class="flex gap-4">
           {socials.map((social) => (
@@ -114,8 +107,6 @@ const socials = [
               {t('contact.title')}
             </h3>
             <ul class="space-y-4 text-sm text-brand-gray">
-              <li>{t('contact.address.line1')}</li>
-              <li>{t('contact.address.line2')}</li>
               <li class="text-brand-black font-medium">{t('contact.phone.number')}</li>
               <li class="text-brand-accent">{t('contact.email.address')}</li>
             </ul>

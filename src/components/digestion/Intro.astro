@@ -1,0 +1,19 @@
+---
+import { getLangFromUrl } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const es = lang === 'es';
+---
+
+<section class="bg-brand-cream py-24 sm:py-32 lg:py-40">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+    <span class="block text-xs font-medium uppercase tracking-[0.25em] text-brand-muted mb-8">
+      {es ? 'Mi digestión me condiciona' : 'My digestion holds me back'}
+    </span>
+    <h1 class="text-4xl sm:text-5xl lg:text-7xl leading-[1.1] text-brand-accent">
+      {es
+        ? 'Entiende qué le pasa a tu cuerpo. Y vuelve a comer tranquila.'
+        : 'Understand what is happening in your body. And eat calmly again.'}
+    </h1>
+  </div>
+</section>

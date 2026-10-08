@@ -17,6 +17,9 @@ import '@fontsource/halant/latin-400.css';
 import '@fontsource/halant/latin-500.css';
 import '@fontsource/halant/latin-600.css';
 import '@fontsource/halant/latin-700.css';
+import '@fontsource/cormorant/latin-300.css';
+import '@fontsource/cormorant/latin-400.css';
+import '@fontsource/cormorant/latin-400-italic.css';
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
@@ -134,9 +137,7 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
       "priceRange": "€€",
       "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00",
       "sameAs": [
-        "https://www.facebook.com/alexandranutri",
-        "https://www.instagram.com/alexandranutri",
-        "https://twitter.com/alexandranutri"
+        "https://www.instagram.com/tunutrialexandra/"
       ],
       "areaServed": [
         {
@@ -188,9 +189,7 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
         }
       ],
       "sameAs": [
-        "https://www.facebook.com/alexandranutri",
-        "https://www.instagram.com/alexandranutri",
-        "https://twitter.com/alexandranutri"
+        "https://www.instagram.com/tunutrialexandra/"
       ]
     })}></script>
   </head>
@@ -205,6 +204,14 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
         display: none !important;
       }
       
+      /* Titles use the same light serif as the "Nutre tu mente, cuerpo y microbiota" line.
+         Small uppercase labels (footer column names, etc.) keep their sans-serif style. */
+      h1:not(.uppercase), h2:not(.uppercase), h3:not(.uppercase), h4:not(.uppercase) {
+        font-family: 'Cormorant', serif !important;
+        font-weight: 400 !important;
+        letter-spacing: -0.025em !important;
+      }
+
       /* Smooth scrolling */
       html {
         scroll-behavior: smooth;

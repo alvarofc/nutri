@@ -40,10 +40,10 @@ export const ui = {
     // Services section
     'services.title': 'How I work',
     'services.methodology': 'THE METHODOLOGY',
-    'services.step1.name': 'First visit',
+    'services.step1.name': 'Initial assessment',
     'services.step1.description':
       'My goal is to get to know you, understand your current situation and what you want to achieve.',
-    'services.step2.name': 'Plan',
+    'services.step2.name': 'Design and delivery of your personalised plan',
     'services.step2.description':
       'I will develop a customized plan for you and your goals. We will review it together to ensure you understand it and feel comfortable with it.',
     'services.step3.name': 'Follow-up',
@@ -151,7 +151,7 @@ export const ui = {
     'header.toggle.menu': 'Toggle menu',
     'header.menu.message':
       "Ready to start your journey towards a healthier, happier you? Let's work together to achieve your nutrition and wellness goals!",
-    'header.homepage.aria': 'Alexandra Nutritionist Homepage',
+    'header.homepage.aria': 'Alexandra, your nutritionist - homepage',
     'header.navigation.aria': 'Main Navigation',
     'header.registration': '| MAD01541',
 
@@ -300,12 +300,12 @@ export const ui = {
     // Services section
     'services.title': '¿Cómo trabajo?',
     'services.methodology': 'METODOLOGÍA',
-    'services.step1.name': 'Primera visita',
+    'services.step1.name': 'Valoración inicial',
     'services.step1.description':
       'Mi objetivo es conocerte, saber cuál es tu situación actual y qué es lo que quieres conseguir.',
-    'services.step2.name': 'Plan',
+    'services.step2.name': 'Diseño y entrega del plan personalizado',
     'services.step2.description':
-      'Desarrollaré un plan hecho a medida para tí y tus objetivos. Lo repasaremos juntos para asegurarnos de que lo entiendes y te sientes cómodo con él.',
+      'Desarrollaré un plan hecho a medida para ti y tus objetivos. Lo repasaremos juntos para asegurarnos de que lo entiendes y te sientes a gusto con él.',
     'services.step3.name': 'Seguimiento',
     'services.step3.description':
       'Realizaremos un seguimiento para ver cómo te encuentras y si es necesario, ajustaremos el plan para que siga siendo efectivo.',
@@ -338,7 +338,7 @@ export const ui = {
     'about.values.respect.description':
       'Trato a cada persona con empatía, comprensión y respeto por sus necesidades, valores y circunstancias únicas.',
     'about.section.description':
-      'Como dietista-nutricionista, me implico al máximo para que cada persna que acompaño se sienta escuchada, comprendida y motivada. A través de una anamnesis rigurosa identifico los factores que están en la raíz del problema, para así diseñar un abordaje integral, sostenible y respaldado científicamente. Creo que cuando el paciente entiende lo que ocurre en su cuerpo, se empodera. Por eso explico con un lenguaje sencillo los mecanismos fisiopatológicos implicados. Para mí, la relación terapéutica es tan importante como el tratamiento nutricional ya que cuando hay confianza, hay adherencia y con ella, verdadero progreso.',
+      'Como dietista-nutricionista, me implico al máximo para que cada persona que acompaño se sienta escuchada, comprendida y motivada. A través de una anamnesis rigurosa identifico los factores que están en la raíz del problema, para así diseñar un abordaje integral, sostenible y respaldado científicamente. Creo que cuando el paciente entiende lo que ocurre en su cuerpo, se empodera. Por eso explico con un lenguaje sencillo los mecanismos fisiopatológicos implicados. Para mí, la relación terapéutica es tan importante como el tratamiento nutricional ya que cuando hay confianza, hay adherencia y con ella, verdadero progreso.',
     'about.section.cta': 'Saber más',
 
     // Contact page
@@ -405,7 +405,7 @@ export const ui = {
     'header.toggle.menu': 'Alternar menú',
     'header.menu.message':
       '¿Listo para comenzar tu viaje hacia una salud y bienestar mejorados? ¡Vamos a trabajar juntos para lograr tus metas nutricionales y de bienestar!',
-    'header.homepage.aria': 'Página de inicio de Alexandra Nutricionista',
+    'header.homepage.aria': 'Página de inicio de Alexandra, tu nutricionista',
     'header.navigation.aria': 'Navegación Principal',
     'header.registration': '| MAD01541',
 
