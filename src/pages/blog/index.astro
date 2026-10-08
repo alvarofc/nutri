@@ -56,7 +56,7 @@ let filteredPosts = allPosts.filter((post) => {
       </div>
 
       <!-- Grid -->
-      <div class="grid gap-x-8 gap-y-20 lg:grid-cols-3">
+      <div class="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         {
           filteredPosts.map((post) => (
             <article class="flex flex-col group">
@@ -65,26 +65,26 @@ let filteredPosts = allPosts.filter((post) => {
                   <img
                     src={post.frontmatter.imgUrl}
                     alt={post.frontmatter.imgAlt}
-                    class="aspect-[4/5] w-full object-cover bg-white/50 transition-transform duration-500 group-hover:scale-105"
+                    class="aspect-[16/9] w-full object-cover bg-white/50 transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <div class="aspect-[4/5] w-full bg-gradient-to-br from-[#DCD4EA] via-[#E9DDE6] to-[#F0D9D9] flex items-center justify-center p-8 text-center transition-transform duration-500 group-hover:scale-105">
+                  <div class="aspect-[16/9] w-full bg-gradient-to-br from-[#DCD4EA] via-[#E9DDE6] to-[#F0D9D9] flex items-center justify-center p-8 text-center transition-transform duration-500 group-hover:scale-105">
                     <span class="text-brand-accent/70 text-xs font-medium uppercase tracking-[0.3em]">{post.frontmatter.tags[0]}</span>
                   </div>
                 )}
               </a>
-              <div class="mt-8 flex flex-col gap-4">
+              <div class="mt-6 flex flex-col gap-3">
                 <div class="flex items-center gap-4 text-xs font-medium tracking-widest text-brand-muted uppercase">
                   <time datetime={post.frontmatter.pubDate}>{post.frontmatter.pubDate.substring(0, 10)}</time>
                   <span>•</span>
                   <span>{post.frontmatter.tags[0]}</span>
                 </div>
-                <h3 class="text-3xl font-serif text-brand-black leading-tight group-hover:text-brand-accent transition-colors">
+                <h3 class="text-2xl font-serif text-brand-black leading-tight group-hover:text-brand-accent transition-colors">
                   <a href={post.url}>
                     {post.frontmatter.title}
                   </a>
                 </h3>
-                <p class="text-brand-muted text-lg leading-relaxed line-clamp-3">
+                <p class="text-brand-muted text-base leading-relaxed">
                   {post.frontmatter.description}
                 </p>
                 <a

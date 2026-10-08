@@ -32,9 +32,9 @@ export const ui = {
     'home.subtitle':
       "Hi! I'm Alexandra Ivanova, Dietitian-Nutritionist (MAD01541), specialized in hormonal health and relationship with food.\n\nI love translating nutrition science into realistic guidelines and small changes that fit into your routine.\n\nThat's why I help you understand what's happening in your body and what it needs, so that eating becomes a pleasure that also takes care of your hormones, your digestion, and your energy.\n\nShall we start?",
     'home.description':
-      'I help you achieve your health and wellness goals through personalized nutrition plans.',
+      'Online dietitian-nutritionist specialised in digestive and hormonal health. Video-call consultations from anywhere, with personalised nutrition plans.',
     'home.hero.image.alt': 'Hero image showing healthy nutrition',
-    'home.page.title': 'Alexandra · Your nutritionist',
+    'home.page.title': 'Alexandra · Online Dietitian-Nutritionist',
     'home.trust.title': 'Certified & Registered Member of',
 
     // Services section
@@ -42,7 +42,7 @@ export const ui = {
     'services.methodology': 'THE METHODOLOGY',
     'services.step1.name': 'Initial assessment',
     'services.step1.description':
-      'My goal is to get to know you, understand your current situation and what you want to achieve.',
+      'In a 75-80 minute video call I get to know you, understand your current situation and what you want to achieve.',
     'services.step2.name': 'Design and delivery of your personalised plan',
     'services.step2.description':
       'I will develop a customized plan for you and your goals. We will review it together to ensure you understand it and feel comfortable with it.',
@@ -91,15 +91,12 @@ export const ui = {
     // Contact page
     'contact.title': 'Contact',
     'contact.subtitle': 'Get in touch with me',
-    'contact.address.label': 'Address',
-    'contact.address.line1': 'Cruz del Sur 24',
-    'contact.address.line2': 'Madrid, 28007',
     'contact.phone.label': 'Phone',
     'contact.phone.number': '+34 644 381 191',
     'contact.email.label': 'Email',
     'contact.email.address': 'consulta@alexandranutri.com',
     'contact.form.title': "Let's work together",
-    'contact.form.subtitle': 'I would love to assist you in my office in person or remotely.',
+    'contact.form.subtitle': 'I see my patients online, by video call, from wherever you are. Write to me and I will get back to you as soon as I can.',
     'contact.form.name': 'Full name',
     'contact.form.email': 'Email',
     'contact.form.phone': 'Phone number',
@@ -111,6 +108,7 @@ export const ui = {
 
     // Pricing page
     'pricing.title': 'Book Your Session',
+    'pricing.online.note': 'All consultations are online, by video call. You receive the link by email when you book.',
     'pricing.subtitle': 'An initial process to understand your case in depth, then follow-ups at the pace your body needs.',
     'pricing.action.book': 'Book initial assessment',
     'pricing.private': 'Booking link sent privately after your initial assessment',
@@ -223,9 +221,9 @@ export const ui = {
     'faq.q2.title': 'How long are the consultation sessions?',
     'faq.q2.answer':
       'The initial assessment lasts 75–80 minutes, the personalized plan session 60 minutes and follow-ups 45 minutes.',
-    'faq.q3.title': 'Do you offer online consultations?',
+    'faq.q3.title': 'How does the online consultation work?',
     'faq.q3.answer':
-      'Yes, I offer both in-person and online consultations to accommodate your preferences and schedule. Online sessions are conducted through a secure video platform.',
+      'All my consultations are online, by video call, from wherever you are. When you book you receive an email with the video call link. All you need is a stable connection and, if you have them, your latest blood tests.',
     'faq.q4.title': 'How many follow-up sessions will I need?',
     'faq.q4.answer':
       'It depends on your goals and progress. Follow-ups usually take place every 2 to 6 weeks, and the 4 follow-up bundle brings the price down to 60 € per session.',
@@ -292,9 +290,9 @@ export const ui = {
     'home.subtitle':
       '¡Hola! Soy Alexandra Ivanova, Dietista-Nutricionista (MAD01541), especializada en salud hormonal y relación con la comida.\n\nMe encanta traducir la ciencia de la nutrición en pautas realistas y pequeños cambios que caben en tu rutina.\n\nPor eso, te acompaño a entender qué le ocurre a tu cuerpo y qué necesita, para que comer sea un placer que también cuide de tus hormonas, tu digestión y tu energía.\n\n¿Empezamos?',
     'home.description':
-      'Te ayudo a alcanzar tus objetivos de salud y bienestar a través de planes de nutrición personalizados.',
+      'Dietista-nutricionista online especializada en salud digestiva y hormonal. Consultas por videollamada desde cualquier lugar, con planes de nutrición personalizados.',
     'home.hero.image.alt': 'Imagen principal mostrando nutrición saludable',
-    'home.page.title': 'Alexandra · Tu nutricionista',
+    'home.page.title': 'Alexandra · Dietista-Nutricionista online',
     'home.trust.title': 'Miembro Colegiado y Certificado de',
 
     // Services section
@@ -302,7 +300,7 @@ export const ui = {
     'services.methodology': 'METODOLOGÍA',
     'services.step1.name': 'Valoración inicial',
     'services.step1.description':
-      'Mi objetivo es conocerte, saber cuál es tu situación actual y qué es lo que quieres conseguir.',
+      'En una videollamada de 75-80 minutos te conozco, entiendo tu situación actual y qué es lo que quieres conseguir.',
     'services.step2.name': 'Diseño y entrega del plan personalizado',
     'services.step2.description':
       'Desarrollaré un plan hecho a medida para ti y tus objetivos. Lo repasaremos juntos para asegurarnos de que lo entiendes y te sientes a gusto con él.',
@@ -344,15 +342,12 @@ export const ui = {
     // Contact page
     'contact.title': 'Contacto',
     'contact.subtitle': 'Ponte en contacto conmigo',
-    'contact.address.label': 'Dirección',
-    'contact.address.line1': 'Cruz del Sur 24',
-    'contact.address.line2': 'Madrid, 28007',
     'contact.phone.label': 'Teléfono',
     'contact.phone.number': '+34 644 381 191',
     'contact.email.label': 'Email',
     'contact.email.address': 'consulta@alexandranutri.com',
     'contact.form.title': 'Trabajemos juntos',
-    'contact.form.subtitle': 'Me encantará atenderte en mi consulta presencialmente o a distancia.',
+    'contact.form.subtitle': 'Atiendo online, por videollamada, desde donde estés. Escríbeme y te responderé lo antes posible.',
     'contact.form.name': 'Nombre completo',
     'contact.form.email': 'Email',
     'contact.form.phone': 'Número de teléfono',
@@ -364,6 +359,7 @@ export const ui = {
 
     // Pricing page
     'pricing.title': 'Reserva tu Cita',
+    'pricing.online.note': 'Todas las consultas son online, por videollamada. Recibes el enlace por correo al reservar.',
     'pricing.subtitle': 'Un proceso inicial para entender tu caso en profundidad y, después, seguimientos al ritmo que necesita tu cuerpo.',
     'pricing.action.book': 'Reservar valoración inicial',
     'pricing.private': 'Recibirás el enlace de reserva tras tu valoración inicial',
@@ -477,9 +473,9 @@ export const ui = {
     'faq.q2.title': '¿Cuánto duran las sesiones de consulta?',
     'faq.q2.answer':
       'La valoración inicial dura 75-80 minutos, la entrega del plan personalizado 60 minutos y los seguimientos 45 minutos.',
-    'faq.q3.title': '¿Ofreces consultas online?',
+    'faq.q3.title': '¿Cómo es la consulta online?',
     'faq.q3.answer':
-      'Sí, ofrezco consultas tanto presenciales como online para adaptarme a tus preferencias y horario. Las sesiones online se realizan a través de una plataforma de video segura.',
+      'Todas mis consultas son online, por videollamada, desde donde estés. Al reservar recibes un correo con el enlace de la videollamada. Solo necesitas una conexión estable y, si los tienes, tus últimos análisis.',
     'faq.q4.title': '¿Cuántas sesiones de seguimiento necesitaré?',
     'faq.q4.answer':
       'Depende de tus objetivos y de tu evolución. Los seguimientos suelen hacerse cada 2 a 6 semanas, y con el bono de 4 seguimientos cada sesión sale a 60 €.',

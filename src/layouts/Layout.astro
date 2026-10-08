@@ -121,77 +121,19 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
       "logo": new URL("/assets/alexandra-2.png", site).toString(),
       "image": socialImageURL.toString(),
       "description": description,
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Madrid",
-        "addressRegion": "Comunidad de Madrid",
-        "postalCode": "28007",
-        "addressCountry": lang === 'es' ? "España" : "Spain"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "40.4168",
-        "longitude": "-3.7038"
-      },
       "telephone": "+34-644-381-191",
       "priceRange": "€€",
-      "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00",
       "sameAs": [
         "https://www.instagram.com/tunutrialexandra/"
       ],
       "areaServed": [
-        {
-          "@type": "City",
-          "name": "Madrid"
-        },
         {
           "@type": "Country",
           "name": lang === 'es' ? "España" : "Spain"
         }
       ]
     })}></script>
-    
-    <!-- Structured Data / JSON-LD - Local Business -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": lang === 'es' ? "Alexandra Nutricionista" : "Alexandra Nutritionist",
-      "image": socialImageURL.toString(),
-      "@id": new URL("#LocalBusiness", site).toString(),
-      "url": site,
-      "telephone": "+34-644-381-191",
-      "priceRange": "€€",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Cruz del Sur 24",
-        "addressLocality": "Madrid",
-        "postalCode": "28007",
-        "addressRegion": "Comunidad de Madrid",
-        "addressCountry": "ES"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 40.4168,
-        "longitude": -3.7038
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
-          "opens": "09:00",
-          "closes": "18:00"
-        }
-      ],
-      "sameAs": [
-        "https://www.instagram.com/tunutrialexandra/"
-      ]
-    })}></script>
+
   </head>
   <body class="bg-brand-cream text-brand-black antialiased">
     <Header />

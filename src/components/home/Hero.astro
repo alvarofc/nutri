@@ -36,7 +36,7 @@ const socials = [
             href={getLocalizedPath('/pricing', lang)}
             class="cta-gradient-btn group relative overflow-hidden bg-brand-accent text-white px-8 py-4 text-sm font-medium rounded-full transition-all duration-300 flex items-center justify-center gap-2"
           >
-            <span class="relative z-10">{t('cta.contact')}</span>
+            <span class="relative z-10">{lang === 'es' ? 'Reserva tu consulta online' : 'Book your online consultation'}</span>
             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
@@ -51,7 +51,7 @@ const socials = [
 
         <!-- Location Info -->
         <div class="flex items-center gap-6 text-sm text-brand-muted">
-          <span>{lang === 'es' ? 'Madrid · Online' : 'Madrid · Online'}</span>
+          <span>{lang === 'es' ? 'Consulta online por videollamada · desde cualquier lugar' : 'Online consultations by video call · from anywhere'}</span>
         </div>
       </div>
 
