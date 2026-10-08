@@ -107,8 +107,7 @@ export const ui = {
     'contact.form.error.phone': 'Invalid phone number.',
 
     // Pricing page
-    'pricing.title': 'Book Your Session',
-    'pricing.online.note': 'All consultations are online, by video call. You receive the link by email when you book.',
+    'pricing.title': 'Your nutritional support process',
     'pricing.subtitle': 'An initial process to understand your case in depth, then follow-ups at the pace your body needs.',
     'pricing.action.book': 'Book initial assessment',
     'pricing.private': 'Booking link sent privately after your initial assessment',
@@ -210,7 +209,7 @@ export const ui = {
     'pricing.bundle.title': '4 follow-up bundle',
     'pricing.bundle.duration': '4 × 45 min',
     'pricing.bundle.description': 'Four follow-up sessions to keep your progress steady.',
-    'pricing.bundle.saving': '60 € per session · save 20 €',
+    'pricing.bundle.saving': '60 € per session',
     'pricing.policy': 'Payment is made when booking and is non-refundable. You can reschedule up to 24 hours before your appointment. Follow-ups can be booked up to 4 months after your last visit.',
 
     // FAQ
@@ -262,7 +261,7 @@ export const ui = {
     'booking.unavailable.cta': 'Contact me',
     'booking.page.title': 'Book Appointment · Alexandra',
     'booking.page.description': 'Book your initial nutrition assessment with Alexandra and pay securely online.',
-    'nav.booking': 'Book Now',
+    'nav.booking': 'Book your appointment',
   },
   es: {
     // Navigation
@@ -358,8 +357,7 @@ export const ui = {
     'contact.form.error.phone': 'Teléfono no válido.',
 
     // Pricing page
-    'pricing.title': 'Reserva tu Cita',
-    'pricing.online.note': 'Todas las consultas son online, por videollamada. Recibes el enlace por correo al reservar.',
+    'pricing.title': 'Tu proceso de acompañamiento nutricional',
     'pricing.subtitle': 'Un proceso inicial para entender tu caso en profundidad y, después, seguimientos al ritmo que necesita tu cuerpo.',
     'pricing.action.book': 'Reservar valoración inicial',
     'pricing.private': 'Recibirás el enlace de reserva tras tu valoración inicial',
@@ -462,7 +460,7 @@ export const ui = {
     'pricing.bundle.title': 'Bono 4 seguimientos',
     'pricing.bundle.duration': '4 × 45 min',
     'pricing.bundle.description': 'Cuatro sesiones de seguimiento para mantener tu progreso constante.',
-    'pricing.bundle.saving': '60 €/sesión · ahorro de 20 €',
+    'pricing.bundle.saving': '60 €/sesión',
     'pricing.policy': 'El importe se abona al reservar y no es reembolsable. Puedes cambiar la cita avisando con al menos 24 horas de antelación. Las citas de seguimiento pueden reservarse hasta 4 meses tras la última visita.',
 
     // FAQ
@@ -515,7 +513,7 @@ export const ui = {
     'booking.unavailable.cta': 'Escríbeme',
     'booking.page.title': 'Reservar Cita · Alexandra',
     'booking.page.description': 'Reserva tu valoración nutricional inicial con Alexandra y paga de forma segura online.',
-    'nav.booking': 'Reservar',
+    'nav.booking': 'Reserva tu cita',
   },
 } as const;
 

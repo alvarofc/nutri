@@ -1,5 +1,5 @@
 {
-    "name": "Alexandra nutricionista",
+    "name": "Alexandra, tu nutricionista",
     "short_name": "Alexandra",
     "icons": [
        {
@@ -13,7 +13,7 @@
         "type": "image/png"
         }
     ],
-    "theme_color": "#FFFFFF",
-    "background_color": "#FFFFFF",
+    "theme_color": "#FAF9F7",
+    "background_color": "#FAF9F7",
     "display": "standalone"
  }

@@ -4,29 +4,12 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="py-20 sm:py-28 bg-brand-cream">
+<section class="pt-20 sm:pt-28 pb-12 sm:pb-16 bg-brand-cream">
   <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col items-center gap-6">
-      <!-- Badge -->
-      <span class="inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-4 py-1.5 text-sm font-medium text-brand-accent">
-        <span class="h-1.5 w-1.5 rounded-full bg-brand-accent"></span>
-        {lang === 'en' ? 'Pricing' : 'Tarifas'}
-      </span>
-      
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-brand-black leading-tight tracking-tight max-w-3xl">
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-[clamp(2.25rem,4.6vw,3.75rem)] text-brand-black leading-tight tracking-tight max-w-3xl lg:max-w-none lg:whitespace-nowrap">
         {t('pricing.title')}
       </h1>
-      
-      <p class="text-lg sm:text-xl text-brand-muted max-w-xl leading-relaxed">
-        {t('pricing.subtitle')}
-      </p>
-
-      <p class="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-brand-accent max-w-xl leading-relaxed">
-        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.55-2.28A1 1 0 0121 8.62v6.76a1 1 0 01-1.45.9L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-        </svg>
-        <span>{t('pricing.online.note')}</span>
-      </p>
     </div>
   </div>
 </section>

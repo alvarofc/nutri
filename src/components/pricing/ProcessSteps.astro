@@ -1,0 +1,340 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const es = lang === 'es';
+const t = useTranslations(lang);
+
+const steps = [
+  {
+    n: '1',
+    eyebrow: es ? 'Primer encuentro' : 'First meeting',
+    short: es ? 'Primer encuentro' : 'First meeting',
+    title: es ? 'Valoración inicial' : 'Initial assessment',
+    chips: ['75-80 min'],
+    lead: es
+      ? 'Un espacio seguro donde buscamos comprender qué está pasando en tu cuerpo.'
+      : 'A safe space where we look to understand what is happening in your body.',
+    blocks: es
+      ? [
+          { label: 'Qué exploramos', items: ['Tus síntomas y su evolución', 'Tu descanso, digestión y niveles de energía', 'Tu actividad física'] },
+          { label: 'Qué buscamos', text: 'Posibles factores que contribuyen al problema: desórdenes hormonales, alteraciones de la microbiota, déficits nutricionales, estrés…' },
+          {
+            label: 'Qué revisamos',
+            items: [
+              'Tu historia clínica, medicación, analíticas y otras pruebas diagnósticas',
+              'Tu alimentación y las barreras que te lo ponen difícil (falta de tiempo, planificación, motivación…)',
+            ],
+          },
+          { label: 'Al terminar', text: 'Acordamos objetivos a corto y largo plazo. Con todo lo recogido preparo tu plan personalizado, que te entrego y te explico en la segunda visita.' },
+        ]
+      : [
+          { label: 'What we explore', items: ['Your symptoms and how they have evolved', 'Your rest, digestion and energy levels', 'Your physical activity'] },
+          { label: 'What we look for', text: 'Possible factors contributing to the problem: hormonal imbalances, changes in the microbiota, nutritional deficiencies, stress…' },
+          {
+            label: 'What we review',
+            items: [
+              'Your medical history, medication, blood tests and other diagnostic tests',
+              'How you eat and the barriers that make it hard today (lack of time, planning, motivation…)',
+            ],
+          },
+          { label: 'At the end', text: 'We agree on short- and long-term goals. With everything gathered I prepare your personalised plan, which I deliver and explain in the second visit.' },
+        ],
+  },
+  {
+    n: '2',
+    eyebrow: es ? 'Segundo encuentro' : 'Second meeting',
+    short: es ? 'Segundo encuentro' : 'Second meeting',
+    title: es ? 'Entrega del plan de acompañamiento nutricional personalizado' : 'Delivery of your personalised nutritional support plan',
+    chips: es ? ['60 min', 'En un plazo de 5 días laborables'] : ['60 min', 'Within 5 working days'],
+    lead: es
+      ? 'Te entrego y te explico en detalle tu plan, elaborado a partir de todo lo recogido en la valoración inicial.'
+      : 'I deliver and explain your plan in detail, built from everything gathered in the initial assessment.',
+    blocks: es
+      ? [
+          { label: 'Entenderás', text: 'Qué está sucediendo en tu cuerpo y qué necesita.' },
+          {
+            label: 'Recibirás',
+            highlight: true,
+            items: [
+              'Un plan de alimentación individualizado, adaptado a tus requerimientos y a tu objetivo inicial',
+              'Recomendaciones dietético‑conductuales: hábitos antiinflamatorios, pautas prácticas y ajustes sencillos para tu día a día',
+              'Si procede, una pauta de suplementación explicada (qué, para qué y cómo tomarla)',
+            ],
+          },
+          { label: 'Durante la sesión', text: 'Lo revisamos todo contigo, resolvemos dudas y hacemos los ajustes necesarios para que todo encaje contigo.' },
+        ]
+      : [
+          { label: 'You will understand', text: 'What is happening in your body and what it needs.' },
+          {
+            label: 'You will receive',
+            highlight: true,
+            items: [
+              'An individualised meal plan, adapted to your requirements and your initial goal',
+              'Dietary and behavioural recommendations: anti-inflammatory habits, practical guidelines and simple adjustments for your day to day',
+              'Where appropriate, a clearly explained supplementation guide (what, what for and how to take it)',
+            ],
+          },
+          { label: 'During the session', text: 'We review everything together, answer your questions and make the adjustments needed so that everything fits you.' },
+        ],
+  },
+  {
+    n: '3',
+    eyebrow: es ? 'Después' : 'Afterwards',
+    short: es ? 'Seguimiento' : 'Follow-up',
+    title: es ? 'Visitas de seguimiento' : 'Follow-up visits',
+    chips: es ? ['45 min', 'Cada 2 a 6 semanas'] : ['45 min', 'Every 2 to 6 weeks'],
+    lead: es
+      ? 'El espacio donde revisamos cómo estás respondiendo al plan y cómo te sientes en el proceso.'
+      : 'The space where we review how you are responding to the plan and how you are feeling during the process.',
+    blocks: es
+      ? [
+          { label: 'Valoramos tu evolución', text: 'Síntomas, energía, digestión, composición corporal…' },
+          { label: 'Ajustamos', text: 'Las pautas, para que la estrategia siga alineada con tus objetivos y tu momento vital.' },
+          { label: 'Trabajamos', items: ['Consolidar hábitos', 'Resolver dudas', 'Desbloquear cualquier dificultad que surja por el camino'] },
+          { label: 'Después de cada sesión', text: 'Recibes por correo las recomendaciones actualizadas y el material complementario.' },
+        ]
+      : [
+          { label: 'We assess your progress', text: 'Symptoms, energy, digestion, body composition…' },
+          { label: 'We adjust', text: 'The guidelines, so the strategy stays aligned with your goals and your stage of life.' },
+          { label: 'We work on', items: ['Consolidating habits', 'Answering your questions', 'Unblocking any difficulty that comes up along the way'] },
+          { label: 'After each session', text: 'You receive the updated recommendations and any supporting material by email.' },
+        ],
+  },
+];
+---
+
+<section class="proc relative bg-brand-cream" data-process>
+  <div class="proc-sticky">
+    <h1 class="proc-title px-4 pt-10 text-center font-serif text-4xl leading-tight tracking-tight text-brand-black sm:text-5xl lg:pt-4 lg:text-[clamp(1.9rem,3.3vw,2.9rem)] lg:whitespace-nowrap">
+      {t('pricing.title')}
+    </h1>
+
+    <!-- Timeline (only shown in the horizontal, scroll-driven version) -->
+    <div class="proc-timeline mx-auto w-full max-w-5xl px-8 pt-9" aria-hidden="true">
+      <div class="relative h-px bg-brand-accent/20">
+        <div class="proc-fill absolute left-0 top-0 h-px bg-brand-accent"></div>
+        {steps.map((step, i) => (
+          <div
+            class="proc-node absolute top-0 -translate-x-1/2 -translate-y-1/2"
+            style={`left: ${(i / (steps.length - 1)) * 100}%`}
+            data-node={i}
+          >
+            <span class="proc-dot block h-4 w-4 rounded-full border-2 border-brand-accent bg-brand-cream transition-colors duration-300"></span>
+          </div>
+        ))}
+      </div>
+      <div class="relative mt-5 h-6">
+        {steps.map((step, i) => (
+          <span
+            class="proc-label absolute -translate-x-1/2 whitespace-nowrap text-xs font-medium uppercase tracking-[0.2em] text-brand-muted transition-colors duration-300"
+            style={`left: ${(i / (steps.length - 1)) * 100}%`}
+            data-label={i}
+          >
+            {step.short}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="proc-viewport">
+      <ol class="proc-track">
+        {steps.map((step, i) => (
+          <li class="proc-panel" data-panel={i}>
+            <div class="proc-inner mx-auto grid w-full max-w-5xl gap-6 px-4 sm:px-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14 lg:items-center">
+              <div>
+                <span class="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-accent to-[#6B5B95] text-sm font-medium text-white shadow-sm">
+                  {step.n}
+                </span>
+                <p class="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-brand-muted">{step.eyebrow}</p>
+                <h2 class="text-3xl leading-[1.05] text-brand-black sm:text-4xl lg:text-[2.9rem]">{step.title}</h2>
+                <ul class="mt-5 flex flex-wrap gap-2">
+                  {step.chips.map((chip) => (
+                    <li class="rounded-full bg-brand-accent/10 px-3 py-1 text-xs font-medium tracking-wide text-brand-accent">{chip}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p class="text-xl leading-snug text-brand-black sm:text-[1.55rem]" style="font-family: 'Cormorant', serif; font-style: italic;">{step.lead}</p>
+                <dl class="mt-3 divide-y divide-brand-accent/10 text-brand-gray">
+                  {step.blocks.map((block) => (
+                    <div class={`grid gap-1 py-2 sm:grid-cols-[8.5rem_1fr] sm:gap-5 ${block.highlight ? '-mx-3 rounded-2xl bg-brand-accent/[0.06] px-3' : ''}`}>
+                      <dt class="pt-0.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-brand-accent">{block.label}</dt>
+                      <dd class="text-[0.92rem] leading-[1.5] lg:text-[0.95rem]">
+                        {block.text && <p>{block.text}</p>}
+                        {block.items && (
+                          <ul class="space-y-1">
+                            {block.items.map((item) => (
+                              <li class="flex gap-2"><span class="mt-[0.6em] h-1 w-1 shrink-0 rounded-full bg-brand-accent"></span><span>{item}</span></li>
+                            ))}
+                          </ul>
+                        )}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Default (phones, small screens, reduced motion): the three steps stacked */
+  .proc-timeline {
+    display: none;
+  }
+
+  .proc-track {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Wide screens: one step at a time, sliding sideways while you scroll down */
+  @media (min-width: 1024px) and (min-height: 720px) and (prefers-reduced-motion: no-preference) {
+    .proc {
+      height: 560vh;
+    }
+    .proc-sticky {
+      position: sticky;
+      top: var(--hdr, 88px);
+      height: calc(100vh - var(--hdr, 88px));
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .proc-timeline {
+      display: block;
+      flex: none;
+    }
+    .proc-viewport {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .proc-track {
+      position: relative;
+    }
+    .proc-inner {
+      transform: translateX(calc(var(--d, 0) * 30vw));
+      will-change: transform;
+    }
+    .proc-track {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      padding: 0;
+      height: 100%;
+      width: 300%;
+      transform: translateX(calc(var(--p, 0) * -66.6667%));
+      will-change: transform;
+    }
+    .proc-panel {
+      flex: 0 0 33.3333%;
+      display: flex;
+      align-items: center;
+      opacity: var(--o, 1);
+      transition: opacity 0.15s linear;
+    }
+    .proc-fill {
+      width: calc(var(--p, 0) * 100%);
+    }
+    .proc-dot.is-on {
+      background: var(--color-accent, #2E2367);
+    }
+    .proc-label.is-on {
+      color: #2E2367;
+    }
+  }
+</style>
+
+<script>
+  const MQ = '(min-width: 1024px) and (min-height: 720px) and (prefers-reduced-motion: no-preference)';
+
+  // Where the carousel sits (0 = step 1, 1 = step 2, 2 = step 3) along the scroll.
+  // The flat stretches are pauses so each step can be read before the next one slides in.
+  const STOPS: Array<[number, number]> = [
+    [0, 0],
+    [0.3, 0],
+    [0.42, 1],
+    [0.7, 1],
+    [0.82, 2],
+    [1, 2],
+  ];
+  const ease = (t: number) => t * t * (3 - 2 * t);
+  function position(p: number) {
+    for (let i = 1; i < STOPS.length; i++) {
+      const [p1, v1] = STOPS[i];
+      const [p0, v0] = STOPS[i - 1];
+      if (p <= p1) {
+        const t = (p - p0) / Math.max(p1 - p0, 1e-6);
+        return v0 + (v1 - v0) * ease(Math.min(1, Math.max(0, t)));
+      }
+    }
+    return 2;
+  }
+
+  function init() {
+    const root = document.querySelector<HTMLElement>('[data-process]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = '1';
+
+    const mq = window.matchMedia(MQ);
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-panel]'));
+    const dots = Array.from(root.querySelectorAll<HTMLElement>('.proc-dot'));
+    const labels = Array.from(root.querySelectorAll<HTMLElement>('.proc-label'));
+    const last = panels.length - 1;
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      if (!mq.matches) {
+        root.style.removeProperty('--p');
+        panels.forEach((p) => {
+          p.style.removeProperty('--o');
+          p.style.removeProperty('--d');
+        });
+        return;
+      }
+      const H = document.querySelector('header')?.offsetHeight ?? 88;
+      root.style.setProperty('--hdr', H + 'px');
+      const rect = root.getBoundingClientRect();
+      const stage = Math.max(root.offsetHeight - (window.innerHeight - H), 1);
+      const raw = Math.min(1, Math.max(0, (H - rect.top) / stage));
+      const pos = position(raw);
+      const p = pos / last;
+      root.style.setProperty('--p', p.toFixed(4));
+      panels.forEach((panel, i) => {
+        const d = Math.abs(pos - i);
+        // neighbours stay visible (fainter) so you can see the steps sliding past
+        panel.style.setProperty('--o', String(Math.max(0.28, 1 - d * 0.72).toFixed(3)));
+        // extra sideways offset: the content travels faster than the panel, then settles
+        panel.style.setProperty('--d', (i - pos).toFixed(4));
+      });
+      const idx = Math.round(pos);
+      dots.forEach((d, i) => d.classList.toggle('is-on', i <= idx));
+      labels.forEach((l, i) => l.classList.toggle('is-on', i === idx));
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    mq.addEventListener('change', onScroll);
+    update();
+  }
+
+  document.addEventListener('astro:page-load', init);
+  init();
+</script>

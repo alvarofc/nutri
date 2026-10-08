@@ -37,24 +37,11 @@ const questions = [
 ];
 ---
 
-<section class="relative py-20 sm:py-28 overflow-hidden">
-  <!-- Soft lavender to peach gradient background -->
-  <div class="absolute inset-0 bg-gradient-to-b from-[#E8E4F0] via-[#F0E6E8] to-[#F5E6DC]"></div>
-  
-  <!-- Radial gradient for warm center glow -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(248,200,180,0.4)_0%,_transparent_70%)]"></div>
-  
-  <!-- Soft purple accents on sides -->
-  <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#DCD4EA]/50 to-transparent"></div>
-  <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#DCD4EA]/50 to-transparent"></div>
-
+<section class="relative py-20 sm:py-28 bg-brand-cream">
   <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-3 lg:gap-16">
       <!-- Header -->
       <div>
-        <span class="inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-4 py-1.5 text-sm font-medium text-brand-accent mb-4">
-          FAQ
-        </span>
         <h2 class="font-serif text-3xl sm:text-4xl text-brand-black leading-tight">
           {t('faq.title')}
         </h2>
@@ -72,7 +59,7 @@ const questions = [
           {
             questions.map((question, index) => (
               <div
-                class="bg-white rounded-2xl overflow-hidden transition-shadow hover:shadow-md"
+                class="bg-white rounded-2xl overflow-hidden border border-brand-light/60 transition-shadow hover:shadow-sm"
                 x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected } }`}
               >
                 <dt>
@@ -87,7 +74,7 @@ const questions = [
                     <span class="font-medium text-brand-black group-hover:text-brand-accent transition-colors">
                       {question.title}
                     </span>
-                    <span class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-brand-ivory group-hover:bg-brand-accent/10 transition-colors">
+                    <span class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-brand-cream group-hover:bg-brand-accent/10 transition-colors">
                       <svg
                         class="text-brand-accent h-5 w-5 transform transition duration-200 ease-out"
                         x-bind:class="{ 'rotate-180': isOpen }"
