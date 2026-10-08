@@ -43,7 +43,7 @@ if (Astro.request.method === "POST") {
     <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
       <!-- Left side - Text -->
       <div class="flex flex-col gap-6">
-        <span class="inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-4 py-1.5 text-sm font-medium text-brand-accent w-fit">
+        <span class="eyebrow">
           {lang === 'en' ? 'Send a Message' : 'Envía un Mensaje'}
         </span>
         
@@ -97,7 +97,7 @@ if (Astro.request.method === "POST") {
               name="full-name"
               id="full-name"
               autocomplete="name"
-              class="block w-full rounded-xl border-0 bg-white px-4 py-3.5 text-brand-black ring-1 ring-brand-gray/20 placeholder:text-brand-gray transition-all focus:ring-2 focus:ring-brand-accent focus:outline-none hover:ring-brand-accent/50"
+              class="block w-full rounded-2xl border-0 bg-white px-4 py-3.5 text-brand-black ring-1 ring-brand-gray/20 placeholder:text-brand-gray transition-all focus:ring-2 focus:ring-brand-accent focus:outline-none hover:ring-brand-accent/50"
               placeholder={t('contact.form.name')}
               required
             />
@@ -114,7 +114,7 @@ if (Astro.request.method === "POST") {
               name="email"
               id="email"
               autocomplete="email"
-              class="block w-full rounded-xl border-0 bg-white px-4 py-3.5 text-brand-black ring-1 ring-brand-gray/20 placeholder:text-brand-gray transition-all focus:ring-2 focus:ring-brand-accent focus:outline-none hover:ring-brand-accent/50"
+              class="block w-full rounded-2xl border-0 bg-white px-4 py-3.5 text-brand-black ring-1 ring-brand-gray/20 placeholder:text-brand-gray transition-all focus:ring-2 focus:ring-brand-accent focus:outline-none hover:ring-brand-accent/50"
               placeholder={t('contact.form.email')}
               required
             />
@@ -130,7 +130,7 @@ if (Astro.request.method === "POST") {
               name="phone"
               id="phone"
               autocomplete="tel"
-              class="block w-full rounded-xl border-0 bg-white px-4 py-3.5 text-brand-black ring-1 ring-brand-gray/20 placeholder:text-brand-gray transition-all focus:ring-2 focus:ring-brand-accent focus:outline-none hover:ring-brand-accent/50"
+              class="block w-full rounded-2xl border-0 bg-white px-4 py-3.5 text-brand-black ring-1 ring-brand-gray/20 placeholder:text-brand-gray transition-all focus:ring-2 focus:ring-brand-accent focus:outline-none hover:ring-brand-accent/50"
               placeholder={t('contact.form.phone')}
               pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
               required
@@ -146,7 +146,7 @@ if (Astro.request.method === "POST") {
               name="message"
               id="message"
               rows="4"
-              class="block w-full rounded-xl border-0 bg-white px-4 py-3.5 text-brand-black ring-1 ring-brand-gray/20 placeholder:text-brand-gray transition-all focus:ring-2 focus:ring-brand-accent focus:outline-none hover:ring-brand-accent/50 resize-none"
+              class="block w-full rounded-2xl border-0 bg-white px-4 py-3.5 text-brand-black ring-1 ring-brand-gray/20 placeholder:text-brand-gray transition-all focus:ring-2 focus:ring-brand-accent focus:outline-none hover:ring-brand-accent/50 resize-none"
               placeholder={t('contact.form.message')} 
               required
             ></textarea>

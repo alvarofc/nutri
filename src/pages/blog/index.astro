@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import SectionHeader from '../../components/layout/SectionHeader.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 
 const lang = 'es'; // Default to Spanish for the root blog
@@ -21,38 +22,17 @@ let filteredPosts = allPosts.filter((post) => {
 ---
 
 <Layout title="Journal" description="Journal de Alexandra • Ideas, recomendaciones y consejos que me gusta compartir.">
-  <section class="relative py-24 sm:py-32 overflow-hidden">
-    <!-- Soft lavender to peach gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[#E8E4F0] via-[#F0E6E8] to-[#F5E6DC]"></div>
-    
-    <!-- Radial gradient for warm center glow -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(248,200,180,0.4)_0%,_transparent_70%)]"></div>
-    
-    <!-- Soft purple accents on sides -->
-    <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#DCD4EA]/50 to-transparent"></div>
-    <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#DCD4EA]/50 to-transparent"></div>
-
+  <section class="relative bg-brand-cream py-20 sm:py-28">
     <div class="relative mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
       
       <!-- Header -->
-      <div class="flex flex-col gap-12 border-b border-brand-accent/10 pb-12 mb-16 lg:flex-row lg:items-end lg:justify-between">
-        <div class="flex flex-col gap-6">
-          <h1 class="text-6xl font-serif text-brand-black sm:text-7xl md:text-8xl">Journal</h1>
-          <p class="max-w-xl text-xl text-brand-muted font-light">
-            Ideas, recomendaciones y consejos que me gusta compartir.
-          </p>
-        </div>
-        
-        <!-- Tags -->
-        <div class="flex flex-wrap gap-4 lg:justify-end">
-          {
-            [...tags].map((tag) => (
-              <span class="px-4 py-2 text-sm uppercase tracking-widest text-brand-black border border-brand-accent/20 rounded-full">
-                {tag}
-              </span>
-            ))
-          }
-        </div>
+      <SectionHeader as="h1" eyebrow="Ideas y consejos" title="Journal" lead="Ideas, recomendaciones y consejos que me gusta compartir." />
+      <div class="-mt-8 mb-14 flex flex-wrap gap-x-6 gap-y-2">
+        {
+          [...tags].map((tag) => (
+            <span class="eyebrow opacity-70">{tag}</span>
+          ))
+        }
       </div>
 
       <!-- Grid -->

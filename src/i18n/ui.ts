@@ -174,10 +174,10 @@ export const ui = {
       '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis."',
 
     // CTA Section
-    'cta.title': "Let's make something amazing together",
+    'cta.title': 'Book your consultation',
     'cta.description':
       'Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.',
-    'cta.button': 'Contact us',
+    'cta.button': 'Write to me',
 
     // Team
     'team.title': 'Meet our team',
@@ -261,7 +261,7 @@ export const ui = {
     'booking.unavailable.cta': 'Contact me',
     'booking.page.title': 'Book Appointment · Alexandra',
     'booking.page.description': 'Book your initial nutrition assessment with Alexandra and pay securely online.',
-    'nav.booking': 'Book your appointment',
+    'nav.booking': 'Book your consultation',
   },
   es: {
     // Navigation
@@ -425,10 +425,10 @@ export const ui = {
       '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis."',
 
     // CTA Section
-    'cta.title': 'Hagamos algo increíble juntos',
+    'cta.title': 'Reserva tu consulta',
     'cta.description':
       'Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.',
-    'cta.button': 'Contáctanos',
+    'cta.button': 'Escríbeme',
 
     // Team
     'team.title': 'Conoce a nuestro equipo',
@@ -513,7 +513,7 @@ export const ui = {
     'booking.unavailable.cta': 'Escríbeme',
     'booking.page.title': 'Reservar Cita · Alexandra',
     'booking.page.description': 'Reserva tu valoración nutricional inicial con Alexandra y paga de forma segura online.',
-    'nav.booking': 'Reserva tu cita',
+    'nav.booking': 'Reserva tu consulta',
   },
 } as const;
 

@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import SectionHeader from '../layout/SectionHeader.astro';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -37,19 +38,17 @@ const questions = [
 ];
 ---
 
-<section class="relative py-20 sm:py-28 bg-brand-cream">
+<section class="relative py-20 sm:py-28 bg-white">
   <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-3 lg:gap-16">
       <!-- Header -->
-      <div>
-        <h2 class="font-serif text-3xl sm:text-4xl text-brand-black leading-tight">
-          {t('faq.title')}
-        </h2>
-        <p class="mt-4 text-brand-muted leading-relaxed">
-          {lang === 'en' ? "Can't find what you're looking for? Feel free to contact me directly." : '¿No encuentras lo que buscas? No dudes en contactarme directamente.'}
-        </p>
-      </div>
-      
+      <SectionHeader
+        class="!mb-0"
+        eyebrow={lang === 'en' ? 'Before booking' : 'Antes de reservar'}
+        title={t('faq.title')}
+        lead={lang === 'en' ? "Can't find what you're looking for? Feel free to contact me directly." : '¿No encuentras lo que buscas? No dudes en contactarme directamente.'}
+      />
+
       <!-- Accordion -->
       <div class="lg:col-span-2">
         <dl
@@ -59,7 +58,7 @@ const questions = [
           {
             questions.map((question, index) => (
               <div
-                class="bg-white rounded-2xl overflow-hidden border border-brand-light/60 transition-shadow hover:shadow-sm"
+                class="bg-brand-cream rounded-2xl overflow-hidden transition-shadow hover:shadow-sm"
                 x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected } }`}
               >
                 <dt>
@@ -74,7 +73,7 @@ const questions = [
                     <span class="font-medium text-brand-black group-hover:text-brand-accent transition-colors">
                       {question.title}
                     </span>
-                    <span class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-brand-cream group-hover:bg-brand-accent/10 transition-colors">
+                    <span class="ml-6 flex h-8 w-8 items-center justify-center rounded-full bg-white group-hover:bg-brand-accent/10 transition-colors">
                       <svg
                         class="text-brand-accent h-5 w-5 transform transition duration-200 ease-out"
                         x-bind:class="{ 'rotate-180': isOpen }"

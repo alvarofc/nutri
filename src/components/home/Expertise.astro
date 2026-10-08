@@ -1,6 +1,7 @@
 ---
 import { Check } from 'lucide-astro';
 import { getLangFromUrl, getLocalizedPath } from '../../i18n/ui';
+import SectionHeader from '../layout/SectionHeader.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const es = lang === 'es';
@@ -123,25 +124,16 @@ const cards = [
       ? 'Te ayudo a crear soluciones sencillas, prácticas y realistas.'
       : 'I help you create simple, practical and realistic solutions.',
   },
+  {
+    title: es ? 'Embarazo, posparto y búsqueda de embarazo' : 'Pregnancy, postpartum and trying to conceive',
+    items: es
+      ? ['Estás en búsqueda de embarazo', 'Estás embarazada o dando el pecho', 'Estás en el posparto']
+      : ['You are trying to conceive', 'You are pregnant or breastfeeding', 'You are in the postpartum period'],
+    help: es
+      ? 'Quieres acompañar tu cuerpo con una nutrición adaptada a esta etapa.'
+      : 'You want to support your body with nutrition adapted to this stage.',
+  },
 ];
-
-const maternity = {
-  title: es ? 'Embarazo, posparto y búsqueda de embarazo' : 'Pregnancy, postpartum and trying to conceive',
-  items: es
-    ? [
-        'Estás en búsqueda de embarazo',
-        'Estás embarazada o dando el pecho',
-        'Estás en el posparto',
-      ]
-    : [
-        'You are trying to conceive',
-        'You are pregnant or breastfeeding',
-        'You are in the postpartum period',
-      ],
-  help: es
-    ? 'Quieres acompañar tu cuerpo con una nutrición adaptada a esta etapa.'
-    : 'You want to support your body with nutrition adapted to this stage.',
-};
 
 const cta = es ? 'Empezar por aquí' : 'Start here';
 const href = getLocalizedPath('/pricing', lang);
@@ -150,24 +142,22 @@ const href = getLocalizedPath('/pricing', lang);
 <section class="bg-white py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="text-center mb-16">
-      <span class="inline-block px-4 py-1.5 bg-brand-accent/10 text-brand-accent text-xs font-medium uppercase tracking-widest rounded-full mb-4">
-        {es ? 'En qué puedo ayudarte' : 'How I can help'}
-      </span>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-brand-black mb-4">
-        {es ? '¿Qué te trae por aquí?' : 'What brings you here?'}
-      </h2>
-      <p class="text-brand-muted max-w-xl mx-auto">
-        {es
-          ? 'Elige la situación que más se parece a la tuya. Te explico qué puede estar pasando y por dónde empezar.'
-          : 'Choose the situation that sounds most like yours. I’ll explain what may be going on and where to start.'}
-      </p>
-    </div>
+    <SectionHeader
+      eyebrow={es ? 'En qué puedo ayudarte' : 'How I can help'}
+      title={es ? '¿Qué te trae por aquí?' : 'What brings you here?'}
+      lead={es
+        ? 'Elige la situación que más se parece a la tuya. Te explico qué puede estar pasando y por dónde empezar.'
+        : 'Choose the situation that sounds most like yours. I’ll explain what may be going on and where to start.'}
+    />
 
     <!-- Problem cards: flip on hover / focus / tap -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {cards.map((card) => (
-        <div class="flip" tabindex="0" data-flip>
+      {cards.map((card, index) => (
+        <div
+          class={`flip ${index === cards.length - 1 ? 'sm:col-span-2 sm:justify-self-center sm:w-[calc(50%-0.75rem)] lg:col-span-1 lg:col-start-2 lg:w-full' : ''}`}
+          tabindex="0"
+          data-flip
+        >
           <div class="flip-inner">
             <!-- Front -->
             <div class="flip-face flex flex-col p-6 sm:p-8 bg-brand-cream rounded-2xl">
@@ -201,40 +191,6 @@ const href = getLocalizedPath('/pricing', lang);
           </div>
         </div>
       ))}
-
-      <!-- Pregnancy and postpartum: wide card -->
-      <div class="flip sm:col-span-2 lg:col-span-3" tabindex="0" data-flip>
-        <div class="flip-inner">
-          <div class="flip-face p-6 sm:p-8 bg-brand-blush/40 rounded-2xl grid gap-8 lg:grid-cols-2 lg:items-center">
-            <div>
-              <h3 class="text-2xl sm:text-3xl font-serif font-medium text-brand-black">
-                {maternity.title}
-              </h3>
-            </div>
-            <ul class="space-y-2">
-              {maternity.items.map((item) => (
-                <li class="flex gap-2.5 text-sm text-brand-gray leading-relaxed">
-                  <Check class="w-4 h-4 mt-0.5 shrink-0 text-brand-accent" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div class="flip-face flip-back rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center text-center gap-6">
-            <p class="text-base text-brand-gray leading-relaxed max-w-md">{maternity.help}</p>
-            <a
-              href={href}
-              class="inline-flex items-center gap-2 text-sm font-medium text-brand-accent hover:gap-3 transition-all"
-            >
-              <span>{cta}</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Closing line -->
@@ -273,6 +229,12 @@ const href = getLocalizedPath('/pricing', lang);
     grid-area: 1 / 1;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+  }
+  /* every card has the same height */
+  @media (min-width: 640px) {
+    .flip-face {
+      min-height: 24.75rem;
+    }
   }
   .flip-back {
     transform: rotateY(180deg);

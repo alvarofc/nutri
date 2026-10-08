@@ -46,10 +46,10 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['Montserrat', 'ABCDiatype', 'Assistant', 'sans-serif'],
-      serif: ['Halant', 'serif'],
+      sans: ['Montserrat', 'sans-serif'],
+      serif: ['Cormorant', 'serif'],
       'header-main': ['Montserrat', 'sans-serif'],
-      'header-sub': ['Libre Baskerville', 'serif'],
+      'header-sub': ['Cormorant', 'serif'],
       display: ['Montserrat', 'sans-serif'],
     },
     letterSpacing: {
@@ -81,6 +81,8 @@ module.exports = {
       hero: ['clamp(2.5rem, 8vw, 6rem)', '1'],
     },
     extend: {
+      transitionTimingFunction: { DEFAULT: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+      transitionDuration: { DEFAULT: '300ms' },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
         'slide-up': 'slideUp 0.6s ease-out',

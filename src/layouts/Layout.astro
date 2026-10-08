@@ -1,22 +1,10 @@
 ---
-import '@fontsource/assistant/latin-300.css';
-import '@fontsource/assistant/latin-400.css';
-import '@fontsource/assistant/latin-500.css';
-import '@fontsource/assistant/latin-600.css';
-import '@fontsource/assistant/latin-700.css';
-import '@fontsource/assistant/latin-800.css';
 import '@fontsource/montserrat/latin-400.css';
 import '@fontsource/montserrat/latin-500.css';
 import '@fontsource/montserrat/latin-600.css';
 import '@fontsource/montserrat/latin-700.css';
 import '@fontsource/montserrat/latin-800.css';
 import '@fontsource/montserrat/latin-900.css';
-import '@fontsource/libre-baskerville/latin-400.css';
-import '@fontsource/libre-baskerville/latin-700.css';
-import '@fontsource/halant/latin-400.css';
-import '@fontsource/halant/latin-500.css';
-import '@fontsource/halant/latin-600.css';
-import '@fontsource/halant/latin-700.css';
 import '@fontsource/cormorant/latin-300.css';
 import '@fontsource/cormorant/latin-400.css';
 import '@fontsource/cormorant/latin-400-italic.css';
@@ -110,6 +98,21 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
     
     <ViewTransitions />
     
+    <!-- Gentle "arrive" effect: sections fade and rise a little as they come into view -->
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('rv');
+        document.addEventListener('astro:after-swap', function () {
+          document.documentElement.classList.add('rv');
+        });
+        // safety net: if the reveal script never runs, show everything
+        setTimeout(function () {
+          if (!window.__rvReady) document.documentElement.classList.remove('rv');
+        }, 4000);
+      })();
+    </script>
+
     <slot name="head" />
 
     <!-- Structured Data / JSON-LD - Professional Service -->
@@ -151,7 +154,87 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
       h1:not(.uppercase), h2:not(.uppercase), h3:not(.uppercase), h4:not(.uppercase) {
         font-family: 'Cormorant', serif !important;
         font-weight: 400 !important;
-        letter-spacing: -0.025em !important;
+        letter-spacing: -0.03em !important;
+      }
+
+      /* ---- Shared design tokens: one label style, one lead style, one section header ---- */
+      .eyebrow {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #2E2367;
+      }
+      .eyebrow-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
+      }
+      .eyebrow-link:hover {
+        gap: 0.9rem;
+        opacity: 0.8;
+      }
+      .lead {
+        font-family: 'Cormorant', serif;
+        font-size: 1.3rem;
+        line-height: 1.45;
+        color: #404040;
+      }
+      @media (min-width: 640px) {
+        .lead {
+          font-size: 1.45rem;
+        }
+      }
+      .sec-head {
+        margin-bottom: 3.5rem;
+      }
+      .sec-top {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.75rem;
+      }
+      .sec-rule {
+        height: 1px;
+        flex: 1;
+        background: rgba(46, 35, 103, 0.2);
+        transform-origin: left;
+        transition: scale 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+      }
+      html.rv .sec-head:not(.in) .sec-rule {
+        scale: 0 1;
+      }
+      .sec-title {
+        font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+        line-height: 1.05;
+        color: #1a1a1a;
+        max-width: 22ch;
+      }
+      .sec-head .lead {
+        margin-top: 1.25rem;
+        max-width: 38rem;
+      }
+
+      /* "Arrive" effect: blocks fade in and rise a little (about 18px) as they enter the screen */
+      html.rv main > :is(section, article):not([data-process]) > div > * {
+        opacity: 0;
+        translate: 0 18px;
+        transition:
+          opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+          translate 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      html.rv main > :is(section, article):not([data-process]) > div > *.in {
+        opacity: 1;
+        translate: 0 0;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html.rv main > :is(section, article):not([data-process]) > div > * {
+          opacity: 1;
+          translate: none;
+          transition: none;
+        }
       }
 
       /* Smooth scrolling */
@@ -275,6 +358,35 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
           true
         );
       })();
+    </script>
+    <script>
+      function setupArrive() {
+        const root = document.documentElement;
+        const targets = Array.from(
+          document.querySelectorAll<HTMLElement>('main > :is(section, article):not([data-process]) > div > *, main .sec-head')
+        );
+        window.__rvReady = true;
+        if (!('IntersectionObserver' in window)) {
+          root.classList.remove('rv');
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target as HTMLElement;
+              const index = Array.from(el.parentElement?.children ?? []).indexOf(el);
+              el.style.transitionDelay = `${Math.min(index, 5) * 110}ms`;
+              el.classList.add('in');
+              el.addEventListener('transitionend', () => (el.style.transitionDelay = ''), { once: true });
+              io.unobserve(el);
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -5% 0px' }
+        );
+        targets.forEach((el) => io.observe(el));
+      }
+      document.addEventListener('astro:page-load', setupArrive);
     </script>
   </body>
 </html>

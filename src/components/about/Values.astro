@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import SectionHeader from '../layout/SectionHeader.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -28,29 +29,12 @@ const values = [
 ];
 ---
 
-<section class="relative py-20 sm:py-28 overflow-hidden">
-  <!-- Soft lavender to peach gradient background -->
-  <div class="absolute inset-0 bg-gradient-to-b from-[#E8E4F0] via-[#F0E6E8] to-[#F5E6DC]"></div>
-  
-  <!-- Radial gradient for warm center glow -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(248,200,180,0.4)_0%,_transparent_70%)]"></div>
-  
-  <!-- Soft purple accents on sides -->
-  <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#DCD4EA]/50 to-transparent"></div>
-  <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#DCD4EA]/50 to-transparent"></div>
-
+<section class="relative py-20 sm:py-28 bg-brand-cream">
   <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col gap-12">
       <!-- Header -->
-      <div class="text-center max-w-2xl mx-auto">
-        <span class="inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-4 py-1.5 text-sm font-medium text-brand-accent mb-4">
-          {lang === 'en' ? 'My Values' : 'Mis Valores'}
-        </span>
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-brand-black">
-          {t('about.values.title')}
-        </h2>
-      </div>
-      
+      <SectionHeader class="!mb-0" eyebrow={lang === 'en' ? 'My Values' : 'Mis Valores'} title={t('about.values.title')} />
+
       <!-- Values Grid -->
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {

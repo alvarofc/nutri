@@ -1,0 +1,19 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  as?: 'h1' | 'h2';
+  class?: string;
+}
+const { eyebrow, title, lead, as: Tag = 'h2', class: extra = '' } = Astro.props;
+---
+
+<div class={`sec-head ${extra}`}>
+  <div class="sec-top">
+    <span class="eyebrow">{eyebrow}</span>
+    <span class="sec-rule" aria-hidden="true"></span>
+  </div>
+  <Tag class="sec-title">{title}</Tag>
+  {lead && <p class="lead">{lead}</p>}
+</div>

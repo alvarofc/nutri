@@ -24,9 +24,11 @@ const socials = [
         </h1>
 
         <!-- Subtitle -->
-        <div class="text-lg text-brand-gray font-light leading-relaxed mb-8 max-w-md space-y-4">
-          {t('home.subtitle').split('\n\n').map((paragraph) => (
-            <p>{paragraph}</p>
+        <div class="mb-8 max-w-lg space-y-4">
+          {t('home.subtitle').split('\n\n').map((paragraph, i) => (
+            i === 0
+              ? <p class="lead text-brand-black">{paragraph}</p>
+              : <p class="text-base text-brand-gray font-light leading-relaxed">{paragraph}</p>
           ))}
         </div>
 
@@ -42,7 +44,8 @@ const socials = [
             </svg>
           </a>
           <a
-            href={getLocalizedPath('/about', lang)}
+            href="#como-trabajo"
+            data-scroll-to="como-trabajo"
             class="group border border-brand-black/20 text-brand-black px-8 py-4 text-sm font-medium rounded-full hover:border-brand-accent hover:text-brand-accent transition-all duration-300 flex items-center justify-center gap-2"
           >
             <span>{t('cta.learn')}</span>
@@ -86,3 +89,22 @@ const socials = [
     </div>
   </div>
 </section>
+
+<script>
+  // "Saber más" glides down to the "¿Cómo trabajo?" section
+  function setupScrollLinks() {
+    document.querySelectorAll<HTMLAnchorElement>('[data-scroll-to]').forEach((link) => {
+      if (link.dataset.bound) return;
+      link.dataset.bound = '1';
+      link.addEventListener('click', (event) => {
+        const target = document.getElementById(link.dataset.scrollTo ?? '');
+        if (!target) return;
+        event.preventDefault();
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
+  }
+  document.addEventListener('astro:page-load', setupScrollLinks);
+  setupScrollLinks();
+</script>
