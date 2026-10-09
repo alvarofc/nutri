@@ -5,39 +5,42 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="relative flex items-center bg-brand-accent text-white py-20 sm:py-28 overflow-hidden">
-  <div class="w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="relative text-center">
-      <!-- Background decoration -->
-      <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
-      
-      <div class="relative z-10">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium mb-6 max-w-2xl mx-auto">
-          {t('cta.title')}
-        </h2>
-        
-        <p class="font-serif text-xl sm:text-2xl leading-snug text-white/90 max-w-xl mx-auto mb-10">
-          {lang === 'es'
-            ? 'Empieza con una valoración inicial online: 75-80 minutos para entender qué le pasa a tu cuerpo y por dónde empezar.'
-            : 'Start with an online initial assessment: 75-80 minutes to understand what is happening in your body and where to begin.'}
-        </p>
+<section class="grid lg:grid-cols-2 bg-brand-accent text-white overflow-hidden">
+  <!-- Text half -->
+  <div class="flex flex-col justify-center px-6 py-16 sm:px-12 sm:py-20 lg:px-16 lg:py-24">
+    <div class="max-w-md mx-auto lg:mx-0 lg:ml-auto lg:mr-10 w-full">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium mb-5">
+        {t('cta.title')}
+      </h2>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href={getLocalizedPath('/pricing', lang)}
-            class="inline-flex items-center justify-center gap-2 bg-white text-brand-accent px-8 py-3.5 font-serif text-xl font-medium rounded-full hover:bg-brand-cream transition-colors"
-          >
-            <span>{lang === 'es' ? 'Reserva tu consulta' : 'Book your consultation'}</span>
-          </a>
-          <a
-            href={getLocalizedPath('/contact', lang)}
-            class="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-8 py-3.5 font-serif text-xl font-medium rounded-full hover:bg-white/10 transition-colors"
-          >
-            <span>{t('cta.button')}</span>
-          </a>
-        </div>
+      <p class="font-sans text-base sm:text-lg font-light leading-relaxed text-white/90 mb-8">
+        {lang === 'es'
+          ? 'Empieza con una valoración inicial online: 75-80 minutos para entender qué le pasa a tu cuerpo y por dónde empezar.'
+          : 'Start with an online initial assessment: 75-80 minutes to understand what is happening in your body and where to begin.'}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a
+          href={getLocalizedPath('/pricing', lang)}
+          class="inline-flex items-center justify-center gap-2 bg-white text-brand-accent px-7 py-3 font-sans text-sm font-medium rounded-full hover:bg-brand-cream transition-colors"
+        >
+          <span>{lang === 'es' ? 'Reserva tu valoración inicial' : 'Book your initial assessment'}</span>
+        </a>
+        <a
+          href={getLocalizedPath('/contact', lang)}
+          class="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-7 py-3 font-sans text-sm font-medium rounded-full hover:bg-white/10 transition-colors"
+        >
+          <span>{t('cta.button')}</span>
+        </a>
       </div>
     </div>
   </div>
+
+  <!-- Photo half -->
+  <div
+    class="min-h-[18rem] sm:min-h-[22rem] lg:min-h-0 bg-cover"
+    style="background-image: url('/assets/higos.jpg'); background-position: 50% 62%;"
+    role="img"
+    aria-label={lang === 'es' ? 'Dos higos sobre un fondo blanco' : 'Two figs on a white background'}
+  ></div>
 </section>

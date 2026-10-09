@@ -38,7 +38,7 @@ export const ui = {
     'home.trust.title': 'Certified & Registered Member of',
 
     // Services section
-    'services.title': 'How I work',
+    'services.title': 'How I support you',
     'services.methodology': 'THE METHODOLOGY',
     'services.step1.name': 'Initial assessment',
     'services.step1.description':
@@ -295,7 +295,7 @@ export const ui = {
     'home.trust.title': 'Miembro Colegiado y Certificado de',
 
     // Services section
-    'services.title': '¿Cómo trabajo?',
+    'services.title': 'Cómo te acompaño',
     'services.methodology': 'METODOLOGÍA',
     'services.step1.name': 'Valoración inicial',
     'services.step1.description':

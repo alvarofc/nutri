@@ -135,78 +135,83 @@ const cards = [
   },
 ];
 
+// One short line per situation, shown on the front of the glass cards
+const summaries = es
+  ? [
+      'Hinchazón, gases, digestiones pesadas, acidez, estreñimiento o diarrea.',
+      'Reglas dolorosas, síndrome premenstrual, SOP, endometriosis o hipotiroidismo.',
+      'Perimenopausia o menopausia, peor sueño, más cansancio, hinchazón y antojos.',
+      'Glucosa, colesterol, hierro o hígado graso, y nadie te ha explicado cómo cambiarlo.',
+      'Comes por estrés o ansiedad, sientes culpa y quieres cambiar tu cuerpo sin restricciones.',
+      'Sin tiempo, llegas cansada e improvisas comidas, picas más de lo que te gustaría.',
+      'Búsqueda de embarazo, embarazo, lactancia o posparto.',
+    ]
+  : [
+      'Bloating, gas, heavy digestion, heartburn, constipation or diarrhoea.',
+      'Painful periods, PMS, PCOS, endometriosis or hypothyroidism.',
+      'Perimenopause or menopause, poorer sleep, more tiredness, bloating and cravings.',
+      'Glucose, cholesterol, iron or fatty liver, and nobody has explained how to change it.',
+      'You eat when stressed or anxious, feel guilty and want to change your body without restriction.',
+      'No time, you get home tired and improvise meals, you snack more than you would like.',
+      'Trying to conceive, pregnancy, breastfeeding or postpartum.',
+    ];
+
 const cta = es ? 'Empezar por aquí' : 'Start here';
 const href = getLocalizedPath('/pricing', lang);
 ---
 
-<section class="bg-[#F0ECE4] py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Section Header -->
-    <SectionHeader
-      eyebrow={es ? 'En qué puedo ayudarte' : 'How I can help'}
-      title={es ? '¿Qué te trae por aquí?' : 'What brings you here?'}
-      lead={es
-        ? 'Elige la situación que más se parece a la tuya. Te explico qué puede estar pasando y por dónde empezar.'
-        : 'Choose the situation that sounds most like yours. I’ll explain what may be going on and where to start.'}
-    />
+<section id="que-te-trae" class="scroll-mt-[4.5rem] relative overflow-hidden bg-[#D9C6CA] [&_.sec-title]:!max-w-none lg:[&_.sec-title]:whitespace-nowrap py-16 sm:py-24 [&_.lead]:text-[#2F1B24] lg:[&_.lead]:!max-w-none lg:[&_.lead]:!whitespace-nowrap [&_.text-brand-gray]:text-[#2F1B24]">
+  <!-- Out-of-focus flower, tilted, in the bottom-right corner; multiplied onto the wall so it takes its colour and fades on its inner sides -->
+  <div
+    class="pointer-events-none absolute -bottom-[9%] -right-[3%] aspect-[756/839] w-[clamp(15rem,36%,28rem)] bg-cover mix-blend-multiply opacity-80 blur-[2px]"
+    style="background-image: url('/assets/flor-esquina-6.jpg'); -webkit-mask-image: radial-gradient(ellipse 62% 62% at 64% 64%, #000 0%, rgba(0,0,0,.82) 18%, rgba(0,0,0,.55) 38%, rgba(0,0,0,.28) 58%, rgba(0,0,0,.1) 78%, transparent 100%); mask-image: radial-gradient(ellipse 62% 62% at 64% 64%, #000 0%, rgba(0,0,0,.82) 18%, rgba(0,0,0,.55) 38%, rgba(0,0,0,.28) 58%, rgba(0,0,0,.1) 78%, transparent 100%);"
+    aria-hidden="true"
+  ></div>
 
-    <!-- Problem cards: flip on hover / focus / tap -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {cards.map((card, index) => (
-        <div
-          class={`flip ${index === cards.length - 1 ? 'sm:col-span-2 sm:justify-self-center sm:w-[calc(50%-0.75rem)] lg:col-span-1 lg:col-start-2 lg:w-full' : ''}`}
-          tabindex="0"
-          data-flip
-        >
-          <div class="flip-inner">
-            <!-- Front -->
-            <div class="flip-face flex flex-col p-6 sm:p-8 bg-brand-cream rounded-2xl">
-              <h3 class="text-2xl font-serif font-medium text-brand-black mb-4">
-                {card.title}
-              </h3>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div>
+      <!-- Section Header -->
+      <SectionHeader
+        eyebrow={es ? 'Cómo puedo ayudarte' : 'How I can help'}
+        title={es ? '¿Te reconoces en alguna de estas situaciones?' : 'Do you recognise yourself in any of these situations?'}
+        lead={es
+          ? 'Te explico qué puede estar pasando y por dónde empezar.'
+          : 'I’ll explain what may be going on and where to start.'}
+      />
 
-              <ul class="space-y-2">
-                {card.items.map((item) => (
-                  <li class="flex gap-2.5 text-sm text-brand-gray leading-relaxed">
-                    <Check class="w-4 h-4 mt-0.5 shrink-0 text-brand-accent" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <!-- Problem cards: frosted glass, flip on hover / focus / tap -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        {[0, 1, 2, 6, 3, 4, 5].map((index) => { const card = cards[index]; return (
+          <div class="flip" tabindex="0" data-flip>
+            <div class="flip-inner">
+              <!-- Front -->
+              <div class="flip-face flip-front flex flex-col p-4 sm:p-5 rounded-2xl border border-white/60 bg-[rgba(250,249,247,0.74)] shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)]">
+                <h3 class="mb-3 text-[0.82rem] font-semibold uppercase leading-snug tracking-[0.06em] text-brand-accent" style="font-family: 'Montserrat', sans-serif !important; letter-spacing: 0.06em !important;">
+                  {card.title}
+                </h3>
+                <p class="text-[0.8rem] leading-snug text-brand-gray">{summaries[index]}</p>
+              </div>
 
-            <!-- Back -->
-            <div class="flip-face flip-back rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center text-center gap-6">
-              <p class="text-base text-brand-gray leading-relaxed max-w-xs">{card.help}</p>
-              <a
-                href={card.page ? getLocalizedPath(card.page, lang) : href}
-                class="eyebrow eyebrow-link"
-              >
-                <span>{card.page ? (es ? 'Saber más' : 'Learn more') : cta}</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-              </a>
+              <!-- Back -->
+              <div class="flip-face flip-back flex flex-col items-start justify-center gap-3 rounded-2xl p-4 sm:p-5">
+                <p class="flip-help text-[0.8rem] leading-snug text-[#F3E6E1]">{card.help}</p>
+                <a
+                  href={card.page ? getLocalizedPath(card.page, lang) : href}
+                  class="flip-link eyebrow eyebrow-link !text-[#F3E6E1]"
+                >
+                  <span>{card.page ? (es ? 'Saber más' : 'Learn more') : cta}</span>
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ); })}
 
-    <!-- Closing line -->
-    <div class="mt-12 text-center max-w-2xl mx-auto">
-      <p class="text-2xl sm:text-3xl font-serif text-brand-black leading-snug mb-2">
-        {es ? '¿Te reconoces en alguna de estas situaciones?' : 'Do you recognise yourself in any of these situations?'}
-      </p>
-      <p class="text-brand-muted">
-        {es ? 'Podemos empezar por entender qué necesita tu cuerpo.' : 'We can start by understanding what your body needs.'}
-      </p>
-      <a
-        href={href}
-        class="cta-gradient-btn group relative overflow-hidden mt-8 inline-flex items-center justify-center gap-2 bg-brand-cta text-white px-8 py-4 text-sm font-medium rounded-full transition-all duration-300"
-      >
-        <span class="relative z-10">{es ? 'Agenda tu valoración inicial' : 'Book your initial assessment'}</span>
-      </a>
+        <!-- 8th card: empty for now, same glass style as the others -->
+        <div class="min-h-[9rem] rounded-2xl border border-white/60 bg-[rgba(250,249,247,0.74)] p-4 shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)] sm:p-5" aria-hidden="true"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -227,15 +232,13 @@ const href = getLocalizedPath('/pricing', lang);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
   }
-  /* every card has the same height */
-  @media (min-width: 640px) {
-    .flip-face {
-      min-height: 24.75rem;
-    }
+  .flip-face {
+    min-height: 9rem;
   }
   .flip-back {
     transform: rotateY(180deg);
-    background: #EBDDD6;
+    background: rgba(91, 31, 46, 0.93);
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
   .flip:hover .flip-inner,
   .flip:focus-within .flip-inner,
@@ -248,6 +251,48 @@ const href = getLocalizedPath('/pricing', lang);
   @media (prefers-reduced-motion: reduce) {
     .flip-inner {
       transition: none;
+    }
+  }
+
+  /* Phones: no flip. Each card shows the situation and, right below, how I help */
+  @media (max-width: 767px) {
+    .flip-inner {
+      display: block;
+      transform: none !important;
+      transition: none;
+    }
+    .flip-face {
+      min-height: 0;
+      backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+    }
+    .flip-front {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom: 0;
+      padding-bottom: 0.5rem;
+      box-shadow: none;
+    }
+    .flip-back {
+      transform: none;
+      align-items: flex-start;
+      justify-content: flex-start;
+      background: rgba(250, 249, 247, 0.74);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      padding-top: 0;
+      box-shadow: 0 10px 30px -18px rgba(74, 29, 51, 0.45);
+    }
+    .flip-back .flip-help {
+      color: #4A1D33;
+      font-weight: 400;
+      border-top: 1px solid rgba(91, 31, 46, 0.18);
+      padding-top: 0.75rem;
+    }
+    .flip-back .flip-link {
+      color: #79264D !important;
     }
   }
 </style>

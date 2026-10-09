@@ -5,127 +5,67 @@ import Logo from './Logo.astro';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const footerLinks = [
-  {
-    name: t('nav.home'),
-    href: getLocalizedPath('/', lang),
-  },
-  {
-    name: t('nav.about'),
-    href: getLocalizedPath('/about', lang),
-  },
-  {
-    name: t('nav.pricing'),
-    href: getLocalizedPath('/pricing', lang),
-  },
-  {
-    name: t('nav.contact'),
-    href: getLocalizedPath('/contact', lang),
-  },
-  {
-    name: t('footer.privacy'),
-    href: getLocalizedPath('/privacy', lang),
-  },
+const es = lang === 'es';
+
+const navLinks = [
+  { name: t('nav.pricing'), href: getLocalizedPath('/pricing', lang) },
+  { name: t('nav.about'), href: getLocalizedPath('/about', lang) },
+  { name: t('nav.contact'), href: getLocalizedPath('/contact', lang) },
+  { name: t('nav.blog'), href: getLocalizedPath('/blog', lang) },
 ];
 
-const socials = [
-  { name: 'Instagram', href: 'https://www.instagram.com/tunutrialexandra/' },
-];
+const instagram = 'https://www.instagram.com/tunutrialexandra/';
+const linkClass = 'text-sm text-brand-gray transition-colors hover:text-brand-accent';
+const headingClass = 'mb-5 text-xs font-medium uppercase tracking-[0.2em] text-brand-accent';
 ---
 
-<footer class="bg-brand-cream border-t border-brand-light/50" aria-labelledby="footer-heading">
+<footer class="border-t border-brand-accent/15 bg-brand-cream" aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">{t('footer.heading')}</h2>
-  
-  <!-- Main Footer Content -->
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-      
-      <!-- Left: Brand & Tagline -->
-      <div class="lg:col-span-5">
-        <div class="mb-8">
-          <Logo />
-        </div>
-        <!-- Social Links -->
-        <div class="flex gap-4">
-          {socials.map((social) => (
-            <a
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-sm font-medium text-brand-muted hover:text-brand-accent transition-colors"
-            >
-              {social.name}
-            </a>
-          ))}
-        </div>
+
+  <!-- Four equal columns, same top line, same left edge inside each one -->
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+    <div class="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4 lg:gap-x-12">
+
+      <!-- Brand -->
+      <div class="col-span-2 lg:col-span-1">
+        <Logo />
       </div>
 
-      <!-- Right: Navigation Links -->
-      <div class="lg:col-span-7">
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
-          <!-- Quick Links -->
-          <div>
-            <h3 class="text-xs font-medium uppercase tracking-widest text-brand-muted mb-6">
-              {t('footer.company')}
-            </h3>
-            <ul class="space-y-4">
-              {footerLinks.slice(0, 3).map((link) => (
-                <li>
-                  <a
-                    href={link.href}
-                    class="text-sm text-brand-gray hover:text-brand-accent transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <!-- Navigation -->
+      <div>
+        <h3 class={headingClass}>{es ? 'Navegación' : 'Navigate'}</h3>
+        <ul class="space-y-3">
+          {navLinks.map((link) => (
+            <li><a href={link.href} class={linkClass}>{link.name}</a></li>
+          ))}
+        </ul>
+      </div>
 
-          <!-- More Links -->
-          <div>
-            <h3 class="text-xs font-medium uppercase tracking-widest text-brand-muted mb-6">
-              {t('footer.legal')}
-            </h3>
-            <ul class="space-y-4">
-              {footerLinks.slice(3).map((link) => (
-                <li>
-                  <a
-                    href={link.href}
-                    class="text-sm text-brand-gray hover:text-brand-accent transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <!-- Contact -->
+      <div>
+        <h3 class={headingClass}>{t('contact.title')}</h3>
+        <ul class="space-y-3">
+          <li><a href={`mailto:${t('contact.email.address')}`} class={`${linkClass} break-all`}>{t('contact.email.address')}</a></li>
+          <li class="text-sm text-brand-gray">{t('contact.phone.number')}</li>
+          <li><a href={instagram} target="_blank" rel="noopener noreferrer" class={linkClass}>Instagram</a></li>
+        </ul>
+      </div>
 
-          <!-- Contact Info -->
-          <div>
-            <h3 class="text-xs font-medium uppercase tracking-widest text-brand-muted mb-6">
-              {t('contact.title')}
-            </h3>
-            <ul class="space-y-4 text-sm text-brand-gray">
-              <li class="text-brand-black font-medium">{t('contact.phone.number')}</li>
-              <li class="text-brand-accent">{t('contact.email.address')}</li>
-            </ul>
-          </div>
-        </div>
+      <!-- Legal -->
+      <div>
+        <h3 class={headingClass}>{t('footer.legal')}</h3>
+        <ul class="space-y-3">
+          <li><a href={getLocalizedPath('/privacy', lang)} class={linkClass}>{t('footer.privacy')}</a></li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <!-- Bottom Bar -->
-  <div class="border-t border-brand-light/50">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-brand-muted">
-        <p>© {new Date().getFullYear()} Alexandra Ivanova. {t('footer.rights')}</p>
-        <p class="flex items-center gap-2">
-          <span class="w-2 h-2 bg-brand-accent rounded-full"></span>
-          <span>MAD01541 · {lang === 'es' ? 'Dietista-Nutricionista Colegiada' : 'Registered Dietitian-Nutritionist'}</span>
-        </p>
-      </div>
+  <!-- Bottom bar: copyright on the left, registration on the right, on the same baseline -->
+  <div class="border-t border-brand-accent/15">
+    <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-brand-gray sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <p>© {new Date().getFullYear()} Alexandra Ivanova. {t('footer.rights')}</p>
+      <p>MAD01541 · {es ? 'Dietista-Nutricionista colegiada' : 'Registered Dietitian-Nutritionist'}</p>
     </div>
   </div>
 </footer>

@@ -26,11 +26,11 @@ const t = useTranslations(lang);
     class="relative mt-16 sm:mt-20 pt-[calc(var(--about-title)*0.52)]"
     style="--about-title: clamp(3.5rem, 11vw, 9rem)"
   >
-    <div class="absolute inset-x-0 top-0 bottom-[16%] bg-[#E5D3C8]"></div>
+    <div class="absolute inset-x-0 top-0 bottom-[16%] bg-[#E5D3C8] bg-cover" style="background-image: url('/assets/sombras-hojas.jpg'); background-position: 50% 85%;"></div>
 
     <span
       aria-hidden="true"
-      class="absolute inset-x-0 top-0 text-center uppercase whitespace-nowrap leading-[0.9] text-white select-none"
+      class="absolute inset-x-0 top-0 text-center uppercase whitespace-nowrap leading-[0.9] text-[#4A1D33]/15 select-none"
       style="font-size: var(--about-title); font-family: 'Cormorant', serif; font-weight: 300; letter-spacing: -0.02em"
     >
       {t('about.section.title')}
