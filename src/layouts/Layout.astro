@@ -21,6 +21,7 @@ interface Props {
   keywords?: string;
   type?: 'website' | 'article';
   schema?: Record<string, unknown>[];
+  alternates?: boolean;
 }
 
 const { 
@@ -30,7 +31,8 @@ const {
   canonicalUrl = Astro.url.pathname,
   keywords = 'nutrition, dietitian, health, wellness, diet',
   type = 'website',
-  schema = []
+  schema = [],
+  alternates = true
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
@@ -73,9 +75,13 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
     <link rel="canonical" href={canonicalURL} />
     
     <!-- Hreflang Tags -->
-    <link rel="alternate" hreflang="es" href={esAlternateURL} />
-    <link rel="alternate" hreflang="en" href={enAlternateURL} />
-    <link rel="alternate" hreflang="x-default" href={esAlternateURL} />
+    {alternates && (
+      <>
+        <link rel="alternate" hreflang="es" href={esAlternateURL} />
+        <link rel="alternate" hreflang="en" href={enAlternateURL} />
+        <link rel="alternate" hreflang="x-default" href={esAlternateURL} />
+      </>
+    )}
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />

@@ -542,6 +542,11 @@ export function getLocalizedPath(path: string, lang: keyof typeof ui) {
     return pathWithoutLang;
   }
 
+  // Blog posts are only written in Spanish: send English readers to the English journal instead
+  if (pathWithoutLang.startsWith('/blog/posts/')) {
+    return `/${lang}/blog/`;
+  }
+
   if (pathWithoutLang === '/' || pathWithoutLang === '') {
     return `/${lang}/`;
   }
