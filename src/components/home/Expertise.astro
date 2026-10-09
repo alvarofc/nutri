@@ -180,12 +180,12 @@ const href = getLocalizedPath('/pricing', lang);
       />
 
       <!-- Problem cards: frosted glass, flip on hover / focus / tap -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+      <div class="grid auto-rows-fr grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         {[0, 1, 2, 6, 3, 4, 5].map((index) => { const card = cards[index]; return (
           <div class="flip" tabindex="0" data-flip>
             <div class="flip-inner">
               <!-- Front -->
-              <div class="flip-face flip-front flex flex-col p-4 sm:p-5 rounded-2xl border border-white/60 bg-[rgba(250,249,247,0.74)] shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)]">
+              <div class="flip-face flip-front flex flex-col p-4 sm:p-5 rounded-2xl border border-white bg-[rgba(250,249,247,0.74)] shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)]">
                 <h3 class="mb-3 text-[0.82rem] font-semibold uppercase leading-snug tracking-[0.06em] text-brand-accent" style="font-family: 'Montserrat', sans-serif !important; letter-spacing: 0.06em !important;">
                   {card.title}
                 </h3>
@@ -210,7 +210,17 @@ const href = getLocalizedPath('/pricing', lang);
         ); })}
 
         <!-- 8th card: empty for now, same glass style as the others -->
-        <div class="min-h-[9rem] rounded-2xl border border-white/60 bg-[rgba(250,249,247,0.74)] p-4 shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)] sm:p-5" aria-hidden="true"></div>
+        <div class="min-h-[9rem] rounded-2xl border border-white bg-[rgba(250,249,247,0.74)] p-4 shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)] sm:p-5" aria-hidden="true"></div>
+      </div>
+
+      <!-- Link to the new "How can I help you?" room on the services page -->
+      <div class="mt-12 text-center">
+        <a href={`${getLocalizedPath('/pricing', lang)}#como-puedo-ayudarte`} class="eyebrow eyebrow-link">
+          <span>{es ? 'Saber más' : 'Learn more'}</span>
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
       </div>
     </div>
   </div>
@@ -220,9 +230,11 @@ const href = getLocalizedPath('/pricing', lang);
   .flip {
     perspective: 1200px;
     outline: none;
+    height: 100%;
   }
   .flip-inner {
     display: grid;
+    height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
   }
@@ -238,7 +250,7 @@ const href = getLocalizedPath('/pricing', lang);
   .flip-back {
     transform: rotateY(180deg);
     background: rgba(91, 31, 46, 0.93);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.85);
   }
   .flip:hover .flip-inner,
   .flip:focus-within .flip-inner,
@@ -278,7 +290,7 @@ const href = getLocalizedPath('/pricing', lang);
       align-items: flex-start;
       justify-content: flex-start;
       background: rgba(250, 249, 247, 0.74);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1px solid #fff;
       border-top: 0;
       border-top-left-radius: 0;
       border-top-right-radius: 0;

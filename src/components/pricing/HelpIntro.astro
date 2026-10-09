@@ -1,0 +1,16 @@
+---
+import { getLangFromUrl } from '../../i18n/ui';
+import SectionHeader from '../layout/SectionHeader.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const es = lang === 'es';
+---
+
+<section id="como-puedo-ayudarte" class="relative scroll-mt-[4.5rem] overflow-hidden bg-[#E4D3D3] py-16 sm:py-24">
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeader
+      eyebrow={es ? 'Áreas de especialización' : 'Areas of expertise'}
+      title={es ? '¿Cómo puedo ayudarte?' : 'How can I help you?'}
+    />
+  </div>
+</section>

@@ -238,8 +238,8 @@ export const ui = {
     'about.page.title': 'About me · Alexandra',
     'contact.page.description': 'Contact our team to learn more about how we can help you.',
     'contact.page.title': 'Contact · Alexandra',
-    'pricing.page.description': 'Pricing, rates and plans from Alexandra.',
-    'pricing.page.title': 'Pricing · Alexandra',
+    'pricing.page.description': 'Services, rates and online initial assessment with Alexandra, dietitian-nutritionist in Madrid.',
+    'pricing.page.title': 'Services · Alexandra',
 
     // Booking page
     'booking.label': 'Book Online',
@@ -490,8 +490,8 @@ export const ui = {
     'contact.page.description':
       'Contacta con nuestro equipo para aprender más sobre cómo podemos ayudarte.',
     'contact.page.title': 'Contacto · Alexandra',
-    'pricing.page.description': 'Precios, tarifas y planes de Alexandra.',
-    'pricing.page.title': 'Precios · Alexandra',
+    'pricing.page.description': 'Servicios, tarifas y valoración inicial online de Alexandra, dietista-nutricionista en Madrid.',
+    'pricing.page.title': 'Servicios · Alexandra',
 
     // Booking page
     'booking.label': 'Reserva Online',

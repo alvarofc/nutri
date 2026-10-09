@@ -1,5 +1,6 @@
 ---
 import Cta from '../components/pricing/Cta.astro';
+import HelpIntro from '../components/pricing/HelpIntro.astro';
 import Faq from '../components/pricing/Faq.astro';
 import PricingTable from '../components/pricing/PricingTable.astro';
 import ProcessSteps from '../components/pricing/ProcessSteps.astro';
@@ -14,6 +15,7 @@ const t = useTranslations(lang);
   description={t('pricing.page.description')}
   title={t('pricing.page.title')}
 >
+  <HelpIntro />
   <ProcessSteps />
   <PricingTable />
   <Faq />

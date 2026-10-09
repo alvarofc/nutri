@@ -104,9 +104,13 @@ const steps = [
 ];
 ---
 
-<section class="proc relative bg-brand-cream" data-process>
+<section id="en-que-consisten-las-sesiones" class="proc relative scroll-mt-[var(--hdr,88px)] bg-brand-cream" data-process>
   <div class="proc-sticky">
-    <h1 class="proc-title px-4 pt-10 text-center font-serif text-4xl leading-tight tracking-tight text-brand-black sm:text-5xl lg:pt-4 lg:text-[clamp(1.9rem,3.3vw,2.9rem)] lg:whitespace-nowrap">
+    <div class="sec-top mx-auto w-full max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 lg:pt-6">
+      <span class="eyebrow">{es ? 'En qué consisten las sesiones' : 'What the sessions involve'}</span>
+      <span class="sec-rule" aria-hidden="true"></span>
+    </div>
+    <h1 class="proc-title px-4 pt-0 text-center font-serif text-4xl leading-tight tracking-tight text-brand-black sm:text-5xl lg:pt-0 lg:text-[clamp(1.9rem,3.3vw,2.9rem)] lg:whitespace-nowrap">
       {t('pricing.title')}
     </h1>
 
