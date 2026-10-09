@@ -5,7 +5,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="bg-brand-cream pt-24 sm:pt-36 pb-24 sm:pb-36 overflow-hidden">
+<section class="bg-brand-cream pt-16 sm:pt-24 pb-16 sm:pb-24 overflow-hidden">
   <!-- Message first -->
   <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
     <span class="block max-w-3xl mx-auto lg:mx-0 lg:max-w-none lg:w-max lg:relative lg:left-1/2 lg:-translate-x-1/2 lg:whitespace-nowrap text-sm sm:text-base font-semibold uppercase tracking-[0.16em] leading-relaxed text-brand-accent mb-8">
@@ -53,7 +53,7 @@ const t = useTranslations(lang);
 
     <a
       href={getLocalizedPath('/about', lang)}
-      class="inline-flex items-center gap-2 text-brand-accent font-medium hover:gap-3 transition-all"
+      class="eyebrow eyebrow-link"
     >
       <span>{t('about.section.cta')}</span>
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

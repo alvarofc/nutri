@@ -13,56 +13,59 @@ const socials = [
 
 <section class="relative bg-brand-cream overflow-hidden">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center lg:items-stretch pt-10 pb-8 lg:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-[auto_minmax(0,30rem)] lg:justify-center gap-8 lg:gap-28 items-center lg:items-stretch pt-10 pb-8 lg:py-14">
       
-      <!-- Left: Content -->
-      <div class="order-2 lg:order-1">
-        <!-- Hero Headline: name, credential line, specialty line, then the intro text -->
-        <!-- Name and credential line share one width: both scale from the same base size -->
-        <div class="mb-8 w-fit max-w-full" style="font-size: clamp(12px, 4vw, 18px);">
-          <h1 class="leading-tight text-[#2E2367] mb-2 whitespace-nowrap" style="font-size: 2.54em;">
-            {lang === 'es' ? 'Soy Alexandra Ivanova' : "I'm Alexandra Ivanova"}
-          </h1>
-          <p class="uppercase leading-5 tracking-[0.1em] text-brand-accent whitespace-nowrap" style="font-family: 'Albert Sans', sans-serif; font-weight: 300; font-size: 1em;">
-            {lang === 'es' ? 'Dietista-Nutricionista (MAD01541)' : 'Dietitian-Nutritionist (MAD01541)'}
-          </p>
-          <!-- Specialty line: same width as the block above, so it reads as part of it -->
-          <p class="mt-3 w-0 min-w-full italic leading-snug text-brand-accent [text-wrap:balance]" style="font-family: 'Cormorant', serif; font-size: 1.35em;">
-            {lang === 'es'
-              ? 'especializada en salud hormonal y relación con la comida.'
-              : 'specialized in hormonal health and relationship with food.'}
-          </p>
-        </div>
-        <!-- Intro text -->
-        <div class="mb-8 max-w-lg space-y-4">
-          {t('home.subtitle').split('\n\n').slice(1).map((paragraph) => (
-            <p class="text-base text-brand-gray font-light leading-relaxed">{paragraph}</p>
-          ))}
-        </div>
+      <!-- Left: Content. On wide screens everything shares the width of the name block, so it reads as one column -->
+      <div class="order-2 lg:order-1 flex lg:items-center">
+        <div class="w-full lg:w-fit lg:max-w-full">
+          <!-- Name and credential line share one width: both scale from the same base size -->
+          <div style="font-size: clamp(0.886rem, 1.732vw, 1.28rem);">
+            <h1 class="leading-tight text-[#2E2367] mb-2 whitespace-nowrap" style="font-size: 2.54em;">
+              {lang === 'es' ? 'Soy Alexandra Ivanova' : "I'm Alexandra Ivanova"}
+            </h1>
+            <p class="uppercase leading-5 tracking-[0.1em] text-brand-accent whitespace-nowrap" style="font-family: 'Albert Sans', sans-serif; font-weight: 300; font-size: 1em;">
+              {lang === 'es' ? 'Dietista-Nutricionista (MAD01541)' : 'Dietitian-Nutritionist (MAD01541)'}
+            </p>
+            <p class="mt-3 lg:w-0 lg:min-w-full italic leading-snug text-brand-accent [text-wrap:balance]" style="font-family: 'Cormorant', serif; font-size: 1.35em;">
+              {lang === 'es'
+                ? 'especializada en salud hormonal y relación con la comida.'
+                : 'specialized in hormonal health and relationship with food.'}
+            </p>
+          </div>
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 mb-10">
-          <a
-            href={getLocalizedPath('/pricing', lang)}
-            class="cta-gradient-btn group relative overflow-hidden bg-brand-accent text-white px-8 py-4 text-sm font-medium rounded-full transition-all duration-300 flex items-center justify-center gap-2"
-          >
-            <span class="relative z-10">{lang === 'es' ? 'Reserva tu consulta online' : 'Book your online consultation'}</span>
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-          <a
-            href="#como-trabajo"
-            data-scroll-to="como-trabajo"
-            class="group border border-brand-black/20 text-brand-black px-8 py-4 text-sm font-medium rounded-full hover:border-brand-accent hover:text-brand-accent transition-all duration-300 flex items-center justify-center gap-2"
-          >
-            <span>{t('cta.learn')}</span>
-          </a>
-        </div>
+          <!-- Thin rule closes the heading block -->
+          <div class="my-6 h-px bg-brand-accent/20 lg:w-0 lg:min-w-full"></div>
 
-        <!-- Location Info -->
-        <div class="flex items-center gap-6 text-sm text-brand-muted">
-          <span>{lang === 'es' ? 'Consulta online por videollamada · desde cualquier lugar' : 'Online consultations by video call · from anywhere'}</span>
+          <!-- Intro text: justified to the same column width -->
+          <div class="space-y-3 lg:w-0 lg:min-w-full">
+            {t('home.subtitle').split('\n\n').slice(1).map((paragraph, i, all) => (
+              i === all.length - 1 ? (
+                <p class="pt-2 text-2xl italic leading-snug text-brand-accent" style="font-family: 'Cormorant', serif;">{paragraph}</p>
+              ) : (
+                <p class="text-base text-brand-gray font-light leading-relaxed text-justify [text-wrap:pretty]" style="hyphens: none;">{paragraph}</p>
+              )
+            ))}
+          </div>
+
+          <!-- Actions: button as wide as the column, secondary link and note centred beneath -->
+          <div class="mt-7 flex flex-wrap items-center justify-between gap-x-4 gap-y-3 lg:w-0 lg:min-w-full">
+            <a
+              href={getLocalizedPath('/pricing', lang)}
+              class="cta-gradient-btn group relative overflow-hidden bg-brand-accent text-white px-5 py-2.5 text-[13px] font-medium rounded-full transition-all duration-300 inline-flex items-center justify-center gap-2"
+            >
+              <span class="relative z-10">{lang === 'es' ? 'Reserva tu consulta online' : 'Book your online consultation'}</span>
+            </a>
+            <a
+              href="#como-trabajo"
+              data-scroll-to="como-trabajo"
+              class="eyebrow eyebrow-link"
+            >
+              <span>{t('cta.learn')}</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
 

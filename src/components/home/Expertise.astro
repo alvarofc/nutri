@@ -139,7 +139,7 @@ const cta = es ? 'Empezar por aquí' : 'Start here';
 const href = getLocalizedPath('/pricing', lang);
 ---
 
-<section class="bg-[#F0ECE4] py-24 sm:py-36">
+<section class="bg-[#F0ECE4] py-16 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <SectionHeader
@@ -180,12 +180,12 @@ const href = getLocalizedPath('/pricing', lang);
               <p class="text-base text-brand-gray leading-relaxed max-w-xs">{card.help}</p>
               <a
                 href={card.page ? getLocalizedPath(card.page, lang) : href}
-                class="inline-flex items-center gap-2 text-sm font-medium text-brand-accent hover:gap-3 transition-all"
+                class="eyebrow eyebrow-link"
               >
                 <span>{card.page ? (es ? 'Saber más' : 'Learn more') : cta}</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
               </a>
             </div>
           </div>
@@ -206,9 +206,6 @@ const href = getLocalizedPath('/pricing', lang);
         class="cta-gradient-btn group relative overflow-hidden mt-8 inline-flex items-center justify-center gap-2 bg-brand-cta text-white px-8 py-4 text-sm font-medium rounded-full transition-all duration-300"
       >
         <span class="relative z-10">{es ? 'Agenda tu valoración inicial' : 'Book your initial assessment'}</span>
-        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-        </svg>
       </a>
     </div>
   </div>
