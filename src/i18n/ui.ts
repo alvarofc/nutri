@@ -11,7 +11,7 @@ export const ui = {
     'nav.home': 'Home',
     'nav.about': 'About',
     'nav.blog': 'Journal',
-    'nav.pricing': 'Book',
+    'nav.pricing': 'Services',
     'nav.contact': 'Contact',
 
     // Footer
@@ -268,7 +268,7 @@ export const ui = {
     'nav.home': 'Inicio',
     'nav.about': 'Sobre mí',
     'nav.blog': 'Journal',
-    'nav.pricing': 'Reserva',
+    'nav.pricing': 'Servicios',
     'nav.contact': 'Contacto',
 
     // Footer

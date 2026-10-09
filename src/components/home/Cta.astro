@@ -5,9 +5,9 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="bg-white py-20 sm:py-28">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="relative bg-brand-accent rounded-2xl text-white p-12 sm:p-16 lg:p-20 text-center overflow-hidden">
+<section class="relative flex items-center bg-brand-accent text-white py-28 sm:py-40 lg:min-h-[85svh] overflow-hidden">
+  <div class="w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="relative text-center">
       <!-- Background decoration -->
       <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
       <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>

@@ -139,7 +139,7 @@ const cta = es ? 'Empezar por aquí' : 'Start here';
 const href = getLocalizedPath('/pricing', lang);
 ---
 
-<section class="bg-white py-20 sm:py-28">
+<section class="bg-[#F0ECE4] py-24 sm:py-36">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <SectionHeader
@@ -203,7 +203,7 @@ const href = getLocalizedPath('/pricing', lang);
       </p>
       <a
         href={href}
-        class="cta-gradient-btn group relative overflow-hidden mt-8 inline-flex items-center justify-center gap-2 bg-brand-accent text-white px-8 py-4 text-sm font-medium rounded-full transition-all duration-300"
+        class="cta-gradient-btn group relative overflow-hidden mt-8 inline-flex items-center justify-center gap-2 bg-brand-cta text-white px-8 py-4 text-sm font-medium rounded-full transition-all duration-300"
       >
         <span class="relative z-10">{es ? 'Agenda tu valoración inicial' : 'Book your initial assessment'}</span>
         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,12 +238,7 @@ const href = getLocalizedPath('/pricing', lang);
   }
   .flip-back {
     transform: rotateY(180deg);
-    /* Same gradient as the "¿Cómo trabajo?" section */
-    background:
-      radial-gradient(ellipse at center, rgba(248, 200, 180, 0.5) 0%, transparent 70%),
-      linear-gradient(to right, rgba(220, 212, 234, 0.6) 0%, transparent 33%),
-      linear-gradient(to left, rgba(220, 212, 234, 0.6) 0%, transparent 33%),
-      linear-gradient(to bottom, #E8E4F0, #F0E6E8, #F5E6DC);
+    background: #EBDDD6;
   }
   .flip:hover .flip-inner,
   .flip:focus-within .flip-inner,
@@ -251,7 +246,7 @@ const href = getLocalizedPath('/pricing', lang);
     transform: rotateY(180deg);
   }
   .flip:focus-visible .flip-face:not(.flip-back) {
-    box-shadow: 0 0 0 2px rgba(46, 35, 103, 0.35);
+    box-shadow: 0 0 0 2px rgba(74, 29, 51, 0.35);
   }
   @media (prefers-reduced-motion: reduce) {
     .flip-inner {

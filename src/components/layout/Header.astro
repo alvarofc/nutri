@@ -7,12 +7,12 @@ const t = useTranslations(lang);
 
 const links = [
   {
-    name: t('nav.about'),
-    href: getLocalizedPath('/about', lang),
-  },
-  {
     name: t('nav.pricing'),
     href: getLocalizedPath('/pricing', lang),
+  },
+  {
+    name: t('nav.about'),
+    href: getLocalizedPath('/about', lang),
   },
   {
     name: t('nav.contact'),
@@ -44,7 +44,7 @@ const bookingPath = getLocalizedPath('/booking', lang);
         {links.map((link) => (
           <a
             href={link.href}
-            class="text-sm font-medium text-brand-black/70 hover:text-brand-accent transition-colors"
+            class="font-serif text-[1.3rem] font-medium text-brand-black/80 hover:text-brand-accent transition-colors"
           >
             {link.name}
           </a>
@@ -124,7 +124,7 @@ const bookingPath = getLocalizedPath('/booking', lang);
       {links.map((link) => (
         <a
           href={link.href}
-          class="text-lg font-medium text-brand-black hover:text-brand-accent transition-colors"
+          class="font-serif text-2xl font-medium text-brand-black hover:text-brand-accent transition-colors"
         >
           {link.name}
         </a>

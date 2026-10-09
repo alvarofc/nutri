@@ -17,17 +17,18 @@ module.exports = {
       pink: colors.pink,
       // Light, feminine, professional palette
       brand: {
-        black: '#1a1a1a',
+        black: '#4A1D33',
         dark: '#2d2d2d',
         charcoal: '#404040',
-        gray: '#6b6b6b',
+        gray: '#5E4552',
         muted: '#8a8a8a',
         light: '#d4d4d4',
-        cream: '#faf9f7',
-        ivory: '#f5f4f0',
+        cream: '#FAF9F7',
+        ivory: '#EEE7E1',
         white: '#ffffff',
-        accent: '#2E2367', // Deep purple - sophisticated & elegant
-        'accent-light': '#4a3b8f',
+        accent: '#4A1D33', // Burdeos-ciruela oscuro
+        cta: '#79264D', // Burdeos-ciruela (buttons)
+        'accent-light': '#93405F',
         blush: '#e8d5d5', // Soft pink accent
         rose: '#c9a9a9', // Dusty rose
       },
