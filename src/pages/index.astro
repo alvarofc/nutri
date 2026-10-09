@@ -7,6 +7,8 @@ import Services from '../components/home/Services.astro';
 import Layout from '../layouts/Layout.astro';
 import { useTranslations } from '../i18n/ui';
 
+// English-speaking visitors are sent to /en/ by the edge (see vercel.json), so this page
+// is always served as plain Spanish to crawlers and never redirects client-side.
 const lang = 'es';
 const t = useTranslations(lang);
 ---
@@ -15,43 +17,6 @@ const t = useTranslations(lang);
   description={t('home.description')}
   title={t('home.page.title')}
 >
-  <script slot="head" is:inline>
-    (function () {
-      if (typeof window === 'undefined') {
-        return;
-      }
-
-      var path = window.location.pathname;
-      if (path !== '/' && path !== '/index.html') {
-        return;
-      }
-
-      var storedPreference = null;
-      try {
-        storedPreference = sessionStorage.getItem('preferredLanguage');
-      } catch (error) {
-        storedPreference = null;
-      }
-
-      if (!storedPreference) {
-        try {
-          storedPreference = localStorage.getItem('preferredLanguage');
-        } catch (error) {
-          storedPreference = null;
-        }
-      }
-
-      var browserLang = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || '';
-      var targetLang = (storedPreference || browserLang).toLowerCase();
-
-      if (targetLang.startsWith('en')) {
-        document.documentElement.style.opacity = '0';
-        window.location.replace('/en/');
-      }
-    })();
-  </script>
-
-
   <Hero />
   <Services />
   <Expertise />

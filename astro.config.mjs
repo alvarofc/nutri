@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://alexandranutri.com',
+  site: 'https://www.alexandranutri.com',
   output: 'static',
   viewTransitions: true,
   i18n: {
@@ -16,11 +16,12 @@ export default defineConfig({
     }
   },
   integrations: [tailwind(), compress(), sitemap({
+    filter: (page) => !/\/404\/?$/.test(page),
     i18n: {
       defaultLocale: 'es',
       locales: {
-        es: 'https://alexandranutri.com',
-        en: 'https://alexandranutri.com/en'
+        es: 'es-ES',
+        en: 'en-US'
       }
     }
   })],
