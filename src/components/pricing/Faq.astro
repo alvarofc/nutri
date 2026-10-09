@@ -36,7 +36,20 @@ const questions = [
     answer: t('faq.q6.answer'),
   },
 ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: lang,
+  mainEntity: questions.map((question) => ({
+    '@type': 'Question',
+    name: question.title,
+    acceptedAnswer: { '@type': 'Answer', text: question.answer },
+  })),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <section class="relative py-20 sm:py-28 bg-white">
   <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">

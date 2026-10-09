@@ -2,9 +2,29 @@
 const { frontmatter } = Astro.props;
 import Layout from './Layout.astro';
 
+const site = Astro.site ?? new URL('https://www.alexandranutri.com');
+const articleSchema = {
+  '@type': 'Article',
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  inLanguage: 'es',
+  datePublished: frontmatter.pubDate,
+  dateModified: frontmatter.pubDate,
+  author: { '@id': new URL('/#alexandra', site).toString() },
+  publisher: { '@id': new URL('/#business', site).toString() },
+  mainEntityOfPage: new URL(Astro.url.pathname, site).toString(),
+  ...(frontmatter.imgUrl && { image: new URL(frontmatter.imgUrl, site).toString() }),
+  keywords: frontmatter.tags?.join(', '),
+};
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
+<Layout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  image={frontmatter.imgUrl}
+  type="article"
+  schema={[articleSchema]}
+>
   <article class="py-24 sm:py-32 bg-white">
     <!-- Header -->
     <div class="mx-auto max-w-3xl px-6 lg:px-8 text-center mb-16">

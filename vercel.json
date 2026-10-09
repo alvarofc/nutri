@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    { "source": "/es", "destination": "/", "permanent": true },
+    { "source": "/es/:path*", "destination": "/:path*", "permanent": true },
+    {
+      "source": "/",
+      "has": [{ "type": "cookie", "key": "preferredLanguage", "value": "en" }],
+      "destination": "/en/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "header", "key": "accept-language", "value": "^en" }],
+      "missing": [{ "type": "cookie", "key": "preferredLanguage" }],
+      "destination": "/en/",
+      "permanent": false
+    }
+  ]
+}
