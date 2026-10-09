@@ -11,7 +11,7 @@ const t = useTranslations(lang);
   itemtype="https://schema.org/Organization"
 >
   <a
-    href={`/${lang}/`}
+    href={getLocalizedPath('/', lang)}
     class="group flex flex-col items-center"
     itemprop="url"
     aria-label={t('header.homepage.aria')}
