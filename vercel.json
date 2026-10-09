@@ -10,7 +10,7 @@
     },
     {
       "source": "/",
-      "has": [{ "type": "header", "key": "accept-language", "value": "^en" }],
+      "has": [{ "type": "header", "key": "accept-language", "value": "en.*" }],
       "missing": [{ "type": "cookie", "key": "preferredLanguage" }],
       "destination": "/en/",
       "permanent": false

@@ -357,16 +357,28 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
 
     <script is:inline>
       // Remember the visitor's language choice in a cookie so the edge redirect on "/" (vercel.json) respects it
-      document.addEventListener(
-        'click',
-        function (event) {
-          var trigger = event.target instanceof Element && event.target.closest('[data-lang-preference]');
-          if (!trigger) return;
-          document.cookie =
-            'preferredLanguage=' + trigger.getAttribute('data-lang-preference') + '; path=/; max-age=31536000; SameSite=Lax';
-        },
-        true
-      );
+      (function () {
+        function saveLang(lang) {
+          document.cookie = 'preferredLanguage=' + lang + '; path=/; max-age=31536000; SameSite=Lax';
+        }
+
+        // Visitors who chose a language before the cookie existed only have it in storage: carry it over
+        try {
+          var saved = localStorage.getItem('preferredLanguage');
+          if (saved && !/(^|; )preferredLanguage=/.test(document.cookie)) saveLang(saved);
+        } catch (error) {
+          /* Ignore storage errors */
+        }
+
+        document.addEventListener(
+          'click',
+          function (event) {
+            var trigger = event.target instanceof Element && event.target.closest('[data-lang-preference]');
+            if (trigger) saveLang(trigger.getAttribute('data-lang-preference'));
+          },
+          true
+        );
+      })();
     </script>
     <script>
       function setupArrive() {
