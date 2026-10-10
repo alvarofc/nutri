@@ -3,36 +3,35 @@ import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const en = lang === 'en';
 const questions = [
   {
     id: 'faq-1',
-    title: t('faq.q1.title'),
-    answer: t('faq.q1.answer'),
+    title: en ? 'Are the consultations in person or online?' : '¿Las consultas son presenciales u online?',
+    answer: en
+      ? 'Consultations are held online through Google Meet, and you will receive the access details by email before your consultation.'
+      : 'Las consultas se realizan online a través de Google Meet, y recibirás los datos de acceso por correo electrónico antes de la consulta.',
   },
   {
     id: 'faq-2',
-    title: t('faq.q2.title'),
-    answer: t('faq.q2.answer'),
+    title: en ? 'Can I change or cancel a consultation?' : '¿Puedo modificar o cancelar una consulta?',
+    answer: en
+      ? 'When you book, that time slot is reserved exclusively for you and requires prior preparation. That is why the fee is non-refundable. If something unexpected comes up, you can change your appointment with at least 24 hours’ notice. With less notice it is not possible to cancel or reschedule (except in cases of force majeure). If you do not attend and do not give notice in time, the consultation is considered to have taken place.'
+      : 'Al reservar tu cita, ese horario queda exclusivamente para ti y requiere preparación previa. Por eso, el importe no es reembolsable. Si te surge un imprevisto, puedes cambiar la cita avisando con al menos 24 horas de antelación. Con menos tiempo no es posible cancelar ni reprogramar (salvo fuerza mayor). Si no asistes y no avisas a tiempo, la consulta se considera realizada.',
   },
   {
     id: 'faq-3',
-    title: t('faq.q3.title'),
-    answer: t('faq.q3.answer'),
+    title: en ? 'Do follow-ups have to take place every month?' : '¿Las revisiones deben realizarse todos los meses?',
+    answer: en
+      ? 'Not necessarily. You can space out your follow-up consultations according to your progress and needs. However, follow-up appointments can be booked up to 6 months after your last visit. After that period, you will need to book an initial assessment (subject to availability).'
+      : 'No necesariamente. Puedes espaciar las consultas de revisión según tu progreso y necesidades. Sin embargo, las citas de seguimiento pueden reservarse hasta 6 meses tras la última visita. Pasado ese plazo, será necesario reservar una valoración inicial (según disponibilidad).',
   },
   {
     id: 'faq-4',
-    title: t('faq.q4.title'),
-    answer: t('faq.q4.answer'),
-  },
-  {
-    id: 'faq-5',
-    title: t('faq.q5.title'),
-    answer: t('faq.q5.answer'),
-  },
-  {
-    id: 'faq-6',
-    title: t('faq.q6.title'),
-    answer: t('faq.q6.answer'),
+    title: en ? 'Do you work with other health professionals?' : '¿Trabajas en colaboración con otros profesionales de la salud?',
+    answer: en
+      ? 'Yes, when necessary, we will work together in an integrative way with other professionals (psychologists, endocrinologists, gynaecologists, physiotherapists, etc.). If you already have professionals you trust, we recommend getting in touch so we can work together on your case.'
+      : 'Sí, cuando sea necesario, colaboraremos de forma integrativa con otros profesionales (psicólogos, endocrinos, ginecólogos, fisioterapeutas, etc.). Si ya tienes profesionales de confianza, te recomendamos ponernos en contacto para trabajar juntos en tu caso.',
   },
 ];
 

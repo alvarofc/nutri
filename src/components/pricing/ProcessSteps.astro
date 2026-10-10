@@ -127,7 +127,7 @@ const blockIcons = [
     </h2>
 
     <!-- Timeline (only shown in the horizontal, scroll-driven version) -->
-    <div class="proc-timeline mx-auto w-full max-w-5xl px-8 pt-5 lg:pt-9">
+    <div class="proc-timeline mx-auto w-full max-w-5xl px-24 pt-5 lg:pt-9">
       <div class="relative h-px bg-brand-accent/20">
         <div class="proc-fill absolute left-0 top-0 h-px bg-brand-accent"></div>
         {steps.map((step, i) => (
@@ -284,10 +284,10 @@ const blockIcons = [
       transform: translateX(calc(var(--p, 0) * -66.6667%)); will-change: transform;
     }
     .proc-track::after { display: none; }
-    /* Tablets: same scroll-driven stage, with tighter type so each step fits */
-    @media (max-width: 1023px) {
+    /* Tablets, small laptops and short windows: same scroll-driven stage, with tighter type so each step fits */
+    @media (max-width: 1099px) {
       .proc-title { padding-top: 0.9rem !important; font-size: 1.55rem !important; line-height: 1.05 !important; }
-      .proc-timeline { padding: 0.6rem 1.75rem 0 !important; }
+      .proc-timeline { padding: 1.3rem 6rem 0 !important; }
       .proc-inner { gap: 0.7rem !important; padding-inline: 1.1rem !important; }
       .proc-h2 { font-size: 1.6rem !important; line-height: 1.05 !important; }
       .proc-eyebrow { margin-bottom: 0.25rem !important; }
@@ -303,14 +303,17 @@ const blockIcons = [
       .proc-card.is-big { padding: 0.8rem 0.9rem; }
       .proc-card.is-big .proc-card-p { font-size: 1.1rem; line-height: 1.25; }
     }
+    /* Wide but short windows (laptops): scale the content down a little so each step fits */
+    @media (min-width: 1100px) and (max-height: 780px) { .proc-inner { zoom: 0.88; } }
+    @media (min-width: 1100px) and (max-height: 700px) { .proc-inner { zoom: 0.76; } }
     .proc-panel {
       flex: 0 0 33.3333%; display: flex; align-items: center; align-self: auto; scroll-snap-align: none;
       background: none; border: 0; border-radius: 0; padding: 0; opacity: var(--o, 1); transition: opacity 0.15s linear;
     }
   }
 
-  /* Phones: no sideways stage. The three steps run down the page along one thread */
-  @media (max-width: 767px) {
+  /* Phones and very short windows: no sideways stage. The three steps run down the page along one thread */
+  @media (max-width: 767px), (max-height: 650px) {
     .proc { height: auto !important; }
     .proc-sticky { position: static !important; height: auto !important; overflow: visible !important; display: block !important; }
     .proc-timeline, .proc-nav { display: none !important; }
@@ -378,7 +381,7 @@ const blockIcons = [
     root.dataset.ready = '1';
 
     const mq = window.matchMedia(MQ);
-    const phone = window.matchMedia('(max-width: 767px)');
+    const phone = window.matchMedia('(max-width: 767px), (max-height: 650px)');
     const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-panel]'));
     const dots = Array.from(root.querySelectorAll<HTMLElement>('.proc-dot'));
     const labels = Array.from(root.querySelectorAll<HTMLElement>('.proc-label'));
