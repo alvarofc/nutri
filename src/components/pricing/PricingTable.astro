@@ -46,35 +46,35 @@ const groups = [
 ];
 ---
 
-<section id="pide-cita" class="relative overflow-hidden bg-[#EBDDD6] py-16 sm:py-24">
-  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+<section id="pide-cita" class="pc-section relative flex scroll-mt-[var(--hdr,88px)] flex-col justify-center overflow-hidden bg-[#EBDDD6] py-12 sm:py-14 lg:min-h-[calc(100svh-5.5rem)]">
+  <div class="relative mx-auto w-full max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <!-- Label above the prices, same format as "En qué consisten las sesiones" -->
     <div class="sec-top">
       <span class="eyebrow">{en ? 'Book an appointment' : 'Pide cita'}</span>
       <span class="sec-rule" aria-hidden="true"></span>
     </div>
 
-    <div class="mx-auto flex max-w-4xl flex-col gap-16 sm:gap-20">
+    <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-8 xl:gap-12">
       {
         groups.map((group) => (
           <div>
-            <header class="mb-8 text-center sm:mb-10">
-              <p class="font-sans text-base font-light uppercase tracking-[0.22em] text-[#3a3a3a] sm:text-lg">{group.kicker}</p>
-              <h2 class="mt-1 font-serif text-4xl font-light leading-tight text-[#2b2326] sm:text-5xl">{group.heading}</h2>
+            <header class="pc-head mb-6 text-center">
+              <p class="font-sans text-sm font-light uppercase tracking-[0.22em] text-[#3a3a3a] sm:text-base">{group.kicker}</p>
+              <h2 class="mt-1 font-serif text-4xl font-light leading-tight text-[#2b2326] lg:text-[2.6rem]">{group.heading}</h2>
             </header>
 
-            <ul role="list" class="grid gap-5 md:grid-cols-2">
+            <ul role="list" class="pc-list grid gap-4">
               {group.items.map((item) => (
-                <li class="price-card flex flex-col rounded-[1.4rem] px-7 py-8 text-white sm:px-9">
-                  <h3 class="font-sans text-lg font-semibold uppercase leading-snug tracking-[0.1em] sm:text-xl">{item.title}</h3>
-                  <p class="mt-2 font-sans text-xl font-normal tracking-[0.06em]">{item.price}</p>
-                  <div class="mt-5 flex-1 font-serif text-[1.3rem] italic leading-snug text-white/85">
+                <li class="price-card flex flex-col rounded-[1.4rem] px-7 py-6 text-white sm:px-8">
+                  <h3 class="font-sans text-base font-semibold uppercase leading-snug tracking-[0.1em] sm:text-lg">{item.title}</h3>
+                  <p class="mt-1.5 font-sans text-lg font-normal tracking-[0.06em]">{item.price}</p>
+                  <div class="mt-3 flex-1 font-serif text-[1.25rem] italic leading-snug text-white/85">
                     {item.lines.map((line) => (<p>{line}</p>))}
                   </div>
                   {item.bookable && (
                     <a
                       href={getLocalizedPath('/booking', lang)}
-                      class="mt-7 inline-flex items-center justify-center self-start rounded-full bg-white px-7 py-3.5 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-[#5B1F2E] transition-colors duration-300 hover:bg-[#F3E6E1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      class="mt-5 inline-flex items-center justify-center self-start rounded-full bg-white px-6 py-3 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-[#5B1F2E] transition-colors duration-300 hover:bg-[#F3E6E1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       {t('pricing.action.book')}
                     </a>
@@ -84,7 +84,7 @@ const groups = [
             </ul>
 
             {group.private && (
-              <p class="mt-6 flex items-center justify-center gap-2 text-center text-sm text-[#4a3a40]">
+              <p class="mt-4 flex items-center justify-center gap-2 text-center text-sm text-[#4a3a40]">
                 <Lock class="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
                 {t('pricing.private')}
               </p>
@@ -94,7 +94,7 @@ const groups = [
       }
     </div>
 
-    <p class="mx-auto mt-14 max-w-3xl text-center text-xs leading-relaxed text-[#4a3a40]">
+    <p class="pc-policy mx-auto mt-8 max-w-4xl text-center text-xs leading-relaxed text-[#4a3a40]">
       {t('pricing.policy')}
     </p>
   </div>
@@ -104,5 +104,23 @@ const groups = [
   .price-card {
     background: linear-gradient(145deg, #6A2440, #4A1D33);
     box-shadow: 0 24px 50px -32px rgba(74, 29, 51, 0.7);
+  }
+
+  /* Laptops and short windows: tighten the spacing so the whole section still fits in one screen */
+  @media (min-width: 1024px) and (max-height: 800px) {
+    .pc-section { padding-block: 1.1rem !important; }
+    .pc-head { margin-bottom: 0.9rem; }
+    .pc-head h2 { font-size: 2.1rem; }
+    .pc-list { gap: 0.7rem; }
+    .price-card { padding-block: 0.95rem; }
+    .price-card > div { margin-top: 0.45rem; font-size: 1.12rem; }
+    .price-card a { margin-top: 0.7rem; padding-block: 0.6rem; }
+    .pc-policy { margin-top: 1rem; }
+  }
+  @media (min-width: 1024px) and (max-height: 700px) {
+    .pc-head h2 { font-size: 1.8rem; }
+    .price-card { padding-block: 0.7rem; }
+    .price-card h3 { font-size: 0.95rem; }
+    .price-card > div { font-size: 1.02rem; }
   }
 </style>
