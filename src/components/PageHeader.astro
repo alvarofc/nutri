@@ -20,7 +20,7 @@ const { eyebrow, title, lead, image, alt, width, height } = Astro.props;
     <div class="ph-text pb-2 max-md:relative max-md:z-10 max-md:mx-4 max-md:-mt-14 max-md:bg-[#4A1D33] max-md:px-6 max-md:py-8 sm:max-md:mx-6 md:flex md:flex-col md:justify-center md:py-14 md:pr-10">
       <span class="eyebrow mb-6 block max-md:mb-3 max-md:!text-white/70">{eyebrow}</span>
       <h1 class="text-[clamp(2.2rem,4.4vw,4.2rem)] leading-[1.02] text-[#2E2367] max-md:!text-[2.4rem] max-md:!text-white">{title}</h1>
-      {lead && <p class="mt-6 max-w-md text-lg leading-relaxed text-brand-muted sm:text-xl max-md:mt-4 max-md:!text-base max-md:!text-white/90">{lead}</p>}
+      {lead && <p class="mt-6 max-w-md text-lg leading-relaxed text-brand-muted sm:text-xl max-md:mt-4 max-md:!text-base max-md:!text-white/90 max-md:text-justify">{lead}</p>}
     </div>
     <div class="relative overflow-hidden bg-brand-blush max-md:h-[17rem] md:order-last md:max-h-[44rem]" style={`aspect-ratio: ${width} / ${height}`}>
       <img src={image} alt={alt} class="absolute inset-0 h-full w-full object-cover" width={width} height={height} fetchpriority="high" />
