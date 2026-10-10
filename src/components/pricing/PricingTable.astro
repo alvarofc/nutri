@@ -4,85 +4,87 @@ import { INITIAL_ASSESSMENT_PRICE } from '../../config/booking';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const en = lang === 'en';
 
 // Only the initial assessment is bookable from the site; the rest are booked
 // through private links sent after the first consultation.
 const groups = [
   {
-    label: t('pricing.sections.initial'),
+    kicker: en ? 'Initial consultation' : 'Consulta inicial',
+    heading: en ? 'It’s my first time' : 'Es mi primera vez',
     items: [
       {
-        title: t('pricing.assessment.title'),
-        meta: t('pricing.assessment.duration'),
+        title: en ? 'Initial assessment' : 'Valoración inicial',
         price: INITIAL_ASSESSMENT_PRICE,
+        lines: [en ? '75-minute consultation' : 'Consulta de 75 minutos'],
         bookable: true,
       },
       {
-        title: lang === 'en' ? 'Personalised plan delivery session' : 'Sesión de entrega del plan personalizado',
-        meta: t('pricing.plan.duration'),
+        title: en ? 'Personalised plan delivery session' : 'Sesión de entrega del plan personalizado',
         price: '70 €',
+        lines: [en ? '60-minute consultation' : 'Consulta de 60 minutos'],
       },
     ],
   },
   {
-    label: t('pricing.sections.continuity'),
+    kicker: en ? 'Follow-up consultation' : 'Consulta de revisión',
+    heading: en ? 'I’m already a patient' : 'Ya soy paciente',
+    private: true,
     items: [
       {
-        title: lang === 'en' ? 'Follow-up session' : 'Sesión de seguimiento',
-        meta: t('pricing.followup.duration'),
+        title: en ? 'Follow-up session' : 'Sesión de seguimiento',
         price: '65 €',
+        lines: [en ? '45-minute consultation' : 'Consulta de 45 minutos'],
       },
       {
-        title: lang === 'en' ? 'Bundle of 4 follow-ups' : 'Bono de 4 seguimientos',
-        meta: `${t('pricing.bundle.duration')} · ${t('pricing.bundle.saving')}`,
+        title: en ? 'Bundle of 4 follow-ups' : 'Bono de 4 seguimientos',
         price: '240 €',
+        lines: en ? ['4 consultations of 45 minutes', '60 € per consultation'] : ['4 consultas de 45 minutos', '60 € por consulta'],
       },
     ],
   },
 ];
 ---
 
-<section class="relative overflow-hidden bg-[#EBDDD6] py-16 sm:py-24">
-  <!-- Same colour as "Paso a paso / Cómo te acompaño" on the home page (#EBDDD6) -->
-
+<section id="pide-cita" class="relative overflow-hidden bg-[#EBDDD6] py-16 sm:py-24">
   <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <!-- Label above the prices, same format as "En qué consisten las sesiones" -->
     <div class="sec-top">
-      <span class="eyebrow">{lang === 'en' ? 'Rates' : 'Tarifas'}</span>
+      <span class="eyebrow">{en ? 'Book an appointment' : 'Pide cita'}</span>
       <span class="sec-rule" aria-hidden="true"></span>
     </div>
 
-    <div class="mx-auto grid gap-6 lg:max-w-5xl lg:grid-cols-2">
+    <div class="mx-auto flex max-w-4xl flex-col gap-16 sm:gap-20">
       {
         groups.map((group) => (
-          <div class="flex flex-col rounded-[2rem] border border-brand-accent/10 bg-[#FFFCFA] p-6 shadow-[0_24px_50px_-30px_rgba(74,29,51,0.45)] sm:p-8">
-            <h2 class="border-b border-brand-accent/20 pb-4 text-center font-sans text-lg font-semibold uppercase tracking-[0.18em] text-brand-accent">
-              {group.label}
-            </h2>
-            <ul role="list" class="mt-4 flex flex-1 flex-col gap-3">
+          <div>
+            <header class="mb-8 text-center sm:mb-10">
+              <p class="font-sans text-base font-light uppercase tracking-[0.22em] text-[#3a3a3a] sm:text-lg">{group.kicker}</p>
+              <h2 class="mt-1 font-serif text-4xl font-light leading-tight text-[#2b2326] sm:text-5xl">{group.heading}</h2>
+            </header>
+
+            <ul role="list" class="grid gap-5 md:grid-cols-2">
               {group.items.map((item) => (
-                <li class="rounded-2xl bg-[#F8F1EC] px-4 py-4">
-                  <h3 class="whitespace-nowrap font-serif text-xl leading-tight text-brand-black sm:text-2xl">{item.title}</h3>
-                  <div class="mt-2 flex items-end justify-between gap-4">
-                    <p class="text-sm text-brand-gray">
-                      {item.meta}
-                      {item.extra && <span class="ml-1 font-medium text-brand-accent">· {item.extra}</span>}
-                    </p>
-                    <p class="whitespace-nowrap font-serif text-4xl leading-none text-brand-accent sm:text-[2.6rem]">{item.price}</p>
+                <li class="price-card flex flex-col rounded-[1.4rem] px-7 py-8 text-white sm:px-9">
+                  <h3 class="font-sans text-lg font-semibold uppercase leading-snug tracking-[0.1em] sm:text-xl">{item.title}</h3>
+                  <p class="mt-2 font-sans text-xl font-normal tracking-[0.06em]">{item.price}</p>
+                  <div class="mt-5 flex-1 font-serif text-[1.3rem] italic leading-snug text-white/85">
+                    {item.lines.map((line) => (<p>{line}</p>))}
                   </div>
                   {item.bookable && (
                     <a
                       href={getLocalizedPath('/booking', lang)}
-                      class="cta-gradient-btn relative mt-4 flex w-full items-center justify-center overflow-hidden rounded-full bg-brand-accent px-6 py-3 text-base font-medium text-white transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+                      class="mt-7 inline-flex items-center justify-center self-start rounded-full bg-white px-7 py-3.5 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-[#5B1F2E] transition-colors duration-300 hover:bg-[#F3E6E1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
-                      <span class="relative z-10">{t('pricing.action.book')}</span>
+                      {t('pricing.action.book')}
                     </a>
                   )}
                 </li>
               ))}
             </ul>
-            {group.label === t('pricing.sections.continuity') && (
-              <p class="mt-4 flex items-center justify-center gap-2 text-center text-sm text-brand-gray">
+
+            {group.private && (
+              <p class="mt-6 flex items-center justify-center gap-2 text-center text-sm text-[#4a3a40]">
                 <Lock class="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
                 {t('pricing.private')}
               </p>
@@ -92,8 +94,15 @@ const groups = [
       }
     </div>
 
-    <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-brand-gray">
+    <p class="mx-auto mt-14 max-w-3xl text-center text-xs leading-relaxed text-[#4a3a40]">
       {t('pricing.policy')}
     </p>
   </div>
 </section>
+
+<style>
+  .price-card {
+    background: linear-gradient(145deg, #6A2440, #4A1D33);
+    box-shadow: 0 24px 50px -32px rgba(74, 29, 51, 0.7);
+  }
+</style>

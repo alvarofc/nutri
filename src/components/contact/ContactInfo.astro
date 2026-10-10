@@ -17,67 +17,58 @@ const t = useTranslations(lang);
   height={1333}
 />
 
-<!-- Two halves like the closing block of the home page: burgundy with the text and the ways to reach me, and a photo -->
-<section class="grid overflow-hidden bg-brand-accent text-white lg:grid-cols-2">
-  <div class="flex flex-col justify-center px-6 py-16 sm:px-12 sm:py-20 lg:px-16 lg:py-24">
-    <div class="mx-auto w-full max-w-md lg:ml-auto lg:mr-10 lg:mx-0">
-      <span class="mb-4 block text-xs font-medium uppercase tracking-[0.2em] text-white/70">
-        {lang === 'en' ? 'Shall we talk?' : '¿Hablamos?'}
-      </span>
-      <h2 class="mb-8 font-serif text-3xl font-medium leading-tight sm:text-4xl lg:text-[2.6rem]">
-        {lang === 'en'
-          ? <>Contact me so I can assess your case and book your initial assessment</>
-          : <>Contacta conmigo para que valore tu caso y agende tu valoración inicial</>}
-      </h2>
+<!-- Full-width burgundy block: title, the three guarantees in a row, and the ways to reach me -->
+<section class="bg-brand-accent px-6 py-16 text-white sm:py-24 lg:px-8">
+  <div class="mx-auto max-w-5xl text-center">
+    <span class="mb-5 block text-xs font-medium uppercase tracking-[0.22em] text-white/70">
+      {lang === 'en' ? 'Shall we talk?' : '¿Hablamos?'}
+    </span>
+    <h2 class="mx-auto max-w-3xl font-serif text-3xl font-medium leading-tight sm:text-4xl lg:text-[3.1rem]">
+      {lang === 'en'
+        ? 'Contact me so I can assess your case and book your initial assessment'
+        : 'Contacta conmigo para que valore tu caso y agende tu valoración inicial'}
+    </h2>
 
-      <ul class="mb-9 flex flex-col gap-3.5 font-sans text-base font-light text-white/90">
-        <li class="flex items-center gap-3">
-          <span class="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-white/15">
-            <svg class="h-[1.15rem] w-[1.15rem]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </span>
-          {lang === 'en' ? 'Response within 24 hours' : 'Respuesta en 24 horas'}
-        </li>
-        <li class="flex items-center gap-3">
-          <span class="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-white/15">
-            <svg class="h-[1.15rem] w-[1.15rem]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          </span>
-          {lang === 'en' ? 'Your data is safe with me' : 'Tus datos están seguros'}
-        </li>
-        <li class="flex items-center gap-3">
-          <span class="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-white/15">
-            <svg class="h-[1.15rem] w-[1.15rem]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-          </span>
-          {lang === 'en' ? 'No commitment consultation' : 'Consulta sin compromiso'}
-        </li>
-      </ul>
+    <ul class="mx-auto mt-12 grid max-w-4xl gap-8 border-y border-white/20 py-10 font-sans font-light text-white/90 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-white/20">
+      <li class="flex flex-col items-center gap-3 px-6">
+        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-white/12 ring-1 ring-white/25">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </span>
+        <span class="text-base">{lang === 'en' ? 'Response within 24 hours' : 'Respuesta en 24 horas'}</span>
+      </li>
+      <li class="flex flex-col items-center gap-3 px-6">
+        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-white/12 ring-1 ring-white/25">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </span>
+        <span class="text-base">{lang === 'en' ? 'Your data is safe with me' : 'Tus datos están seguros'}</span>
+      </li>
+      <li class="flex flex-col items-center gap-3 px-6">
+        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-white/12 ring-1 ring-white/25">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </span>
+        <span class="text-base">{lang === 'en' ? 'No commitment consultation' : 'Consulta sin compromiso'}</span>
+      </li>
+    </ul>
 
-      <div class="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-        <a
-          href={whatsappUrl(lang)}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2.5 rounded-full bg-white px-7 py-3 font-sans text-sm font-medium text-brand-accent transition-colors hover:bg-brand-cream"
-          aria-label={lang === 'en' ? 'Write to me on WhatsApp' : 'Escríbeme por WhatsApp'}
-        >
-          <svg class="h-5 w-5 text-[#25D366]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={WHATSAPP_ICON_PATH}></path></svg>
-          <span>WhatsApp</span>
-        </a>
-        <a
-          href={`mailto:${t('contact.email.address')}`}
-          class="inline-flex items-center justify-center gap-2.5 rounded-full border border-white/40 px-7 py-3 font-sans text-sm font-medium text-white transition-colors hover:bg-white/10"
-        >
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 7l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" /></svg>
-          <span>{lang === 'en' ? 'Send me an email' : 'Escríbeme un correo'}</span>
-        </a>
-      </div>
-      <p class="mt-5 font-sans text-sm text-white/65">{WHATSAPP_DISPLAY} · {t('contact.email.address')}</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a
+        href={whatsappUrl(lang)}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2.5 rounded-full bg-white px-8 py-3.5 font-sans text-sm font-medium text-brand-accent transition-colors hover:bg-brand-cream"
+        aria-label={lang === 'en' ? 'Write to me on WhatsApp' : 'Escríbeme por WhatsApp'}
+      >
+        <svg class="h-5 w-5 text-[#25D366]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={WHATSAPP_ICON_PATH}></path></svg>
+        <span>WhatsApp</span>
+      </a>
+      <a
+        href={`mailto:${t('contact.email.address')}`}
+        class="inline-flex items-center justify-center gap-2.5 rounded-full border border-white/40 px-8 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-white/10"
+      >
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 7l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" /></svg>
+        <span>{lang === 'en' ? 'Send me an email' : 'Escríbeme un correo'}</span>
+      </a>
     </div>
+    <p class="mt-6 font-sans text-sm text-white/65">{WHATSAPP_DISPLAY} · {t('contact.email.address')}</p>
   </div>
-
-  <div
-    class="min-h-[18rem] bg-cover sm:min-h-[22rem] lg:min-h-0"
-    style="background-image: url('/assets/higos-escena.jpg'); background-position: 50% 70%;"
-    role="img"
-    aria-label={lang === 'en' ? 'A bowl of figs on a linen tablecloth in warm light' : 'Un cuenco de higos sobre un mantel de lino con luz cálida'}
-  ></div>
 </section>
