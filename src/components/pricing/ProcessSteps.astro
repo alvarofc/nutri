@@ -82,16 +82,24 @@ const steps = [
     n: '3',
     eyebrow: es ? 'Después' : 'Afterwards',
     short: es ? 'Seguimiento' : 'Follow-up',
-    title: es ? 'Seguimiento' : 'Follow-up',
+    title: es ? 'Visitas de seguimiento' : 'Follow-up visits',
     chips: es ? ['45 min', 'Cada 2 a 6 semanas'] : ['45 min', 'Every 2 to 6 weeks'],
-    blocks: [
-      {
-        text: es
-          ? 'Realizaremos un seguimiento para ver cómo te encuentras y, si es necesario, ajustaremos el plan según las necesidades que vayan surgiendo.'
-          : 'We will follow up to see how you are doing and, if necessary, adjust the plan according to the needs that arise.',
-        big: true,
-      },
-    ],
+    lead: es
+      ? 'El espacio donde revisamos cómo estás respondiendo al plan y cómo te sientes en el proceso.'
+      : 'The space where we review how you are responding to the plan and how you are feeling during the process.',
+    blocks: es
+      ? [
+          { label: 'Valoramos tu evolución', text: 'Síntomas, energía, digestión, composición corporal…' },
+          { label: 'Ajustamos', text: 'Las pautas, para que la estrategia siga alineada con tus objetivos y tu momento vital.' },
+          { label: 'Trabajamos', items: ['Consolidar hábitos', 'Resolver dudas', 'Desbloquear cualquier dificultad que surja por el camino'] },
+          { label: 'Después de cada sesión', text: 'Recibes por correo las recomendaciones actualizadas y el material complementario.' },
+        ]
+      : [
+          { label: 'We assess your progress', text: 'Symptoms, energy, digestion, body composition…' },
+          { label: 'We adjust', text: 'The guidelines, so the strategy stays aligned with your goals and your stage of life.' },
+          { label: 'We work on', items: ['Consolidating habits', 'Answering your questions', 'Unblocking any difficulty that comes up along the way'] },
+          { label: 'After each session', text: 'You receive the updated recommendations and any supporting material by email.' },
+        ],
   },
 ];
 
@@ -112,7 +120,7 @@ const iconPaths: Record<string, string> = {
 const blockIcons = [
   ['search', 'eye', 'doc', 'flag'],
   ['bulb', 'check', 'chat'],
-  ['refresh'],
+  ['chart', 'sliders', 'refresh', 'mail'],
 ];
 ---
 

@@ -48,7 +48,7 @@ export const ui = {
       'I will develop a customized plan for you and your goals. We will review it together to ensure you understand it and feel comfortable with it.',
     'services.step3.name': 'Follow-up',
     'services.step3.description':
-      'We will follow up to see how you are doing and, if necessary, adjust the plan to ensure it remains effective.',
+      'We will follow up to see how you are doing and, if necessary, adjust the plan according to the needs that arise.',
 
     // About page
     'about.title': 'About me',
@@ -305,7 +305,7 @@ export const ui = {
       'Desarrollaré un plan hecho a medida para ti y tus objetivos. Lo repasaremos juntos para asegurarnos de que lo entiendes y te sientes a gusto con él.',
     'services.step3.name': 'Seguimiento',
     'services.step3.description':
-      'Realizaremos un seguimiento para ver cómo te encuentras y si es necesario, ajustaremos el plan para que siga siendo efectivo.',
+      'Realizaremos un seguimiento para ver cómo te encuentras y, si es necesario, ajustaremos el plan según las necesidades que vayan surgiendo.',
 
     // About page
     'about.title': 'Sobre mí',
