@@ -82,24 +82,16 @@ const steps = [
     n: '3',
     eyebrow: es ? 'Después' : 'Afterwards',
     short: es ? 'Seguimiento' : 'Follow-up',
-    title: es ? 'Visitas de seguimiento' : 'Follow-up visits',
+    title: es ? 'Seguimiento' : 'Follow-up',
     chips: es ? ['45 min', 'Cada 2 a 6 semanas'] : ['45 min', 'Every 2 to 6 weeks'],
-    lead: es
-      ? 'El espacio donde revisamos cómo estás respondiendo al plan y cómo te sientes en el proceso.'
-      : 'The space where we review how you are responding to the plan and how you are feeling during the process.',
-    blocks: es
-      ? [
-          { label: 'Valoramos tu evolución', text: 'Síntomas, energía, digestión, composición corporal…' },
-          { label: 'Ajustamos', text: 'Las pautas, para que la estrategia siga alineada con tus objetivos y tu momento vital.' },
-          { label: 'Trabajamos', items: ['Consolidar hábitos', 'Resolver dudas', 'Desbloquear cualquier dificultad que surja por el camino'] },
-          { label: 'Después de cada sesión', text: 'Recibes por correo las recomendaciones actualizadas y el material complementario.' },
-        ]
-      : [
-          { label: 'We assess your progress', text: 'Symptoms, energy, digestion, body composition…' },
-          { label: 'We adjust', text: 'The guidelines, so the strategy stays aligned with your goals and your stage of life.' },
-          { label: 'We work on', items: ['Consolidating habits', 'Answering your questions', 'Unblocking any difficulty that comes up along the way'] },
-          { label: 'After each session', text: 'You receive the updated recommendations and any supporting material by email.' },
-        ],
+    blocks: [
+      {
+        text: es
+          ? 'Realizaremos un seguimiento para ver cómo te encuentras y, si es necesario, ajustaremos el plan según las necesidades que vayan surgiendo.'
+          : 'We will follow up to see how you are doing and, if necessary, adjust the plan according to the needs that arise.',
+        big: true,
+      },
+    ],
   },
 ];
 
@@ -120,11 +112,11 @@ const iconPaths: Record<string, string> = {
 const blockIcons = [
   ['search', 'eye', 'doc', 'flag'],
   ['bulb', 'check', 'chat'],
-  ['chart', 'sliders', 'refresh', 'mail'],
+  ['refresh'],
 ];
 ---
 
-<section id="en-que-consisten-las-sesiones" class="proc relative scroll-mt-[var(--hdr,88px)] bg-[#EBDDD6]" data-process>
+<section id="en-que-consisten-las-sesiones" class="proc relative scroll-mt-[var(--hdr,88px)] bg-[#E4D3D3]" data-process>
   <div class="proc-sticky">
     <div class="sec-top mx-auto w-full max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 lg:pt-6">
       <span class="eyebrow">{es ? 'En qué consisten las sesiones' : 'What the sessions involve'}</span>
@@ -144,7 +136,7 @@ const blockIcons = [
             style={`left: ${(i / (steps.length - 1)) * 100}%`}
             data-node={i}
           >
-            <span class="proc-dot block h-4 w-4 rounded-full border-2 border-brand-accent bg-[#EBDDD6] transition-colors duration-300"></span>
+            <span class="proc-dot block h-4 w-4 rounded-full border-2 border-brand-accent bg-[#E4D3D3] transition-colors duration-300"></span>
           </div>
         ))}
       </div>
@@ -176,13 +168,13 @@ const blockIcons = [
                     <li class="rounded-full bg-brand-accent/10 px-3 py-1 text-xs font-medium tracking-wide text-brand-accent">{chip}</li>
                   ))}
                 </ul>
-                <p class="proc-lead mt-5 border-l-2 border-brand-accent/40 pl-4 text-xl leading-snug text-brand-black sm:text-[1.4rem]" style="font-family: 'Cormorant', serif; font-style: italic;">{step.lead}</p>
+                {step.lead && <p class="proc-lead mt-5 border-l-2 border-brand-accent/40 pl-4 text-xl leading-snug text-brand-black sm:text-[1.4rem]" style="font-family: 'Cormorant', serif; font-style: italic;">{step.lead}</p>}
               </div>
 
               <!-- Right: the same kind of card every time, one idea per card -->
               <div class={`proc-cards grid gap-3 ${step.blocks.length === 4 ? 'sm:grid-cols-2' : ''}`}>
                 {step.blocks.map((block, j) => (
-                  <section class={`proc-card ${block.highlight ? 'is-key' : ''}`}>
+                  <section class={`proc-card ${block.highlight ? 'is-key' : ''} ${block.big ? 'is-big' : ''}`}>
                     <h3 class="proc-card-h">
                       <span class="proc-ico" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d={iconPaths[blockIcons[i][j]]} /></svg>
@@ -263,6 +255,10 @@ const blockIcons = [
   .proc-card-ul li::before {
     content: ''; position: absolute; left: 0; top: 0.62em; height: 0.3rem; width: 0.3rem; border-radius: 9999px; background: #79264D;
   }
+  /* Step 3: a single card with one sentence */
+  .proc-card.is-big { padding: 1.6rem 1.7rem; }
+  .proc-card.is-big .proc-card-h { margin-bottom: 0.9rem; }
+  .proc-card.is-big .proc-card-p { font-family: 'Cormorant', serif; font-size: 1.55rem; line-height: 1.3; color: #3a1d2b; }
   /* The one card that holds what you take home */
   .proc-card.is-key { background: linear-gradient(145deg, #79264D, #4A1D33); border-color: transparent; }
   .proc-card.is-key .proc-card-h { color: #F3E6E1; }
@@ -304,6 +300,8 @@ const blockIcons = [
       .proc-ico svg { height: 0.8rem; width: 0.8rem; }
       .proc-card-p, .proc-card-ul { font-size: 0.76rem; line-height: 1.36; }
       .proc-card-ul { gap: 0.2rem; }
+      .proc-card.is-big { padding: 0.8rem 0.9rem; }
+      .proc-card.is-big .proc-card-p { font-size: 1.1rem; line-height: 1.25; }
     }
     .proc-panel {
       flex: 0 0 33.3333%; display: flex; align-items: center; align-self: auto; scroll-snap-align: none;
@@ -344,6 +342,7 @@ const blockIcons = [
     .proc-ico svg { height: 0.95rem !important; width: 0.95rem !important; }
     .proc-card-p, .proc-card-ul { font-size: 0.9rem !important; line-height: 1.5 !important; }
     .proc-card-ul { gap: 0.4rem !important; }
+    .proc-card.is-big .proc-card-p { font-size: 1.3rem !important; line-height: 1.3 !important; }
   }
 </style>
 

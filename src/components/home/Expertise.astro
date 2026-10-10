@@ -182,32 +182,81 @@ const bulletLists: Record<number, { items: string[] }> = {
       },
 };
 
-// Detail panel opened by card 2 ("Convives con…")
+// Detail panel opened by card 2 ("Convives con…"): one heading per diagnosis, each with its paragraphs
 const detail = es
   ? {
-      intro: 'Cada diagnóstico tiene su propio mecanismo, y por eso se trabaja con un plan de acompañamiento nutricional adaptado:',
       items: [
-        ['Síndrome de ovario poliquístico', 'En muchas mujeres el motor es la insulina, incluso con un peso normal. Cuando la insulina está alta, el ovario fabrica más andrógenos, y de ahí vienen el acné, el vello o los ciclos irregulares. Mejorar tu sensibilidad a la insulina actúa sobre la raíz de los síntomas.'],
-        ['Endometriosis, adenomiosis y reglas dolorosas', 'El dolor está muy ligado a las prostaglandinas, moléculas inflamatorias que fabrica tu propio cuerpo a partir de las grasas que comes. Ajustamos el tipo de grasas, la fibra y nutrientes como el magnesio para reducir la inflamación, el dolor y el cansancio.'],
-        ['Síndrome premenstrual', 'No se debe a tener “demasiadas hormonas”, sino a que tu cerebro es más sensible a sus cambios. Estabilizar tu glucosa y asegurar nutrientes como el calcio, el magnesio y la vitamina B6 puede suavizar la irritabilidad, los antojos y la hinchazón.'],
-        ['Hipotiroidismo e hipertiroidismo', 'Tu tiroides necesita yodo, selenio, hierro y vitamina D para fabricar y activar sus hormonas. Además, el café, el calcio o los suplementos de hierro tomados cerca de la levotiroxina reducen su absorción, y muchas veces ese es el motivo de que la dosis “no funcione”. En el hipertiroidismo cuidamos especialmente el músculo y los huesos.'],
-        ['Candidiasis o infecciones de orina de repetición', 'Revisamos los factores que favorecen que vuelvan, como la hidratación, el control de la glucosa o la salud de tu microbiota.'],
+        [
+          'Síndrome de ovario poliquístico (SOP)',
+          [
+            'La insulina es una hormona que ayuda a que el azúcar de la sangre entre en las células para utilizarse como energía. Muchas mujeres con SOP presentan resistencia a la insulina, lo que significa que sus células no responden bien a esta hormona y el cuerpo necesita producir más cantidad. Este exceso de insulina puede alterar el equilibrio hormonal y favorecer síntomas como el acné, el exceso de vello o los ciclos menstruales irregulares.',
+            'A través de un plan de nutrición personalizado, podemos mejorar la sensibilidad a la insulina y ayudar a reducir muchos de los síntomas del SOP, gracias a que actuamos directamente sobre la raíz de los mismos.',
+          ],
+        ],
+        [
+          'Endometriosis, adenomiosis y reglas dolorosas',
+          [
+            'El dolor está muy ligado a las prostaglandinas, moléculas inflamatorias que fabrica tu propio cuerpo. Con una alimentación rica en polifenoles, compuestos bioactivos, vitaminas antioxidantes y algunos minerales clave para la relajación de la musculatura uterina, como el magnesio, podemos modular la inflamación, el dolor y el cansancio. Además, ciertos complementos alimenticios tienen evidencia como tratamiento complementario, por lo que se diseña una pauta de suplementación personalizada en función de la paciente.',
+          ],
+        ],
+        [
+          'Síndrome premenstrual',
+          [
+            'No se debe a tener “demasiadas hormonas”, sino a que tu cerebro es más sensible a sus cambios. Estabilizar tu glucosa y asegurar que cubres tus requerimientos nutricionales de calcio, magnesio, zinc y vitamina B6 puede suavizar la irritabilidad, los antojos y la hinchazón.',
+          ],
+        ],
+        [
+          'Hipotiroidismo e hipertiroidismo',
+          [
+            'Tu tiroides necesita yodo, selenio, hierro y vitamina D para fabricar y activar sus hormonas. Además, el café, el calcio o los suplementos de hierro tomados cerca de la levotiroxina reducen su absorción, y muchas veces ese es el motivo de que la dosis “no funcione”. En el hipertiroidismo cuidamos especialmente el músculo y los huesos. Todo adaptado a tus circunstancias únicas.',
+          ],
+        ],
+        [
+          'Candidiasis o infecciones de orina de repetición',
+          [
+            'Cuando las infecciones se repiten, es importante identificar qué factores pueden favorecer su aparición, como los desequilibrios de la microbiota intestinal y vaginal, las alteraciones de la glucosa o las carencias nutricionales.',
+            'A través de un plan de nutrición personalizado, basado en una alimentación prebiótica, antiinflamatoria y antioxidante, y suplementación cuando sea necesaria, buscamos favorecer el equilibrio de tu microbiota y reforzar tus defensas naturales, como complemento al tratamiento médico.',
+          ],
+        ],
       ],
-      close: 'Cerrar',
     }
   : {
-      intro: 'Each diagnosis has its own mechanism, which is why I work with a tailored nutritional support plan:',
       items: [
-        ['Polycystic ovary syndrome', 'In many women the driver is insulin, even at a normal weight. When insulin is high, the ovary makes more androgens, which is where acne, excess hair and irregular cycles come from. Improving your insulin sensitivity acts on the root of the symptoms.'],
-        ['Endometriosis, adenomyosis and painful periods', 'Pain is closely linked to prostaglandins, inflammatory molecules your own body makes from the fats you eat. We adjust the type of fats, fibre and nutrients such as magnesium to reduce inflammation, pain and tiredness.'],
-        ['Premenstrual syndrome', 'It is not caused by having “too many hormones”, but by your brain being more sensitive to their changes. Stabilising your glucose and making sure you get nutrients such as calcium, magnesium and vitamin B6 can ease irritability, cravings and bloating.'],
-        ['Hypothyroidism and hyperthyroidism', 'Your thyroid needs iodine, selenium, iron and vitamin D to make and activate its hormones. Coffee, calcium or iron supplements taken close to levothyroxine also reduce its absorption, and that is often why the dose “doesn’t work”. In hyperthyroidism we take special care of muscle and bone.'],
-        ['Recurrent candidiasis or urinary tract infections', 'We review the factors that make them come back, such as hydration, glucose control and the health of your microbiota.'],
+        [
+          'Polycystic ovary syndrome (PCOS)',
+          [
+            'Insulin is a hormone that helps the sugar in your blood enter your cells so it can be used as energy. Many women with PCOS have insulin resistance, which means their cells do not respond well to this hormone and the body has to produce more of it. This excess insulin can disrupt hormonal balance and favour symptoms such as acne, excess hair or irregular menstrual cycles.',
+            'Through a personalised nutrition plan, we can improve insulin sensitivity and help reduce many of the symptoms of PCOS, because we act directly on their root.',
+          ],
+        ],
+        [
+          'Endometriosis, adenomyosis and painful periods',
+          [
+            'Pain is closely linked to prostaglandins, inflammatory molecules your own body makes. With a diet rich in polyphenols, bioactive compounds, antioxidant vitamins and some key minerals for relaxing the uterine muscle, such as magnesium, we can modulate inflammation, pain and tiredness. In addition, certain food supplements have evidence as a complementary treatment, so a personalised supplementation plan is designed for each patient.',
+          ],
+        ],
+        [
+          'Premenstrual syndrome',
+          [
+            'It is not caused by having “too many hormones”, but by your brain being more sensitive to their changes. Stabilising your glucose and making sure you meet your nutritional requirements for calcium, magnesium, zinc and vitamin B6 can ease irritability, cravings and bloating.',
+          ],
+        ],
+        [
+          'Hypothyroidism and hyperthyroidism',
+          [
+            'Your thyroid needs iodine, selenium, iron and vitamin D to make and activate its hormones. Coffee, calcium or iron supplements taken close to levothyroxine also reduce its absorption, and that is often why the dose “doesn’t work”. In hyperthyroidism we take special care of muscle and bone. All adapted to your unique circumstances.',
+          ],
+        ],
+        [
+          'Recurrent candidiasis or urinary tract infections',
+          [
+            'When infections keep coming back, it is important to identify which factors may favour them, such as imbalances in the intestinal and vaginal microbiota, changes in glucose or nutritional deficiencies.',
+            'Through a personalised nutrition plan, based on a prebiotic, anti-inflammatory and antioxidant diet, and supplementation when necessary, we aim to support the balance of your microbiota and strengthen your natural defences, as a complement to medical treatment.',
+          ],
+        ],
       ],
-      close: 'Close',
     };
 
-const hintLabel = es ? 'Pulsa en cada situación para ver más información' : 'Tap each situation to see more';
 const closeHint = es ? 'Pulsa en cualquier parte para cerrar' : 'Tap anywhere to close';
 // Heading of each pop-up (only the pop-up; the cards keep their own titles). Card 2 has one heading per diagnosis instead.
 const modalTitles = es
@@ -235,8 +284,6 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
           ? 'Te explico qué puede estar pasando y por dónde empezar.'
           : 'I’ll explain what may be going on and where to start.'}
       />
-
-      <p class="-mt-4 mb-6 text-center font-sans text-[13px] tracking-wide text-[#2F1B24]/70">{hintLabel}</p>
 
       <!-- Problem cards: each one shows the situation and a clear "Leer más" button that opens the full text in a wide burgundy panel -->
       <div class="grid auto-rows-auto items-start md:auto-rows-fr md:items-stretch grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
@@ -285,11 +332,12 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
     <div class="dx-panel" role="dialog" aria-modal="true" aria-label={card.title} tabindex="-1">
       {index === 1 ? (
         <div class="dx-diag">
-          <p class="dx-intro">{detail.intro}</p>
-          {detail.items.map(([k, v]) => (
+          {detail.items.map(([k, paragraphs]) => (
             <div class="dx-row">
               <h3 class="dx-title">{k}</h3>
-              <p class="dx-p">{v}</p>
+              <div class="dx-ps">
+                {paragraphs.map((para) => (<p class="dx-p">{para}</p>))}
+              </div>
             </div>
           ))}
         </div>
@@ -337,6 +385,8 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
   @media (min-width: 768px) { .dx-row { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 3rem; } .dx-row .dx-title { border-right: 1px solid rgba(255, 255, 255, 0.22); padding-right: 2rem; } }
   .dx-row .dx-title { font-size: 1.55rem; }
   @media (min-width: 768px) { .dx-row .dx-title { font-size: 1.9rem; } }
+  .dx-ps { display: grid; gap: 0.9rem; }
+  .dx-row:first-child { border-top: 0; padding-top: 0.5rem; }
   .dx-p { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.7; color: #fff; }
   .dx-grid { display: grid; gap: 1.1rem; }
   @media (min-width: 768px) { .dx-grid { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 3rem; align-items: start; } }
