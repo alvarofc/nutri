@@ -8,8 +8,8 @@ const es = lang === 'es';
 
 const cards = [
   {
-    page: '/digestion',
-    title: es ? 'Mi digestión me condiciona' : 'My digestion holds me back',
+    anchor: 'tratamiento-digestivo',
+    title: es ? 'Tu digestión te condiciona' : 'Your digestion holds you back',
     items: es
       ? [
           'Sientes que tu digestión condiciona tu día a día',
@@ -24,11 +24,11 @@ const cards = [
           'That feeling that “everything upsets me”',
         ],
     help: es
-      ? 'Tus síntomas tienen una causa. La buscamos juntas y trabajamos desde la raíz, sin parches.'
-      : 'Your symptoms have a cause. We look for it together and work from the root, with no quick fixes.',
+      ? 'Tus síntomas tienen una causa. La buscamos juntas y trabajamos desde la raíz.\nSin parches.'
+      : 'Your symptoms have a cause. We look for it together and work from the root.\nNo quick fixes.',
   },
   {
-    title: es ? 'Mis ciclos y mis hormonas' : 'My cycle and my hormones',
+    title: es ? 'Tus ciclos y tus hormonas' : 'Your cycle and your hormones',
     items: es
       ? [
           'Convives con reglas dolorosas o síndrome premenstrual',
@@ -47,7 +47,7 @@ const cards = [
       : 'I explain how your diet, your gut and your hormones are connected, and we support your medical treatment through nutrition.',
   },
   {
-    title: es ? 'Mi cuerpo ya no es el de antes' : 'My body is not what it used to be',
+    title: es ? 'Tu cuerpo ya no es el de antes' : 'Your body is not what it used to be',
     items: es
       ? [
           'Estás en perimenopausia o menopausia',
@@ -68,7 +68,7 @@ const cards = [
       : 'I help you understand what is changing and look after your energy, rest and body through food.',
   },
   {
-    title: es ? 'Mi analítica ha salido alterada' : 'My blood tests came back off',
+    title: es ? 'Tu analítica ha salido alterada' : 'Your blood tests came back off',
     items: es
       ? [
           'En tu última analítica ha aparecido algún parámetro alterado',
@@ -87,7 +87,7 @@ const cards = [
       : 'I explain what your results mean and we turn them into a realistic plan, coordinated with your doctor.',
   },
   {
-    title: es ? 'Comer me genera estrés' : 'Eating stresses me out',
+    title: es ? 'Comer te genera estrés' : 'Eating stresses you out',
     items: es
       ? [
           'Quieres mejorar tu relación con la comida',
@@ -106,7 +106,7 @@ const cards = [
       : 'I can support you towards calmer, more mindful and flexible eating. Eating you truly enjoy.',
   },
   {
-    title: es ? 'Quiero cuidarme, pero no llego a todo' : 'I want to look after myself, but I can’t do it all',
+    title: es ? 'Quieres cuidarte, pero no llegas a todo' : 'You want to look after yourself, but you can’t do it all',
     items: es
       ? [
           'Sabes que quieres cuidarte, pero no tienes tiempo',
@@ -125,7 +125,7 @@ const cards = [
       : 'I help you create simple, practical and realistic solutions.',
   },
   {
-    title: es ? 'Embarazo, posparto y búsqueda de embarazo' : 'Pregnancy, postpartum and trying to conceive',
+    title: es ? 'Tu embarazo y tu posparto' : 'Your pregnancy and postpartum',
     items: es
       ? ['Estás en búsqueda de embarazo', 'Estás embarazada o dando el pecho', 'Estás en el posparto']
       : ['You are trying to conceive', 'You are pregnant or breastfeeding', 'You are in the postpartum period'],
@@ -138,29 +138,27 @@ const cards = [
 // One short line per situation, shown on the front of the glass cards
 const summaries = es
   ? [
-      'Hinchazón, gases, digestiones pesadas, acidez, estreñimiento o diarrea.',
-      'Reglas dolorosas, síndrome premenstrual, SOP, endometriosis o hipotiroidismo.',
-      'Perimenopausia o menopausia, peor sueño, más cansancio, hinchazón y antojos.',
-      'Glucosa, colesterol, hierro o hígado graso, y nadie te ha explicado cómo cambiarlo.',
-      'Comes por estrés o ansiedad, sientes culpa y quieres cambiar tu cuerpo sin restricciones.',
-      'Sin tiempo, llegas cansada e improvisas comidas, picas más de lo que te gustaría.',
-      'Búsqueda de embarazo, embarazo, lactancia o posparto.',
+      'Hinchazón, gases, digestiones pesadas, acidez, estreñimiento, diarrea o esa sensación de que “todo me sienta mal”.',
+      'Convives con reglas dolorosas, síndrome del ovario poliquístico, endometriosis, hipo o hipertiroidismo, síndrome premenstrual u otra alteración hormonal y quieres acompañar tu cuerpo desde la nutrición integrativa.',
+      'Estás en perimenopausia o menopausia y notas peor sueño, más cansancio, más hinchazón y antojos o cambios en tu cuerpo.',
+      'En tu última analítica ha aparecido algún parámetro alterado, como glucosa, colesterol, hierro o hígado graso, y nadie te ha explicado cómo mejorarlo.',
+      'Comes por estrés o ansiedad, sientes culpa después de comer y quieres mejorar tu relación con la comida, sin restricciones ni dietas.',
+      'Quieres cuidarte, pero no tienes tiempo: llegas cansada, improvisas comidas y picas más de lo que te gustaría.',
+      'Estás en búsqueda de embarazo, embarazada, dando el pecho o en el posparto.',
     ]
   : [
-      'Bloating, gas, heavy digestion, heartburn, constipation or diarrhoea.',
-      'Painful periods, PMS, PCOS, endometriosis or hypothyroidism.',
-      'Perimenopause or menopause, poorer sleep, more tiredness, bloating and cravings.',
-      'Glucose, cholesterol, iron or fatty liver, and nobody has explained how to change it.',
-      'You eat when stressed or anxious, feel guilty and want to change your body without restriction.',
-      'No time, you get home tired and improvise meals, you snack more than you would like.',
-      'Trying to conceive, pregnancy, breastfeeding or postpartum.',
+      'Bloating, gas, heavy digestion, heartburn, constipation, diarrhoea or that feeling that “everything upsets me”.',
+      'You live with painful periods, polycystic ovary syndrome, endometriosis, hypo- or hyperthyroidism, premenstrual syndrome or another hormonal imbalance, and you want to support your body through integrative nutrition.',
+      'You are in perimenopause or menopause and notice poorer sleep, more tiredness, more bloating and cravings or changes in your body.',
+      'Your latest blood test shows an altered value, such as glucose, cholesterol, iron or fatty liver, and nobody has explained how to improve it.',
+      'You eat when stressed or anxious, feel guilty after eating and want a better relationship with food, without restriction or diets.',
+      'You want to look after yourself but have no time: you get home tired, improvise meals and snack more than you would like.',
+      'You are trying to conceive, pregnant, breastfeeding or in the postpartum period.',
     ];
 
-const cta = es ? 'Empezar por aquí' : 'Start here';
-const href = getLocalizedPath('/pricing', lang);
 ---
 
-<section id="que-te-trae" class="scroll-mt-[4.5rem] relative overflow-hidden bg-[#D9C6CA] [&_.sec-title]:!max-w-none lg:[&_.sec-title]:whitespace-nowrap py-16 sm:py-24 [&_.lead]:text-[#2F1B24] lg:[&_.lead]:!max-w-none lg:[&_.lead]:!whitespace-nowrap [&_.text-brand-gray]:text-[#2F1B24]">
+<section id="que-te-trae" class="scroll-mt-[4.5rem] relative overflow-hidden bg-[#E4D3D3] [&_.sec-title]:!max-w-none lg:[&_.sec-title]:whitespace-nowrap py-16 sm:py-24 [&_.lead]:text-[#2F1B24] lg:[&_.lead]:!max-w-none lg:[&_.lead]:!whitespace-nowrap [&_.text-brand-gray]:text-[#2F1B24]">
   <!-- Out-of-focus flower, tilted, in the bottom-right corner; multiplied onto the wall so it takes its colour and fades on its inner sides -->
   <div
     class="pointer-events-none absolute -bottom-[9%] -right-[3%] aspect-[756/839] w-[clamp(15rem,36%,28rem)] bg-cover mix-blend-multiply opacity-80 blur-[2px]"
@@ -182,28 +180,19 @@ const href = getLocalizedPath('/pricing', lang);
       <!-- Problem cards: frosted glass, flip on hover / focus / tap -->
       <div class="grid auto-rows-fr grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         {[0, 1, 2, 6, 3, 4, 5].map((index) => { const card = cards[index]; return (
-          <div class="flip" tabindex="0" data-flip>
+          <div class="flip cursor-pointer" tabindex="0" data-flip data-href={`${getLocalizedPath('/pricing', lang)}#${card.anchor ?? 'como-puedo-ayudarte'}`}>
             <div class="flip-inner">
               <!-- Front -->
               <div class="flip-face flip-front flex flex-col p-4 sm:p-5 rounded-2xl border border-white bg-[rgba(250,249,247,0.74)] shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)]">
                 <h3 class="mb-3 text-[0.82rem] font-semibold uppercase leading-snug tracking-[0.06em] text-brand-accent" style="font-family: 'Montserrat', sans-serif !important; letter-spacing: 0.06em !important;">
                   {card.title}
                 </h3>
-                <p class="text-[0.8rem] leading-snug text-brand-gray">{summaries[index]}</p>
+                <p class="text-justify [hyphens:none] font-sans text-[15px] leading-snug text-brand-gray">{summaries[index]}</p>
               </div>
 
               <!-- Back -->
               <div class="flip-face flip-back flex flex-col items-start justify-center gap-3 rounded-2xl p-4 sm:p-5">
-                <p class="flip-help text-[0.8rem] leading-snug text-[#F3E6E1]">{card.help}</p>
-                <a
-                  href={card.page ? getLocalizedPath(card.page, lang) : href}
-                  class="flip-link eyebrow eyebrow-link !text-[#F3E6E1]"
-                >
-                  <span>{card.page ? (es ? 'Saber más' : 'Learn more') : cta}</span>
-                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                  </svg>
-                </a>
+                <p class="flip-help text-justify [hyphens:none] font-sans text-[15px] leading-snug text-[#F3E6E1]">{card.help.split('\n').map((line, i) => (<Fragment>{i > 0 && <br />}{line}</Fragment>))}</p>
               </div>
             </div>
           </div>
@@ -234,6 +223,7 @@ const href = getLocalizedPath('/pricing', lang);
   }
   .flip-inner {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
@@ -310,13 +300,42 @@ const href = getLocalizedPath('/pricing', lang);
 </style>
 
 <script>
-  // Touch screens have no hover: tap a card to flip it (links keep working).
-  if (window.matchMedia('(hover: none)').matches) {
-    document.querySelectorAll('[data-flip]').forEach((card) => {
-      card.addEventListener('click', (e) => {
-        if ((e.target as HTMLElement).closest('a')) return;
+  // A card with a destination goes there when clicked; on touch screens the others flip when tapped.
+  const touch = window.matchMedia('(hover: none)').matches;
+  document.querySelectorAll<HTMLElement>('[data-flip]').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) return;
+      const href = card.dataset.href;
+      if (href) {
+        window.location.href = href;
+      } else if (touch) {
         card.classList.toggle('is-flipped');
-      });
+      }
     });
-  }
+  });
+
+  // The text never leaves its card: when the card is too narrow, the type shrinks just enough to fit
+  // (all cards share the same size for each kind of text, so they stay consistent).
+  const fitCardText = () => {
+    const roles = ['.flip-front h3', '.flip-front p', '.flip-help'];
+    roles.forEach((sel) => {
+      const els = Array.from(document.querySelectorAll<HTMLElement>(`#que-te-trae ${sel}`));
+      els.forEach((el) => (el.style.fontSize = ''));
+      const base = parseFloat(getComputedStyle(els[0]).fontSize);
+      let size = base;
+      const overflows = () => els.some((el) => el.scrollWidth > el.clientWidth + 0.5);
+      while (overflows() && size > 9) {
+        size -= 0.25;
+        els.forEach((el) => (el.style.fontSize = `${size}px`));
+      }
+    });
+  };
+  let fitTimer: number;
+  const scheduleFit = () => {
+    window.clearTimeout(fitTimer);
+    fitTimer = window.setTimeout(fitCardText, 80);
+  };
+  window.addEventListener('resize', scheduleFit);
+  document.fonts.ready.then(fitCardText);
+  fitCardText();
 </script>

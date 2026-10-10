@@ -4,6 +4,16 @@ import SectionHeader from '../layout/SectionHeader.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const es = lang === 'es';
+
+const areas = [
+  {
+    id: 'tratamiento-digestivo',
+    title: es ? 'Tratamiento de patologías digestivas' : 'Treatment of digestive conditions',
+    text: es
+      ? 'Gastritis, intestino irritable, Helicobacter pylori, SIBO, malas digestiones, candidiasis recurrente, estreñimiento, diarreas, gases e hinchazón.'
+      : 'Gastritis, irritable bowel syndrome, Helicobacter pylori, SIBO, poor digestion, recurrent candidiasis, constipation, diarrhoea, gas and bloating.',
+  },
+];
 ---
 
 <section id="como-puedo-ayudarte" class="relative scroll-mt-[4.5rem] overflow-hidden bg-[#E4D3D3] py-16 sm:py-24">
@@ -12,5 +22,16 @@ const es = lang === 'es';
       eyebrow={es ? 'Áreas de especialización' : 'Areas of expertise'}
       title={es ? '¿Cómo puedo ayudarte?' : 'How can I help you?'}
     />
+
+    <div class="max-w-3xl">
+      {areas.map((area) => (
+        <div id={area.id} class="scroll-mt-[6rem] border-t border-brand-accent/20 py-6">
+          <h3 class="mb-2 text-[0.82rem] font-semibold uppercase leading-snug tracking-[0.06em] text-brand-accent" style="font-family: 'Montserrat', sans-serif !important; letter-spacing: 0.06em !important;">
+            {area.title}
+          </h3>
+          <p class="text-[0.95rem] leading-relaxed text-[#2F1B24]">{area.text}</p>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

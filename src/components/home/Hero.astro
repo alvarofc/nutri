@@ -12,6 +12,16 @@ const socials = [
 ---
 
 <section class="relative bg-brand-cream overflow-hidden">
+  <!-- Plate with blueberries, cut out and 60% transparent: a big half-circle coming in from the right edge, reaching the middle of the portrait (placed by the script below) -->
+  <img
+    data-berries
+    src="/assets/hero-plato.webp"
+    alt=""
+    aria-hidden="true"
+    class="pointer-events-none absolute left-0 top-1/2 hidden h-auto max-w-none -translate-y-1/2 opacity-40 xl:block"
+    loading="lazy"
+  />
+
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!--
       Rows on wide screens:  1) name   2) title + specialty above the thin separator
@@ -68,7 +78,7 @@ const socials = [
       </div>
 
       <!-- Photo: spans the three rows; registration number in the bottom-right corner -->
-      <div class="relative z-10 order-1 mx-auto w-full max-w-[clamp(16.5rem,62vw,26rem)] lg:order-none lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mx-0 lg:mt-[0.6rem] lg:mb-[0.4rem] lg:max-w-none">
+      <div data-hero-photo class="relative z-10 order-1 mx-auto w-full max-w-[clamp(16.5rem,62vw,26rem)] lg:order-none lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mx-0 lg:mt-[0.6rem] lg:mb-[0.4rem] lg:max-w-none">
         <div class="relative aspect-[4/5] lg:absolute lg:inset-0 lg:aspect-auto">
           <div class="absolute inset-0 overflow-hidden rounded-2xl bg-brand-blush">
             <img
@@ -95,6 +105,26 @@ const socials = [
     </div>
   </div>
 </section>
+
+<script>
+  // The berries' left edge sits at the middle of the portrait; the cluster is as wide as needed
+  // for its right half to run off the right edge of the screen (a half-circle).
+  function placeBerries() {
+    const img = document.querySelector<HTMLImageElement>('[data-berries]');
+    const photo = document.querySelector<HTMLElement>('[data-hero-photo]');
+    if (!img || !photo) return;
+    const section = img.closest('section');
+    if (!section || getComputedStyle(img).display === 'none') return;
+    const s = section.getBoundingClientRect();
+    const p = photo.getBoundingClientRect();
+    const mid = p.left + p.width / 2 - s.left;
+    img.style.left = `${mid}px`;
+    img.style.width = `${2 * (s.width - mid)}px`;
+  }
+  document.addEventListener('astro:page-load', placeBerries);
+  window.addEventListener('resize', placeBerries);
+  placeBerries();
+</script>
 
 <script>
   // "Saber más" glides down to the next section ("¿Qué te trae por aquí?")
