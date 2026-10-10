@@ -1,0 +1,18 @@
+---
+import PageHeader from '../PageHeader.astro';
+import { getLangFromUrl } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const es = lang === 'es';
+---
+
+<PageHeader
+  eyebrow={es ? 'Servicios' : 'Services'}
+  title={es ? 'Descubre cómo puedo ayudarte' : 'Discover how I can help you'}
+  image="/assets/servicios-cabecera-11.webp"
+  alt={es
+    ? 'Manos escribiendo en un portátil, con un matcha, arándanos y una libreta sobre la mesa'
+    : 'Hands typing on a laptop, with a matcha, blueberries and a notebook on the desk'}
+  width={2000}
+  height={1333}
+/>

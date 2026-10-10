@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
+import { whatsappUrl } from '../../config/contact';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -15,8 +16,8 @@ const t = useTranslations(lang);
 
       <p class="font-sans text-base sm:text-lg font-light leading-relaxed text-white/90 mb-8">
         {lang === 'es'
-          ? 'Empieza con una valoración inicial online: 75-80 minutos para entender qué le pasa a tu cuerpo y por dónde empezar.'
-          : 'Start with an online initial assessment: 75-80 minutes to understand what is happening in your body and where to begin.'}
+          ? 'Empieza con una valoración inicial online: 75 minutos para entender qué le pasa a tu cuerpo y por dónde empezar.'
+          : 'Start with an online initial assessment: 75 minutes to understand what is happening in your body and where to begin.'}
       </p>
 
       <div class="flex flex-col sm:flex-row gap-3">
@@ -28,6 +29,7 @@ const t = useTranslations(lang);
         </a>
         <a
           href={getLocalizedPath('/contact', lang)}
+          data-wa-href={whatsappUrl(lang)}
           class="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-7 py-3 font-sans text-sm font-medium rounded-full hover:bg-white/10 transition-colors"
         >
           <span>{t('cta.button')}</span>
@@ -44,3 +46,17 @@ const t = useTranslations(lang);
     aria-label={lang === 'es' ? 'Dos higos sobre un fondo blanco' : 'Two figs on a white background'}
   ></div>
 </section>
+
+<script>
+  // On phones and tablets (touch screens) "Escríbeme" opens a WhatsApp chat; on a computer it goes to the contact page.
+  function setupWhatsappLinks() {
+    if (!window.matchMedia('(pointer: coarse)').matches) return;
+    document.querySelectorAll<HTMLAnchorElement>('[data-wa-href]').forEach((link) => {
+      link.href = link.dataset.waHref ?? link.href;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    });
+  }
+  document.addEventListener('astro:page-load', setupWhatsappLinks);
+  setupWhatsappLinks();
+</script>

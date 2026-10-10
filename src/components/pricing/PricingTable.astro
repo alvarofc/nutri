@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, Lock } from 'lucide-astro';
+import { Lock } from 'lucide-astro';
 import { INITIAL_ASSESSMENT_PRICE } from '../../config/booking';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
@@ -13,15 +13,13 @@ const groups = [
     items: [
       {
         title: t('pricing.assessment.title'),
-        duration: t('pricing.assessment.duration'),
-        description: t('pricing.assessment.description'),
+        meta: t('pricing.assessment.duration'),
         price: INITIAL_ASSESSMENT_PRICE,
         bookable: true,
       },
       {
-        title: t('pricing.plan.title'),
-        duration: t('pricing.plan.duration'),
-        description: t('pricing.plan.description'),
+        title: lang === 'en' ? 'Personalised plan delivery session' : 'Sesión de entrega del plan personalizado',
+        meta: t('pricing.plan.duration'),
         price: '70 €',
       },
     ],
@@ -30,15 +28,13 @@ const groups = [
     label: t('pricing.sections.continuity'),
     items: [
       {
-        title: t('pricing.followup.title'),
-        duration: t('pricing.followup.duration'),
-        description: t('pricing.followup.description'),
+        title: lang === 'en' ? 'Follow-up session' : 'Sesión de seguimiento',
+        meta: t('pricing.followup.duration'),
         price: '65 €',
       },
       {
-        title: t('pricing.bundle.title'),
-        duration: `${t('pricing.bundle.duration')} · ${t('pricing.bundle.saving')}`,
-        description: t('pricing.bundle.description'),
+        title: lang === 'en' ? 'Bundle of 4 follow-ups' : 'Bono de 4 seguimientos',
+        meta: `${t('pricing.bundle.duration')} · ${t('pricing.bundle.saving')}`,
         price: '240 €',
       },
     ],
@@ -46,51 +42,57 @@ const groups = [
 ];
 ---
 
-<section class="relative py-16 sm:py-24 overflow-hidden">
-  <!-- Soft lavender to peach gradient background (same as "¿Cómo trabajo?") -->
-  <div class="absolute inset-0 bg-gradient-to-b from-[#EBDDD6] via-[#E5D3C8] to-[#EBDDD6]"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(248,200,180,0.5)_0%,_transparent_70%)]"></div>
-  <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#E3CFC5]/60 to-transparent"></div>
-  <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#E3CFC5]/60 to-transparent"></div>
+<section class="relative overflow-hidden bg-[#EBDDD6] py-16 sm:py-24">
+  <!-- Same colour as "Paso a paso / Cómo te acompaño" on the home page (#EBDDD6) -->
 
-  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-6xl lg:px-8">
-    <div class="grid gap-6 lg:grid-cols-2">
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <!-- Label above the prices, same format as "En qué consisten las sesiones" -->
+    <div class="sec-top">
+      <span class="eyebrow">{lang === 'en' ? 'Rates' : 'Tarifas'}</span>
+      <span class="sec-rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="mx-auto grid gap-6 lg:max-w-5xl lg:grid-cols-2">
       {
         groups.map((group) => (
-          <div class="flex flex-col rounded-2xl bg-white/80 backdrop-blur-sm border border-white/60 shadow-sm p-8 sm:p-10">
-            <h2 class="text-xs font-medium uppercase tracking-widest text-brand-accent">{group.label}</h2>
-            <ul role="list" class="divide-y divide-brand-gray/20">
+          <div class="flex flex-col rounded-[2rem] border border-brand-accent/10 bg-[#FFFCFA] p-6 shadow-[0_24px_50px_-30px_rgba(74,29,51,0.45)] sm:p-8">
+            <h2 class="border-b border-brand-accent/20 pb-4 text-center font-sans text-lg font-semibold uppercase tracking-[0.18em] text-brand-accent">
+              {group.label}
+            </h2>
+            <ul role="list" class="mt-4 flex flex-1 flex-col gap-3">
               {group.items.map((item) => (
-                <li class="flex flex-col py-8 last:pb-0">
-                  <div class="flex items-baseline justify-between gap-6">
-                    <h3 class="font-serif text-2xl text-brand-black">{item.title}</h3>
-                    <p class="whitespace-nowrap font-serif text-3xl text-brand-accent">{item.price}</p>
+                <li class:list={['rounded-2xl px-4 py-4', item.bookable ? 'bg-[#F4DEE5] ring-1 ring-brand-accent/30' : 'bg-[#F8F1EC]']}>
+                  <h3 class="whitespace-nowrap font-serif text-xl leading-tight text-brand-black sm:text-2xl">{item.title}</h3>
+                  <div class="mt-2 flex items-end justify-between gap-4">
+                    <p class="text-sm text-brand-gray">
+                      {item.meta}
+                      {item.extra && <span class="ml-1 font-medium text-brand-accent">· {item.extra}</span>}
+                    </p>
+                    <p class="whitespace-nowrap font-serif text-4xl leading-none text-brand-accent sm:text-[2.6rem]">{item.price}</p>
                   </div>
-                  <p class="mt-1 text-sm text-brand-gray">{item.duration}</p>
-                  <p class="mt-4 leading-relaxed text-brand-charcoal">{item.description}</p>
-                  {item.bookable ? (
+                  {item.bookable && (
                     <a
                       href={getLocalizedPath('/booking', lang)}
-                      class="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-brand-accent px-6 py-3 text-base font-medium text-white transition hover:bg-brand-accent/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+                      class="cta-gradient-btn relative mt-4 flex w-full items-center justify-center overflow-hidden rounded-full bg-brand-accent px-6 py-3 text-base font-medium text-white transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
                     >
-                      {t('pricing.action.book')}
-                      <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                      <span class="relative z-10">{t('pricing.action.book')}</span>
                     </a>
-                  ) : (
-                    <p class="mt-6 inline-flex items-center gap-2 text-sm text-brand-gray">
-                      <Lock class="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
-                      {t('pricing.private')}
-                    </p>
                   )}
                 </li>
               ))}
             </ul>
+            {group.label === t('pricing.sections.continuity') && (
+              <p class="mt-4 flex items-center justify-center gap-2 text-center text-sm text-brand-gray">
+                <Lock class="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
+                {t('pricing.private')}
+              </p>
+            )}
           </div>
         ))
       }
     </div>
 
-    <p class="mx-auto mt-12 max-w-3xl text-center text-sm leading-relaxed text-brand-gray">
+    <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-brand-gray">
       {t('pricing.policy')}
     </p>
   </div>

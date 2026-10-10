@@ -1,6 +1,5 @@
 ---
-import Cta from '../../components/pricing/Cta.astro';
-import HelpIntro from '../../components/pricing/HelpIntro.astro';
+import PricingHeader from '../../components/pricing/PricingHeader.astro';
 import Faq from '../../components/pricing/Faq.astro';
 import PricingTable from '../../components/pricing/PricingTable.astro';
 import ProcessSteps from '../../components/pricing/ProcessSteps.astro';
@@ -14,9 +13,8 @@ import Layout from '../../layouts/Layout.astro';
   type="website"
   canonicalUrl="/en/pricing"
 >
-  <HelpIntro />
+  <PricingHeader />
   <ProcessSteps />
   <PricingTable />
   <Faq />
-  <Cta />
 </Layout>

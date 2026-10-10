@@ -1,6 +1,6 @@
 ---
+import PageHeader from '../../../components/PageHeader.astro';
 import Layout from '../../../layouts/Layout.astro';
-import SectionHeader from '../../../components/layout/SectionHeader.astro';
 import { getLangFromUrl, useTranslations } from '../../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
@@ -21,12 +21,19 @@ let filteredPosts = allPosts.filter((post) => {
 ---
 
 <Layout title="Journal" description="Alexandra's journal • Ideas, recommendations and tips I like to share.">
-  <section class="relative bg-brand-cream py-20 sm:py-28">
-    <div class="relative mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-      
-      <!-- Header -->
-      <SectionHeader as="h1" eyebrow="Ideas and advice" title="Journal" lead="Ideas, recommendations and tips I like to share." />
-      <div class="-mt-8 mb-14 flex flex-wrap gap-x-6 gap-y-2">
+  <PageHeader
+    eyebrow="Ideas and advice"
+    title="Journal"
+    lead="Ideas, recommendations and tips I like to share."
+    image="/assets/journal-cabecera-4.webp"
+    alt="Bowl of blueberries on an open notebook"
+    width={2000}
+    height={1333}
+  />
+
+  <section class="relative bg-[#EBDDD6] pb-20 sm:pb-28">
+    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 mt-14 flex flex-wrap justify-center gap-x-6 gap-y-2">
         {
           [...tags].map((tag) => (
             <span class="eyebrow opacity-70">{tag}</span>
@@ -34,39 +41,23 @@ let filteredPosts = allPosts.filter((post) => {
         }
       </div>
 
-      <!-- Grid -->
-      <div class="grid gap-x-8 gap-y-20 lg:grid-cols-3">
+      <!-- List: one article after another -->
+      <div class="divide-y divide-brand-accent/15 border-y border-brand-accent/15">
         {
           filteredPosts.map((post) => (
-            <article class="flex flex-col group">
-              <a href={post.url?.replace(/^\/blog/, '/en/blog')} class="block overflow-hidden rounded-2xl">
-                <img
-                  src={post.frontmatter.imgUrl}
-                  alt={post.frontmatter.imgAlt}
-                  class="aspect-[4/5] w-full object-cover bg-white/50 transition-transform duration-500 group-hover:scale-105"
-                />
-              </a>
-              <div class="mt-8 flex flex-col gap-4">
-                <div class="flex items-center gap-4 text-xs font-medium tracking-widest text-brand-muted uppercase">
-                  <time datetime={post.frontmatter.pubDate}>{post.frontmatter.pubDate.substring(0, 10)}</time>
-                  <span>•</span>
-                  <span>{post.frontmatter.tags[0]}</span>
-                </div>
-                <h3 class="text-3xl font-serif text-brand-black leading-tight group-hover:text-brand-accent transition-colors">
-                  <a href={post.url?.replace(/^\/blog/, '/en/blog')}>
-                    {post.frontmatter.title}
-                  </a>
-                </h3>
-                <p class="text-brand-muted text-lg leading-relaxed line-clamp-3">
-                  {post.frontmatter.description}
-                </p>
-                <a
-                  href={post.url?.replace(/^\/blog/, '/en/blog')}
-                  class="mt-4 text-sm font-bold tracking-widest uppercase text-brand-accent border-b border-brand-accent/30 pb-1 self-start hover:border-brand-accent transition-colors"
-                >
-                  Read Article
-                </a>
+            <article class="group py-8 sm:py-10">
+              <div class="flex items-center gap-4 text-xs font-medium tracking-widest text-brand-muted uppercase">
+                <time datetime={post.frontmatter.pubDate}>{post.frontmatter.pubDate.substring(0, 10)}</time>
+                <span>•</span>
+                <span>{post.frontmatter.tags[0]}</span>
               </div>
+              <h3 class="mt-3 text-2xl sm:text-3xl font-serif text-brand-black leading-tight group-hover:text-brand-accent transition-colors">
+                <a href={post.url}>{post.frontmatter.title}</a>
+              </h3>
+              <p class="mt-3 text-brand-muted text-base leading-relaxed">{post.frontmatter.description}</p>
+              <a href={post.url} class="mt-5 inline-block text-sm font-bold tracking-widest uppercase text-brand-accent border-b border-brand-accent/30 pb-1 hover:border-brand-accent transition-colors">
+                Read article
+              </a>
             </article>
           ))
         }

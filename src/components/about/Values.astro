@@ -7,22 +7,18 @@ const t = useTranslations(lang);
 
 const values = [
   {
-    emoji: '✨',
     name: t('about.values.excellence.name'),
     description: t('about.values.excellence.description'),
   },
   {
-    emoji: '💡',
     name: t('about.values.innovation.name'),
     description: t('about.values.innovation.description'),
   },
   {
-    emoji: '🤝',
     name: t('about.values.teamwork.name'),
     description: t('about.values.teamwork.description'),
   },
   {
-    emoji: '💚',
     name: t('about.values.respect.name'),
     description: t('about.values.respect.description'),
   },
@@ -41,7 +37,6 @@ const values = [
           values.map((value) => (
             <div class="group bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
               <div class="flex flex-col gap-4">
-                <span class="text-4xl">{value.emoji}</span>
                 <h3 class="font-serif text-xl text-brand-black group-hover:text-brand-accent transition-colors">
                   {value.name}
                 </h3>

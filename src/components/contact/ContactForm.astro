@@ -38,54 +38,17 @@ if (Astro.request.method === "POST") {
 }
 ---
 
-<section class="py-20 sm:py-28 bg-white">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
-      <!-- Left side - Text -->
-      <div class="flex flex-col gap-6">
-        <span class="eyebrow">
-          {lang === 'en' ? 'Send a Message' : 'Envía un Mensaje'}
-        </span>
-        
-        <h2 class="font-serif text-3xl sm:text-4xl text-brand-black leading-tight">
-          {t('contact.form.title')}
-        </h2>
-        
-        <p class="text-brand-muted text-lg leading-relaxed">
-          {t('contact.form.subtitle')}
-        </p>
-        
-        <!-- Trust indicators -->
-        <div class="flex flex-col gap-4 mt-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-brand-accent/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
-            <span class="text-brand-muted">{lang === 'en' ? 'Response within 24 hours' : 'Respuesta en 24 horas'}</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-brand-accent/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-            </div>
-            <span class="text-brand-muted">{lang === 'en' ? 'Your data is safe with me' : 'Tus datos están seguros'}</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-brand-accent/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-              </svg>
-            </div>
-            <span class="text-brand-muted">{lang === 'en' ? 'No commitment consultation' : 'Consulta sin compromiso'}</span>
-          </div>
-        </div>
-      </div>
-      
+<section class="bg-brand-cream py-16 sm:py-24">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-8 text-center">
+      <span class="eyebrow mb-3 inline-block">{lang === 'en' ? 'Or write to me here' : 'O escríbeme aquí'}</span>
+      <h2 class="font-serif text-3xl leading-tight text-brand-black sm:text-4xl">
+        {lang === 'en' ? 'Leave me your details' : 'Déjame tus datos'}
+      </h2>
+    </div>
+    <div>
       <!-- Right side - Form -->
-      <form action="register" method="POST" class="bg-brand-ivory rounded-2xl p-6 sm:p-8 shadow-sm">
+      <form action="register" method="POST" class="rounded-2xl bg-white p-6 shadow-[0_24px_50px_-34px_rgba(74,29,51,0.45)] sm:p-8">
         <div class="flex flex-col gap-5">
           <!-- Full name input -->
           <div>
@@ -153,13 +116,10 @@ if (Astro.request.method === "POST") {
           </div>
 
           <button
-            class="w-full inline-flex items-center justify-center rounded-full bg-brand-accent px-6 py-4 text-base font-medium text-white transition-all hover:bg-brand-accent/90 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent mt-2"
+            class="cta-gradient-btn relative mt-2 inline-flex w-full items-center justify-center overflow-hidden rounded-full bg-brand-accent px-6 py-4 text-base font-medium text-white transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
             type="submit"
           >
-            {t('contact.form.submit')}
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
+            <span class="relative z-10">{t('contact.form.submit')}</span>
           </button>
         </div>
       </form>

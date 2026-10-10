@@ -1,6 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../i18n/ui';
-import SectionHeader from '../layout/SectionHeader.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -53,17 +52,21 @@ const faqSchema = {
 
 <section class="relative py-20 sm:py-28 bg-white">
   <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-3 lg:gap-16">
-      <!-- Header -->
-      <SectionHeader
-        class="!mb-0"
-        eyebrow={lang === 'en' ? 'Before booking' : 'Antes de reservar'}
-        title={t('faq.title')}
-        lead={lang === 'en' ? "Can't find what you're looking for? Feel free to contact me directly." : '¿No encuentras lo que buscas? No dudes en contactarme directamente.'}
-      />
+    <!-- Header: label and title above the questions -->
+    <div class="sec-head">
+      <div class="sec-top">
+        <span class="eyebrow">{lang === 'en' ? 'Frequently asked questions' : 'Preguntas frecuentes'}</span>
+        <span class="sec-rule" aria-hidden="true"></span>
+      </div>
+      <h2 class="sec-title !max-w-none lg:whitespace-nowrap">
+        {lang === 'en' ? 'Get all your questions answered about my consultation here' : 'Resuelve todas tus dudas sobre mi consulta aquí'}
+      </h2>
+    </div>
 
+    <div class="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-8">
       <!-- Accordion -->
-      <div class="lg:col-span-2">
+      <div>
         <dl
           class="space-y-4"
           x-data="{ selected: null, toggle(value) { this.selected = this.selected === value ? null : value } }"
@@ -116,6 +119,31 @@ const faqSchema = {
           }
         </dl>
       </div>
+
+      <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+        <p class="text-brand-muted">
+          {lang === 'en' ? "Can't find what you're looking for?" : '¿No encuentras lo que buscas?'}
+        </p>
+        <a
+          href={getLocalizedPath('/contact', lang)}
+          class="cta-gradient-btn relative inline-flex items-center justify-center overflow-hidden rounded-full bg-brand-accent px-6 py-3 text-base font-medium text-white transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+        >
+          <span class="relative z-10">{lang === 'en' ? 'Feel free to contact me directly' : 'No dudes en contactarme directamente'}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Photo of the desk, with the stickers and the table recoloured to the palette of the site -->
+    <div class="mx-auto w-full max-w-sm overflow-hidden rounded-[1.75rem] shadow-[0_30px_60px_-30px_rgba(74,29,51,0.45)] lg:sticky lg:top-28 lg:col-span-4 lg:max-w-none">
+      <img
+        src="/assets/faq-mesa-3.webp"
+        alt={lang === 'en' ? 'Bowl of blueberries on the desk next to a laptop and a book about the microbiome' : 'Cuenco de arándanos sobre la mesa, junto a un portátil y un libro sobre microbiota'}
+        class="aspect-[2/3] h-full w-full object-cover"
+        width="1000"
+        height="1500"
+        loading="lazy"
+      />
+    </div>
     </div>
   </div>
 </section>

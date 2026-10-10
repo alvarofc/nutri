@@ -1,0 +1,20 @@
+---
+import { getLangFromUrl } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const es = lang === 'es';
+---
+
+<!-- Quote for the "About me" page (the rest of the page will be developed later) -->
+<section class="bg-[#EBDDD6] py-16 sm:py-24">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <blockquote
+      class="text-center text-brand-accent text-2xl sm:text-3xl leading-[1.25] tracking-tight italic"
+      style="font-family: 'Cormorant', serif; font-weight: 400"
+    >
+      “{es
+        ? 'Cuando los nutrientes y compuestos bioactivos de los alimentos se combinan de forma adecuada, se convierten en herramientas moleculares capaces de modular la inflamación y los desequilibrios hormonales.'
+        : 'When the nutrients and bioactive compounds in food are combined in the right way, they become molecular tools able to modulate inflammation and hormonal imbalances.'}”
+    </blockquote>
+  </div>
+</section>

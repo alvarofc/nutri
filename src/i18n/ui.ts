@@ -42,7 +42,7 @@ export const ui = {
     'services.methodology': 'THE METHODOLOGY',
     'services.step1.name': 'Initial assessment',
     'services.step1.description':
-      'In a 75-80 minute video call I get to know you, understand your current situation and what you want to achieve.',
+      'In a 75-minute video call I get to know you, understand your current situation and what you want to achieve.',
     'services.step2.name': 'Design and delivery of your personalised plan',
     'services.step2.description':
       'I will develop a customized plan for you and your goals. We will review it together to ensure you understand it and feel comfortable with it.',
@@ -109,7 +109,7 @@ export const ui = {
     // Pricing page
     'pricing.title': 'Your nutritional support process',
     'pricing.subtitle': 'An initial process to understand your case in depth, then follow-ups at the pace your body needs.',
-    'pricing.action.book': 'Book initial assessment',
+    'pricing.action.book': 'Book your initial assessment',
     'pricing.private': 'Booking link sent privately after your initial assessment',
 
     // Expertise section
@@ -198,7 +198,7 @@ export const ui = {
     'pricing.sections.initial': 'Initial process',
     'pricing.sections.continuity': 'Continuity',
     'pricing.assessment.title': 'Initial assessment',
-    'pricing.assessment.duration': '75–80 min',
+    'pricing.assessment.duration': '75 min',
     'pricing.assessment.description': 'We review your history, symptoms, habits, sleep, digestion, energy, lab tests and medication to understand your case in depth.',
     'pricing.plan.title': 'Design + delivery of your personalized plan',
     'pricing.plan.duration': '60 min',
@@ -216,10 +216,10 @@ export const ui = {
     'faq.title': 'Frequently Asked Questions',
     'faq.q1.title': 'What is included in the first visit?',
     'faq.q1.answer':
-      'A 75–80 minute clinical and nutritional assessment: we review your symptoms, sleep, digestion, energy, physical activity, medical history, medication and lab tests, and agree on short- and long-term goals. Your personalized plan is delivered and explained in the second visit.',
+      'A 75-minute clinical and nutritional assessment: we review your symptoms, sleep, digestion, energy, physical activity, medical history, medication and lab tests, and agree on short- and long-term goals. Your personalized plan is delivered and explained in the second visit.',
     'faq.q2.title': 'How long are the consultation sessions?',
     'faq.q2.answer':
-      'The initial assessment lasts 75–80 minutes, the personalized plan session 60 minutes and follow-ups 45 minutes.',
+      'The initial assessment lasts 75 minutes, the personalized plan session 60 minutes and follow-ups 45 minutes.',
     'faq.q3.title': 'How does the online consultation work?',
     'faq.q3.answer':
       'All my consultations are online, by video call, from wherever you are. When you book you receive an email with the video call link. All you need is a stable connection and, if you have them, your latest blood tests.',
@@ -299,7 +299,7 @@ export const ui = {
     'services.methodology': 'METODOLOGÍA',
     'services.step1.name': 'Valoración inicial',
     'services.step1.description':
-      'En una videollamada de 75-80 minutos te conozco, entiendo tu situación actual y qué es lo que quieres conseguir.',
+      'En una videollamada de 75 minutos te conozco, entiendo tu situación actual y qué es lo que quieres conseguir.',
     'services.step2.name': 'Diseño y entrega del plan personalizado',
     'services.step2.description':
       'Desarrollaré un plan hecho a medida para ti y tus objetivos. Lo repasaremos juntos para asegurarnos de que lo entiendes y te sientes a gusto con él.',
@@ -359,7 +359,7 @@ export const ui = {
     // Pricing page
     'pricing.title': 'Tu proceso de acompañamiento nutricional',
     'pricing.subtitle': 'Un proceso inicial para entender tu caso en profundidad y, después, seguimientos al ritmo que necesita tu cuerpo.',
-    'pricing.action.book': 'Reservar valoración inicial',
+    'pricing.action.book': 'Agenda tu valoración inicial',
     'pricing.private': 'Recibirás el enlace de reserva tras tu valoración inicial',
 
     // Expertise section
@@ -449,7 +449,7 @@ export const ui = {
     'pricing.sections.initial': 'Proceso inicial',
     'pricing.sections.continuity': 'Continuidad',
     'pricing.assessment.title': 'Valoración inicial',
-    'pricing.assessment.duration': '75–80 min',
+    'pricing.assessment.duration': '75 min',
     'pricing.assessment.description': 'Revisamos tu historia, síntomas, hábitos, descanso, digestión, energía, analíticas y medicación para entender tu caso en profundidad.',
     'pricing.plan.title': 'Diseño + entrega del plan personalizado',
     'pricing.plan.duration': '60 min',
@@ -467,10 +467,10 @@ export const ui = {
     'faq.title': 'Preguntas Frecuentes',
     'faq.q1.title': '¿Qué incluye la primera visita?',
     'faq.q1.answer':
-      'Una anamnesis clínico-nutricional de 75-80 minutos: exploramos tus síntomas, descanso, digestión, energía y actividad física, revisamos tu historia clínica, medicación y analíticas, y acordamos objetivos a corto y largo plazo. Tu plan personalizado se entrega y se explica en la segunda visita.',
+      'Una anamnesis clínico-nutricional de 75 minutos: exploramos tus síntomas, descanso, digestión, energía y actividad física, revisamos tu historia clínica, medicación y analíticas, y acordamos objetivos a corto y largo plazo. Tu plan personalizado se entrega y se explica en la segunda visita.',
     'faq.q2.title': '¿Cuánto duran las sesiones de consulta?',
     'faq.q2.answer':
-      'La valoración inicial dura 75-80 minutos, la entrega del plan personalizado 60 minutos y los seguimientos 45 minutos.',
+      'La valoración inicial dura 75 minutos, la entrega del plan personalizado 60 minutos y los seguimientos 45 minutos.',
     'faq.q3.title': '¿Cómo es la consulta online?',
     'faq.q3.answer':
       'Todas mis consultas son online, por videollamada, desde donde estés. Al reservar recibes un correo con el enlace de la videollamada. Solo necesitas una conexión estable y, si los tienes, tus últimos análisis.',

@@ -1,0 +1,39 @@
+---
+// Header shared by Services, Journal, About and Contact.
+// Computer / tablet: half text (same cream as the home hero), half photo running to the edge of the screen.
+// The photo keeps its own proportions, so the header is only as tall as the photo is wide.
+// Phone (option D): the photo runs edge to edge and a plum rectangle with the title overlaps it from below.
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  image: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+const { eyebrow, title, lead, image, alt, width, height } = Astro.props;
+---
+
+<section class="bg-brand-cream max-md:pb-10 md:grid md:grid-cols-2">
+  <div class="flex flex-col max-md:flex-col-reverse md:contents">
+    <div class="ph-text pb-2 max-md:relative max-md:z-10 max-md:mx-4 max-md:-mt-14 max-md:bg-[#4A1D33] max-md:px-6 max-md:py-8 sm:max-md:mx-6 md:flex md:flex-col md:justify-center md:py-14 md:pr-10">
+      <span class="eyebrow mb-6 block max-md:mb-3 max-md:!text-white/70">{eyebrow}</span>
+      <h1 class="text-[clamp(2.2rem,4.4vw,4.2rem)] leading-[1.02] text-[#2E2367] max-md:!text-[2.4rem] max-md:!text-white">{title}</h1>
+      {lead && <p class="mt-6 max-w-md text-lg leading-relaxed text-brand-muted sm:text-xl max-md:mt-4 max-md:!text-base max-md:!text-white/90">{lead}</p>}
+    </div>
+    <div class="relative overflow-hidden bg-brand-blush max-md:h-[17rem] md:order-last md:max-h-[44rem]" style={`aspect-ratio: ${width} / ${height}`}>
+      <img src={image} alt={alt} class="absolute inset-0 h-full w-full object-cover" width={width} height={height} fetchpriority="high" />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Text aligned with the rest of the site's content on the left */
+  @media (min-width: 768px) {
+    .ph-text { padding-left: max(2rem, calc((100vw - 80rem) / 2 + 2rem)); }
+  }
+  @media (max-width: 767px) {
+    section > div > div:last-child { aspect-ratio: auto !important; }
+  }
+</style>

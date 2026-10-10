@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl } from '../../i18n/ui';
-import SectionHeader from '../layout/SectionHeader.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const es = lang === 'es';
@@ -16,12 +15,12 @@ const areas = [
 ];
 ---
 
-<section id="como-puedo-ayudarte" class="relative scroll-mt-[4.5rem] overflow-hidden bg-[#E4D3D3] py-16 sm:py-24">
+<section id="como-puedo-ayudarte" class="relative scroll-mt-[4.5rem] overflow-hidden bg-[#E4D3D3] pb-16 pt-24 sm:pb-24 sm:pt-28">
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <SectionHeader
-      eyebrow={es ? 'Áreas de especialización' : 'Areas of expertise'}
-      title={es ? '¿Cómo puedo ayudarte?' : 'How can I help you?'}
-    />
+    <h2 class="sec-top !m-0 !mb-8 !max-w-none !text-base">
+      <span class="eyebrow">{es ? 'Áreas de especialización' : 'Areas of expertise'}</span>
+      <span class="sec-rule" aria-hidden="true"></span>
+    </h2>
 
     <div class="max-w-3xl">
       {areas.map((area) => (

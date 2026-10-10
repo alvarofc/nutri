@@ -8,7 +8,6 @@ const es = lang === 'es';
 
 const cards = [
   {
-    anchor: 'tratamiento-digestivo',
     title: es ? 'Tu digestión te condiciona' : 'Your digestion holds you back',
     items: es
       ? [
@@ -24,11 +23,11 @@ const cards = [
           'That feeling that “everything upsets me”',
         ],
     help: es
-      ? 'Tus síntomas tienen una causa. La buscamos juntas y trabajamos desde la raíz.\nSin parches.'
-      : 'Your symptoms have a cause. We look for it together and work from the root.\nNo quick fixes.',
+      ? 'El intestino no es solo un órgano digestivo: es un sistema de comunicación, de defensa y de equilibrio.\nCuando se altera, todo el cuerpo habla.\n\nTus síntomas tienen una causa. La buscamos juntas y trabajamos desde la raíz.\nSin parches.'
+      : 'The gut is not just a digestive organ: it is a system of communication, defence and balance.\nWhen it is disturbed, the whole body speaks up.\n\nYour symptoms have a cause. We look for it together and work from the root.\nNo quick fixes.',
   },
   {
-    title: es ? 'Tus ciclos y tus hormonas' : 'Your cycle and your hormones',
+    title: es ? 'Convives con…' : 'You live with…',
     items: es
       ? [
           'Convives con reglas dolorosas o síndrome premenstrual',
@@ -43,11 +42,11 @@ const cards = [
           'You want to support your body through nutrition',
         ],
     help: es
-      ? 'Te explico cómo se relacionan tu alimentación, tu intestino y tus hormonas, y acompañamos tu tratamiento médico desde la nutrición.'
-      : 'I explain how your diet, your gut and your hormones are connected, and we support your medical treatment through nutrition.',
+      ? 'Por medio de un plan de acompañamiento nutricional personalizado para ti te ayudo a modular los picos hormonales, reducir la inflamación y mejorar la clínica asociada a tu ciclo.'
+      : 'Through a personalised nutrition support plan made for you, I help you modulate hormonal peaks, reduce inflammation and improve the symptoms linked to your cycle.',
   },
   {
-    title: es ? 'Tu cuerpo ya no es el de antes' : 'Your body is not what it used to be',
+    title: es ? 'Sientes que tu cuerpo ya no es el de antes' : 'You feel your body is not what it used to be',
     items: es
       ? [
           'Estás en perimenopausia o menopausia',
@@ -64,30 +63,18 @@ const cards = [
           'You’ve heard that food makes a huge difference',
         ],
     help: es
-      ? 'Te ayudo a entender qué está cambiando y a cuidar tu energía, tu descanso y tu cuerpo con la alimentación.'
-      : 'I help you understand what is changing and look after your energy, rest and body through food.',
+      ? 'La alimentación puede marcar la diferencia en cómo se vive la transición a la menopausia. Una alimentación antiinflamatoria (rica en vegetales, semillas, cereales integrales…), con menos carbohidratos refinados y una cantidad adecuada de proteína, ayuda a mantener la energía, la masa muscular y la densidad mineral ósea.'
+      : 'Food can make a difference to how the transition to menopause is experienced. An anti-inflammatory diet (rich in vegetables, seeds, whole grains…), lower in refined carbohydrates and with an adequate amount of protein, helps maintain energy, muscle mass and bone mineral density.',
   },
   {
-    title: es ? 'Tu analítica ha salido alterada' : 'Your blood tests came back off',
-    items: es
-      ? [
-          'En tu última analítica ha aparecido algún parámetro alterado',
-          'Glucosa, colesterol, hierro o hígado graso',
-          'Te han dicho que «comas mejor»',
-          'Pero nadie te ha explicado cómo hacerlo de una forma realista',
-        ]
-      : [
-          'Your latest blood test shows an altered value',
-          'Glucose, cholesterol, iron or fatty liver',
-          'You’ve been told to “eat better”',
-          'But nobody has explained how to do it realistically',
-        ],
+    title: es ? 'Quieres aprender a cuidar de tu salud metabólica' : 'You want to learn how to look after your metabolic health',
+    items: [],
     help: es
-      ? 'Te explico qué significan tus resultados y los convertimos en un plan realista, coordinado con tu médico.'
-      : 'I explain what your results mean and we turn them into a realistic plan, coordinated with your doctor.',
+      ? 'Te explico qué está pasando en tu cuerpo y qué necesita. Trabajamos tu sensibilidad a la insulina y tu flexibilidad metabólica (la capacidad de tu cuerpo para usar bien la energía) para perder grasa, ganar masa muscular y sentirte con más energía. Todo con un plan que encaje en tu semana real.'
+      : 'I explain what is happening in your body and what it needs. We work on your insulin sensitivity and your metabolic flexibility (your body’s ability to use energy well) to lose fat, build muscle and feel more energetic. All with a plan that fits your real week.',
   },
   {
-    title: es ? 'Comer te genera estrés' : 'Eating stresses you out',
+    title: es ? 'Tu relación con la comida' : 'Your relationship with food',
     items: es
       ? [
           'Quieres mejorar tu relación con la comida',
@@ -102,60 +89,132 @@ const cards = [
           'You want to lose weight or improve your body composition without restriction, diets or guilt',
         ],
     help: es
-      ? 'Puedo acompañarte para adquirir una alimentación más tranquila, consciente y flexible. Una alimentación que realmente disfrutes.'
-      : 'I can support you towards calmer, more mindful and flexible eating. Eating you truly enjoy.',
+      ? 'Puedo acompañarte para adquirir una alimentación más tranquila, consciente y flexible. Una alimentación que realmente disfrutes. Trabajamos tus señales de hambre y saciedad, qué te lleva a comer cuando no tienes hambre y cómo te relacionas con tu cuerpo.'
+      : 'I can support you towards calmer, more mindful and flexible eating. Eating you truly enjoy. We work on your hunger and fullness signals, what leads you to eat when you are not hungry, and how you relate to your body.',
   },
   {
-    title: es ? 'Quieres cuidarte, pero no llegas a todo' : 'You want to look after yourself, but you can’t do it all',
-    items: es
-      ? [
-          'Sabes que quieres cuidarte, pero no tienes tiempo',
-          'Llegas cansada e improvisas comidas',
-          'Picas más de lo que te gustaría',
-          'Sientes que no tienes tiempo para organizarte',
-        ]
-      : [
-          'You know you want to look after yourself, but you have no time',
-          'You get home tired and improvise meals',
-          'You snack more than you’d like',
-          'You feel you have no time to get organised',
-        ],
-    help: es
-      ? 'Te ayudo a crear soluciones sencillas, prácticas y realistas.'
-      : 'I help you create simple, practical and realistic solutions.',
-  },
-  {
-    title: es ? 'Tu embarazo y tu posparto' : 'Your pregnancy and postpartum',
+    title: es ? 'Fertilidad, embarazo y posparto' : 'Fertility, pregnancy and postpartum',
     items: es
       ? ['Estás en búsqueda de embarazo', 'Estás embarazada o dando el pecho', 'Estás en el posparto']
       : ['You are trying to conceive', 'You are pregnant or breastfeeding', 'You are in the postpartum period'],
     help: es
-      ? 'Quieres acompañar tu cuerpo con una nutrición adaptada a esta etapa.'
-      : 'You want to support your body with nutrition adapted to this stage.',
+      ? 'Te acompaño con calma en cada etapa. Preparamos tu cuerpo para el embarazo, cuidamos que a ti y a tu bebé no os falte nada durante la gestación y la lactancia, y te ayudamos a recuperarte en el posparto a tu ritmo, sin presión por volver a tu cuerpo de antes.'
+      : 'I support you calmly through every stage. We prepare your body for pregnancy, make sure neither you nor your baby lack anything during pregnancy and breastfeeding, and help you recover postpartum at your own pace, with no pressure to get your old body back.',
   },
 ];
 
 // One short line per situation, shown on the front of the glass cards
 const summaries = es
   ? [
-      'Hinchazón, gases, digestiones pesadas, acidez, estreñimiento, diarrea o esa sensación de que “todo me sienta mal”.',
-      'Convives con reglas dolorosas, síndrome del ovario poliquístico, endometriosis, hipo o hipertiroidismo, síndrome premenstrual u otra alteración hormonal y quieres acompañar tu cuerpo desde la nutrición integrativa.',
-      'Estás en perimenopausia o menopausia y notas peor sueño, más cansancio, más hinchazón y antojos o cambios en tu cuerpo.',
-      'En tu última analítica ha aparecido algún parámetro alterado, como glucosa, colesterol, hierro o hígado graso, y nadie te ha explicado cómo mejorarlo.',
-      'Comes por estrés o ansiedad, sientes culpa después de comer y quieres mejorar tu relación con la comida, sin restricciones ni dietas.',
-      'Quieres cuidarte, pero no tienes tiempo: llegas cansada, improvisas comidas y picas más de lo que te gustaría.',
-      'Estás en búsqueda de embarazo, embarazada, dando el pecho o en el posparto.',
+      'Por la mañana estás bien y por la tarde no te cierra el pantalón. Has quitado el gluten, la lactosa y media despensa, y sigues igual. Ya no sabes qué te sienta mal, porque parece que todo. O tal vez ya tienes un diagnóstico: gastritis, Helicobacter pylori, SIBO, IMO, intolerancias alimentarias, síndrome del intestino irritable… pero solo con la medicación no mejoras.',
+      '',
+      'Comes como siempre y aun así notas cambios en tu cuerpo. Duermes peor, te despiertas de madrugada o tienes sofocos y despistes que antes no tenías. Puede ser la perimenopausia: empieza años antes de la última regla, a veces a partir de los cuarenta, y casi nadie te habla de ella.',
+      'Te han dicho que el azúcar en sangre o el colesterol están “para vigilar”, o te han diagnosticado diabetes, prediabetes o hígado graso. Quizá también quieres perder peso. Y todo lo que te han dicho es “come mejor y haz ejercicio”, sin explicarte cómo hacerlo en tu día a día.',
+      'Comes por estrés o ansiedad o tal vez sientes culpa después de comer ciertos alimentos o pasarte de cantidad. Te dices que te tienes que controlar más, pero lo que realmente quieres es poder disfrutar de comer sin que la alimentación sea una carga, sin restricciones y sin dietas.',
+      'Quizá llevas un tiempo buscando embarazo y quieres saber si tu alimentación puede ayudarte. Quizá ya estás embarazada y te llegan tantos consejos que no sabes a cuál hacer caso. O acabas de tener a tu bebé y, entre tomas y noches cortas, te has quedado la última en tu lista de prioridades.',
     ]
   : [
-      'Bloating, gas, heavy digestion, heartburn, constipation, diarrhoea or that feeling that “everything upsets me”.',
-      'You live with painful periods, polycystic ovary syndrome, endometriosis, hypo- or hyperthyroidism, premenstrual syndrome or another hormonal imbalance, and you want to support your body through integrative nutrition.',
-      'You are in perimenopause or menopause and notice poorer sleep, more tiredness, more bloating and cravings or changes in your body.',
-      'Your latest blood test shows an altered value, such as glucose, cholesterol, iron or fatty liver, and nobody has explained how to improve it.',
-      'You eat when stressed or anxious, feel guilty after eating and want a better relationship with food, without restriction or diets.',
-      'You want to look after yourself but have no time: you get home tired, improvise meals and snack more than you would like.',
-      'You are trying to conceive, pregnant, breastfeeding or in the postpartum period.',
+      'In the morning you feel fine and by the afternoon your trousers won’t fasten. You have cut out gluten, lactose and half the pantry, and you are still the same. You no longer know what upsets you, because it seems like everything does. Or maybe you already have a diagnosis: gastritis, Helicobacter pylori, SIBO, IMO, food intolerances, irritable bowel syndrome… but medication alone isn’t making you better.',
+      '',
+      'You eat as you always have and still notice changes in your body. You sleep worse, wake up in the early hours or have hot flushes and lapses you never had before. It may be perimenopause: it starts years before your last period, sometimes in your forties, and hardly anyone talks to you about it.',
+      'You have been told your blood sugar or cholesterol are “to keep an eye on”, or you have been diagnosed with diabetes, prediabetes or fatty liver. Maybe you also want to lose weight. And all you have been told is “eat better and exercise”, without explaining how to do it in your day-to-day life.',
+      'You eat when stressed or anxious, or maybe you feel guilty after eating certain foods or overdoing the amount. You tell yourself you have to control yourself more, but what you really want is to enjoy eating without food being a burden, without restrictions and without diets.',
+      'Maybe you have been trying to conceive for a while and want to know whether your diet can help. Maybe you are already pregnant and you get so much advice that you don’t know which to follow. Or you have just had your baby and, between feeds and short nights, you have ended up last on your list of priorities.',
     ];
 
+// Words shown in burgundy and semibold (class .hl, defined in Layout.astro)
+const highlightTerms = es
+  ? [
+      'Helicobacter pylori',
+      'SIBO',
+      'síndrome del intestino irritable',
+      'síndrome del ovario poliquístico',
+      'Hipotiroidismo o hipertiroidismo',
+      'endometriosis',
+      'Candidiasis o infecciones de orina',
+      'diabetes',
+      'hígado graso',
+      'perder peso',
+      'perimenopausia',
+    ]
+  : [
+      'Helicobacter pylori',
+      'SIBO',
+      'irritable bowel syndrome',
+      'polycystic ovary syndrome',
+      'Hypothyroidism or hyperthyroidism',
+      'endometriosis',
+      'Recurrent candidiasis or urinary tract infections',
+      'diabetes',
+      'fatty liver',
+      'lose weight',
+      'perimenopause',
+    ];
+const escapeHtml = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const termRegex = new RegExp(
+  `(?<![\\p{L}])(${[...highlightTerms].sort((a, b) => b.length - a.length).map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})(?![\\p{L}])`,
+  'giu'
+);
+const hl = (text: string) => escapeHtml(text).replace(termRegex, '<mark class="hl">$1</mark>');
+
+// Cards whose front is a short list instead of a sentence (index = card position in `cards`)
+const bulletLists: Record<number, { items: string[] }> = {
+  1: es
+    ? {
+        items: [
+          'Reglas dolorosas',
+          'Síndrome del ovario poliquístico',
+          'Endometriosis o adenomiosis',
+          'Hipotiroidismo o hipertiroidismo',
+          'Síndrome premenstrual',
+          'Candidiasis o infecciones de orina de repetición',
+        ],
+      }
+    : {
+        items: [
+          'Painful periods',
+          'Polycystic ovary syndrome',
+          'Endometriosis or adenomyosis',
+          'Hypothyroidism or hyperthyroidism',
+          'Premenstrual syndrome',
+          'Recurrent candidiasis or urinary tract infections',
+        ],
+      },
+};
+
+// Detail panel opened by card 2 ("Convives con…")
+const detail = es
+  ? {
+      intro: 'Cada diagnóstico tiene su propio mecanismo, y por eso se trabaja con un plan de acompañamiento nutricional adaptado:',
+      items: [
+        ['Síndrome de ovario poliquístico', 'En muchas mujeres el motor es la insulina, incluso con un peso normal. Cuando la insulina está alta, el ovario fabrica más andrógenos, y de ahí vienen el acné, el vello o los ciclos irregulares. Mejorar tu sensibilidad a la insulina actúa sobre la raíz de los síntomas.'],
+        ['Endometriosis, adenomiosis y reglas dolorosas', 'El dolor está muy ligado a las prostaglandinas, moléculas inflamatorias que fabrica tu propio cuerpo a partir de las grasas que comes. Ajustamos el tipo de grasas, la fibra y nutrientes como el magnesio para reducir la inflamación, el dolor y el cansancio.'],
+        ['Síndrome premenstrual', 'No se debe a tener “demasiadas hormonas”, sino a que tu cerebro es más sensible a sus cambios. Estabilizar tu glucosa y asegurar nutrientes como el calcio, el magnesio y la vitamina B6 puede suavizar la irritabilidad, los antojos y la hinchazón.'],
+        ['Hipotiroidismo e hipertiroidismo', 'Tu tiroides necesita yodo, selenio, hierro y vitamina D para fabricar y activar sus hormonas. Además, el café, el calcio o los suplementos de hierro tomados cerca de la levotiroxina reducen su absorción, y muchas veces ese es el motivo de que la dosis “no funcione”. En el hipertiroidismo cuidamos especialmente el músculo y los huesos.'],
+        ['Candidiasis o infecciones de orina de repetición', 'Revisamos los factores que favorecen que vuelvan, como la hidratación, el control de la glucosa o la salud de tu microbiota.'],
+      ],
+      close: 'Cerrar',
+    }
+  : {
+      intro: 'Each diagnosis has its own mechanism, which is why I work with a tailored nutritional support plan:',
+      items: [
+        ['Polycystic ovary syndrome', 'In many women the driver is insulin, even at a normal weight. When insulin is high, the ovary makes more androgens, which is where acne, excess hair and irregular cycles come from. Improving your insulin sensitivity acts on the root of the symptoms.'],
+        ['Endometriosis, adenomyosis and painful periods', 'Pain is closely linked to prostaglandins, inflammatory molecules your own body makes from the fats you eat. We adjust the type of fats, fibre and nutrients such as magnesium to reduce inflammation, pain and tiredness.'],
+        ['Premenstrual syndrome', 'It is not caused by having “too many hormones”, but by your brain being more sensitive to their changes. Stabilising your glucose and making sure you get nutrients such as calcium, magnesium and vitamin B6 can ease irritability, cravings and bloating.'],
+        ['Hypothyroidism and hyperthyroidism', 'Your thyroid needs iodine, selenium, iron and vitamin D to make and activate its hormones. Coffee, calcium or iron supplements taken close to levothyroxine also reduce its absorption, and that is often why the dose “doesn’t work”. In hyperthyroidism we take special care of muscle and bone.'],
+        ['Recurrent candidiasis or urinary tract infections', 'We review the factors that make them come back, such as hydration, glucose control and the health of your microbiota.'],
+      ],
+      close: 'Close',
+    };
+
+const hintLabel = es ? 'Pulsa en cada situación para ver más información' : 'Tap each situation to see more';
+const closeHint = es ? 'Pulsa en cualquier parte para cerrar' : 'Tap anywhere to close';
+// Heading of each pop-up (only the pop-up; the cards keep their own titles). Card 2 has one heading per diagnosis instead.
+const modalTitles = es
+  ? ['Tratamiento de patología digestiva y alteraciones de la microbiota', '', 'Perimenopausia y menopausia']
+  : ['Treatment of digestive conditions and microbiota imbalances', '', 'Perimenopause and menopause'];
+// Paragraphs for the pop-up of each card (card 2 has its own detailed list)
+const paras = (text: string) => text.split('\n\n').map((block) => block.split('\n'));
 ---
 
 <section id="que-te-trae" class="scroll-mt-[4.5rem] relative overflow-hidden bg-[#E4D3D3] [&_.sec-title]:!max-w-none lg:[&_.sec-title]:whitespace-nowrap py-16 sm:py-24 [&_.lead]:text-[#2F1B24] lg:[&_.lead]:!max-w-none lg:[&_.lead]:!whitespace-nowrap [&_.text-brand-gray]:text-[#2F1B24]">
@@ -177,34 +236,38 @@ const summaries = es
           : 'I’ll explain what may be going on and where to start.'}
       />
 
-      <!-- Problem cards: frosted glass, flip on hover / focus / tap -->
-      <div class="grid auto-rows-fr grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-        {[0, 1, 2, 6, 3, 4, 5].map((index) => { const card = cards[index]; return (
-          <div class="flip cursor-pointer" tabindex="0" data-flip data-href={`${getLocalizedPath('/pricing', lang)}#${card.anchor ?? 'como-puedo-ayudarte'}`}>
-            <div class="flip-inner">
-              <!-- Front -->
-              <div class="flip-face flip-front flex flex-col p-4 sm:p-5 rounded-2xl border border-white bg-[rgba(250,249,247,0.74)] shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)]">
-                <h3 class="mb-3 text-[0.82rem] font-semibold uppercase leading-snug tracking-[0.06em] text-brand-accent" style="font-family: 'Montserrat', sans-serif !important; letter-spacing: 0.06em !important;">
-                  {card.title}
-                </h3>
-                <p class="text-justify [hyphens:none] font-sans text-[15px] leading-snug text-brand-gray">{summaries[index]}</p>
-              </div>
+      <p class="-mt-4 mb-6 text-center font-sans text-[13px] tracking-wide text-[#2F1B24]/70">{hintLabel}</p>
 
-              <!-- Back -->
-              <div class="flip-face flip-back flex flex-col items-start justify-center gap-3 rounded-2xl p-4 sm:p-5">
-                <p class="flip-help text-justify [hyphens:none] font-sans text-[15px] leading-snug text-[#F3E6E1]">{card.help.split('\n').map((line, i) => (<Fragment>{i > 0 && <br />}{line}</Fragment>))}</p>
-              </div>
-            </div>
-          </div>
+      <!-- Problem cards: each one shows the situation and a clear "Leer más" button that opens the full text in a wide burgundy panel -->
+      <div class="grid auto-rows-auto items-start md:auto-rows-fr md:items-stretch grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        {[0, 1, 2, 5, 3, 4].map((index) => { const card = cards[index]; return (
+          <article
+            class="xcard group relative flex h-full cursor-pointer flex-col rounded-2xl border border-white bg-white/80 p-4 sm:p-5 shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)]"
+            tabindex="0"
+            role="button"
+            aria-haspopup="dialog"
+            data-modal={`dx-modal-${index}`}
+          >
+            <span class="xplus" aria-hidden="true">
+              <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14"/></svg>
+            </span>
+            <h3 data-oneline={index === 0 ? '' : undefined} class={`mb-3 text-2xl font-serif font-medium leading-snug text-brand-black ${index === 0 ? 'whitespace-nowrap' : 'pr-8'}`}>
+              {card.title}
+            </h3>
+            {bulletLists[index] ? (
+              <ul class="list-disc space-y-0.5 pl-5 font-sans text-[15px] leading-snug text-[#5a5a5a] marker:text-brand-accent">
+                {bulletLists[index].items.map((item) => <li set:html={hl(item)} />)}
+              </ul>
+            ) : (
+              <p class="text-justify [hyphens:none] font-sans text-[15px] leading-snug text-[#5a5a5a]" set:html={hl(summaries[index])} />
+            )}
+          </article>
         ); })}
-
-        <!-- 8th card: empty for now, same glass style as the others -->
-        <div class="min-h-[9rem] rounded-2xl border border-white bg-[rgba(250,249,247,0.74)] p-4 shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)] sm:p-5" aria-hidden="true"></div>
       </div>
 
       <!-- Link to the new "How can I help you?" room on the services page -->
-      <div class="mt-12 text-center">
-        <a href={`${getLocalizedPath('/pricing', lang)}#como-puedo-ayudarte`} class="eyebrow eyebrow-link">
+      <div class="mt-8 text-center">
+        <a href={getLocalizedPath('/pricing', lang)} class="eyebrow eyebrow-link">
           <span>{es ? 'Saber más' : 'Learn more'}</span>
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -215,127 +278,132 @@ const summaries = es
   </div>
 </section>
 
-<style>
-  .flip {
-    perspective: 1200px;
-    outline: none;
-    height: 100%;
-  }
-  .flip-inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-  }
-  /* Both faces share the same grid cell, so the card is as tall as the taller face */
-  .flip-face {
-    grid-area: 1 / 1;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-  .flip-face {
-    min-height: 9rem;
-  }
-  .flip-back {
-    transform: rotateY(180deg);
-    background: rgba(91, 31, 46, 0.93);
-    border: 1px solid rgba(255, 255, 255, 0.85);
-  }
-  .flip:hover .flip-inner,
-  .flip:focus-within .flip-inner,
-  .flip.is-flipped .flip-inner {
-    transform: rotateY(180deg);
-  }
-  .flip:focus-visible .flip-face:not(.flip-back) {
-    box-shadow: 0 0 0 2px rgba(74, 29, 51, 0.35);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .flip-inner {
-      transition: none;
-    }
-  }
+<!-- One pop-up per card: burgundy plum, white text, wide so lines stay short and easy to read -->
+{cards.map((card, index) => (
+  <div id={`dx-modal-${index}`} class="dx-modal" hidden>
+    <div class="dx-backdrop" data-dx-close></div>
+    <div class="dx-panel" role="dialog" aria-modal="true" aria-label={card.title} tabindex="-1">
+      {index === 1 ? (
+        <div class="dx-diag">
+          <p class="dx-intro">{detail.intro}</p>
+          {detail.items.map(([k, v]) => (
+            <div class="dx-row">
+              <h3 class="dx-title">{k}</h3>
+              <p class="dx-p">{v}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="dx-grid">
+          <h3 class="dx-title">{modalTitles[index] || card.title}</h3>
+          <div class="dx-text">
+            {paras(card.help).map((lines) => (
+              <p>{lines.map((line, i) => (<Fragment>{i > 0 && <br />}{line}</Fragment>))}</p>
+            ))}
+          </div>
+        </div>
+      )}
+      <p class="dx-close-hint">{closeHint}</p>
+    </div>
+  </div>
+))}
 
-  /* Phones: no flip. Each card shows the situation and, right below, how I help */
-  @media (max-width: 767px) {
-    .flip-inner {
-      display: block;
-      transform: none !important;
-      transition: none;
-    }
-    .flip-face {
-      min-height: 0;
-      backface-visibility: visible;
-      -webkit-backface-visibility: visible;
-    }
-    .flip-front {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      border-bottom: 0;
-      padding-bottom: 0.5rem;
-      box-shadow: none;
-    }
-    .flip-back {
-      transform: none;
-      align-items: flex-start;
-      justify-content: flex-start;
-      background: rgba(250, 249, 247, 0.74);
-      border: 1px solid #fff;
-      border-top: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      padding-top: 0;
-      box-shadow: 0 10px 30px -18px rgba(74, 29, 51, 0.45);
-    }
-    .flip-back .flip-help {
-      color: #4A1D33;
-      font-weight: 400;
-      border-top: 1px solid rgba(91, 31, 46, 0.18);
-      padding-top: 0.75rem;
-    }
-    .flip-back .flip-link {
-      color: #79264D !important;
-    }
+<style>
+  .xcard { transition: transform 0.25s ease, box-shadow 0.25s ease; outline: none; }
+  .xcard:hover, .xcard:focus-visible { transform: translateY(-3px); box-shadow: 0 18px 38px -20px rgba(74, 29, 51, 0.55); }
+  .xcard:focus-visible { box-shadow: 0 0 0 2px rgba(74, 29, 51, 0.35), 0 18px 38px -20px rgba(74, 29, 51, 0.55); }
+  @media (prefers-reduced-motion: reduce) { .xcard { transition: none; } .xcard:hover, .xcard:focus-visible { transform: none; } }
+
+  .xplus { position: absolute; top: 1rem; right: 1rem; display: inline-flex; height: 1.75rem; width: 1.75rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid rgba(121, 38, 77, 0.35); color: #79264D; background: rgba(255, 255, 255, 0.6); transition: background 0.25s, color 0.25s, transform 0.25s; }
+  .xcard:hover .xplus, .xcard:focus-visible .xplus { background: #79264D; color: #fff; transform: rotate(90deg); }
+
+  /* Pop-up */
+  .dx-modal { position: fixed; inset: 0; z-index: 80; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+  .dx-modal[hidden] { display: none; }
+  .dx-backdrop { position: absolute; inset: 0; background: rgba(47, 27, 36, 0.55); backdrop-filter: blur(3px); animation: dx-fade 0.3s ease both; }
+  .dx-panel {
+    position: relative; box-sizing: border-box; width: 100%; max-width: 62rem; max-height: calc(100dvh - 2rem); overflow-y: auto;
+    padding: 2rem 1.5rem 1.75rem; border-radius: 1.25rem; outline: none; color: #fff;
+    background: #5B1F2E; background: linear-gradient(145deg, #6A2440, #4A1D33);
+    box-shadow: 0 30px 80px -20px rgba(47, 27, 36, 0.65);
+    animation: dx-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
+  @media (min-width: 768px) { .dx-panel { padding: 3rem 3.25rem; } }
+    .dx-panel { cursor: pointer; }
+  .dx-close-hint { margin-top: 1.6rem; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.55); }
+  .dx-diag { display: grid; gap: 0; }
+  .dx-intro { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.6; color: #fff; padding-right: 0.5rem; margin-bottom: 0.5rem; }
+  .dx-row { display: grid; gap: 0.6rem; padding: 1.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+  @media (min-width: 768px) { .dx-row { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 3rem; } .dx-row .dx-title { border-right: 1px solid rgba(255, 255, 255, 0.22); padding-right: 2rem; } }
+  .dx-row .dx-title { font-size: 1.55rem; }
+  @media (min-width: 768px) { .dx-row .dx-title { font-size: 1.9rem; } }
+  .dx-p { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.7; color: #fff; }
+  .dx-grid { display: grid; gap: 1.1rem; }
+  @media (min-width: 768px) { .dx-grid { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 3rem; align-items: start; } }
+  .dx-title { font-family: 'Cormorant', serif; font-weight: 500; font-size: 1.8rem; line-height: 1.1; color: #fff; padding-right: 2.5rem; }
+  @media (min-width: 768px) { .dx-title { font-size: 2.25rem; padding-right: 0; border-right: 1px solid rgba(255, 255, 255, 0.22); padding-right: 2rem; } }
+  .dx-text { font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.7; font-weight: 300; color: #fff; display: grid; gap: 1rem; }
+  .dx-text strong { font-weight: 600; }
+  .dx-text ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+  .dx-text li { position: relative; padding-left: 1.1rem; }
+  .dx-text li::before { content: ''; position: absolute; left: 0; top: 0.72em; height: 0.35rem; width: 0.35rem; border-radius: 9999px; background: #E8C9D4; }
+  @keyframes dx-in { from { transform: translateY(16px) scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes dx-fade { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .dx-panel, .dx-backdrop { animation: none; } }
 </style>
 
 <script>
-  // A card with a destination goes there when clicked; on touch screens the others flip when tapped.
-  const touch = window.matchMedia('(hover: none)').matches;
-  document.querySelectorAll<HTMLElement>('[data-flip]').forEach((card) => {
-    card.addEventListener('click', (e) => {
-      if ((e.target as HTMLElement).closest('a')) return;
-      const href = card.dataset.href;
-      if (href) {
-        window.location.href = href;
-      } else if (touch) {
-        card.classList.toggle('is-flipped');
-      }
-    });
+  let lastOpener: HTMLElement | null = null;
+  const closeModal = () => {
+    document.querySelectorAll<HTMLElement>('.dx-modal').forEach((m) => (m.hidden = true));
+    document.body.style.overflow = '';
+    lastOpener?.focus();
+  };
+  const openModal = (id: string, opener: HTMLElement) => {
+    const m = document.getElementById(id);
+    if (!m) return;
+    lastOpener = opener;
+    m.hidden = false;
+    document.body.style.overflow = 'hidden';
+    m.querySelector<HTMLElement>('.dx-panel')?.focus();
+  };
+  // Delegated listeners: they keep working even if the page content is swapped or re-rendered
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('.dx-modal')) {
+      closeModal();
+      return;
+    }
+    const card = target.closest<HTMLElement>('[data-modal]');
+    if (card && !target.closest('a')) openModal(card.dataset.modal!, card);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+    const c = (e.target as HTMLElement).closest?.('[data-modal]') as HTMLElement | null;
+    if (c && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      openModal(c.dataset.modal!, c);
+    }
   });
 
-  // The text never leaves its card: when the card is too narrow, the type shrinks just enough to fit
-  // (all cards share the same size for each kind of text, so they stay consistent).
-  const fitCardText = () => {
-    const roles = ['.flip-front h3', '.flip-front p', '.flip-help'];
-    roles.forEach((sel) => {
-      const els = Array.from(document.querySelectorAll<HTMLElement>(`#que-te-trae ${sel}`));
-      els.forEach((el) => (el.style.fontSize = ''));
-      const base = parseFloat(getComputedStyle(els[0]).fontSize);
-      let size = base;
-      const overflows = () => els.some((el) => el.scrollWidth > el.clientWidth + 0.5);
-      while (overflows() && size > 9) {
+  // The "one line" title of the first card shrinks just enough to fit on a single line (never below 10px; after that it wraps)
+  const fitOneLine = () => {
+    document.querySelectorAll<HTMLElement>('#que-te-trae [data-oneline]').forEach((el) => {
+      el.style.fontSize = '';
+      el.style.whiteSpace = 'nowrap';
+      let size = parseFloat(getComputedStyle(el).fontSize);
+      while (el.scrollWidth > el.clientWidth + 0.5 && size > 10) {
         size -= 0.25;
-        els.forEach((el) => (el.style.fontSize = `${size}px`));
+        el.style.fontSize = `${size}px`;
       }
+      if (el.scrollWidth > el.clientWidth + 0.5) el.style.whiteSpace = 'normal';
     });
   };
   let fitTimer: number;
-  const scheduleFit = () => {
+  window.addEventListener('resize', () => {
     window.clearTimeout(fitTimer);
-    fitTimer = window.setTimeout(fitCardText, 80);
-  };
-  window.addEventListener('resize', scheduleFit);
-  document.fonts.ready.then(fitCardText);
-  fitCardText();
+    fitTimer = window.setTimeout(fitOneLine, 80);
+  });
+  document.fonts.ready.then(fitOneLine);
+  fitOneLine();
 </script>
