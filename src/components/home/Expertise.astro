@@ -352,6 +352,13 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
         </div>
       )}
       <p class="dx-close-hint">{closeHint}</p>
+      <div class="dx-more" aria-hidden="true">
+        <div class="dx-more-in">
+          <button type="button" class="dx-more-btn" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 ))}
@@ -377,7 +384,16 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
     animation: dx-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
   @media (min-width: 768px) { .dx-panel { padding: 3rem 3.25rem; } }
-    .dx-panel { cursor: pointer; }
+    .dx-panel { cursor: pointer; --dx-pad: 1.5rem; }
+  @media (min-width: 768px) { .dx-panel { --dx-pad: 3.25rem; } }
+  /* Scroll cue: a soft fade and a bouncing arrow at the bottom while there is more to read */
+  .dx-more { position: sticky; bottom: 0; height: 0; margin-inline: calc(-1 * var(--dx-pad)); pointer-events: none; opacity: 0; transition: opacity 0.25s ease; }
+  .dx-panel.has-more .dx-more { opacity: 1; }
+  .dx-more-in { position: absolute; left: 0; right: 0; bottom: calc(-1.75rem); height: 6.5rem; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2.1rem; background: linear-gradient(to top, #4A1D33 12%, rgba(74, 29, 51, 0.85) 45%, rgba(74, 29, 51, 0)); border-radius: 0 0 1.25rem 1.25rem; }
+  .dx-more-btn { pointer-events: auto; display: grid; place-items: center; height: 2.6rem; width: 2.6rem; border-radius: 9999px; color: #fff; background: rgba(255, 255, 255, 0.24); border: 1px solid rgba(255, 255, 255, 0.65); box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.45); animation: dx-bob 1.6s ease-in-out infinite; cursor: pointer; }
+  .dx-more-btn svg { height: 1.3rem; width: 1.3rem; }
+  @keyframes dx-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+  @media (prefers-reduced-motion: reduce) { .dx-more-btn { animation: none; } }
   .dx-close-hint { margin-top: 1.6rem; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.55); }
   .dx-diag { display: grid; gap: 0; }
   .dx-intro { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.6; color: #fff; padding-right: 0.5rem; margin-bottom: 0.5rem; }
@@ -409,17 +425,40 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
     document.body.style.overflow = '';
     lastOpener?.focus();
   };
+  // Show the "more below" arrow only while the pop-up has hidden text underneath
+  const updateMore = (panel: HTMLElement) => {
+    const more = panel.scrollHeight - panel.clientHeight > 12 && panel.scrollTop < panel.scrollHeight - panel.clientHeight - 12;
+    panel.classList.toggle('has-more', more);
+  };
+  document.querySelectorAll<HTMLElement>('.dx-panel').forEach((panel) => panel.addEventListener('scroll', () => updateMore(panel), { passive: true }));
+  window.addEventListener('resize', () => {
+    document.querySelectorAll<HTMLElement>('.dx-modal:not([hidden]) .dx-panel').forEach(updateMore);
+  });
   const openModal = (id: string, opener: HTMLElement) => {
     const m = document.getElementById(id);
     if (!m) return;
     lastOpener = opener;
     m.hidden = false;
     document.body.style.overflow = 'hidden';
-    m.querySelector<HTMLElement>('.dx-panel')?.focus();
+    const panel = m.querySelector<HTMLElement>('.dx-panel');
+    panel?.focus();
+    if (panel) {
+      panel.scrollTop = 0;
+      updateMore(panel);
+      requestAnimationFrame(() => updateMore(panel));
+      window.setTimeout(() => updateMore(panel), 120);
+      window.setTimeout(() => updateMore(panel), 500);
+    }
   };
   // Delegated listeners: they keep working even if the page content is swapped or re-rendered
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
+    const arrow = target.closest<HTMLElement>('.dx-more-btn');
+    if (arrow) {
+      const panel = arrow.closest<HTMLElement>('.dx-panel');
+      panel?.scrollBy({ top: Math.max(180, panel.clientHeight * 0.7), behavior: 'smooth' });
+      return;
+    }
     if (target.closest('.dx-modal')) {
       closeModal();
       return;
