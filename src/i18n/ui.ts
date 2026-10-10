@@ -42,7 +42,7 @@ export const ui = {
     'services.methodology': 'THE METHODOLOGY',
     'services.step1.name': 'Initial assessment',
     'services.step1.description':
-      'In a 75-minute video call I get to know you, understand your current situation and what you want to achieve.',
+      'In a 75-minute video call, we will look at your health as a whole, considering physical symptoms, emotional factors and lifestyle, to understand your situation and define your goals.',
     'services.step2.name': 'Design and delivery of your personalised plan',
     'services.step2.description':
       'I will develop a customized plan for you and your goals. We will review it together to ensure you understand it and feel comfortable with it.',
@@ -299,7 +299,7 @@ export const ui = {
     'services.methodology': 'METODOLOGÍA',
     'services.step1.name': 'Valoración inicial',
     'services.step1.description':
-      'En una videollamada de 75 minutos te conozco, entiendo tu situación actual y qué es lo que quieres conseguir.',
+      'En una videollamada de 75 minutos, profundizaremos en tu salud de forma integral, considerando síntomas físicos, factores emocionales y estilo de vida, para comprender tu situación y definir tus objetivos.',
     'services.step2.name': 'Diseño y entrega del plan personalizado',
     'services.step2.description':
       'Desarrollaré un plan hecho a medida para ti y tus objetivos. Lo repasaremos juntos para asegurarnos de que lo entiendes y te sientes a gusto con él.',

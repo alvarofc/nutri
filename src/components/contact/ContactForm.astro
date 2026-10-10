@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import { WHATSAPP_DISPLAY, WHATSAPP_ICON_PATH, whatsappUrl } from '../../config/contact';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -38,17 +39,66 @@ if (Astro.request.method === "POST") {
 }
 ---
 
-<section class="bg-brand-cream py-16 sm:py-24">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-    <div class="mb-8 text-center">
-      <span class="eyebrow mb-3 inline-block">{lang === 'en' ? 'Or write to me here' : 'O escríbeme aquí'}</span>
-      <h2 class="font-serif text-3xl leading-tight text-brand-black sm:text-4xl">
-        {lang === 'en' ? 'Leave me your details' : 'Déjame tus datos'}
-      </h2>
-    </div>
-    <div>
+<section class="relative overflow-hidden py-16 sm:py-24" style="background: #EFE4DB url('/assets/lino-fondo.jpg') center / cover;">
+  <!-- Soft leaf shadows falling over the linen, like afternoon light through a window -->
+  <div
+    class="pointer-events-none absolute -right-[6%] -top-[12%] h-[120%] w-[58%] bg-cover mix-blend-multiply opacity-60"
+    style="background-image: url('/assets/sombra-hoja-sala.jpg'); -webkit-mask-image: radial-gradient(ellipse at 72% 38%, #000 18%, transparent 70%); mask-image: radial-gradient(ellipse at 72% 38%, #000 18%, transparent 70%);"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute -bottom-[10%] -left-[8%] h-[75%] w-[42%] bg-cover mix-blend-multiply opacity-45"
+    style="background-image: url('/assets/sombras-hojas.jpg'); background-position: 50% 85%; -webkit-mask-image: radial-gradient(ellipse at 30% 70%, #000 15%, transparent 68%); mask-image: radial-gradient(ellipse at 30% 70%, #000 15%, transparent 68%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-6xl lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+      <!-- Left: a warm welcome -->
+      <div>
+        <div class="mb-7 flex items-center gap-4">
+          <img src="/assets/sobre-mi-2.jpg" alt="Alexandra" class="h-16 w-16 rounded-full object-cover ring-4 ring-white/70 shadow-md" width="64" height="64" loading="lazy" />
+          <span class="eyebrow">{lang === 'en' ? 'Shall we talk?' : '¿Hablamos?'}</span>
+        </div>
+        <h2 class="font-serif text-3xl font-medium leading-[1.12] text-[#4A1D33] sm:text-4xl lg:text-[2.8rem]">
+          {lang === 'en'
+            ? 'Contact me so I can assess your case and book your initial assessment'
+            : 'Contacta conmigo para que valore tu caso y agende tu valoración inicial'}
+        </h2>
+        <p class="mt-5 max-w-md font-serif text-[1.35rem] italic leading-snug text-[#5b3a46]">
+          {lang === 'en' ? 'A safe space to begin, at your own pace and with no judgement.' : 'Un espacio seguro para empezar, a tu ritmo y sin juicios.'}
+        </p>
+
+        <ul class="mt-8 flex flex-col gap-3 font-sans text-[15px] text-[#4a3a40]">
+          <li class="flex items-center gap-3"><span class="text-[#79264D]" aria-hidden="true">♡</span>{lang === 'en' ? 'Response within 24 hours' : 'Respuesta en 24 horas'}</li>
+          <li class="flex items-center gap-3"><span class="text-[#79264D]" aria-hidden="true">♡</span>{lang === 'en' ? 'Your data is safe with me' : 'Tus datos están seguros'}</li>
+          <li class="flex items-center gap-3"><span class="text-[#79264D]" aria-hidden="true">♡</span>{lang === 'en' ? 'No commitment consultation' : 'Consulta sin compromiso'}</li>
+        </ul>
+
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a
+            href={whatsappUrl(lang)}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2.5 rounded-full bg-[#79264D] px-6 py-3 font-sans text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#4A1D33]"
+            aria-label={lang === 'en' ? 'Write to me on WhatsApp' : 'Escríbeme por WhatsApp'}
+          >
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={WHATSAPP_ICON_PATH}></path></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a
+            href={`mailto:${t('contact.email.address')}`}
+            class="inline-flex items-center gap-2.5 rounded-full border border-[#79264D]/50 bg-white/60 px-6 py-3 font-sans text-sm font-medium text-[#79264D] transition-colors hover:bg-white"
+          >
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 7l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" /></svg>
+            <span>{lang === 'en' ? 'Send me an email' : 'Escríbeme un correo'}</span>
+          </a>
+        </div>
+        <p class="mt-4 font-sans text-sm text-[#6a5860]">{WHATSAPP_DISPLAY} · {t('contact.email.address')}</p>
+      </div>
+
       <!-- Right side - Form -->
-      <form action="register" method="POST" class="rounded-2xl bg-white p-6 shadow-[0_24px_50px_-34px_rgba(74,29,51,0.45)] sm:p-8">
+      <form action="register" method="POST" class="rounded-[1.6rem] border border-white/80 bg-white/80 p-6 shadow-[0_30px_60px_-36px_rgba(74,29,51,0.55)] backdrop-blur-sm sm:p-9">
         <div class="flex flex-col gap-5">
           <!-- Full name input -->
           <div>
