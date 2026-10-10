@@ -54,27 +54,27 @@ const groups = [
       <span class="sec-rule" aria-hidden="true"></span>
     </div>
 
-    <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-8 xl:gap-12">
+    <!-- One shared grid: the four cards have exactly the same size -->
+    <div class="pc-grid mx-auto grid max-w-6xl grid-cols-1 gap-x-8 gap-y-4 xl:gap-x-12">
       {
-        groups.map((group) => (
-          <div>
-            <header class="pc-head mb-6 text-center">
+        groups.map((group, gi) => (
+          <>
+            <header class={`pc-head text-center ${gi > 0 ? 'mt-10 lg:mt-0' : ''}`} style={`--c:${gi + 1}`}>
               <p class="font-sans text-sm font-light uppercase tracking-[0.22em] text-[#3a3a3a] sm:text-base">{group.kicker}</p>
               <h2 class="mt-1 font-serif text-4xl font-light leading-tight text-[#2b2326] lg:text-[2.6rem]">{group.heading}</h2>
             </header>
-
-            <ul role="list" class="pc-list grid gap-4">
-              {group.items.map((item) => (
-                <li class="price-card flex flex-col rounded-[1.4rem] px-7 py-6 text-white sm:px-8">
-                  <h3 class="font-sans text-base font-semibold uppercase leading-snug tracking-[0.1em] sm:text-lg">{item.title}</h3>
-                  <p class="mt-1.5 font-sans text-lg font-normal tracking-[0.06em]">{item.price}</p>
-                  <div class="mt-3 flex-1 font-serif text-[1.25rem] italic leading-snug text-white/85">
+            <ul role="list" class="contents">
+              {group.items.map((item, ii) => (
+                <li class="price-card flex flex-col rounded-[1.4rem] px-7 py-5 font-sans text-white sm:px-8" style={`--c:${gi + 1}; --r:${ii + 2}`}>
+                  <h3 class="text-base font-semibold uppercase leading-snug tracking-[0.1em] sm:text-lg">{item.title}</h3>
+                  <p class="mt-1.5 text-lg font-normal tracking-[0.06em]">{item.price}</p>
+                  <div class="pc-lines mt-3 flex-1 text-[1rem] font-normal italic leading-snug text-white/85">
                     {item.lines.map((line) => (<p>{line}</p>))}
                   </div>
                   {item.bookable && (
                     <a
                       href={getLocalizedPath('/booking', lang)}
-                      class="mt-5 inline-flex items-center justify-center self-start rounded-full bg-white px-6 py-3 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-[#5B1F2E] transition-colors duration-300 hover:bg-[#F3E6E1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      class="mt-5 inline-flex items-center justify-center self-start rounded-full bg-white px-6 py-3 text-[0.78rem] font-semibold uppercase not-italic tracking-[0.14em] text-[#5B1F2E] transition-colors duration-300 hover:bg-[#F3E6E1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       {t('pricing.action.book')}
                     </a>
@@ -82,14 +82,13 @@ const groups = [
                 </li>
               ))}
             </ul>
-
             {group.private && (
-              <p class="mt-4 flex items-center justify-center gap-2 text-center text-sm text-[#4a3a40]">
+              <p class="pc-private mt-1 flex items-center justify-center gap-2 text-center text-sm text-[#4a3a40]">
                 <Lock class="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
                 {t('pricing.private')}
               </p>
             )}
-          </div>
+          </>
         ))
       }
     </div>
@@ -107,13 +106,13 @@ const groups = [
   }
 
   /* Laptops and short windows: tighten the spacing so the whole section still fits in one screen */
-  @media (min-width: 1024px) and (max-height: 800px) {
+  @media (min-width: 1024px) and (max-height: 880px) {
     .pc-section { padding-block: 1.1rem !important; }
     .pc-head { margin-bottom: 0.9rem; }
     .pc-head h2 { font-size: 2.1rem; }
-    .pc-list { gap: 0.7rem; }
+    .pc-grid { row-gap: 0.7rem !important; }
     .price-card { padding-block: 0.95rem; }
-    .price-card > div { margin-top: 0.45rem; font-size: 1.12rem; }
+    .price-card .pc-lines { margin-top: 0.45rem; font-size: 0.95rem; }
     .price-card a { margin-top: 0.7rem; padding-block: 0.6rem; }
     .pc-policy { margin-top: 1rem; }
   }
@@ -121,6 +120,13 @@ const groups = [
     .pc-head h2 { font-size: 1.8rem; }
     .price-card { padding-block: 0.7rem; }
     .price-card h3 { font-size: 0.95rem; }
-    .price-card > div { font-size: 1.02rem; }
+    .price-card .pc-lines { font-size: 0.9rem; }
   }
+  @media (min-width: 1024px) {
+    .pc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto 1fr 1fr auto; row-gap: 1rem; }
+    .pc-head { grid-column: var(--c); grid-row: 1; margin-bottom: 0.9rem; }
+    .price-card { grid-column: var(--c); grid-row: var(--r); }
+    .pc-private { grid-column: 2; grid-row: 4; }
+  }
+  .pc-head { margin-bottom: 0.5rem; }
 </style>
