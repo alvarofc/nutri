@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PricingTable from '../../components/pricing/PricingTable.astro';
 import BookingSection from '../../components/booking/BookingSection.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 
@@ -14,5 +15,6 @@ const t = useTranslations(lang);
   type="website"
   canonicalUrl="/en/booking"
 >
+  <PricingTable />
   <BookingSection />
 </Layout>

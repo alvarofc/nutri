@@ -1,7 +1,7 @@
 ---
 import { Lock } from 'lucide-astro';
 import { INITIAL_ASSESSMENT_PRICE } from '../../config/booking';
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const en = lang === 'en';
@@ -73,7 +73,7 @@ const groups = [
                   </div>
                   {item.bookable && (
                     <a
-                      href={getLocalizedPath('/booking', lang)}
+                      href="#reserva"
                       class="mt-5 inline-flex items-center justify-center self-start rounded-full bg-white px-6 py-3 text-[0.78rem] font-semibold uppercase not-italic tracking-[0.14em] text-[#5B1F2E] transition-colors duration-300 hover:bg-[#F3E6E1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       {t('pricing.action.book')}

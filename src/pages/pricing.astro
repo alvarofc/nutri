@@ -1,7 +1,6 @@
 ---
 import PricingHeader from '../components/pricing/PricingHeader.astro';
 import Faq from '../components/pricing/Faq.astro';
-import PricingTable from '../components/pricing/PricingTable.astro';
 import ProcessSteps from '../components/pricing/ProcessSteps.astro';
 import Layout from '../layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/ui';
@@ -16,6 +15,5 @@ const t = useTranslations(lang);
 >
   <PricingHeader />
   <ProcessSteps />
-  <PricingTable />
   <Faq />
 </Layout>

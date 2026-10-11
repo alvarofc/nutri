@@ -11,7 +11,7 @@ const nextSteps = [t('booking.next.0'), t('booking.next.1'), t('booking.next.2')
 const policy = [t('booking.policy.0'), t('booking.policy.1'), t('booking.policy.2')];
 ---
 
-<section class="relative overflow-hidden bg-[#EBDDD6] py-14 sm:py-20">
+<section id="reserva" class="relative scroll-mt-[var(--hdr,88px)] overflow-hidden bg-brand-cream py-14 sm:py-20">
   <div class="mx-auto grid max-w-2xl gap-10 px-4 sm:px-6 lg:max-w-7xl lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-8 lg:px-8">
     <!-- Intro + the session being booked -->
     <header class="flex flex-col gap-5 lg:col-span-5">
@@ -36,7 +36,7 @@ const policy = [t('booking.policy.0'), t('booking.policy.1'), t('booking.policy.
 
     <!-- Details -->
     <div class="flex flex-col gap-8 lg:col-span-5">
-      <div class="rounded-[1.4rem] border border-white/70 bg-white/60 p-6 sm:p-7">
+      <div class="rounded-[1.4rem] border border-[#79264D]/10 bg-white p-6 shadow-sm sm:p-7">
         <h2 class="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#79264D]">{t('booking.next.title')}</h2>
         <ol role="list" class="mt-5 space-y-4">
           {nextSteps.map((step, i) => (
@@ -59,7 +59,7 @@ const policy = [t('booking.policy.0'), t('booking.policy.1'), t('booking.policy.
         </ul>
       </div>
 
-      <p class="rounded-2xl bg-[#FFFCFA]/80 px-5 py-4 font-sans text-sm leading-relaxed text-[#3a3a3a] shadow-sm">
+      <p class="rounded-2xl bg-[#EBDDD6]/60 px-5 py-4 font-sans text-sm leading-relaxed text-[#3a3a3a] shadow-sm">
         {t('booking.patients')}
       </p>
     </div>

@@ -261,7 +261,7 @@ export const ui = {
     'booking.unavailable.cta': 'Contact me',
     'booking.page.title': 'Book Appointment · Alexandra',
     'booking.page.description': 'Book your initial nutrition assessment with Alexandra and pay securely online.',
-    'nav.booking': 'Book your consultation',
+    'nav.booking': 'Book an appointment',
   },
   es: {
     // Navigation
@@ -513,7 +513,7 @@ export const ui = {
     'booking.unavailable.cta': 'Escríbeme',
     'booking.page.title': 'Reservar Cita · Alexandra',
     'booking.page.description': 'Reserva tu valoración nutricional inicial con Alexandra y paga de forma segura online.',
-    'nav.booking': 'Reserva tu consulta',
+    'nav.booking': 'Pide cita',
   },
 } as const;
 

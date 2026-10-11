@@ -25,6 +25,10 @@ const links = [
 ];
 
 const bookingPath = getLocalizedPath('/booking', lang);
+
+// The page you are on gets underlined (the home page does not)
+const here = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => here === href || here.startsWith(href + '/');
 ---
 
 <header
@@ -39,22 +43,29 @@ const bookingPath = getLocalizedPath('/booking', lang);
       <!-- Left: Logo -->
       <Logo />
 
-      <!-- Center: Navigation Links (Desktop) -->
-      <nav class="hidden lg:flex items-center gap-8" aria-label={t('header.navigation.aria')}>
-        {links.map((link) => (
+      <!-- Right: links, "Pide cita" and the language switcher (Desktop) -->
+      <div class="hidden lg:flex items-center gap-8">
+        <nav class="flex items-center gap-8" aria-label={t('header.navigation.aria')}>
+          {links.map((link) => (
+            <a
+              href={link.href}
+              class={`font-sans text-[0.95rem] font-medium text-brand-black/80 hover:text-brand-accent transition-colors underline-offset-[10px] decoration-1 ${isActive(link.href) ? 'underline text-brand-black' : ''}`}
+              aria-current={isActive(link.href) ? 'page' : undefined}
+            >
+              {link.name}
+            </a>
+          ))}
           <a
-            href={link.href}
-            class="font-sans text-[0.95rem] font-medium text-brand-black/80 hover:text-brand-accent transition-colors"
+            href={bookingPath}
+            class="font-sans text-[0.95rem] font-bold text-brand-black hover:text-brand-accent transition-colors underline decoration-2 underline-offset-[10px]"
+            aria-current={isActive(bookingPath) ? 'page' : undefined}
           >
-            {link.name}
+            {t('nav.booking')}
           </a>
-        ))}
-      </nav>
+        </nav>
 
-      <!-- Right: Actions -->
-      <div class="hidden lg:flex items-center gap-6">
-        <!-- Language Switcher -->
-        <div class="flex items-center gap-2">
+        <!-- Language Switcher: one above the other -->
+        <div class="flex flex-col items-center gap-0.5 leading-none">
           {Object.entries(languages).map(([code, name]) => (
             <a
               href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
@@ -70,14 +81,6 @@ const bookingPath = getLocalizedPath('/booking', lang);
             </a>
           ))}
         </div>
-
-        <!-- CTA Button -->
-        <a
-          href={bookingPath}
-          class="cta-gradient-btn relative overflow-hidden bg-brand-accent text-white px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300"
-        >
-          <span class="relative z-10">{t('nav.booking')}</span>
-        </a>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -124,7 +127,7 @@ const bookingPath = getLocalizedPath('/booking', lang);
       {links.map((link) => (
         <a
           href={link.href}
-          class="font-sans text-xl font-medium text-brand-black hover:text-brand-accent transition-colors"
+          class={`font-sans text-xl font-medium text-brand-black hover:text-brand-accent transition-colors underline-offset-8 ${isActive(link.href) ? 'underline' : ''}`}
         >
           {link.name}
         </a>
