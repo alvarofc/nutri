@@ -46,20 +46,12 @@ if (Astro.request.method === "POST") {
     style="background-image: url('/assets/sombra-hoja-sala.jpg'); -webkit-mask-image: radial-gradient(ellipse at 72% 38%, #000 18%, transparent 70%); mask-image: radial-gradient(ellipse at 72% 38%, #000 18%, transparent 70%);"
     aria-hidden="true"
   ></div>
-  <div
-    class="pointer-events-none absolute -bottom-[10%] -left-[8%] h-[75%] w-[42%] bg-cover mix-blend-multiply opacity-45"
-    style="background-image: url('/assets/sombras-hojas.jpg'); background-position: 50% 85%; -webkit-mask-image: radial-gradient(ellipse at 30% 70%, #000 15%, transparent 68%); mask-image: radial-gradient(ellipse at 30% 70%, #000 15%, transparent 68%);"
-    aria-hidden="true"
-  ></div>
 
   <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-6xl lg:px-8">
     <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
       <!-- Left: a warm welcome -->
       <div>
-        <div class="mb-7 flex items-center gap-4">
-          <img src="/assets/sobre-mi-2.jpg" alt="Alexandra" class="h-16 w-16 rounded-full object-cover ring-4 ring-white/70 shadow-md" width="64" height="64" loading="lazy" />
-          <span class="eyebrow">{lang === 'en' ? 'Shall we talk?' : '¿Hablamos?'}</span>
-        </div>
+        <span class="eyebrow mb-5 block">{lang === 'en' ? 'Shall we talk?' : '¿Hablamos?'}</span>
         <h2 class="font-serif text-3xl font-medium leading-[1.12] text-[#4A1D33] sm:text-4xl lg:text-[2.8rem]">
           {lang === 'en'
             ? 'Contact me so I can assess your case and book your initial assessment'
@@ -70,9 +62,9 @@ if (Astro.request.method === "POST") {
         </p>
 
         <ul class="mt-8 flex flex-col gap-3 font-sans text-[15px] text-[#4a3a40]">
-          <li class="flex items-center gap-3"><span class="text-[#79264D]" aria-hidden="true">♡</span>{lang === 'en' ? 'Response within 24 hours' : 'Respuesta en 24 horas'}</li>
-          <li class="flex items-center gap-3"><span class="text-[#79264D]" aria-hidden="true">♡</span>{lang === 'en' ? 'Your data is safe with me' : 'Tus datos están seguros'}</li>
-          <li class="flex items-center gap-3"><span class="text-[#79264D]" aria-hidden="true">♡</span>{lang === 'en' ? 'No commitment consultation' : 'Consulta sin compromiso'}</li>
+          <li>{lang === 'en' ? 'Response within 24 hours' : 'Respuesta en 24 horas'}</li>
+          <li>{lang === 'en' ? 'Your data is safe with me' : 'Tus datos están seguros'}</li>
+          <li>{lang === 'en' ? 'No commitment consultation' : 'Consulta sin compromiso'}</li>
         </ul>
 
         <div class="mt-9 flex flex-wrap gap-3">
