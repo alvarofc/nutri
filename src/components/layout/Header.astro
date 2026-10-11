@@ -49,7 +49,7 @@ const isActive = (href: string) => here === href || here.startsWith(href + '/');
           {links.map((link) => (
             <a
               href={link.href}
-              class={`font-sans text-[0.95rem] font-medium text-brand-black/80 hover:text-brand-accent transition-colors underline-offset-[10px] decoration-1 ${isActive(link.href) ? 'underline text-brand-black' : ''}`}
+              class={`font-sans text-[0.85rem] font-medium uppercase tracking-[0.06em] text-brand-black/80 hover:text-brand-accent transition-colors underline-offset-[10px] decoration-1 ${isActive(link.href) ? 'underline text-brand-black' : ''}`}
               aria-current={isActive(link.href) ? 'page' : undefined}
             >
               {link.name}
@@ -57,15 +57,16 @@ const isActive = (href: string) => here === href || here.startsWith(href + '/');
           ))}
           <a
             href={bookingPath}
-            class="font-sans text-[0.95rem] font-bold text-brand-black hover:text-brand-accent transition-colors underline decoration-2 underline-offset-[10px]"
+            class="nav-cta"
             aria-current={isActive(bookingPath) ? 'page' : undefined}
           >
-            {t('nav.booking')}
+            <span>{t('nav.booking')}</span>
+            <svg class="nav-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </nav>
 
         <!-- Language Switcher: one above the other -->
-        <div class="flex flex-col items-center gap-0.5 leading-none">
+        <div class="ml-5 flex flex-col items-center gap-0.5 leading-none">
           {Object.entries(languages).map(([code, name]) => (
             <a
               href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
@@ -158,6 +159,19 @@ const isActive = (href: string) => here === href || here.startsWith(href + '/');
     </nav>
   </div>
 </header>
+
+<style>
+  /* "Pide cita": bold text that turns into a round pill with an arrow on hover */
+  .nav-cta {
+    position: relative; display: inline-flex; align-items: center; border-radius: 9999px;
+    padding: 0.55rem 1.25rem; margin-inline: -1.25rem -1.25rem;
+    font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #222;
+    transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+  }
+  .nav-cta-arrow { position: absolute; right: 1.1rem; height: 1rem; width: 1rem; opacity: 0; transform: translateX(-6px); transition: opacity 0.3s ease, transform 0.3s ease; }
+  .nav-cta:hover, .nav-cta:focus-visible { background: #79264D; color: #fff; padding-right: 2.7rem; margin-right: -2.7rem; outline: none; }
+  .nav-cta:hover .nav-cta-arrow, .nav-cta:focus-visible .nav-cta-arrow { opacity: 1; transform: none; }
+</style>
 
 <!-- Spacer for fixed header -->
 <div class="h-[72px]"></div>
