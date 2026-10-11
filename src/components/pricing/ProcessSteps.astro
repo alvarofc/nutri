@@ -124,149 +124,113 @@ const blockIcons = [
 ];
 ---
 
-<section id="en-que-consisten-las-sesiones" class="proc relative scroll-mt-[var(--hdr,88px)] bg-[#E4D3D3]" data-process>
-  <div class="proc-sticky">
-    <div class="sec-top mx-auto w-full max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 lg:pt-6">
-      <span class="eyebrow">{es ? 'En qué consisten las sesiones' : 'What the sessions involve'}</span>
-      <span class="sec-rule" aria-hidden="true"></span>
-    </div>
-    <h2 class="proc-title px-4 pt-0 text-center font-serif text-3xl leading-[1.05] text-brand-black sm:text-4xl lg:pt-0 lg:text-[2.9rem] lg:whitespace-nowrap">
-      {t('pricing.title')}
-    </h2>
-
-    <!-- Timeline (only shown in the horizontal, scroll-driven version) -->
-    <div class="proc-timeline mx-auto w-full max-w-5xl px-24 pt-5 lg:pt-9">
-      <div class="relative h-px bg-brand-accent/20">
-        <div class="proc-fill absolute left-0 top-0 h-px bg-brand-accent"></div>
-        {steps.map((step, i) => (
-          <div
-            class="proc-node absolute top-0 -translate-x-1/2 -translate-y-1/2"
-            style={`left: ${(i / (steps.length - 1)) * 100}%`}
-            data-node={i}
-          >
-            <span class="proc-dot block h-4 w-4 rounded-full border-2 border-brand-accent bg-[#E4D3D3] transition-colors duration-300"></span>
-          </div>
-        ))}
-      </div>
-      <div class="relative mt-5 h-6">
-        {steps.map((step, i) => (
-          <span
-            class="proc-label absolute -translate-x-1/2 whitespace-nowrap text-xs font-medium uppercase tracking-[0.2em] text-brand-muted transition-colors duration-300"
-            style={`left: ${(i / (steps.length - 1)) * 100}%`}
-            data-label={i}
-          >
-            {step.short}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    <div class="proc-viewport" tabindex="0" role="region" aria-label={t('pricing.title')}>
-      <ol class="proc-track">
-        {steps.map((step, i) => (
-          <li class="proc-panel" data-panel={i}>
-            <span class="proc-num flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-accent to-[#79264D] text-sm font-medium text-white shadow-sm">{step.n}</span>
-            <div class="proc-inner mx-auto grid w-full max-w-5xl gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12 lg:items-center">
-              <!-- Left: which step this is, how long it lasts and what it is for -->
-              <div class="proc-left">
-                <p class="proc-eyebrow mb-2 text-xs font-medium uppercase tracking-[0.2em] text-brand-muted">{step.eyebrow}</p>
-                <h2 class="proc-h2 text-3xl leading-[1.05] text-brand-black sm:text-4xl lg:text-[2.5rem]">{step.title}</h2>
-                <ul class="proc-chips mt-4 flex flex-wrap gap-2">
-                  {step.chips.map((chip) => (
-                    <li class="rounded-full bg-brand-accent/10 px-3 py-1 text-xs font-medium tracking-wide text-brand-accent">{chip}</li>
-                  ))}
-                </ul>
-                {step.lead && <p class="proc-lead mt-5 border-l-2 border-brand-accent/40 pl-4 text-xl leading-snug text-brand-black sm:text-[1.4rem]" style="font-family: 'Cormorant', serif; font-style: italic;">{step.lead}</p>}
-              </div>
-
-              <!-- Right: the same kind of card every time, one idea per card -->
-              <div class={`proc-cards grid gap-3 ${step.blocks.length === 4 ? 'sm:grid-cols-2' : ''}`}>
-                {step.blocks.map((block, j) => (
-                  <section class={`proc-card ${block.highlight ? 'is-key' : ''} ${block.big ? 'is-big' : ''}`}>
-                    <h3 class="proc-card-h">
-                      <span class="proc-ico" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d={iconPaths[blockIcons[i][j]]} /></svg>
-                      </span>
-                      {block.label}
-                    </h3>
-                    {block.text && <p class="proc-card-p">{block.text}</p>}
-                    {block.items && (
-                      <ul class="proc-card-ul">
-                        {block.items.map((item) => (<li>{item}</li>))}
-                      </ul>
-                    )}
-                  </section>
-                ))}
-              </div>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-
-    <div class="proc-nav" aria-hidden="true">
-      <button type="button" class="proc-arrow" data-dir="-1" tabindex="-1">←</button>
-      <button type="button" class="proc-arrow" data-dir="1" tabindex="-1">→</button>
-    </div>
+<section id="en-que-consisten-las-sesiones" class="relative scroll-mt-[var(--hdr,88px)] bg-[#E4D3D3] py-14 sm:py-20" data-process>
+  <div class="sec-top mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <span class="eyebrow">{es ? 'En qué consisten las sesiones' : 'What the sessions involve'}</span>
+    <span class="sec-rule" aria-hidden="true"></span>
   </div>
+  <h2 class="px-4 pt-0 text-center font-serif text-3xl leading-[1.05] text-brand-black sm:text-4xl lg:text-[2.9rem]">
+    {t('pricing.title')}
+  </h2>
+
+  <!-- Three steps, one after the other, joined by a thread -->
+  <ol class="steps mx-auto mt-12 max-w-6xl px-4 sm:px-6 lg:mt-16 lg:px-8">
+    {steps.map((step, i) => (
+      <li class="step">
+        <div class="step-rail" aria-hidden="true">
+          <span class="step-num">{step.n}</span>
+          <span class="step-line"></span>
+        </div>
+
+        <div class="step-body">
+          <!-- Which step it is, how long it lasts and what it is for -->
+          <div class="step-left">
+            <p class="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-brand-muted">{step.eyebrow}</p>
+            <h3 class="step-title">{step.title}</h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {step.chips.map((chip) => (
+                <li class="rounded-full bg-brand-accent/10 px-3 py-1 text-xs font-medium tracking-wide text-brand-accent">{chip}</li>
+              ))}
+            </ul>
+            {step.lead && <p class="step-lead">{step.lead}</p>}
+          </div>
+
+          <!-- The same kind of card every time, one idea per card -->
+          <div class={`proc-cards grid gap-3 ${step.blocks.length === 4 ? 'md:grid-cols-2' : ''}`}>
+            {step.blocks.map((block, j) => (
+              <section class={`proc-card ${block.highlight ? 'is-key' : ''} ${block.big ? 'is-big' : ''}`}>
+                <h4 class="proc-card-h">
+                  <span class="proc-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d={iconPaths[blockIcons[i][j]]} /></svg>
+                  </span>
+                  {block.label}
+                </h4>
+                {block.text && <p class="proc-card-p">{block.text}</p>}
+                {block.items && (
+                  <ul class="proc-card-ul">
+                    {block.items.map((item) => (<li>{item}</li>))}
+                  </ul>
+                )}
+              </section>
+            ))}
+          </div>
+        </div>
+      </li>
+    ))}
+  </ol>
 </section>
 
 <style>
-  /* Tablets with reduced motion: the three steps sit side by side and you swipe sideways */
-  .proc-timeline { display: block; }
-  .proc-nav { display: flex; justify-content: center; gap: 0.75rem; padding-bottom: 1.5rem; }
-  .proc-arrow {
-    width: 2.5rem; height: 2.5rem; border-radius: 9999px; border: 1px solid rgba(74, 29, 51, 0.2);
-    background: #fff; color: #79264D; font-size: 1.1rem; line-height: 1; cursor: pointer; transition: opacity 0.2s, background 0.2s;
+  .steps { list-style: none; }
+  .step { position: relative; display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); column-gap: 1rem; padding-bottom: 3.25rem; }
+  .step:last-child { padding-bottom: 0; }
+  .step-rail { display: flex; flex-direction: column; align-items: center; }
+  .step-num {
+    display: flex; height: 2.75rem; width: 2.75rem; flex: none; align-items: center; justify-content: center; border-radius: 9999px;
+    background: linear-gradient(145deg, #79264D, #4A1D33); color: #fff; font-family: 'Cormorant', serif; font-size: 1.6rem; font-weight: 500; line-height: 1;
+    box-shadow: 0 10px 22px -12px rgba(74, 29, 51, 0.7);
   }
-  .proc-arrow:hover:not(:disabled) { background: rgba(74, 29, 51, 0.06); }
-  .proc-arrow:disabled { opacity: 0.3; cursor: default; }
-  .proc-viewport {
-    cursor: grab; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory;
-    overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  .step-line { margin-top: 0.7rem; width: 1px; flex: 1; background: linear-gradient(to bottom, rgba(121, 38, 77, 0.5), rgba(121, 38, 77, 0.12)); }
+  .step:last-child .step-line { display: none; }
+  .step-body { display: grid; gap: 1.4rem; min-width: 0; }
+  .step-title { font-family: 'Cormorant', serif; font-weight: 500; font-size: 2.1rem; line-height: 1.05; color: var(--tw-prose, #222); }
+  .step-lead { margin-top: 1.1rem; border-left: 2px solid rgba(74, 29, 51, 0.4); padding-left: 1rem; font-family: 'Cormorant', serif; font-style: italic; font-size: 1.3rem; line-height: 1.3; color: #222; }
+
+  @media (min-width: 640px) {
+    .step { grid-template-columns: 3.25rem minmax(0, 1fr); column-gap: 1.5rem; }
+    .step-num { height: 3.25rem; width: 3.25rem; font-size: 1.85rem; }
+    .step-title { font-size: 2.4rem; }
   }
-  .proc-viewport::-webkit-scrollbar { display: none; }
-  .proc-viewport:focus-visible { outline: 2px solid rgba(74, 29, 51, 0.35); outline-offset: -2px; }
-  .proc-track { position: relative; display: flex; flex-direction: row; gap: 1rem; padding: 1.5rem 1.25rem 2.5rem; }
-  .proc-track::after { content: ''; flex: 0 0 0.25rem; }
-  .proc-panel {
-    flex: 0 0 86%; align-self: flex-start; scroll-snap-align: center; list-style: none; background: #fff;
-    border: 1px solid rgba(74, 29, 51, 0.08); border-radius: 1rem; padding: 1.5rem 1.25rem;
+  @media (min-width: 1024px) {
+    .step { grid-template-columns: 3.75rem minmax(0, 1fr); column-gap: 2rem; padding-bottom: 4.5rem; }
+    .step-num { height: 3.75rem; width: 3.75rem; font-size: 2.1rem; }
+    .step-title { font-size: 2.7rem; }
   }
-  @media (min-width: 640px) { .proc-panel { flex-basis: 72%; padding: 2rem 1.75rem; } }
-  .proc-num { display: none; }
-  .proc-fill { width: calc(var(--p, 0) * 100%); }
-  .proc-dot.is-on { background: #79264D; }
-  .proc-label.is-on { color: #79264D; }
-  .proc-label { cursor: pointer; }
-  .proc-label[data-label='0'] { --tw-translate-x: 0%; }
-  .proc-label:last-child { --tw-translate-x: -100%; }
+  /* Wide screens: text on the left (it stays in view while you read the cards), cards on the right */
+  @media (min-width: 1280px) {
+    .step-body { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem; align-items: start; }
+    .step-left { position: sticky; top: calc(var(--hdr, 88px) + 1.5rem); }
+  }
 
   /* The cards: same shape in the three steps */
   .proc-card {
     border-radius: 1rem; border: 1px solid rgba(74, 29, 51, 0.1); background: rgba(255, 255, 255, 0.78);
-    padding: 0.95rem 1.05rem; box-shadow: 0 10px 28px -22px rgba(74, 29, 51, 0.5);
+    padding: 1.1rem 1.25rem; box-shadow: 0 10px 28px -22px rgba(74, 29, 51, 0.5);
   }
   .proc-card-h {
-    display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.55rem;
-    font-family: 'Montserrat', sans-serif !important; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em;
+    display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.65rem;
+    font-family: 'Montserrat', sans-serif !important; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
     text-transform: uppercase; color: #79264D;
   }
-  .proc-ico {
-    display: inline-flex; height: 1.9rem; width: 1.9rem; flex: none; align-items: center; justify-content: center;
-    border-radius: 9999px; background: rgba(121, 38, 77, 0.1); color: #79264D;
-  }
+  .proc-ico { display: inline-flex; height: 1.9rem; width: 1.9rem; flex: none; align-items: center; justify-content: center; border-radius: 9999px; background: rgba(121, 38, 77, 0.1); color: #79264D; }
   .proc-ico svg { height: 1.05rem; width: 1.05rem; }
-  .proc-card-p, .proc-card-ul { font-size: 0.92rem; line-height: 1.5; color: #4a4a4a; }
-  .proc-card-ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
-  .proc-card-ul li { position: relative; padding-left: 1rem; }
-  .proc-card-ul li::before {
-    content: ''; position: absolute; left: 0; top: 0.62em; height: 0.3rem; width: 0.3rem; border-radius: 9999px; background: #79264D;
-  }
+  .proc-card-p, .proc-card-ul { font-size: 1rem; line-height: 1.6; color: #3f3f3f; }
+  .proc-card-ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+  .proc-card-ul li { position: relative; padding-left: 1.05rem; }
+  .proc-card-ul li::before { content: ''; position: absolute; left: 0; top: 0.66em; height: 0.32rem; width: 0.32rem; border-radius: 9999px; background: #79264D; }
   /* Step 3: a single card with one sentence */
-  .proc-card.is-big { padding: 1.6rem 1.7rem; }
-  .proc-card.is-big .proc-card-h { margin-bottom: 0.9rem; }
-  .proc-card.is-big .proc-card-p { font-family: 'Cormorant', serif; font-size: 1.55rem; line-height: 1.3; color: #3a1d2b; }
+  .proc-card.is-big { padding: 1.5rem 1.6rem; }
+  .proc-card.is-big .proc-card-p { font-family: 'Cormorant', serif; font-size: 1.5rem; line-height: 1.3; color: #3a1d2b; }
   /* The one card that holds what you take home */
   .proc-card.is-key { background: linear-gradient(145deg, #79264D, #4A1D33); border-color: transparent; }
   .proc-card.is-key .proc-card-h { color: #F3E6E1; }
@@ -274,259 +238,4 @@ const blockIcons = [
   .proc-card.is-key .proc-card-p, .proc-card.is-key .proc-card-ul { color: #F8EDEA; }
   .proc-card.is-key .proc-card-p, .proc-card.is-key .proc-card-ul li { text-align: justify; hyphens: none; }
   .proc-card.is-key .proc-card-ul li::before { background: #E8C9D4; }
-
-  /* Wide screens: one step at a time, sliding sideways while you scroll down */
-  @media (prefers-reduced-motion: no-preference) {
-    .proc { height: 560vh; }
-    .proc-sticky {
-      position: sticky; top: var(--hdr, 88px); height: calc(100vh - var(--hdr, 88px));
-      display: flex; flex-direction: column; overflow: hidden;
-    }
-    .proc-timeline { flex: none; }
-    .proc-label { cursor: default; }
-    .proc-label[data-label='0'], .proc-label:last-child { --tw-translate-x: -50%; }
-    .proc-nav { display: none; }
-    .proc-viewport { cursor: auto; position: relative; flex: 1; min-height: 0; overflow: hidden; scroll-snap-type: none; }
-    .proc-inner { padding-inline: 2rem; transform: translateX(calc(var(--d, 0) * 30vw)); will-change: transform; }
-    .proc-track {
-      gap: 0; padding: 0; height: 100%; width: 300%;
-      transform: translateX(calc(var(--p, 0) * -66.6667%)); will-change: transform;
-    }
-    .proc-track::after { display: none; }
-    /* Tablets, small laptops and short windows: same scroll-driven stage, with tighter type so each step fits */
-    @media (max-width: 1099px) {
-      .proc-title { padding-top: 0.9rem !important; font-size: 1.55rem !important; line-height: 1.05 !important; }
-      .proc-timeline { padding: 1.3rem 6rem 0 !important; }
-      .proc-inner { gap: 0.7rem !important; padding-inline: 1.1rem !important; }
-      .proc-h2 { font-size: 1.6rem !important; line-height: 1.05 !important; }
-      .proc-eyebrow { margin-bottom: 0.25rem !important; }
-      .proc-chips { margin-top: 0.5rem !important; }
-      .proc-lead { margin-top: 0.6rem !important; font-size: 1.05rem !important; line-height: 1.2 !important; padding-left: 0.75rem !important; }
-      .proc-cards { gap: 0.5rem !important; }
-      .proc-card { padding: 0.55rem 0.7rem; }
-      .proc-card-h { margin-bottom: 0.3rem; font-size: 0.6rem; gap: 0.4rem; }
-      .proc-ico { height: 1.4rem; width: 1.4rem; }
-      .proc-ico svg { height: 0.8rem; width: 0.8rem; }
-      .proc-card-p, .proc-card-ul { font-size: 0.76rem; line-height: 1.36; }
-      .proc-card-ul { gap: 0.2rem; }
-      .proc-card.is-big { padding: 0.8rem 0.9rem; }
-      .proc-card.is-big .proc-card-p { font-size: 1.1rem; line-height: 1.25; }
-    }
-    /* Wide but short windows (laptops): scale the content down a little so each step fits */
-    @media (min-width: 1100px) and (max-height: 780px) { .proc-inner { zoom: 0.88; } }
-    @media (min-width: 1100px) and (max-height: 700px) { .proc-inner { zoom: 0.76; } }
-    .proc-panel {
-      flex: 0 0 33.3333%; display: flex; align-items: center; align-self: auto; scroll-snap-align: none;
-      background: none; border: 0; border-radius: 0; padding: 0; opacity: var(--o, 1); transition: opacity 0.15s linear;
-    }
-  }
-
-  /* Phones and very short windows: no sideways stage. The three steps run down the page along one thread */
-  @media (max-width: 1099px), (max-height: 650px) {
-    .proc { height: auto !important; }
-    .proc-sticky { position: static !important; height: auto !important; overflow: visible !important; display: block !important; }
-    .proc-timeline, .proc-nav { display: none !important; }
-    .proc-title { padding-top: 0.9rem !important; font-size: 1.9rem !important; }
-    .proc-viewport { position: static !important; overflow: visible !important; cursor: auto; }
-    .proc-track {
-      display: block !important; width: auto !important; height: auto !important; transform: none !important;
-      padding: 1.75rem 1rem 2.5rem !important; position: relative;
-    }
-    .proc-track::before {
-      content: ''; position: absolute; left: calc(1rem + 1.125rem); top: 2.6rem; bottom: 3.5rem; width: 1px;
-      background: linear-gradient(to bottom, rgba(121, 38, 77, 0.5), rgba(121, 38, 77, 0.15));
-    }
-    .proc-panel {
-      display: block !important; position: relative; opacity: 1 !important; flex: none !important;
-      background: none !important; border: 0 !important; padding: 0 0 2.5rem 3.25rem !important;
-    }
-    .proc-panel:last-child { padding-bottom: 0 !important; }
-    .proc-num { display: flex; position: absolute; left: 0; top: 0; height: 2.25rem; width: 2.25rem; z-index: 1; }
-    .proc-inner { transform: none !important; gap: 1rem !important; padding-inline: 0 !important; grid-template-columns: minmax(0, 1fr) !important; }
-    .proc-eyebrow { margin-bottom: 0.2rem !important; padding-top: 0.55rem; }
-    .proc-h2 { font-size: 1.7rem !important; line-height: 1.08 !important; }
-    .proc-chips { margin-top: 0.7rem !important; }
-    .proc-lead { margin-top: 0.9rem !important; font-size: 1.15rem !important; line-height: 1.25 !important; padding-left: 0.85rem !important; }
-    .proc-cards { gap: 0.6rem !important; grid-template-columns: minmax(0, 1fr) !important; }
-    .proc-card { padding: 0.85rem 0.95rem !important; }
-    .proc-card-h { margin-bottom: 0.45rem !important; font-size: 0.66rem !important; }
-    .proc-ico { height: 1.7rem !important; width: 1.7rem !important; }
-    .proc-ico svg { height: 0.95rem !important; width: 0.95rem !important; }
-    .proc-card-p, .proc-card-ul { font-size: 0.9rem !important; line-height: 1.5 !important; }
-    .proc-card-ul { gap: 0.4rem !important; }
-    .proc-card.is-big .proc-card-p { font-size: 1.3rem !important; line-height: 1.3 !important; }
-  }
-  /* Medium screens: same vertical list, with more comfortable type and a readable line length */
-  @media (min-width: 768px) and (max-width: 1099px) {
-    .proc-title { font-size: 2.5rem !important; }
-    .proc-track { padding: 2rem 2rem 3rem !important; }
-    .proc-track::before { left: calc(2rem + 1.125rem); }
-    .proc-inner { max-width: 44rem; }
-    .proc-h2 { font-size: 2.3rem !important; }
-    .proc-lead { font-size: 1.35rem !important; }
-    .proc-card { padding: 1.1rem 1.25rem !important; }
-    .proc-card-h { font-size: 0.72rem !important; }
-    .proc-card-p, .proc-card-ul { font-size: 1.02rem !important; }
-    .proc-card.is-big .proc-card-p { font-size: 1.5rem !important; }
-  }
 </style>
-
-<script>
-  const MQ = '(prefers-reduced-motion: no-preference)';
-
-  // Where the carousel sits (0 = step 1, 1 = step 2, 2 = step 3) along the scroll.
-  // The flat stretches are pauses so each step can be read before the next one slides in.
-  const STOPS: Array<[number, number]> = [
-    [0, 0],
-    [0.3, 0],
-    [0.42, 1],
-    [0.7, 1],
-    [0.82, 2],
-    [1, 2],
-  ];
-  const ease = (t: number) => t * t * (3 - 2 * t);
-  function position(p: number) {
-    for (let i = 1; i < STOPS.length; i++) {
-      const [p1, v1] = STOPS[i];
-      const [p0, v0] = STOPS[i - 1];
-      if (p <= p1) {
-        const t = (p - p0) / Math.max(p1 - p0, 1e-6);
-        return v0 + (v1 - v0) * ease(Math.min(1, Math.max(0, t)));
-      }
-    }
-    return 2;
-  }
-
-  function init() {
-    const root = document.querySelector<HTMLElement>('[data-process]');
-    if (!root || root.dataset.ready) return;
-    root.dataset.ready = '1';
-
-    const mq = window.matchMedia(MQ);
-    const phone = window.matchMedia('(max-width: 1099px), (max-height: 650px)');
-    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-panel]'));
-    const dots = Array.from(root.querySelectorAll<HTMLElement>('.proc-dot'));
-    const labels = Array.from(root.querySelectorAll<HTMLElement>('.proc-label'));
-    const arrows = Array.from(root.querySelectorAll<HTMLButtonElement>('.proc-arrow'));
-    const last = panels.length - 1;
-    let ticking = false;
-
-    const viewportEl = root.querySelector<HTMLElement>('.proc-viewport');
-
-    // Swipe mode: the progress line and dots follow the horizontal scroll
-    const updateCarousel = () => {
-      if (!viewportEl) return;
-      const max = Math.max(viewportEl.scrollWidth - viewportEl.clientWidth, 1);
-      const p = Math.min(1, Math.max(0, viewportEl.scrollLeft / max));
-      root.style.setProperty('--p', p.toFixed(4));
-      const idx = Math.round(p * last);
-      dots.forEach((d, i) => d.classList.toggle('is-on', i <= idx));
-      labels.forEach((l, i) => l.classList.toggle('is-on', i === idx));
-      arrows.forEach((a) => { a.disabled = idx + Number(a.dataset.dir) < 0 || idx + Number(a.dataset.dir) > last; });
-    };
-
-    const current = () => {
-      if (!viewportEl) return 0;
-      const max = Math.max(viewportEl.scrollWidth - viewportEl.clientWidth, 1);
-      return Math.round(Math.min(1, Math.max(0, viewportEl.scrollLeft / max)) * last);
-    };
-
-    const goTo = (i: number) => {
-      if (mq.matches || !viewportEl || !panels[i]) return;
-      const target = panels[i].offsetLeft - (viewportEl.clientWidth - panels[i].offsetWidth) / 2;
-      // Own tween: native smooth scrolling is unreliable together with mandatory snap
-      const from = viewportEl.scrollLeft;
-      const to = Math.max(target, 0);
-      const t0 = performance.now();
-      viewportEl.style.scrollSnapType = 'none';
-      const step = (now: number) => {
-        const k = Math.min(1, (now - t0) / 450);
-        viewportEl.scrollLeft = from + (to - from) * ease(k);
-        if (k < 1) requestAnimationFrame(step);
-        else viewportEl.style.scrollSnapType = '';
-      };
-      requestAnimationFrame(step);
-    };
-    arrows.forEach((a) => a.addEventListener('click', () => goTo(current() + Number(a.dataset.dir))));
-
-    // Mouse users can't swipe: let them drag the cards sideways
-    if (viewportEl) {
-      let startX = 0, startLeft = 0, dragging = false;
-      viewportEl.addEventListener('pointerdown', (e) => {
-        if (e.pointerType !== 'mouse' || mq.matches) return;
-        dragging = true; startX = e.clientX; startLeft = viewportEl.scrollLeft;
-        viewportEl.style.scrollSnapType = 'none';
-        viewportEl.style.cursor = 'grabbing';
-      });
-      window.addEventListener('pointermove', (e) => {
-        if (dragging) viewportEl.scrollLeft = startLeft - (e.clientX - startX);
-      });
-      window.addEventListener('pointerup', () => {
-        if (!dragging) return;
-        dragging = false;
-        viewportEl.style.cursor = '';
-        const max = Math.max(viewportEl.scrollWidth - viewportEl.clientWidth, 1);
-        const i = Math.round((viewportEl.scrollLeft / max) * last);
-        viewportEl.style.scrollSnapType = '';
-        goTo(i);
-      });
-    }
-    labels.forEach((l, i) => l.addEventListener('click', () => goTo(i)));
-    dots.forEach((d, i) => d.parentElement?.addEventListener('click', () => goTo(i)));
-    viewportEl?.addEventListener('scroll', () => { if (!mq.matches) updateCarousel(); }, { passive: true });
-
-    const update = () => {
-      ticking = false;
-      if (phone.matches) {
-        root.style.removeProperty('--p');
-        panels.forEach((p) => {
-          p.style.removeProperty('--o');
-          p.style.removeProperty('--d');
-        });
-        return;
-      }
-      if (!mq.matches) {
-        panels.forEach((p) => {
-          p.style.removeProperty('--o');
-          p.style.removeProperty('--d');
-        });
-        updateCarousel();
-        return;
-      }
-      const H = document.querySelector('header')?.offsetHeight ?? 88;
-      root.style.setProperty('--hdr', H + 'px');
-      const rect = root.getBoundingClientRect();
-      const stage = Math.max(root.offsetHeight - (window.innerHeight - H), 1);
-      const raw = Math.min(1, Math.max(0, (H - rect.top) / stage));
-      const pos = position(raw);
-      const p = pos / last;
-      root.style.setProperty('--p', p.toFixed(4));
-      panels.forEach((panel, i) => {
-        const d = Math.abs(pos - i);
-        // neighbours stay visible (fainter) so you can see the steps sliding past
-        panel.style.setProperty('--o', String(Math.max(0.28, 1 - d * 0.72).toFixed(3)));
-        // extra sideways offset: the content travels faster than the panel, then settles
-        panel.style.setProperty('--d', (i - pos).toFixed(4));
-      });
-      const idx = Math.round(pos);
-      dots.forEach((d, i) => d.classList.toggle('is-on', i <= idx));
-      labels.forEach((l, i) => l.classList.toggle('is-on', i === idx));
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    mq.addEventListener('change', onScroll);
-    phone.addEventListener('change', onScroll);
-    update();
-  }
-
-  document.addEventListener('astro:page-load', init);
-  init();
-</script>
