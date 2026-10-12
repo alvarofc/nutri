@@ -25,14 +25,17 @@ const links = [
 ];
 
 const bookingPath = getLocalizedPath('/booking', lang);
+const homePath = getLocalizedPath('/', lang);
 
 // The page you are on is shown in the accent colour (no underlines in the bar)
 const here = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => here === href || here.startsWith(href + '/');
+const isHome = here === (homePath.replace(/\/$/, '') || '/');
 ---
 
 <header
   x-data="{ open: false }"
+  @keydown.escape.window="open = false"
   class="fixed top-0 left-0 right-0 z-50 bg-[rgba(255,255,255,0.75)] backdrop-blur-md border-b border-brand-black/5"
   role="banner"
   itemscope
@@ -87,7 +90,7 @@ const isActive = (href: string) => here === href || here.startsWith(href + '/');
       <!-- Mobile Menu Button -->
       <button
         type="button"
-        class="lg:hidden inline-flex items-center justify-center w-10 h-10 text-brand-black"
+        class="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-black/25 bg-white/45 text-brand-black backdrop-blur-sm transition-colors hover:bg-white/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
         @click="open = !open"
         aria-controls="mobile-menu"
         :aria-expanded="open.toString()"
@@ -95,7 +98,7 @@ const isActive = (href: string) => here === href || here.startsWith(href + '/');
         <span class="sr-only">{t('header.toggle.menu')}</span>
         <svg
           x-show="!open"
-          class="w-6 h-6"
+          class="h-5 w-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -105,7 +108,7 @@ const isActive = (href: string) => here === href || here.startsWith(href + '/');
         <svg
           x-show="open"
           x-cloak
-          class="w-6 h-6"
+          class="h-5 w-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -122,40 +125,51 @@ const isActive = (href: string) => here === href || here.startsWith(href + '/');
     x-show="open"
     x-cloak
     x-collapse
-    class="lg:hidden bg-white border-t border-brand-black/5"
+    class="mx-4 mb-3 mt-2 overflow-hidden rounded-2xl border border-white/25 bg-[rgba(74,29,51,0.78)] shadow-xl shadow-brand-black/15 backdrop-blur-xl sm:mx-6 lg:hidden"
   >
-    <nav class="flex flex-col px-6 py-8 gap-6">
+    <nav class="flex flex-col items-center gap-4 px-6 py-7 text-center sm:gap-5 sm:py-8" aria-label={t('header.navigation.aria')}>
+      <a
+        href={homePath}
+        aria-current={isHome ? 'page' : undefined}
+        @click="open = false"
+        class={`font-sans text-base font-medium uppercase tracking-[0.1em] text-white/90 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-lg ${isHome ? '!font-semibold !text-white' : ''}`}
+      >
+        {lang === 'es' ? 'Inicio' : 'Home'}
+      </a>
+
       {links.map((link) => (
         <a
           href={link.href}
-          class={`font-sans text-xl font-medium text-brand-black hover:text-brand-accent transition-colors ${isActive(link.href) ? 'text-brand-accent' : ''}`}
+          aria-current={isActive(link.href) ? 'page' : undefined}
+          @click="open = false"
+          class={`font-sans text-base font-medium uppercase tracking-[0.1em] text-white/90 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-lg ${isActive(link.href) ? '!font-semibold !text-white' : ''}`}
         >
           {link.name}
         </a>
       ))}
-      
+
+      <a
+        href={bookingPath}
+        aria-current={isActive(bookingPath) ? 'page' : undefined}
+        @click="open = false"
+        class="mt-1 font-sans text-base font-bold uppercase tracking-[0.1em] text-white transition-colors hover:text-white/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-lg"
+      >
+        {t('nav.booking')}
+      </a>
+
       <!-- Mobile Language Switcher -->
-      <div class="flex items-center gap-4 pt-6 border-t border-brand-black/10">
-        {Object.entries(languages).map(([code, name]) => (
+      <div class="mt-2 flex items-center justify-center gap-5 border-t border-white/20 pt-4">
+        {Object.entries(languages).map(([code]) => (
           <a
             href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
-            class={`text-sm font-medium ${
-              lang === code ? 'text-brand-black' : 'text-brand-muted'
-            }`}
+            class={`text-xs font-medium uppercase tracking-[0.12em] transition-colors ${lang === code ? 'text-white' : 'text-white/60 hover:text-white'}`}
             data-lang-preference={code}
+            @click="open = false"
           >
-            {name}
+            {code}
           </a>
         ))}
       </div>
-
-      <!-- Mobile CTA -->
-      <a
-        href={bookingPath}
-        class="cta-gradient-btn relative overflow-hidden mt-4 bg-brand-accent text-white px-6 py-4 text-center font-medium rounded-full transition-all duration-300"
-      >
-        <span class="relative z-10">{t('nav.booking')}</span>
-      </a>
     </nav>
   </div>
 </header>

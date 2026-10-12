@@ -210,7 +210,7 @@ export const ui = {
     'pricing.bundle.duration': '4 × 45 min',
     'pricing.bundle.description': 'Four follow-up sessions to keep your progress steady.',
     'pricing.bundle.saving': '60 € per session',
-    'pricing.policy': 'Payment is made when booking and is non-refundable. You can reschedule up to 24 hours before your appointment. Follow-ups can be booked up to 4 months after your last visit.',
+    'pricing.policy': 'Payment is made when booking and is non-refundable. You can reschedule up to 24 hours before your appointment. Follow-ups can be booked up to 6 months after your last visit.',
 
     // FAQ
     'faq.title': 'Frequently Asked Questions',
@@ -461,7 +461,7 @@ export const ui = {
     'pricing.bundle.duration': '4 × 45 min',
     'pricing.bundle.description': 'Cuatro sesiones de seguimiento para mantener tu progreso constante.',
     'pricing.bundle.saving': '60 €/sesión',
-    'pricing.policy': 'El importe se abona al reservar y no es reembolsable. Puedes cambiar la cita avisando con al menos 24 horas de antelación. Las citas de seguimiento pueden reservarse hasta 4 meses tras la última visita.',
+    'pricing.policy': 'El importe se abona al reservar y no es reembolsable. Puedes cambiar la cita avisando con al menos 24 horas de antelación. Las citas de seguimiento pueden reservarse hasta 6 meses tras la última visita.',
 
     // FAQ
     'faq.title': 'Preguntas Frecuentes',

@@ -1,0 +1,270 @@
+---
+import { getLangFromUrl, getLocalizedPath } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const es = lang === 'es';
+
+// Titles and texts of the areas (the home page cards link here, one anchor each)
+const digestion = {
+  title: es ? 'Tratamiento de patología digestiva y alteraciones de la microbiota' : 'Treatment of digestive conditions and microbiota imbalances',
+  text: es
+    ? ['El intestino no es solo un órgano digestivo: es un sistema de comunicación, de defensa y de equilibrio. Cuando se altera, todo el cuerpo habla.', 'Tus síntomas tienen una causa. La buscamos juntas y trabajamos desde la raíz. Sin parches.']
+    : ['The gut is not just a digestive organ: it is a system of communication, defence and balance. When it is disturbed, the whole body speaks up.', 'Your symptoms have a cause. We look for it together and work from the root. No quick fixes.'],
+};
+
+const perimenopause = {
+  title: es ? 'Perimenopausia y menopausia' : 'Perimenopause and menopause',
+  text: es
+    ? ['La alimentación puede marcar la diferencia en cómo se vive la transición a la menopausia. Una alimentación antiinflamatoria (rica en vegetales, semillas, cereales integrales…), con menos carbohidratos refinados y una cantidad adecuada de proteína, ayuda a mantener la energía, la masa muscular y la densidad mineral ósea.']
+    : ['Food can make a difference to how the transition to menopause is experienced. An anti-inflammatory diet (rich in vegetables, seeds, whole grains…), lower in refined carbohydrates and with an adequate amount of protein, helps maintain energy, muscle mass and bone mineral density.'],
+};
+
+const fertility = {
+  title: es ? 'Fertilidad, embarazo y posparto' : 'Fertility, pregnancy and postpartum',
+  text: es
+    ? [
+        'Si estás buscando un embarazo, quiero ayudarte a preparar tu cuerpo para esta etapa. Revisaremos tu alimentación, tu salud hormonal y los nutrientes que necesitas, sin que tengas que obsesionarte con hacerlo todo perfecto.',
+        'Durante el embarazo y la lactancia, cuidaré de que tanto tú como tu bebé recibáis los nutrientes necesarios, adaptando tu alimentación y la suplementación a cada momento.',
+        'Y cuando llegue el posparto, seguiremos cuidando de ti. Porque recuperarte no significa volver cuanto antes a tu cuerpo de antes, sino darle el tiempo y los cuidados que necesita.',
+      ]
+    : [
+        'If you are trying to conceive, I want to help you prepare your body for this stage. We will review your diet, your hormonal health and the nutrients you need, without you having to obsess over doing everything perfectly.',
+        'During pregnancy and breastfeeding, I will make sure that both you and your baby get the nutrients you need, adapting your diet and supplementation to each moment.',
+        'And when the postpartum period arrives, we will keep taking care of you. Because recovering does not mean going back to your old body as soon as possible, but giving it the time and care it needs.',
+      ],
+};
+
+const metabolic = {
+  title: es ? 'Quieres aprender a cuidar de tu salud metabólica' : 'You want to learn how to look after your metabolic health',
+  text: es
+    ? ['Te explico qué está pasando en tu cuerpo y qué necesita. Trabajamos tu sensibilidad a la insulina y tu flexibilidad metabólica (la capacidad de tu cuerpo para usar bien la energía) para perder grasa, ganar masa muscular y sentirte con más energía. Todo con un plan que encaje en tu semana real.']
+    : ['I explain what is happening in your body and what it needs. We work on your insulin sensitivity and your metabolic flexibility (your body’s ability to use energy well) to lose fat, build muscle and feel more energetic. All with a plan that fits your real week.'],
+};
+
+const foodRelationship = {
+  title: es ? 'Tu relación con la comida' : 'Your relationship with food',
+  text: es
+    ? [
+        'Puedo acompañarte para adquirir una alimentación más tranquila, consciente y flexible. Una alimentación que realmente disfrutes. Trabajamos tus señales de hambre y saciedad, qué te lleva a comer cuando no tienes hambre y cómo te relacionas con tu cuerpo.',
+        'Trabajamos para reconectar con tus señales de hambre y saciedad, comprender qué emociones o situaciones influyen en tu forma de comer y superar los miedos y las normas rígidas en torno a la comida.',
+        'El objetivo es que vuelvas a disfrutar de la alimentación, recuperando la confianza en tu cuerpo y avanzando a tu ritmo, desde el respeto y sin juicios.',
+      ]
+    : [
+        'I can support you towards calmer, more mindful and flexible eating. Eating you truly enjoy. We work on your hunger and fullness signals, what leads you to eat when you are not hungry, and how you relate to your body.',
+        'We work to reconnect with your hunger and fullness signals, understand which emotions or situations influence the way you eat, and overcome fears and rigid rules around food.',
+        'The goal is for you to enjoy eating again, regaining confidence in your body and moving forward at your own pace, with respect and without judgement.',
+      ],
+};
+
+const detail = es
+  ? {
+      intro: 'Existen diferentes alteraciones hormonales que muchas mujeres sufren hoy en día. La dieta, el ejercicio y los hábitos pueden mejorar mucho el curso y la sintomatología de las mismas. En consulta, adecuaremos la alimentación, la suplementación y realizaremos los cambios de estilo de vida necesarios para solventar los desajustes existentes.',
+      items: [
+        [
+          'Síndrome de ovario poliquístico (SOP)',
+          [
+            'La insulina es una hormona que ayuda a que el azúcar de la sangre entre en las células para utilizarse como energía. Muchas mujeres con SOP presentan resistencia a la insulina, lo que significa que sus células no responden bien a esta hormona y el cuerpo necesita producir más cantidad. Este exceso de insulina puede alterar el equilibrio hormonal y favorecer síntomas como el acné, el exceso de vello o los ciclos menstruales irregulares.',
+            'A través de un plan de nutrición personalizado, podemos mejorar la sensibilidad a la insulina y ayudar a reducir muchos de los síntomas del SOP, gracias a que actuamos directamente sobre la raíz de los mismos.',
+          ],
+        ],
+        [
+          'Reglas dolorosas, endometriosis o adenomiosis',
+          [
+            'El dolor está muy ligado a las prostaglandinas, moléculas inflamatorias que fabrica tu propio cuerpo. Con una alimentación rica en polifenoles, compuestos bioactivos, vitaminas antioxidantes y algunos minerales clave para la relajación de la musculatura uterina, como el magnesio, podemos modular la inflamación, el dolor y el cansancio. Además, ciertos complementos alimenticios tienen evidencia como tratamiento complementario, por lo que se diseña una pauta de suplementación personalizada en función de la paciente.',
+          ],
+        ],
+        [
+          'Síndrome premenstrual',
+          [
+            'No se debe a tener “demasiadas hormonas”, sino a que tu cerebro es más sensible a sus cambios. Estabilizar tu glucosa y asegurar que cubres tus requerimientos nutricionales de calcio, magnesio, zinc y vitamina B6 puede suavizar la irritabilidad, los antojos y la hinchazón.',
+          ],
+        ],
+        [
+          'Hipotiroidismo e hipertiroidismo',
+          [
+            'Tu tiroides necesita yodo, selenio, hierro y vitamina D para fabricar y activar sus hormonas. Además, el café, el calcio o los suplementos de hierro tomados cerca de la levotiroxina reducen su absorción, y muchas veces ese es el motivo de que la dosis “no funcione”. En el hipertiroidismo cuidamos especialmente el músculo y los huesos. Todo adaptado a tus circunstancias únicas.',
+          ],
+        ],
+        [
+          'Candidiasis o infecciones de orina de repetición',
+          [
+            'Cuando las infecciones se repiten, es importante identificar qué factores pueden favorecer su aparición, como los desequilibrios de la microbiota intestinal y vaginal, las alteraciones de la glucosa o las carencias nutricionales.',
+            'A través de un plan de nutrición personalizado, basado en una alimentación prebiótica, antiinflamatoria y antioxidante, y suplementación cuando sea necesaria, buscamos favorecer el equilibrio de tu microbiota y reforzar tus defensas naturales, como complemento al tratamiento médico.',
+          ],
+        ],
+      ],
+    }
+  : {
+      intro: 'There are several hormonal imbalances that many women experience today. Diet, exercise and habits can greatly improve their course and symptoms. In consultation, we will adapt your diet and supplementation and make the lifestyle changes needed to resolve the existing imbalances.',
+      items: [
+        [
+          'Polycystic ovary syndrome (PCOS)',
+          [
+            'Insulin is a hormone that helps the sugar in your blood enter your cells so it can be used as energy. Many women with PCOS have insulin resistance, which means their cells do not respond well to this hormone and the body has to produce more of it. This excess insulin can disrupt hormonal balance and favour symptoms such as acne, excess hair or irregular menstrual cycles.',
+            'Through a personalised nutrition plan, we can improve insulin sensitivity and help reduce many of the symptoms of PCOS, because we act directly on their root.',
+          ],
+        ],
+        [
+          'Painful periods, endometriosis or adenomyosis',
+          [
+            'Pain is closely linked to prostaglandins, inflammatory molecules your own body makes. With a diet rich in polyphenols, bioactive compounds, antioxidant vitamins and some key minerals for relaxing the uterine muscle, such as magnesium, we can modulate inflammation, pain and tiredness. In addition, certain food supplements have evidence as a complementary treatment, so a personalised supplementation plan is designed for each patient.',
+          ],
+        ],
+        [
+          'Premenstrual syndrome',
+          [
+            'It is not caused by having “too many hormones”, but by your brain being more sensitive to their changes. Stabilising your glucose and making sure you meet your nutritional requirements for calcium, magnesium, zinc and vitamin B6 can ease irritability, cravings and bloating.',
+          ],
+        ],
+        [
+          'Hypothyroidism and hyperthyroidism',
+          [
+            'Your thyroid needs iodine, selenium, iron and vitamin D to make and activate its hormones. Coffee, calcium or iron supplements taken close to levothyroxine also reduce its absorption, and that is often why the dose “doesn’t work”. In hyperthyroidism we take special care of muscle and bone. All adapted to your unique circumstances.',
+          ],
+        ],
+        [
+          'Recurrent candidiasis or urinary tract infections',
+          [
+            'When infections keep coming back, it is important to identify which factors may favour them, such as imbalances in the intestinal and vaginal microbiota, changes in glucose or nutritional deficiencies.',
+            'Through a personalised nutrition plan, based on a prebiotic, anti-inflammatory and antioxidant diet, and supplementation when necessary, we aim to support the balance of your microbiota and strengthen your natural defences, as a complement to medical treatment.',
+          ],
+        ],
+      ],
+    };
+
+const bookHref = getLocalizedPath('/booking', lang);
+const bookLabel = es ? 'Pide cita' : 'Book an appointment';
+// detail.items: 0 PCOS, 1 painful periods / endometriosis, 2 PMS, 3 thyroid, 4 candidiasis
+const [pcos, periods, pms, thyroid, candida] = detail.items;
+
+type Row = { id?: string; level: 'area' | 'item'; title: string; paras: string[]; img?: string; alt?: string; photo?: boolean };
+const alt = (a: string, b: string) => (es ? a : b);
+
+// Three rooms, each with its own background; the picture alternates sides row after row
+const bands: { key: string; head?: { id: string; intro: string }; rows: Row[] }[] = [
+  { key: 'a', rows: [
+    { id: 'area-digestion', level: 'area', title: digestion.title, paras: digestion.text, img: '/assets/area-digestion.webp', alt: alt('Ilustración del eje intestino-cerebro', 'Illustration of the gut–brain axis') },
+    { level: 'item', title: candida[0], paras: candida[1] },
+  ] },
+  { key: 'b', head: { id: 'area-convives', intro: detail.intro }, rows: [
+    { level: 'item', title: pcos[0], paras: pcos[1], img: '/assets/area-sop.webp', alt: alt('Útero y ovarios hechos con flores de papel', 'Uterus and ovaries made of paper flowers') },
+    { level: 'item', title: periods[0], paras: periods[1], img: '/assets/area-reglas.webp', alt: alt('Calendario con compresa y días marcados', 'Calendar with a pad and marked days') },
+    { level: 'item', title: pms[0], paras: pms[1], img: '/assets/area-premenstrual.webp', alt: alt('Ilustración de una mujer con malestar', 'Illustration of a woman feeling unwell') },
+    { level: 'item', title: thyroid[0], paras: thyroid[1], img: '/assets/area-tiroides.webp', alt: alt('Ilustración de una mujer con la mano en el cuello', 'Illustration of a woman with her hand on her neck') },
+    { id: 'area-perimenopausia', level: 'item', title: perimenopause.title, paras: perimenopause.text, img: '/assets/area-menopausia.webp', alt: alt('Ilustración de una mujer madura pensativa', 'Illustration of a thoughtful mature woman') },
+    { id: 'area-fertilidad', level: 'area', title: fertility.title, paras: fertility.text, img: '/assets/area-embarazo.webp', alt: alt('Ilustración de una mujer embarazada', 'Illustration of a pregnant woman') },
+  ] },
+  { key: 'c', rows: [
+    { id: 'area-metabolica', level: 'area', title: metabolic.title, paras: metabolic.text, img: '/assets/plato-escena.jpg', photo: true, alt: '' },
+    { id: 'area-relacion', level: 'area', title: foodRelationship.title, paras: foodRelationship.text, img: '/assets/higos.jpg', photo: true, alt: '' },
+  ] },
+];
+let n = 0; // alternation counter across the whole section
+---
+
+<section id="areas-de-especializacion" class="areas scroll-mt-[var(--hdr,88px)]">
+  <!-- Heading of part 1 (same pattern as parts 2 and 3) -->
+  <div class="a-top bg-a">
+    <div class="sec-top mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <span class="eyebrow">{es ? 'Nutrición clínica e integrativa' : 'Clinical and integrative nutrition'}</span>
+      <span class="sec-rule" aria-hidden="true"></span>
+    </div>
+    <h2 class="px-4 pt-0 text-center font-serif text-3xl leading-[1.05] text-brand-black sm:text-4xl lg:text-[2.9rem]">
+      {es ? 'Áreas de especialización' : 'Areas of expertise'}
+    </h2>
+  </div>
+
+  {bands.map((band) => (
+    <div class={`band bg-${band.key}`}>
+      <div class="wrap">
+        {band.head && (
+          <div id={band.head.id} class="g-head">
+            <p>{band.head.intro}</p>
+          </div>
+        )}
+        {band.rows.map((row) => {
+          const flip = n % 2 === 1;
+          n++;
+          return (
+            <article id={row.id} class={`row ${flip ? 'rev' : ''}`}>
+              <figure class={`art ${row.photo ? 'art-photo' : ''} ${row.img ? '' : 'art-ph'}`} aria-hidden={row.img ? undefined : 'true'}>
+                {row.img
+                  ? <img src={row.img} alt={row.alt} loading="lazy" />
+                  : <span>{es ? 'Foto' : 'Photo'}</span>}
+              </figure>
+              <div class="body">
+                <h3 class={`t ${row.level}`}>{row.title}</h3>
+                {row.paras.map((p) => (<p>{p}</p>))}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  ))}
+
+  <div class="cta bg-c"><a href={bookHref}>{bookLabel}</a></div>
+</section>
+
+<style>
+  .areas { background: #F7F1EA; }
+  .bg-a { background: #F7F1EA; }
+  .bg-b { background: #EADBD3; }
+  .bg-c { background: #F4EADF; }
+  .a-top { padding: 3.5rem 0 0; }
+  @media (min-width: 640px) { .a-top { padding-top: 5rem; } }
+  .a-top .sec-top { margin-bottom: 0.4rem; }
+  .band { padding: 1.5rem 0; }
+  .wrap { margin-inline: auto; max-width: 66rem; padding-inline: 1rem; }
+  @media (min-width: 640px) { .wrap { padding-inline: 1.5rem; } }
+  @media (min-width: 1024px) { .wrap { padding-inline: 2rem; } }
+
+  .g-head { padding: 3rem 0 0.5rem; scroll-margin-top: 7rem; }
+  .g-head p { font-size: 1rem; line-height: 1.75; color: #3f3f3f; text-align: justify; hyphens: none; }
+
+  /* One row per point: picture and text, alternating sides */
+  .row { display: grid; gap: 1.2rem; align-items: center; scroll-margin-top: 7rem; padding: 2.4rem 0; }
+  @media (min-width: 900px) {
+    .row { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 4.5rem; padding: 3.2rem 0; }
+    .row.rev { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+    .row.rev .art { order: 2; }
+  }
+
+  .art { margin: 0; }
+  .art img { display: block; width: 100%; max-height: 26rem; object-fit: contain; }
+  .art.art-photo img { aspect-ratio: 4 / 3; max-height: none; object-fit: cover; border-radius: 1.4rem; box-shadow: 0 30px 60px -38px rgba(74, 29, 51, 0.45); }
+  /* Placeholder where a picture will go */
+  .art.art-ph { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; border: 1.5px dashed rgba(121, 38, 77, 0.35); border-radius: 1.4rem; background: rgba(255, 255, 255, 0.35); font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(121, 38, 77, 0.55); }
+
+  /* One title style everywhere: Cormorant. The areas keep the plum colour, the points inside are dark */
+  .t { font-family: 'Cormorant', serif; font-weight: 500; font-size: 1.7rem; line-height: 1.12; margin-bottom: 0.7rem; }
+  @media (min-width: 900px) { .t { font-size: 1.95rem; } }
+  .t.area { color: #79264D; }
+  .t.item { color: #79264D; }
+  .body p { margin-top: 0.8rem; max-width: 36rem; text-align: justify; hyphens: none; font-size: 1rem; line-height: 1.75; color: #3f3f3f; }
+
+  .cta { padding: 2rem 1rem 5rem; text-align: center; }
+  .cta a { display: inline-flex; border-radius: 9999px; background: #79264D; padding: 0.95rem 2.4rem; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; transition: background 0.3s; }
+  .cta a:hover { background: #4A1D33; }
+
+  /* Arriving from the home page: a soft highlight on the area you came for */
+  .row:target .body, .g-head:target { animation: area-flash 2.4s ease-out; border-radius: 0.6rem; }
+  @keyframes area-flash { 0% { box-shadow: 0 0 0 0.7rem rgba(121, 38, 77, 0.14); } 100% { box-shadow: 0 0 0 0.7rem rgba(121, 38, 77, 0); } }
+  @media (prefers-reduced-motion: reduce) { .row:target .body, .g-head:target { animation: none; } }
+</style>
+
+<script>
+  // Coming from a card on the home page: make sure the page lands on the area you chose,
+  // once the layout has settled (the header is fixed, the anchors already leave room for it).
+  const goToArea = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (!el || !el.closest('#areas-de-especializacion')) return;
+    [120, 500, 1100].forEach((ms) => window.setTimeout(() => {
+      if (Math.abs(el.getBoundingClientRect().top - 112) > 8) el.scrollIntoView({ block: 'start' });
+    }, ms));
+  };
+  document.addEventListener('astro:page-load', goToArea);
+  goToArea();
+</script>

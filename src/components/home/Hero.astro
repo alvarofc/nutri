@@ -18,11 +18,11 @@ const socials = [
     src="/assets/hero-plato-2.webp"
     alt=""
     aria-hidden="true"
-    class="pointer-events-none absolute left-0 top-1/2 hidden h-auto max-w-none -translate-y-1/2 opacity-40 lg:block"
+    class="pointer-events-none absolute left-0 top-1/2 z-0 h-auto max-w-none -translate-y-1/2 opacity-40"
     loading="lazy"
   />
 
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!--
       Rows on wide screens:  1) name   2) title + specialty above the thin separator
                              3) intro + buttons.   The photo spans the three rows.
@@ -78,13 +78,13 @@ const socials = [
       </div>
 
       <!-- Photo: spans the three rows; registration number in the bottom-right corner -->
-      <div data-hero-photo class="relative z-10 order-1 mx-auto w-full max-w-[clamp(16.5rem,62vw,26rem)] lg:order-none lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mx-0 lg:mt-[0.6rem] lg:mb-[0.4rem] lg:max-w-none">
+      <div data-hero-photo class="relative z-10 order-1 mx-auto w-full max-w-[clamp(15rem,58vw,26rem)] lg:order-none lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mx-0 lg:mt-[0.6rem] lg:mb-[0.4rem] lg:max-w-none">
         <div class="relative aspect-[4/5] lg:absolute lg:inset-0 lg:aspect-auto">
           <div class="absolute inset-0 overflow-hidden rounded-2xl bg-brand-blush">
             <img
               src="/assets/alex-front-2.webp"
               alt="Alexandra Ivanova"
-              class="absolute inset-0 h-full w-full object-cover lg:origin-[50%_35%] lg:scale-[1.15] lg:object-[50%_62%]"
+              class="absolute inset-0 h-full w-full origin-[50%_35%] scale-[1.12] object-cover object-[50%_45%] lg:origin-[50%_35%] lg:scale-[1.15] lg:object-[50%_62%]"
             />
           </div>
           <div class="absolute bottom-2 right-2 rounded-xl bg-white p-1.5 shadow-lg sm:bottom-4 sm:right-4 sm:rounded-2xl sm:p-3">
@@ -114,12 +114,21 @@ const socials = [
     const photo = document.querySelector<HTMLElement>('[data-hero-photo]');
     if (!img || !photo) return;
     const section = img.closest('section');
-    if (!section || getComputedStyle(img).display === 'none') return;
+    if (!section) return;
     const s = section.getBoundingClientRect();
     const p = photo.getBoundingClientRect();
+    if (window.matchMedia('(max-width: 1023px)').matches) {
+      const width = Math.min(s.width * 0.82, 360);
+      const photoRight = p.right - s.left;
+      img.style.width = `${width}px`;
+      img.style.left = `${photoRight - width * 0.32}px`;
+      img.style.top = `${p.top + p.height / 2 - s.top}px`;
+      return;
+    }
     const mid = p.left + p.width / 2 - s.left;
     img.style.left = `${mid}px`;
     img.style.width = `${2 * (s.width - mid)}px`;
+    img.style.top = '';
   }
   document.addEventListener('astro:page-load', placeBerries);
   window.addEventListener('resize', placeBerries);

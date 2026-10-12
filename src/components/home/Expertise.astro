@@ -182,88 +182,9 @@ const bulletLists: Record<number, { items: string[] }> = {
       },
 };
 
-// Detail panel opened by card 2 ("Convives con…"): one heading per diagnosis, each with its paragraphs
-const detail = es
-  ? {
-      items: [
-        [
-          'Síndrome de ovario poliquístico (SOP)',
-          [
-            'La insulina es una hormona que ayuda a que el azúcar de la sangre entre en las células para utilizarse como energía. Muchas mujeres con SOP presentan resistencia a la insulina, lo que significa que sus células no responden bien a esta hormona y el cuerpo necesita producir más cantidad. Este exceso de insulina puede alterar el equilibrio hormonal y favorecer síntomas como el acné, el exceso de vello o los ciclos menstruales irregulares.',
-            'A través de un plan de nutrición personalizado, podemos mejorar la sensibilidad a la insulina y ayudar a reducir muchos de los síntomas del SOP, gracias a que actuamos directamente sobre la raíz de los mismos.',
-          ],
-        ],
-        [
-          'Reglas dolorosas, endometriosis o adenomiosis',
-          [
-            'El dolor está muy ligado a las prostaglandinas, moléculas inflamatorias que fabrica tu propio cuerpo. Con una alimentación rica en polifenoles, compuestos bioactivos, vitaminas antioxidantes y algunos minerales clave para la relajación de la musculatura uterina, como el magnesio, podemos modular la inflamación, el dolor y el cansancio. Además, ciertos complementos alimenticios tienen evidencia como tratamiento complementario, por lo que se diseña una pauta de suplementación personalizada en función de la paciente.',
-          ],
-        ],
-        [
-          'Síndrome premenstrual',
-          [
-            'No se debe a tener “demasiadas hormonas”, sino a que tu cerebro es más sensible a sus cambios. Estabilizar tu glucosa y asegurar que cubres tus requerimientos nutricionales de calcio, magnesio, zinc y vitamina B6 puede suavizar la irritabilidad, los antojos y la hinchazón.',
-          ],
-        ],
-        [
-          'Hipotiroidismo e hipertiroidismo',
-          [
-            'Tu tiroides necesita yodo, selenio, hierro y vitamina D para fabricar y activar sus hormonas. Además, el café, el calcio o los suplementos de hierro tomados cerca de la levotiroxina reducen su absorción, y muchas veces ese es el motivo de que la dosis “no funcione”. En el hipertiroidismo cuidamos especialmente el músculo y los huesos. Todo adaptado a tus circunstancias únicas.',
-          ],
-        ],
-        [
-          'Candidiasis o infecciones de orina de repetición',
-          [
-            'Cuando las infecciones se repiten, es importante identificar qué factores pueden favorecer su aparición, como los desequilibrios de la microbiota intestinal y vaginal, las alteraciones de la glucosa o las carencias nutricionales.',
-            'A través de un plan de nutrición personalizado, basado en una alimentación prebiótica, antiinflamatoria y antioxidante, y suplementación cuando sea necesaria, buscamos favorecer el equilibrio de tu microbiota y reforzar tus defensas naturales, como complemento al tratamiento médico.',
-          ],
-        ],
-      ],
-    }
-  : {
-      items: [
-        [
-          'Polycystic ovary syndrome (PCOS)',
-          [
-            'Insulin is a hormone that helps the sugar in your blood enter your cells so it can be used as energy. Many women with PCOS have insulin resistance, which means their cells do not respond well to this hormone and the body has to produce more of it. This excess insulin can disrupt hormonal balance and favour symptoms such as acne, excess hair or irregular menstrual cycles.',
-            'Through a personalised nutrition plan, we can improve insulin sensitivity and help reduce many of the symptoms of PCOS, because we act directly on their root.',
-          ],
-        ],
-        [
-          'Painful periods, endometriosis or adenomyosis',
-          [
-            'Pain is closely linked to prostaglandins, inflammatory molecules your own body makes. With a diet rich in polyphenols, bioactive compounds, antioxidant vitamins and some key minerals for relaxing the uterine muscle, such as magnesium, we can modulate inflammation, pain and tiredness. In addition, certain food supplements have evidence as a complementary treatment, so a personalised supplementation plan is designed for each patient.',
-          ],
-        ],
-        [
-          'Premenstrual syndrome',
-          [
-            'It is not caused by having “too many hormones”, but by your brain being more sensitive to their changes. Stabilising your glucose and making sure you meet your nutritional requirements for calcium, magnesium, zinc and vitamin B6 can ease irritability, cravings and bloating.',
-          ],
-        ],
-        [
-          'Hypothyroidism and hyperthyroidism',
-          [
-            'Your thyroid needs iodine, selenium, iron and vitamin D to make and activate its hormones. Coffee, calcium or iron supplements taken close to levothyroxine also reduce its absorption, and that is often why the dose “doesn’t work”. In hyperthyroidism we take special care of muscle and bone. All adapted to your unique circumstances.',
-          ],
-        ],
-        [
-          'Recurrent candidiasis or urinary tract infections',
-          [
-            'When infections keep coming back, it is important to identify which factors may favour them, such as imbalances in the intestinal and vaginal microbiota, changes in glucose or nutritional deficiencies.',
-            'Through a personalised nutrition plan, based on a prebiotic, anti-inflammatory and antioxidant diet, and supplementation when necessary, we aim to support the balance of your microbiota and strengthen your natural defences, as a complement to medical treatment.',
-          ],
-        ],
-      ],
-    };
-
-const closeHint = es ? 'Pulsa en cualquier parte para cerrar' : 'Tap anywhere to close';
-// Heading of each pop-up (only the pop-up; the cards keep their own titles). Card 2 has one heading per diagnosis instead.
-const modalTitles = es
-  ? ['Tratamiento de patología digestiva y alteraciones de la microbiota', '', 'Perimenopausia y menopausia']
-  : ['Treatment of digestive conditions and microbiota imbalances', '', 'Perimenopause and menopause'];
-// Paragraphs for the pop-up of each card (card 2 has its own detailed list)
-const paras = (text: string) => text.split('\n\n').map((block) => block.split('\n'));
+// Each card leads to its own explanation on the services page ("Áreas de especialización")
+const areaAnchors = ['area-digestion', 'area-convives', 'area-perimenopausia', 'area-metabolica', 'area-relacion', 'area-fertilidad'];
+const servicesPath = getLocalizedPath('/pricing', lang);
 ---
 
 <section id="que-te-trae" class="scroll-mt-[4.5rem] relative overflow-hidden bg-[#E4D3D3] [&_.sec-title]:!max-w-none lg:[&_.sec-title]:whitespace-nowrap py-16 sm:py-24 [&_.lead]:text-[#2F1B24] lg:[&_.lead]:!max-w-none lg:[&_.lead]:!whitespace-nowrap [&_.text-brand-gray]:text-[#2F1B24]">
@@ -288,12 +209,11 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
       <!-- Problem cards: each one shows the situation and a clear "Leer más" button that opens the full text in a wide burgundy panel -->
       <div class="grid auto-rows-auto items-start md:auto-rows-fr md:items-stretch grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {[0, 1, 2, 5, 3, 4].map((index) => { const card = cards[index]; return (
-          <article
+          <a
+            href={`${servicesPath}#${areaAnchors[index]}`}
+            data-astro-reload
             class="xcard group relative flex h-full cursor-pointer flex-col rounded-2xl border border-white bg-white/80 p-4 sm:p-5 shadow-[0_10px_30px_-18px_rgba(74,29,51,0.45)]"
-            tabindex="0"
-            role="button"
-            aria-haspopup="dialog"
-            data-modal={`dx-modal-${index}`}
+            aria-label={card.title}
           >
             <span class="xplus" aria-hidden="true">
               <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14"/></svg>
@@ -308,13 +228,13 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
             ) : (
               <p class="text-justify [hyphens:none] font-sans text-[15px] leading-snug text-[#5a5a5a]" set:html={hl(summaries[index])} />
             )}
-          </article>
+          </a>
         ); })}
       </div>
 
       <!-- Link to the new "How can I help you?" room on the services page -->
       <div class="mt-8 text-center">
-        <a href={getLocalizedPath('/pricing', lang)} class="eyebrow eyebrow-link">
+        <a href={`${getLocalizedPath('/pricing', lang)}#areas-de-especializacion`} class="eyebrow eyebrow-link">
           <span>{es ? 'Saber más' : 'Learn more'}</span>
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -325,44 +245,6 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
   </div>
 </section>
 
-<!-- One pop-up per card: burgundy plum, white text, wide so lines stay short and easy to read -->
-{cards.map((card, index) => (
-  <div id={`dx-modal-${index}`} class="dx-modal" hidden>
-    <div class="dx-backdrop" data-dx-close></div>
-    <div class="dx-panel" role="dialog" aria-modal="true" aria-label={card.title} tabindex="-1">
-      {index === 1 ? (
-        <div class="dx-diag">
-          {detail.items.map(([k, paragraphs]) => (
-            <div class="dx-row">
-              <h3 class="dx-title">{k}</h3>
-              <div class="dx-ps">
-                {paragraphs.map((para) => (<p class="dx-p">{para}</p>))}
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div class="dx-grid">
-          <h3 class="dx-title">{modalTitles[index] || card.title}</h3>
-          <div class="dx-text">
-            {paras(card.help).map((lines) => (
-              <p>{lines.map((line, i) => (<Fragment>{i > 0 && <br />}{line}</Fragment>))}</p>
-            ))}
-          </div>
-        </div>
-      )}
-      <p class="dx-close-hint">{closeHint}</p>
-      <div class="dx-more" aria-hidden="true">
-        <div class="dx-more-in">
-          <button type="button" class="dx-more-btn" tabindex="-1">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-))}
-
 <style>
   .xcard { transition: transform 0.25s ease, box-shadow 0.25s ease; outline: none; }
   .xcard:hover, .xcard:focus-visible { transform: translateY(-3px); box-shadow: 0 18px 38px -20px rgba(74, 29, 51, 0.55); }
@@ -371,111 +253,9 @@ const paras = (text: string) => text.split('\n\n').map((block) => block.split('\
 
   .xplus { position: absolute; top: 1rem; right: 1rem; display: inline-flex; height: 1.75rem; width: 1.75rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid rgba(121, 38, 77, 0.35); color: #79264D; background: rgba(255, 255, 255, 0.6); transition: background 0.25s, color 0.25s, transform 0.25s; }
   .xcard:hover .xplus, .xcard:focus-visible .xplus { background: #79264D; color: #fff; transform: rotate(90deg); }
-
-  /* Pop-up */
-  .dx-modal { position: fixed; inset: 0; z-index: 80; display: flex; align-items: center; justify-content: center; padding: 1rem; }
-  .dx-modal[hidden] { display: none; }
-  .dx-backdrop { position: absolute; inset: 0; background: rgba(47, 27, 36, 0.55); backdrop-filter: blur(3px); animation: dx-fade 0.3s ease both; }
-  .dx-panel {
-    position: relative; box-sizing: border-box; width: 100%; max-width: 62rem; max-height: calc(100dvh - 2rem); overflow-y: auto;
-    padding: 2rem 1.5rem 1.75rem; border-radius: 1.25rem; outline: none; color: #fff;
-    background: #5B1F2E; background: linear-gradient(145deg, #6A2440, #4A1D33);
-    box-shadow: 0 30px 80px -20px rgba(47, 27, 36, 0.65);
-    animation: dx-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
-  @media (min-width: 768px) { .dx-panel { padding: 3rem 3.25rem; } }
-    .dx-panel { cursor: pointer; --dx-pad: 1.5rem; }
-  @media (min-width: 768px) { .dx-panel { --dx-pad: 3.25rem; } }
-  /* Scroll cue: a soft fade and a bouncing arrow at the bottom while there is more to read */
-  .dx-more { position: sticky; bottom: 0; height: 0; margin-inline: calc(-1 * var(--dx-pad)); pointer-events: none; opacity: 0; transition: opacity 0.25s ease; }
-  .dx-panel.has-more .dx-more { opacity: 1; }
-  .dx-more-in { position: absolute; left: 0; right: 0; bottom: calc(-1.75rem); height: 6.5rem; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2.1rem; background: linear-gradient(to top, #4A1D33 12%, rgba(74, 29, 51, 0.85) 45%, rgba(74, 29, 51, 0)); border-radius: 0 0 1.25rem 1.25rem; }
-  .dx-more-btn { pointer-events: auto; display: grid; place-items: center; height: 2.6rem; width: 2.6rem; border-radius: 9999px; color: #fff; background: rgba(255, 255, 255, 0.24); border: 1px solid rgba(255, 255, 255, 0.65); box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.45); animation: dx-bob 1.6s ease-in-out infinite; cursor: pointer; }
-  .dx-more-btn svg { height: 1.3rem; width: 1.3rem; }
-  @keyframes dx-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
-  @media (prefers-reduced-motion: reduce) { .dx-more-btn { animation: none; } }
-  .dx-close-hint { margin-top: 1.6rem; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.55); }
-  .dx-diag { display: grid; gap: 0; }
-  .dx-intro { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.6; color: #fff; padding-right: 0.5rem; margin-bottom: 0.5rem; }
-  .dx-row { display: grid; gap: 0.6rem; padding: 1.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.2); }
-  @media (min-width: 768px) { .dx-row { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 3rem; } .dx-row .dx-title { border-right: 1px solid rgba(255, 255, 255, 0.22); padding-right: 2rem; } }
-  .dx-row .dx-title { font-size: 1.55rem; }
-  @media (min-width: 768px) { .dx-row .dx-title { font-size: 1.9rem; } }
-  .dx-ps { display: grid; gap: 0.9rem; }
-  .dx-row:first-child { border-top: 0; padding-top: 0.5rem; }
-  .dx-text p, .dx-p { text-align: justify; hyphens: none; }
-  .dx-p { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.7; color: #fff; }
-  .dx-grid { display: grid; gap: 1.1rem; }
-  @media (min-width: 768px) { .dx-grid { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 3rem; align-items: start; } }
-  .dx-title { font-family: 'Cormorant', serif; font-weight: 500; font-size: 1.8rem; line-height: 1.1; color: #fff; padding-right: 2.5rem; }
-  @media (min-width: 768px) { .dx-title { font-size: 2.25rem; padding-right: 0; border-right: 1px solid rgba(255, 255, 255, 0.22); padding-right: 2rem; } }
-  .dx-text { font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.7; font-weight: 300; color: #fff; display: grid; gap: 1rem; }
-  .dx-text strong { font-weight: 600; }
-  .dx-text ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
-  .dx-text li { position: relative; padding-left: 1.1rem; }
-  .dx-text li::before { content: ''; position: absolute; left: 0; top: 0.72em; height: 0.35rem; width: 0.35rem; border-radius: 9999px; background: #E8C9D4; }
-  @keyframes dx-in { from { transform: translateY(16px) scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }
-  @keyframes dx-fade { from { opacity: 0; } to { opacity: 1; } }
-  @media (prefers-reduced-motion: reduce) { .dx-panel, .dx-backdrop { animation: none; } }
 </style>
 
 <script>
-  let lastOpener: HTMLElement | null = null;
-  const closeModal = () => {
-    document.querySelectorAll<HTMLElement>('.dx-modal').forEach((m) => (m.hidden = true));
-    document.body.style.overflow = '';
-    lastOpener?.focus();
-  };
-  // Show the "more below" arrow only while the pop-up has hidden text underneath
-  const updateMore = (panel: HTMLElement) => {
-    const more = panel.scrollHeight - panel.clientHeight > 12 && panel.scrollTop < panel.scrollHeight - panel.clientHeight - 12;
-    panel.classList.toggle('has-more', more);
-  };
-  document.querySelectorAll<HTMLElement>('.dx-panel').forEach((panel) => panel.addEventListener('scroll', () => updateMore(panel), { passive: true }));
-  window.addEventListener('resize', () => {
-    document.querySelectorAll<HTMLElement>('.dx-modal:not([hidden]) .dx-panel').forEach(updateMore);
-  });
-  const openModal = (id: string, opener: HTMLElement) => {
-    const m = document.getElementById(id);
-    if (!m) return;
-    lastOpener = opener;
-    m.hidden = false;
-    document.body.style.overflow = 'hidden';
-    const panel = m.querySelector<HTMLElement>('.dx-panel');
-    panel?.focus();
-    if (panel) {
-      panel.scrollTop = 0;
-      updateMore(panel);
-      requestAnimationFrame(() => updateMore(panel));
-      window.setTimeout(() => updateMore(panel), 120);
-      window.setTimeout(() => updateMore(panel), 500);
-    }
-  };
-  // Delegated listeners: they keep working even if the page content is swapped or re-rendered
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    const arrow = target.closest<HTMLElement>('.dx-more-btn');
-    if (arrow) {
-      const panel = arrow.closest<HTMLElement>('.dx-panel');
-      panel?.scrollBy({ top: Math.max(180, panel.clientHeight * 0.7), behavior: 'smooth' });
-      return;
-    }
-    if (target.closest('.dx-modal')) {
-      closeModal();
-      return;
-    }
-    const card = target.closest<HTMLElement>('[data-modal]');
-    if (card && !target.closest('a')) openModal(card.dataset.modal!, card);
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-    const c = (e.target as HTMLElement).closest?.('[data-modal]') as HTMLElement | null;
-    if (c && (e.key === 'Enter' || e.key === ' ')) {
-      e.preventDefault();
-      openModal(c.dataset.modal!, c);
-    }
-  });
-
   // The "one line" title of the first card shrinks just enough to fit on a single line (never below 10px; after that it wraps)
   const fitOneLine = () => {
     document.querySelectorAll<HTMLElement>('#que-te-trae [data-oneline]').forEach((el) => {

@@ -1,6 +1,7 @@
 ---
 import PricingHeader from '../components/pricing/PricingHeader.astro';
 import Faq from '../components/pricing/Faq.astro';
+import Areas from '../components/pricing/Areas.astro';
 import ProcessSteps from '../components/pricing/ProcessSteps.astro';
 import Layout from '../layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/ui';
@@ -14,6 +15,7 @@ const t = useTranslations(lang);
   title={t('pricing.page.title')}
 >
   <PricingHeader />
+  <Areas />
   <ProcessSteps />
   <Faq />
 </Layout>

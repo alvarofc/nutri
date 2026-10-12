@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const es = lang === 'es';
@@ -178,6 +178,16 @@ const blockIcons = [
       </li>
     ))}
   </ol>
+
+  <!-- Booking -->
+  <div class="mt-14 px-4 text-center lg:mt-20">
+    <a
+      href={getLocalizedPath('/booking', lang)}
+      class="cta-gradient-btn relative inline-flex items-center justify-center overflow-hidden rounded-full bg-brand-accent px-10 py-4 text-base font-medium text-white transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+    >
+      <span class="relative z-10">{es ? 'Reserva tu consulta' : 'Book your consultation'}</span>
+    </a>
+  </div>
 </section>
 
 <style>
