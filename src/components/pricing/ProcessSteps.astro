@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const es = lang === 'es';
@@ -155,39 +155,29 @@ const blockIcons = [
             {step.lead && <p class="step-lead">{step.lead}</p>}
           </div>
 
-          <!-- One compact card per step: each point is a single line of label + text -->
-          <div class="proc-compact">
-            {step.blocks.map((block) => (
-              <div class={`pc-row ${block.highlight ? 'is-key' : ''}`}>
-                {block.label && <h4>{block.label}</h4>}
-                <div>
-                  {block.text && <p>{block.text}</p>}
-                  {block.items && block.items.every((it) => it.length < 52) && (
-                    <p>{block.items.join(' · ')}</p>
-                  )}
-                  {block.items && !block.items.every((it) => it.length < 52) && (
-                    <ul>
-                      {block.items.map((item) => (<li>{item}</li>))}
-                    </ul>
-                  )}
-                </div>
-              </div>
+          <!-- The same kind of card every time, one idea per card -->
+          <div class={`proc-cards grid gap-3 ${step.blocks.length === 4 ? 'md:grid-cols-2' : ''}`}>
+            {step.blocks.map((block, j) => (
+              <section class={`proc-card ${block.highlight ? 'is-key' : ''} ${block.big ? 'is-big' : ''}`}>
+                <h4 class="proc-card-h">
+                  <span class="proc-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d={iconPaths[blockIcons[i][j]]} /></svg>
+                  </span>
+                  {block.label}
+                </h4>
+                {block.text && <p class="proc-card-p">{block.text}</p>}
+                {block.items && (
+                  <ul class="proc-card-ul">
+                    {block.items.map((item) => (<li>{item}</li>))}
+                  </ul>
+                )}
+              </section>
             ))}
           </div>
         </div>
       </li>
     ))}
   </ol>
-
-  <!-- Booking -->
-  <div class="mt-14 px-4 text-center lg:mt-20">
-    <a
-      href={getLocalizedPath('/booking', lang)}
-      class="cta-gradient-btn relative inline-flex items-center justify-center overflow-hidden rounded-full bg-brand-accent px-10 py-4 text-base font-medium text-white transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
-    >
-      <span class="relative z-10">{es ? 'Reserva tu consulta' : 'Book your consultation'}</span>
-    </a>
-  </div>
 </section>
 
 <style>
@@ -248,22 +238,4 @@ const blockIcons = [
   .proc-card.is-key .proc-card-p, .proc-card.is-key .proc-card-ul { color: #F8EDEA; }
   .proc-card.is-key .proc-card-p, .proc-card.is-key .proc-card-ul li { text-align: justify; hyphens: none; }
   .proc-card.is-key .proc-card-ul li::before { background: #E8C9D4; }
-
-  /* Compact card: label and text on one line, thin separators, no icons */
-  .proc-compact {
-    border-radius: 1rem; border: 1px solid rgba(74, 29, 51, 0.1); background: rgba(255, 255, 255, 0.78);
-    padding: 0.2rem 1.35rem; box-shadow: 0 10px 28px -22px rgba(74, 29, 51, 0.5);
-  }
-  .pc-row { display: grid; gap: 0.2rem; padding: 0.8rem 0; border-bottom: 1px solid rgba(74, 29, 51, 0.12); }
-  .pc-row:last-child { border-bottom: 0; }
-  @media (min-width: 640px) { .pc-row { grid-template-columns: 8.25rem minmax(0, 1fr); gap: 1.25rem; align-items: baseline; } }
-  .pc-row h4 { font-family: 'Montserrat', sans-serif !important; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #79264D; }
-  .pc-row p, .pc-row li { font-size: 0.97rem; line-height: 1.55; color: #3f3f3f; }
-  .pc-row ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.3rem; }
-  .pc-row li { position: relative; padding-left: 1rem; }
-  .pc-row li::before { content: ''; position: absolute; left: 0; top: 0.62em; height: 0.3rem; width: 0.3rem; border-radius: 9999px; background: #79264D; }
-  /* What you take home: a soft tint */
-  .pc-row.is-key { margin-inline: -0.9rem; padding-inline: 0.9rem; border-radius: 0.8rem; background: rgba(121, 38, 77, 0.09); border-bottom-color: transparent; }
-  .pc-row.is-key h4 { color: #4A1D33; }
-  .pc-row.is-key p, .pc-row.is-key li { text-align: justify; hyphens: none; }
 </style>
