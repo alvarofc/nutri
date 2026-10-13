@@ -14,7 +14,7 @@ const steps = [
     chips: ['75 min'],
     lead: es
       ? 'Un espacio seguro donde buscamos comprender qué está pasando en tu cuerpo.'
-      : 'A safe space where we look to understand what is happening in your body.',
+      : 'A safe, welcoming space to understand what is really going on in your body.',
     blocks: es
       ? [
           { label: 'Qué exploramos', items: ['Tus síntomas y su evolución', 'Tu descanso, digestión y niveles de energía', 'Tu actividad física'] },
@@ -29,16 +29,16 @@ const steps = [
           { label: 'Al terminar', text: 'Acordamos objetivos a corto y largo plazo. Con todo lo recogido preparo tu plan personalizado, que te entrego y te explico en la segunda visita.' },
         ]
       : [
-          { label: 'What we explore', items: ['Your symptoms and how they have evolved', 'Your rest, digestion and energy levels', 'Your physical activity'] },
-          { label: 'What we look for', text: 'Possible factors contributing to the problem: hormonal imbalances, changes in the microbiota, nutritional deficiencies, stress…' },
+          { label: 'What we explore together', items: ['Your symptoms and how they have developed over time', 'Your sleep, digestion and energy levels', 'Your physical activity'] },
+          { label: 'What we look for', text: 'The factors that may be contributing to your symptoms: hormonal imbalances, changes in the gut microbiota, nutritional deficiencies, stress…' },
           {
             label: 'What we review',
             items: [
-              'Your medical history, medication, blood tests and other diagnostic tests',
-              'How you eat and the barriers that make it hard today (lack of time, planning, motivation…)',
+              'Your medical history, medication, blood tests and other diagnostic results',
+              'How you eat now, and what gets in the way (lack of time, planning, motivation…)',
             ],
           },
-          { label: 'At the end', text: 'We agree on short- and long-term goals. With everything gathered I prepare your personalised plan, which I deliver and explain in the second visit.' },
+          { label: 'At the end', text: 'We agree on your short- and long-term goals. Using everything we have discussed, I prepare your personalised plan, which I present and talk you through in your second session.' },
         ],
   },
   {
@@ -49,7 +49,7 @@ const steps = [
     chips: es ? ['60 min', 'En un plazo de 5 días laborables'] : ['60 min', 'Within 5 working days'],
     lead: es
       ? 'Te entrego y te explico en detalle tu plan, elaborado a partir de todo lo recogido en la valoración inicial.'
-      : 'I deliver and explain your plan in detail, built from everything gathered in the initial assessment.',
+      : 'I walk you through your plan in detail, built around everything we uncovered in your initial assessment.',
     blocks: es
       ? [
           { label: 'Entenderás', text: 'Qué está sucediendo en tu cuerpo y qué necesita.' },
@@ -70,12 +70,12 @@ const steps = [
             label: 'You will receive',
             highlight: true,
             items: [
-              'An individualised meal plan, adapted to your requirements and your initial goal',
-              'Dietary and behavioural recommendations: anti-inflammatory habits, practical guidelines and simple adjustments for your day to day',
-              'Where appropriate, a clearly explained supplementation guide (what, what for and how to take it)',
+              'A tailored meal plan, designed around your nutritional needs and your main goal',
+              'Diet and lifestyle guidance: anti-inflammatory habits, practical tips and simple tweaks for your everyday life',
+              'Where appropriate, a clear supplement guide (what to take, why and how)',
             ],
           },
-          { label: 'During the session', text: 'We review everything together, answer your questions and make the adjustments needed so that everything fits you.' },
+          { label: 'During the session', text: 'We go through everything together, answer your questions and fine-tune the plan so it works for you.' },
         ],
   },
   {
@@ -86,7 +86,7 @@ const steps = [
     chips: es ? ['45 min', 'Cada 2 a 6 semanas'] : ['45 min', 'Every 2 to 6 weeks'],
     lead: es
       ? 'El espacio donde revisamos cómo estás respondiendo al plan y cómo te sientes en el proceso.'
-      : 'The space where we review how you are responding to the plan and how you are feeling during the process.',
+      : 'Regular check-ins to see how you are responding to your plan and how you are feeling along the way.',
     blocks: es
       ? [
           { label: 'Valoramos tu evolución', text: 'Síntomas, energía, digestión, composición corporal…' },
@@ -95,10 +95,10 @@ const steps = [
           { label: 'Después de cada sesión', text: 'Recibes por correo las recomendaciones actualizadas y el material complementario.' },
         ]
       : [
-          { label: 'We assess your progress', text: 'Symptoms, energy, digestion, body composition…' },
-          { label: 'We adjust', text: 'The guidelines, so the strategy stays aligned with your goals and your stage of life.' },
-          { label: 'We work on', items: ['Consolidating habits', 'Answering your questions', 'Unblocking any difficulty that comes up along the way'] },
-          { label: 'After each session', text: 'You receive the updated recommendations and any supporting material by email.' },
+          { label: 'We track your progress', text: 'Symptoms, energy, digestion, body composition…' },
+          { label: 'We adjust your plan', text: 'Updating your guidelines so your approach stays aligned with your goals and your stage of life.' },
+          { label: 'We focus on', items: ['Building lasting habits', 'Answering your questions', 'Working through any obstacles that come up along the way'] },
+          { label: 'After every session', text: 'You receive your updated recommendations and any supporting materials by email.' },
         ],
   },
 ];
@@ -126,7 +126,7 @@ const blockIcons = [
 
 <section id="en-que-consisten-las-sesiones" class="relative scroll-mt-[var(--hdr,88px)] bg-[#E4D3D3] py-14 sm:py-20" data-process>
   <div class="sec-top mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-    <span class="eyebrow">{es ? 'En qué consisten las sesiones' : 'What the sessions involve'}</span>
+    <span class="eyebrow">{es ? 'En qué consisten las sesiones' : 'What your sessions involve'}</span>
     <span class="sec-rule" aria-hidden="true"></span>
   </div>
   <h2 class="px-4 pt-0 text-center font-serif text-3xl leading-[1.05] text-brand-black sm:text-4xl lg:text-[2.9rem]">

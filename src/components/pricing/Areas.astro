@@ -6,17 +6,17 @@ const es = lang === 'es';
 
 // Titles and texts of the areas (the home page cards link here, one anchor each)
 const digestion = {
-  title: es ? 'Tratamiento de patología digestiva y alteraciones de la microbiota' : 'Treatment of digestive conditions and microbiota imbalances',
+  title: es ? 'Tratamiento de patologías digestivas y alteraciones de la microbiota' : 'Nutritional care for digestive disorders and gut microbiota imbalances',
   text: es
     ? ['El intestino no es solo un órgano digestivo: es un sistema de comunicación, de defensa y de equilibrio. Cuando se altera, todo el cuerpo habla.', 'Tus síntomas tienen una causa. La buscamos juntas y trabajamos desde la raíz. Sin parches.']
-    : ['The gut is not just a digestive organ: it is a system of communication, defence and balance. When it is disturbed, the whole body speaks up.', 'Your symptoms have a cause. We look for it together and work from the root. No quick fixes.'],
+    : ['Your gut does far more than digest food: it is a hub of communication, immune defence and balance. When it is out of sync, your whole body feels it.', 'Your symptoms have a cause. Together, we will find it and work on it at the root, with no quick fixes.'],
 };
 
 const perimenopause = {
   title: es ? 'Perimenopausia y menopausia' : 'Perimenopause and menopause',
   text: es
     ? ['La alimentación puede marcar la diferencia en cómo se vive la transición a la menopausia. Una alimentación antiinflamatoria (rica en vegetales, semillas, cereales integrales…), con menos carbohidratos refinados y una cantidad adecuada de proteína, ayuda a mantener la energía, la masa muscular y la densidad mineral ósea.']
-    : ['Food can make a difference to how the transition to menopause is experienced. An anti-inflammatory diet (rich in vegetables, seeds, whole grains…), lower in refined carbohydrates and with an adequate amount of protein, helps maintain energy, muscle mass and bone mineral density.'],
+    : ['What you eat can make a real difference to how you experience the menopause transition. An anti-inflammatory way of eating (rich in vegetables, seeds and whole grains, lower in refined carbohydrates, with enough protein) helps support your energy, muscle mass and bone density.'],
 };
 
 const fertility = {
@@ -28,21 +28,21 @@ const fertility = {
         'Y cuando llegue el posparto, seguiremos cuidando de ti. Porque recuperarte no significa volver cuanto antes a tu cuerpo de antes, sino darle el tiempo y los cuidados que necesita.',
       ]
     : [
-        'If you are trying to conceive, I want to help you prepare your body for this stage. We will review your diet, your hormonal health and the nutrients you need, without you having to obsess over doing everything perfectly.',
-        'During pregnancy and breastfeeding, I will make sure that both you and your baby get the nutrients you need, adapting your diet and supplementation to each moment.',
-        'And when the postpartum period arrives, we will keep taking care of you. Because recovering does not mean going back to your old body as soon as possible, but giving it the time and care it needs.',
+        'Trying to conceive? I will help you prepare your body for this next stage. We will look at your diet, your hormonal health and the nutrients you need, without turning it into a quest for perfection.',
+        'During pregnancy and breastfeeding, I will make sure you and your baby both get the nutrients you need, adapting your diet and supplements to each stage.',
+        'And when your baby arrives, I will still be here to support you. Postpartum recovery is not about getting your old body back as fast as possible; it is about giving yourself the time and care you deserve.',
       ],
 };
 
 const metabolic = {
-  title: es ? 'Quieres aprender a cuidar de tu salud metabólica' : 'You want to learn how to look after your metabolic health',
+  title: es ? 'Salud metabólica y pérdida de peso' : 'Metabolic health and weight loss',
   text: es
     ? ['Te explico qué está pasando en tu cuerpo y qué necesita. Trabajamos tu sensibilidad a la insulina y tu flexibilidad metabólica (la capacidad de tu cuerpo para usar bien la energía) para perder grasa, ganar masa muscular y sentirte con más energía. Todo con un plan que encaje en tu semana real.']
-    : ['I explain what is happening in your body and what it needs. We work on your insulin sensitivity and your metabolic flexibility (your body’s ability to use energy well) to lose fat, build muscle and feel more energetic. All with a plan that fits your real week.'],
+    : ['I will explain what is happening in your body and what it needs. Together we will work on your insulin sensitivity and metabolic flexibility (your body’s ability to use energy efficiently) so you can lose fat, build muscle and feel more energised, all with a plan that fits into your real week.'],
 };
 
 const foodRelationship = {
-  title: es ? 'Tu relación con la comida' : 'Your relationship with food',
+  title: es ? 'Relación con la comida y trastornos de la conducta alimentaria' : 'Relationship with food and eating disorders',
   text: es
     ? [
         'Puedo acompañarte para adquirir una alimentación más tranquila, consciente y flexible. Una alimentación que realmente disfrutes. Trabajamos tus señales de hambre y saciedad, qué te lleva a comer cuando no tienes hambre y cómo te relacionas con tu cuerpo.',
@@ -50,9 +50,9 @@ const foodRelationship = {
         'El objetivo es que vuelvas a disfrutar de la alimentación, recuperando la confianza en tu cuerpo y avanzando a tu ritmo, desde el respeto y sin juicios.',
       ]
     : [
-        'I can support you towards calmer, more mindful and flexible eating. Eating you truly enjoy. We work on your hunger and fullness signals, what leads you to eat when you are not hungry, and how you relate to your body.',
-        'We work to reconnect with your hunger and fullness signals, understand which emotions or situations influence the way you eat, and overcome fears and rigid rules around food.',
-        'The goal is for you to enjoy eating again, regaining confidence in your body and moving forward at your own pace, with respect and without judgement.',
+        'I can support you towards calmer, more mindful and flexible eating, the kind you truly enjoy. We will work on your hunger and fullness cues, what drives you to eat when you are not hungry, and how you relate to your body.',
+        'Together we will reconnect with your hunger and fullness signals, understand which emotions or situations shape the way you eat, and let go of fears and rigid food rules.',
+        'The goal is for you to enjoy food again, rebuild trust in your body and move forward at your own pace, with respect and without judgement.',
       ],
 };
 
@@ -95,38 +95,38 @@ const detail = es
       ],
     }
   : {
-      intro: 'There are several hormonal imbalances that many women experience today. Diet, exercise and habits can greatly improve their course and symptoms. In consultation, we will adapt your diet and supplementation and make the lifestyle changes needed to resolve the existing imbalances.',
+      intro: 'Many women live with hormonal imbalances, and the right nutrition, exercise and daily habits can make a real difference to their course and symptoms. In consultation, we will tailor your diet and supplements and make the lifestyle changes needed to address the imbalances you are experiencing.',
       items: [
         [
           'Polycystic ovary syndrome (PCOS)',
           [
-            'Insulin is a hormone that helps the sugar in your blood enter your cells so it can be used as energy. Many women with PCOS have insulin resistance, which means their cells do not respond well to this hormone and the body has to produce more of it. This excess insulin can disrupt hormonal balance and favour symptoms such as acne, excess hair or irregular menstrual cycles.',
-            'Through a personalised nutrition plan, we can improve insulin sensitivity and help reduce many of the symptoms of PCOS, because we act directly on their root.',
+            'Insulin is the hormone that helps sugar in your blood enter your cells to be used as energy. Many women with PCOS have insulin resistance: their cells do not respond well to insulin, so the body has to produce more of it. This excess insulin can upset your hormonal balance and contribute to symptoms such as acne, excess hair growth and irregular cycles.',
+            'With a personalised nutrition plan, we can improve your insulin sensitivity and help ease many PCOS symptoms, because we work directly on their root cause.',
           ],
         ],
         [
           'Painful periods, endometriosis or adenomyosis',
           [
-            'Pain is closely linked to prostaglandins, inflammatory molecules your own body makes. With a diet rich in polyphenols, bioactive compounds, antioxidant vitamins and some key minerals for relaxing the uterine muscle, such as magnesium, we can modulate inflammation, pain and tiredness. In addition, certain food supplements have evidence as a complementary treatment, so a personalised supplementation plan is designed for each patient.',
+            'Period pain is closely linked to prostaglandins, inflammatory molecules your own body produces. A diet rich in polyphenols, bioactive compounds, antioxidant vitamins and key minerals that help relax the uterine muscle, such as magnesium, can help modulate inflammation, pain and fatigue. Certain supplements also have evidence as a complementary treatment, so I design a personalised supplement plan for each patient.',
           ],
         ],
         [
-          'Premenstrual syndrome',
+          'Premenstrual syndrome (PMS)',
           [
-            'It is not caused by having “too many hormones”, but by your brain being more sensitive to their changes. Stabilising your glucose and making sure you meet your nutritional requirements for calcium, magnesium, zinc and vitamin B6 can ease irritability, cravings and bloating.',
+            'PMS is not caused by having “too many hormones”, but by your brain being more sensitive to hormonal changes. Stabilising your blood sugar and meeting your needs for calcium, magnesium, zinc and vitamin B6 can ease irritability, cravings and bloating.',
           ],
         ],
         [
           'Hypothyroidism and hyperthyroidism',
           [
-            'Your thyroid needs iodine, selenium, iron and vitamin D to make and activate its hormones. Coffee, calcium or iron supplements taken close to levothyroxine also reduce its absorption, and that is often why the dose “doesn’t work”. In hyperthyroidism we take special care of muscle and bone. All adapted to your unique circumstances.',
+            'Your thyroid needs iodine, selenium, iron and vitamin D to make and activate its hormones. Coffee, calcium or iron supplements taken close to levothyroxine can also reduce how well it is absorbed, which is often why a dose “doesn’t seem to work”. With hyperthyroidism, we take extra care of your muscle and bone health. Everything is adapted to your individual circumstances.',
           ],
         ],
         [
           'Recurrent candidiasis or urinary tract infections',
           [
-            'When infections keep coming back, it is important to identify which factors may favour them, such as imbalances in the intestinal and vaginal microbiota, changes in glucose or nutritional deficiencies.',
-            'Through a personalised nutrition plan, based on a prebiotic, anti-inflammatory and antioxidant diet, and supplementation when necessary, we aim to support the balance of your microbiota and strengthen your natural defences, as a complement to medical treatment.',
+            'When infections keep coming back, it is important to identify the factors that may be contributing, such as imbalances in the gut and vaginal microbiota, blood sugar fluctuations or nutritional deficiencies.',
+            'With a personalised nutrition plan built around a prebiotic, anti-inflammatory and antioxidant diet, plus supplements when needed, we aim to support a healthy microbiota and strengthen your natural defences, alongside your medical treatment.',
           ],
         ],
       ],
@@ -144,19 +144,19 @@ const alt = (a: string, b: string) => (es ? a : b);
 const bands: { key: string; head?: { id: string; intro: string }; rows: Row[] }[] = [
   { key: 'a', rows: [
     { id: 'area-digestion', level: 'area', title: digestion.title, paras: digestion.text, img: '/assets/area-digestion.webp', alt: alt('Ilustración del eje intestino-cerebro', 'Illustration of the gut–brain axis') },
-    { level: 'item', title: candida[0], paras: candida[1] },
+    { level: 'item', title: candida[0], paras: candida[1], img: '/assets/area-candidiasis.webp', alt: alt('Ilustración de la microbiota sobre la mucosa', 'Illustration of the microbiota on the mucosa') },
   ] },
   { key: 'b', head: { id: 'area-convives', intro: detail.intro }, rows: [
     { level: 'item', title: pcos[0], paras: pcos[1], img: '/assets/area-sop.webp', alt: alt('Útero y ovarios hechos con flores de papel', 'Uterus and ovaries made of paper flowers') },
     { level: 'item', title: periods[0], paras: periods[1], img: '/assets/area-reglas.webp', alt: alt('Calendario con compresa y días marcados', 'Calendar with a pad and marked days') },
-    { level: 'item', title: pms[0], paras: pms[1], img: '/assets/area-premenstrual.webp', alt: alt('Ilustración de una mujer con malestar', 'Illustration of a woman feeling unwell') },
-    { level: 'item', title: thyroid[0], paras: thyroid[1], img: '/assets/area-tiroides.webp', alt: alt('Ilustración de una mujer con la mano en el cuello', 'Illustration of a woman with her hand on her neck') },
-    { id: 'area-perimenopausia', level: 'item', title: perimenopause.title, paras: perimenopause.text, img: '/assets/area-menopausia.webp', alt: alt('Ilustración de una mujer madura pensativa', 'Illustration of a thoughtful mature woman') },
+    { level: 'item', title: pms[0], paras: pms[1], img: '/assets/area-premenstrual-2.webp', alt: alt('Ilustración de una mujer con malestar', 'Illustration of a woman feeling unwell') },
+    { id: 'area-perimenopausia', level: 'item', title: perimenopause.title, paras: perimenopause.text, img: '/assets/area-menopausia-2.webp', alt: alt('Ilustración de una mujer madura pensativa', 'Illustration of a thoughtful mature woman') },
     { id: 'area-fertilidad', level: 'area', title: fertility.title, paras: fertility.text, img: '/assets/area-embarazo.webp', alt: alt('Ilustración de una mujer embarazada', 'Illustration of a pregnant woman') },
   ] },
   { key: 'c', rows: [
-    { id: 'area-metabolica', level: 'area', title: metabolic.title, paras: metabolic.text, img: '/assets/plato-escena.jpg', photo: true, alt: '' },
-    { id: 'area-relacion', level: 'area', title: foodRelationship.title, paras: foodRelationship.text, img: '/assets/higos.jpg', photo: true, alt: '' },
+    { level: 'item', title: thyroid[0], paras: thyroid[1], img: '/assets/area-tiroides.webp', alt: alt('Ilustración de una mujer con la mano en el cuello', 'Illustration of a woman with her hand on her neck') },
+    { id: 'area-metabolica', level: 'area', title: metabolic.title, paras: metabolic.text, img: '/assets/area-metabolica.webp', alt: alt('Ilustración de unos resultados de analítica', 'Illustration of blood test results') },
+    { id: 'area-relacion', level: 'area', title: foodRelationship.title, paras: foodRelationship.text, img: '/assets/area-relacion.webp', alt: alt('Ilustración de una pareja comiendo bocadillos', 'Illustration of a couple eating sandwiches') },
   ] },
 ];
 let n = 0; // alternation counter across the whole section

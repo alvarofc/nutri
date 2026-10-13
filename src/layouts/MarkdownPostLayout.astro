@@ -7,7 +7,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: frontmatter.title,
   description: frontmatter.description,
-  inLanguage: 'es',
+  inLanguage: Astro.url.pathname.startsWith('/en/') ? 'en' : 'es',
   datePublished: frontmatter.pubDate,
   dateModified: frontmatter.pubDate,
   author: { '@id': new URL('/#alexandra', site).toString() },

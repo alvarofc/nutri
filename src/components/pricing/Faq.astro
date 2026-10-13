@@ -7,30 +7,30 @@ const en = lang === 'en';
 const questions = [
   {
     id: 'faq-1',
-    title: en ? 'Are the consultations in person or online?' : '¿Las consultas son presenciales u online?',
+    title: en ? 'Are consultations in person or online?' : '¿Las consultas son presenciales u online?',
     answer: en
-      ? 'Consultations are held online through Google Meet, and you will receive the access details by email before your consultation.'
+      ? 'All consultations take place online via Google Meet. You will receive the joining details by email before your appointment.'
       : 'Las consultas se realizan online a través de Google Meet, y recibirás los datos de acceso por correo electrónico antes de la consulta.',
   },
   {
     id: 'faq-2',
-    title: en ? 'Can I change or cancel a consultation?' : '¿Puedo modificar o cancelar una consulta?',
+    title: en ? 'Can I reschedule or cancel an appointment?' : '¿Puedo modificar o cancelar una consulta?',
     answer: en
-      ? 'When you book, that time slot is reserved exclusively for you and requires prior preparation. That is why the fee is non-refundable. If something unexpected comes up, you can change your appointment with at least 24 hours’ notice. With less notice it is not possible to cancel or reschedule (except in cases of force majeure). If you do not attend and do not give notice in time, the consultation is considered to have taken place.'
+      ? 'When you book, your time slot is reserved exclusively for you and I prepare for it in advance, so the fee is non-refundable. If something unexpected comes up, you can reschedule with at least 24 hours’ notice. With less notice, it is not possible to cancel or reschedule (except in cases of force majeure). If you do not attend and do not let me know in time, the consultation will be treated as completed.'
       : 'Al reservar tu cita, ese horario queda exclusivamente para ti y requiere preparación previa. Por eso, el importe no es reembolsable. Si te surge un imprevisto, puedes cambiar la cita avisando con al menos 24 horas de antelación. Con menos tiempo no es posible cancelar ni reprogramar (salvo fuerza mayor). Si no asistes y no avisas a tiempo, la consulta se considera realizada.',
   },
   {
     id: 'faq-3',
-    title: en ? 'Do follow-ups have to take place every month?' : '¿Las revisiones deben realizarse todos los meses?',
+    title: en ? 'Do I need a follow-up every month?' : '¿Las revisiones deben realizarse todos los meses?',
     answer: en
-      ? 'Not necessarily. You can space out your follow-up consultations according to your progress and needs. However, follow-up appointments can be booked up to 6 months after your last visit. After that period, you will need to book an initial assessment (subject to availability).'
+      ? 'Not necessarily. You can space out your follow-up sessions according to your progress and needs. Follow-ups can be booked for up to 6 months after your last visit; after that, you will need to book a new initial assessment (subject to availability).'
       : 'No necesariamente. Puedes espaciar las consultas de revisión según tu progreso y necesidades. Sin embargo, las citas de seguimiento pueden reservarse hasta 6 meses tras la última visita. Pasado ese plazo, será necesario reservar una valoración inicial (según disponibilidad).',
   },
   {
     id: 'faq-4',
-    title: en ? 'Do you work with other health professionals?' : '¿Trabajas en colaboración con otros profesionales de la salud?',
+    title: en ? 'Do you work with other healthcare professionals?' : '¿Trabajas en colaboración con otros profesionales de la salud?',
     answer: en
-      ? 'Yes, when necessary, we will work together in an integrative way with other professionals (psychologists, endocrinologists, gynaecologists, physiotherapists, etc.). If you already have professionals you trust, we recommend getting in touch so we can work together on your case.'
+      ? 'Yes. When needed, I collaborate with other professionals as part of an integrative approach (psychologists, endocrinologists, gynaecologists, physiotherapists and more). If you already have a healthcare team you trust, get in touch and we can work together on your care.'
       : 'Sí, cuando sea necesario, colaboraremos de forma integrativa con otros profesionales (psicólogos, endocrinos, ginecólogos, fisioterapeutas, etc.). Si ya tienes profesionales de confianza, te recomendamos ponernos en contacto para trabajar juntos en tu caso.',
   },
 ];
@@ -58,7 +58,7 @@ const faqSchema = {
         <span class="sec-rule" aria-hidden="true"></span>
       </div>
       <h2 class="px-4 pt-0 text-center font-serif text-3xl leading-[1.05] text-brand-black sm:text-4xl lg:text-[2.9rem]">
-        {lang === 'en' ? 'Get all your questions answered about my consultation here' : 'Resuelve todas tus dudas sobre mi consulta aquí'}
+        {lang === 'en' ? 'Get answers to all your questions about my consultations' : 'Resuelve todas tus dudas sobre mi consulta aquí'}
       </h2>
     </div>
 
@@ -121,13 +121,13 @@ const faqSchema = {
 
       <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
         <p class="text-brand-muted">
-          {lang === 'en' ? "Can't find what you're looking for?" : '¿No encuentras lo que buscas?'}
+          {lang === 'en' ? "Still have questions?" : '¿No encuentras lo que buscas?'}
         </p>
         <a
           href={getLocalizedPath('/contact', lang)}
           class="cta-gradient-btn relative inline-flex items-center justify-center overflow-hidden rounded-full bg-brand-accent px-6 py-3 text-base font-medium text-white transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
         >
-          <span class="relative z-10">{lang === 'en' ? 'Feel free to contact me directly' : 'No dudes en contactarme directamente'}</span>
+          <span class="relative z-10">{lang === 'en' ? 'Get in touch with me directly' : 'No dudes en contactarme directamente'}</span>
         </a>
       </div>
     </div>

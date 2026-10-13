@@ -10,7 +10,7 @@ const en = lang === 'en';
 // through private links sent after the first consultation.
 const groups = [
   {
-    kicker: en ? 'Initial consultation' : 'Consulta inicial',
+    kicker: en ? 'First consultation' : 'Consulta inicial',
     heading: en ? 'It’s my first time' : 'Es mi primera vez',
     items: [
       {
@@ -20,14 +20,14 @@ const groups = [
         bookable: true,
       },
       {
-        title: en ? 'Personalised plan delivery session' : 'Sesión de entrega del plan personalizado',
+        title: en ? 'Your personalised plan session' : 'Sesión de entrega del plan personalizado',
         price: '70 €',
         lines: [en ? '60-minute consultation' : 'Consulta de 60 minutos'],
       },
     ],
   },
   {
-    kicker: en ? 'Follow-up consultation' : 'Consulta de revisión',
+    kicker: en ? 'Follow-up sessions' : 'Consulta de revisión',
     heading: en ? 'I’m already a patient' : 'Ya soy paciente',
     private: true,
     items: [
@@ -39,7 +39,7 @@ const groups = [
       {
         title: en ? 'Bundle of 4 follow-ups' : 'Bono de 4 seguimientos',
         price: '240 €',
-        lines: en ? ['4 consultations of 45 minutes', '60 € per consultation'] : ['4 consultas de 45 minutos', '60 € por consulta'],
+        lines: en ? ['4 sessions of 45 minutes', '€60 per session'] : ['4 consultas de 45 minutos', '60 € por consulta'],
       },
     ],
   },
@@ -67,7 +67,7 @@ const groups = [
               {group.items.map((item, ii) => (
                 <li class="price-card flex flex-col rounded-[1.4rem] px-7 py-5 font-sans text-white sm:px-8" style={`--c:${gi + 1}; --r:${ii + 2}`}>
                   <h3 class="text-base font-semibold uppercase leading-snug tracking-[0.1em] sm:text-lg">{item.title}</h3>
-                  <p class="mt-1.5 text-lg font-normal tracking-[0.06em]">{item.price}</p>
+                  <p class="mt-1.5 text-lg font-normal tracking-[0.06em]">{en ? item.price.replace(/^(\d+) €$/, '€$1') : item.price}</p>
                   <div class="pc-lines mt-3 flex-1 text-[1rem] font-normal italic leading-snug text-white/85">
                     {item.lines.map((line) => (<p>{line}</p>))}
                   </div>

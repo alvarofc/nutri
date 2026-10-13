@@ -54,17 +54,17 @@ if (Astro.request.method === "POST") {
         <span class="eyebrow mb-5 block">{lang === 'en' ? 'Shall we talk?' : '¿Hablamos?'}</span>
         <h2 class="font-serif text-3xl font-medium leading-[1.12] text-[#4A1D33] sm:text-4xl lg:text-[2.8rem]">
           {lang === 'en'
-            ? 'Contact me so I can assess your case and book your initial assessment'
+            ? 'Get in touch so we can talk through your case and book your initial assessment'
             : 'Contacta conmigo para que valore tu caso y agende tu valoración inicial'}
         </h2>
         <p class="mt-5 max-w-md font-serif text-[1.35rem] italic leading-snug text-[#5b3a46]">
-          {lang === 'en' ? 'A safe space to begin, at your own pace and with no judgement.' : 'Un espacio seguro para empezar, a tu ritmo y sin juicios.'}
+          {lang === 'en' ? 'A safe place to begin, at your own pace and without judgement.' : 'Un espacio seguro para empezar, a tu ritmo y sin juicios.'}
         </p>
 
         <ul class="mt-8 flex flex-col gap-3 font-sans text-[15px] text-[#4a3a40]">
-          <li>{lang === 'en' ? 'Response within 24 hours' : 'Respuesta en 24 horas'}</li>
-          <li>{lang === 'en' ? 'Your data is safe with me' : 'Tus datos están seguros'}</li>
-          <li>{lang === 'en' ? 'No commitment consultation' : 'Consulta sin compromiso'}</li>
+          <li>{lang === 'en' ? 'Reply within 24 hours' : 'Respuesta en 24 horas'}</li>
+          <li>{lang === 'en' ? 'Your information is kept confidential' : 'Tus datos están seguros'}</li>
+          <li>{lang === 'en' ? 'No-obligation first chat' : 'Consulta sin compromiso'}</li>
         </ul>
 
         <div class="mt-9 flex flex-wrap gap-3">
@@ -73,7 +73,7 @@ if (Astro.request.method === "POST") {
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2.5 rounded-full bg-[#79264D] px-6 py-3 font-sans text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#4A1D33]"
-            aria-label={lang === 'en' ? 'Write to me on WhatsApp' : 'Escríbeme por WhatsApp'}
+            aria-label={lang === 'en' ? 'Message me on WhatsApp' : 'Escríbeme por WhatsApp'}
           >
             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={WHATSAPP_ICON_PATH}></path></svg>
             <span>WhatsApp</span>
@@ -83,7 +83,7 @@ if (Astro.request.method === "POST") {
             class="inline-flex items-center gap-2.5 rounded-full border border-[#79264D]/50 bg-white/60 px-6 py-3 font-sans text-sm font-medium text-[#79264D] transition-colors hover:bg-white"
           >
             <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 7l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" /></svg>
-            <span>{lang === 'en' ? 'Send me an email' : 'Escríbeme un correo'}</span>
+            <span>{lang === 'en' ? 'Email me' : 'Escríbeme un correo'}</span>
           </a>
         </div>
         <p class="mt-4 font-sans text-sm text-[#6a5860]">{WHATSAPP_DISPLAY} · {t('contact.email.address')}</p>

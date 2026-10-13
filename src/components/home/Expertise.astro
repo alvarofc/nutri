@@ -8,7 +8,7 @@ const es = lang === 'es';
 
 const cards = [
   {
-    title: es ? 'Tu digestión te condiciona' : 'Your digestion holds you back',
+    title: es ? 'Tu digestión te condiciona' : 'Your digestion is holding you back',
     items: es
       ? [
           'Sientes que tu digestión condiciona tu día a día',
@@ -27,7 +27,7 @@ const cards = [
       : 'The gut is not just a digestive organ: it is a system of communication, defence and balance.\nWhen it is disturbed, the whole body speaks up.\n\nYour symptoms have a cause. We look for it together and work from the root.\nNo quick fixes.',
   },
   {
-    title: es ? 'Convives con…' : 'You live with…',
+    title: es ? 'Convives con…' : 'You are living with…',
     items: es
       ? [
           'Convives con reglas dolorosas o síndrome premenstrual',
@@ -46,7 +46,7 @@ const cards = [
       : 'Through a personalised nutrition support plan made for you, I help you modulate hormonal peaks, reduce inflammation and improve the symptoms linked to your cycle.',
   },
   {
-    title: es ? 'Sientes que tu cuerpo ya no es el de antes' : 'You feel your body is not what it used to be',
+    title: es ? 'Sientes que tu cuerpo ya no es el de antes' : 'Your body doesn’t feel like it used to',
     items: es
       ? [
           'Estás en perimenopausia o menopausia',
@@ -67,7 +67,7 @@ const cards = [
       : 'Food can make a difference to how the transition to menopause is experienced. An anti-inflammatory diet (rich in vegetables, seeds, whole grains…), lower in refined carbohydrates and with an adequate amount of protein, helps maintain energy, muscle mass and bone mineral density.',
   },
   {
-    title: es ? 'Quieres aprender a cuidar de tu salud metabólica' : 'You want to learn how to look after your metabolic health',
+    title: es ? 'Quieres aprender a cuidar de tu salud metabólica' : 'You want to take better care of your metabolic health',
     items: [],
     help: es
       ? 'Te explico qué está pasando en tu cuerpo y qué necesita. Trabajamos tu sensibilidad a la insulina y tu flexibilidad metabólica (la capacidad de tu cuerpo para usar bien la energía) para perder grasa, ganar masa muscular y sentirte con más energía. Todo con un plan que encaje en tu semana real.'
@@ -114,12 +114,12 @@ const summaries = es
       'Quizá llevas un tiempo buscando embarazo y quieres saber si tu alimentación puede ayudarte. Quizá ya estás embarazada y te llegan tantos consejos que no sabes a cuál hacer caso. O acabas de tener a tu bebé y, entre tomas y noches cortas, te has quedado la última en tu lista de prioridades.',
     ]
   : [
-      'In the morning you feel fine and by the afternoon your trousers won’t fasten. You have cut out gluten, lactose and half the pantry, and you are still the same. You no longer know what upsets you, because it seems like everything does. Or maybe you already have a diagnosis: gastritis, Helicobacter pylori, SIBO, IMO, food intolerances, irritable bowel syndrome… but medication alone isn’t making you better.',
+      'You feel fine in the morning, but by the afternoon your trousers won’t fasten. You have cut out gluten, lactose and half the pantry, and nothing has changed. You no longer know what upsets you, because it seems like everything does. Or perhaps you already have a diagnosis: gastritis, Helicobacter pylori, SIBO, IMO, food intolerances, irritable bowel syndrome… but medication alone isn’t making you feel better.',
       '',
-      'You eat as you always have and still notice changes in your body. You sleep worse, wake up in the early hours or have hot flushes and lapses you never had before. It may be perimenopause: it starts years before your last period, sometimes in your forties, and hardly anyone talks to you about it.',
-      'You have been told your blood sugar or cholesterol are “to keep an eye on”, or you have been diagnosed with diabetes, prediabetes or fatty liver. Maybe you also want to lose weight. And all you have been told is “eat better and exercise”, without explaining how to do it in your day-to-day life.',
-      'You eat when stressed or anxious, or maybe you feel guilty after eating certain foods or overdoing the amount. You tell yourself you have to control yourself more, but what you really want is to enjoy eating without food being a burden, without restrictions and without diets.',
-      'Maybe you have been trying to conceive for a while and want to know whether your diet can help. Maybe you are already pregnant and you get so much advice that you don’t know which to follow. Or you have just had your baby and, between feeds and short nights, you have ended up last on your list of priorities.',
+      'You eat the way you always have, yet your body is changing. You sleep badly, wake in the early hours, or get hot flushes and brain fog you never had before. It could be perimenopause: it can start years before your last period, sometimes in your forties, and hardly anyone talks about it.',
+      'You have been told your blood sugar or cholesterol is “something to keep an eye on”, or you have been diagnosed with diabetes, prediabetes or fatty liver. Perhaps you also want to lose weight. And all you have heard is “eat better and exercise”, with no explanation of how to do that in your daily life.',
+      'You eat when you are stressed or anxious, or feel guilty after certain foods or after eating too much. You tell yourself you need more willpower, but what you really want is to enjoy your food without it feeling like a burden: no restrictions, no diets.',
+      'Perhaps you have been trying to conceive for a while and want to know whether your diet can help. Perhaps you are pregnant and receiving so much advice that you don’t know whom to listen to. Or you have just had your baby and, between feeds and sleepless nights, you have ended up at the bottom of your own to-do list.',
     ];
 
 // Words shown in burgundy and semibold (class .hl, defined in Layout.astro)
@@ -200,10 +200,10 @@ const servicesPath = getLocalizedPath('/pricing', lang);
       <!-- Section Header -->
       <SectionHeader
         eyebrow={es ? 'Cómo puedo ayudarte' : 'How I can help'}
-        title={es ? '¿Te reconoces en alguna de estas situaciones?' : 'Do you recognise yourself in any of these situations?'}
+        title={es ? '¿Te reconoces en alguna de estas situaciones?' : 'Do any of these situations sound familiar?'}
         lead={es
           ? 'Te explico qué puede estar pasando y por dónde empezar.'
-          : 'I’ll explain what may be going on and where to start.'}
+          : 'I will explain what may be going on and where to begin.'}
       />
 
       <!-- Problem cards: each one shows the situation and a clear "Leer más" button that opens the full text in a wide burgundy panel -->

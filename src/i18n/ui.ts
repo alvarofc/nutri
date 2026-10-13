@@ -30,32 +30,32 @@ export const ui = {
     // Home page
     'home.title': 'Smart Anti-inflammatory Nutrition',
     'home.subtitle':
-      "Hi! I'm Alexandra Ivanova, Dietitian-Nutritionist (MAD01541), specialized in hormonal health and relationship with food.\n\nI love translating nutrition science into realistic guidelines and small changes that fit into your routine.\n\nThat's why I help you understand what's happening in your body and what it needs, so that eating becomes a pleasure that also takes care of your hormones, your digestion, and your energy.\n\nShall we start?",
+      "Hi! I'm Alexandra Ivanova, registered Dietitian-Nutritionist (MAD01541), specialising in hormonal health and your relationship with food.\n\nI love turning nutrition science into realistic guidance and small changes that fit into your routine.\n\nThat is why I help you understand what is happening in your body and what it needs, so that eating becomes a pleasure that also looks after your hormones, your digestion and your energy.\n\nShall we get started?",
     'home.description':
-      'Online dietitian-nutritionist specialised in digestive and hormonal health. Video-call consultations from anywhere, with personalised nutrition plans.',
+      'Online dietitian-nutritionist specialising in digestive and hormonal health. Video consultations from anywhere, with personalised nutrition plans.',
     'home.hero.image.alt': 'Hero image showing healthy nutrition',
     'home.page.title': 'Alexandra · Online Dietitian-Nutritionist',
     'home.trust.title': 'Certified & Registered Member of',
 
     // Services section
-    'services.title': 'How I support you',
+    'services.title': 'How I can support you',
     'services.methodology': 'THE METHODOLOGY',
     'services.step1.name': 'Initial assessment',
     'services.step1.description':
-      'In a 75-minute video call, we will look at your health as a whole, considering physical symptoms, emotional factors and lifestyle, to understand your situation and define your goals.',
-    'services.step2.name': 'Design and delivery of your personalised plan',
+      'In a 75-minute video call, we look at your health as a whole, including physical symptoms, emotional factors and lifestyle, to understand your situation and define your goals.',
+    'services.step2.name': 'Your personalised plan',
     'services.step2.description':
-      'I will develop a customized plan for you and your goals. We will review it together to ensure you understand it and feel comfortable with it.',
+      'I design a plan around you and your goals. We go through it together, so you understand it fully and feel confident following it.',
     'services.step3.name': 'Follow-up',
     'services.step3.description':
-      'We will follow up to see how you are doing and, if necessary, adjust the plan according to the needs that arise.',
+      'We check in regularly to see how you are getting on and, where needed, adjust your plan as your needs change.',
 
     // About page
     'about.title': 'About me',
     'about.subtitle': 'Find information about my story, values, goals and more.',
     'about.section.title': 'About me',
     'about.heading.title': 'About Alexandra',
-    'about.heading.subtitle': 'Passion for health and results.',
+    'about.heading.subtitle': 'Passionate about your health and your results.',
     'about.mission.title': 'My mission',
     'about.mission.paragraph1':
       'From a very young age, I knew that my passion was helping people through health. That is why I worked hard to achieve academic excellence and thus be able to access a career that would allow me to fulfill my dream. After high school, where I obtained the best average in my center and honors, I began my degree in Biomedical Sciences at the Autonomous University of Barcelona.',
@@ -67,16 +67,16 @@ export const ui = {
     'about.values.title': 'My Values',
     'about.values.excellence.name': 'Excellence',
     'about.values.excellence.description':
-      'I strive to deliver the highest quality in everything I do, continuously seeking improvement to provide the best possible care and results for my clients.',
+      'I hold myself to the highest standard in everything I do, always looking for ways to improve so that you receive the best possible care and results.',
     'about.values.innovation.name': 'Innovation',
     'about.values.innovation.description':
-      'I embrace new ideas and scientific advances in nutrition, always updating my knowledge to offer modern, effective solutions tailored to each individual.',
+      'I embrace new ideas and scientific advances in nutrition, keeping my knowledge up to date to offer modern, effective solutions tailored to each person.',
     'about.values.teamwork.name': 'Teamwork',
     'about.values.teamwork.description':
-      'I believe in the power of collaboration—working closely with clients and other professionals to achieve shared goals and lasting positive change.',
+      'I believe in the power of collaboration, working closely with patients and other professionals to achieve shared goals and lasting change.',
     'about.values.respect.name': 'Respect',
     'about.values.respect.description':
-      'I treat every person with empathy, understanding, and respect for their unique needs, values, and circumstances.',
+      'I treat every person with empathy, understanding and respect for their unique needs, values and circumstances.',
     'about.team.title': 'Meet our team',
     'about.team.member1.name': 'Floyd Lowe',
     'about.team.member1.job': 'Senior Designer',
@@ -85,7 +85,7 @@ export const ui = {
     'about.team.member3.name': 'Emily Mitchell',
     'about.team.member3.job': 'Senior Developer',
     'about.section.description':
-      'As a dietitian-nutritionist, I immerse myself to the maximum to make sure each person I accompany feels heard, understood and motivated. Through a rigorous anamnesis I identify the factors that are at the root of the problem, so I can design an integrative, sustainable and scientifically supported approach. I believe that when the patient understands what happens in their body, they empower themselves. That is why I explain in simple language the mechanisms of the pathophysiology involved. For me, the therapeutic relationship is as important as the nutritional treatment since when there is confidence, there is adherence and with it, true progress.',
+      'As a dietitian-nutritionist, I give every patient my full attention, so that each person I work with feels heard, understood and motivated. Through a thorough health history, I identify the root causes behind your symptoms and design an integrative, sustainable and science-based approach. I believe that when you understand what is happening in your body, you feel empowered. That is why I explain the mechanisms behind your condition in simple language. For me, the therapeutic relationship matters as much as the nutritional treatment: where there is trust, there is commitment, and with it, real progress.',
     'about.section.cta': 'Learn more',
 
     // Contact page
@@ -96,7 +96,7 @@ export const ui = {
     'contact.email.label': 'Email',
     'contact.email.address': 'consulta@alexandranutri.com',
     'contact.form.title': "Let's work together",
-    'contact.form.subtitle': 'I see my patients online, by video call, from wherever you are. Write to me and I will get back to you as soon as I can.',
+    'contact.form.subtitle': 'I see my patients online, by video call, from wherever you are. Send me a message and I will get back to you as soon as I can.',
     'contact.form.name': 'Full name',
     'contact.form.email': 'Email',
     'contact.form.phone': 'Phone number',
@@ -107,10 +107,10 @@ export const ui = {
     'contact.form.error.phone': 'Invalid phone number.',
 
     // Pricing page
-    'pricing.title': 'Your nutritional support process',
-    'pricing.subtitle': 'An initial process to understand your case in depth, then follow-ups at the pace your body needs.',
+    'pricing.title': 'Your nutrition support journey',
+    'pricing.subtitle': 'An in-depth first assessment to understand your case, followed by regular check-ins at the pace your body needs.',
     'pricing.action.book': 'Book your initial assessment',
-    'pricing.private': 'Booking link sent privately after your initial assessment',
+    'pricing.private': 'Your follow-up booking link is sent privately after your initial assessment',
 
     // Expertise section
     'expertise.title': 'Supporting Your Health',
@@ -199,18 +199,18 @@ export const ui = {
     'pricing.sections.continuity': 'Continuity',
     'pricing.assessment.title': 'Initial assessment',
     'pricing.assessment.duration': '75 min',
-    'pricing.assessment.description': 'We review your history, symptoms, habits, sleep, digestion, energy, lab tests and medication to understand your case in depth.',
-    'pricing.plan.title': 'Design + delivery of your personalized plan',
+    'pricing.assessment.description': 'We review your history, symptoms, habits, sleep, digestion, energy, lab results and medication to understand your case in depth.',
+    'pricing.plan.title': 'Your personalised plan session',
     'pricing.plan.duration': '60 min',
-    'pricing.plan.description': 'Within 5 working days of the assessment. I explain what is happening in your body and hand over your nutrition plan, guidelines and, if needed, supplementation.',
+    'pricing.plan.description': 'Within 5 working days of your assessment. I explain what is happening in your body and hand over your nutrition plan, guidelines and, if needed, supplement recommendations.',
     'pricing.followup.title': 'Follow-up',
     'pricing.followup.duration': '45 min',
-    'pricing.followup.description': 'We review your progress, adjust the plan and consolidate habits. Every 2 to 6 weeks, depending on your case.',
-    'pricing.bundle.title': '4 follow-up bundle',
+    'pricing.followup.description': 'We review your progress, fine-tune your plan and build lasting habits, every 2 to 6 weeks depending on your needs.',
+    'pricing.bundle.title': 'Bundle of 4 follow-ups',
     'pricing.bundle.duration': '4 × 45 min',
-    'pricing.bundle.description': 'Four follow-up sessions to keep your progress steady.',
-    'pricing.bundle.saving': '60 € per session',
-    'pricing.policy': 'Payment is made when booking and is non-refundable. You can reschedule up to 24 hours before your appointment. Follow-ups can be booked up to 6 months after your last visit.',
+    'pricing.bundle.description': 'Four follow-up sessions to keep your progress on track.',
+    'pricing.bundle.saving': '€60 per session',
+    'pricing.policy': 'Payment is taken when you book and is non-refundable. You can reschedule up to 24 hours before your appointment. Follow-ups can be booked for up to 6 months after your last visit.',
 
     // FAQ
     'faq.title': 'Frequently Asked Questions',
@@ -238,26 +238,26 @@ export const ui = {
     'about.page.title': 'About me · Alexandra',
     'contact.page.description': 'Contact our team to learn more about how we can help you.',
     'contact.page.title': 'Contact · Alexandra',
-    'pricing.page.description': 'Services, rates and online initial assessment with Alexandra, dietitian-nutritionist in Madrid.',
+    'pricing.page.description': 'Services, fees and online initial assessments with Alexandra, a dietitian-nutritionist based in Madrid.',
     'pricing.page.title': 'Services · Alexandra',
 
     // Booking page
-    'booking.label': 'Book Online',
+    'booking.label': 'Book online',
     'booking.title': 'Book your initial assessment',
     'booking.subtitle': 'Choose a time that suits you. Payment is processed securely by Stripe when you confirm.',
     'booking.next.title': 'What happens next',
-    'booking.next.0': 'You receive a confirmation email with all the details.',
-    'booking.next.1': 'Within 5 working days of your assessment we meet again to go through your personalized plan. I send you that booking link myself.',
-    'booking.next.2': 'Follow-ups are booked through a private link, at the pace your case needs.',
+    'booking.next.0': 'You will receive a confirmation email with all the details.',
+    'booking.next.1': 'Within 5 working days of your assessment, we meet again to go through your personalised plan. I will send you that booking link myself.',
+    'booking.next.2': 'Follow-ups are booked through a private link, at whatever pace suits your case.',
     'booking.policy.title': 'Before booking',
-    'booking.policy.0': 'Payment is made when booking. The slot is reserved for you and requires preparation, so it is non-refundable.',
-    'booking.policy.1': 'You can reschedule with at least 24 hours notice. With less notice it is not possible to cancel or reschedule (except force majeure).',
-    'booking.policy.2': 'If you do not attend and do not let me know in time, the consultation is considered completed.',
+    'booking.policy.0': 'Payment is taken when you book. Your slot is reserved for you and I prepare for it in advance, so it is non-refundable.',
+    'booking.policy.1': 'You can reschedule with at least 24 hours’ notice. With less notice, it is not possible to cancel or reschedule (except in cases of force majeure).',
+    'booking.policy.2': 'If you do not attend and do not let me know in time, the consultation will be treated as completed.',
     'booking.patients': 'Already a patient? Use the private link I sent you by email or WhatsApp.',
     'booking.iframe.title': 'Initial assessment booking calendar',
     'booking.loading': 'Loading availability…',
     'booking.open': 'Open in a new tab',
-    'booking.unavailable': 'Online booking opens soon. Write to me and I will find a time for you.',
+    'booking.unavailable': 'Online booking will open soon. Send me a message and I will find a time for you.',
     'booking.unavailable.cta': 'Contact me',
     'booking.page.title': 'Book Appointment · Alexandra',
     'booking.page.description': 'Book your initial nutrition assessment with Alexandra and pay securely online.',
