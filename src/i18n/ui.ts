@@ -238,8 +238,8 @@ export const ui = {
     'about.page.title': 'About me · Alexandra',
     'contact.page.description': 'Contact our team to learn more about how we can help you.',
     'contact.page.title': 'Contact · Alexandra',
-    'pricing.page.description': 'Services, fees and online initial assessments with Alexandra, a dietitian-nutritionist based in Madrid.',
-    'pricing.page.title': 'Services · Alexandra',
+    'pricing.page.description': 'Online dietitian-nutritionist in Madrid: irritable bowel syndrome, SIBO, painful periods, endometriosis, PCOS, thyroid, menopause, fertility and your relationship with food.',
+    'pricing.page.title': 'Digestive and hormonal nutrition services · Alexandra',
 
     // Booking page
     'booking.label': 'Book online',
@@ -490,8 +490,8 @@ export const ui = {
     'contact.page.description':
       'Contacta con nuestro equipo para aprender más sobre cómo podemos ayudarte.',
     'contact.page.title': 'Contacto · Alexandra',
-    'pricing.page.description': 'Servicios, tarifas y valoración inicial online de Alexandra, dietista-nutricionista en Madrid.',
-    'pricing.page.title': 'Servicios · Alexandra',
+    'pricing.page.description': 'Dietista-nutricionista online en Madrid: intestino irritable, SIBO, reglas dolorosas, endometriosis, SOP, tiroides, menopausia, fertilidad y relación con la comida.',
+    'pricing.page.title': 'Nutrición digestiva y hormonal: servicios · Alexandra',
 
     // Booking page
     'booking.label': 'Reserva Online',

@@ -283,6 +283,7 @@ let n = 0; // alternation counter across the whole section
   .mini { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(74, 29, 51, 0.22); }
   .mini li { padding: 1.05rem 0; border-bottom: 1px solid rgba(74, 29, 51, 0.22); line-height: 1.55; }
   .row.with-list { align-items: start; }
+  @media (min-width: 900px) { .row.with-list:not(.stack) { align-items: center; } .row.with-list:not(.stack) .side { padding-top: 0.8rem; } }
   .row.with-list .body { padding-top: 0; }
   .row.with-list .side .art img { max-height: 9.5rem; margin-inline: auto; width: auto; }
   .row.with-list .side .mini { margin-top: 0; }
