@@ -5,8 +5,11 @@ const lang = getLangFromUrl(Astro.url);
 const es = lang === 'es';
 
 // Titles and texts of the areas (the home page cards link here, one anchor each)
+const digestionList = es
+  ? ['Síndrome del intestino irritable', 'Dispepsia o malas digestiones', 'Reflujo o acidez', 'Gastritis', 'Helicobacter pylori', 'Sobrecrecimiento bacteriano (SIBO)', 'Sobrecrecimiento intestinal de metanógenos (IMO)', 'Celiaquía y sensibilidad al gluten no celíaca', 'Intolerancias alimentarias: a la lactosa, a la fructosa-sorbitol o a la histamina, entre otras']
+  : ['Irritable bowel syndrome (IBS)', 'Dyspepsia or indigestion', 'Reflux or heartburn', 'Gastritis', 'Helicobacter pylori', 'Small intestinal bacterial overgrowth (SIBO)', 'Intestinal methanogen overgrowth (IMO)', 'Coeliac disease and non-coeliac gluten sensitivity', 'Food intolerances: to lactose, to fructose-sorbitol or to histamine, among others'];
 const digestion = {
-  title: es ? 'Tratamiento de patologías digestivas y alteraciones de la microbiota' : 'Nutritional care for digestive disorders and gut microbiota imbalances',
+  title: es ? 'Patologías digestivas y alteraciones de la microbiota' : 'Digestive disorders and gut microbiota imbalances',
   text: es
     ? ['El intestino no es solo un órgano digestivo: es un sistema de comunicación, de defensa y de equilibrio. Cuando se altera, todo el cuerpo habla.', 'Tus síntomas tienen una causa. La buscamos juntas y trabajamos desde la raíz. Sin parches.']
     : ['Your gut does far more than digest food: it is a hub of communication, immune defence and balance. When it is out of sync, your whole body feels it.', 'Your symptoms have a cause. Together, we will find it and work on it at the root, with no quick fixes.'],
@@ -37,8 +40,19 @@ const fertility = {
 const metabolic = {
   title: es ? 'Salud metabólica y pérdida de peso' : 'Metabolic health and weight loss',
   text: es
-    ? ['Te explico qué está pasando en tu cuerpo y qué necesita. Trabajamos tu sensibilidad a la insulina y tu flexibilidad metabólica (la capacidad de tu cuerpo para usar bien la energía) para perder grasa, ganar masa muscular y sentirte con más energía. Todo con un plan que encaje en tu semana real.']
-    : ['I will explain what is happening in your body and what it needs. Together we will work on your insulin sensitivity and metabolic flexibility (your body’s ability to use energy efficiently) so you can lose fat, build muscle and feel more energised, all with a plan that fits into your real week.'],
+    ? [
+        'En consulta quiero que comprendas qué está pasando en tu cuerpo y qué necesita. Trabajaremos tu alimentación y tus hábitos para mejorar tu sensibilidad a la insulina, tu flexibilidad metabólica (la capacidad de tu cuerpo para aprovechar mejor la energía) y cuidar tu masa muscular. Todo con un plan pensado para ti y para tu día a día.',
+        'Empezaremos por pequeños cambios que te resulten fáciles de aplicar y que puedas mantener. Porque no se trata de exigirte más, ni intentar encajar una dieta rígida en una agenda que ya está bastante llena, sino de encontrar una forma de cuidarte que te haga sentir bien y que puedas disfrutar.',
+        'Al final, la mejor inversión en tu salud está en los hábitos que construyes cada día.',
+      ]
+    : [
+        'In consultation, I want you to understand what is happening in your body and what it needs. We will work on your diet and habits to improve your insulin sensitivity and your metabolic flexibility (your body’s ability to make better use of energy), and to protect your muscle mass. Everything is built around you and your everyday life.',
+        'We will start with small changes that are easy to apply and that you can keep up. This is not about demanding more of yourself, or squeezing a rigid diet into an already full schedule; it is about finding a way of looking after yourself that makes you feel good and that you can enjoy.',
+        'In the end, the best investment in your health is the habits you build every day.',
+      ],
+  list: es
+    ? ['Pérdida de peso', 'Prediabetes y diabetes', 'Dislipidemia', 'Hipertensión', 'Esteatosis hepática (hígado graso)']
+    : ['Weight loss', 'Prediabetes and diabetes', 'Dyslipidaemia', 'Hypertension', 'Fatty liver disease (hepatic steatosis)'],
 };
 
 const foodRelationship = {
@@ -133,17 +147,17 @@ const detail = es
     };
 
 const bookHref = getLocalizedPath('/booking', lang);
-const bookLabel = es ? 'Pide cita' : 'Book an appointment';
+const bookLabel = es ? 'Agenda tu cita de forma fácil' : 'Book your appointment with ease';
 // detail.items: 0 PCOS, 1 painful periods / endometriosis, 2 PMS, 3 thyroid, 4 candidiasis
 const [pcos, periods, pms, thyroid, candida] = detail.items;
 
-type Row = { id?: string; level: 'area' | 'item'; title: string; paras: string[]; img?: string; alt?: string; photo?: boolean };
+type Row = { id?: string; level: 'area' | 'item'; title: string; paras: string[]; img?: string; alt?: string; photo?: boolean; list?: string[]; stack?: boolean };
 const alt = (a: string, b: string) => (es ? a : b);
 
 // Three rooms, each with its own background; the picture alternates sides row after row
 const bands: { key: string; head?: { id: string; intro: string }; rows: Row[] }[] = [
   { key: 'a', rows: [
-    { id: 'area-digestion', level: 'area', title: digestion.title, paras: digestion.text, img: '/assets/area-digestion.webp', alt: alt('Ilustración del eje intestino-cerebro', 'Illustration of the gut–brain axis') },
+    { id: 'area-digestion', level: 'area', title: digestion.title, paras: digestion.text, img: '/assets/area-digestion.webp', alt: alt('Ilustración del eje intestino-cerebro', 'Illustration of the gut–brain axis'), list: digestionList, stack: true },
     { level: 'item', title: candida[0], paras: candida[1], img: '/assets/area-candidiasis.webp', alt: alt('Ilustración de la microbiota sobre la mucosa', 'Illustration of the microbiota on the mucosa') },
   ] },
   { key: 'b', head: { id: 'area-convives', intro: detail.intro }, rows: [
@@ -155,7 +169,7 @@ const bands: { key: string; head?: { id: string; intro: string }; rows: Row[] }[
   ] },
   { key: 'c', rows: [
     { level: 'item', title: thyroid[0], paras: thyroid[1], img: '/assets/area-tiroides.webp', alt: alt('Ilustración de una mujer con la mano en el cuello', 'Illustration of a woman with her hand on her neck') },
-    { id: 'area-metabolica', level: 'area', title: metabolic.title, paras: metabolic.text, img: '/assets/area-metabolica.webp', alt: alt('Ilustración de unos resultados de analítica', 'Illustration of blood test results') },
+    { id: 'area-metabolica', level: 'area', title: metabolic.title, paras: metabolic.text, list: metabolic.list },
     { id: 'area-relacion', level: 'area', title: foodRelationship.title, paras: foodRelationship.text, img: '/assets/area-relacion.webp', alt: alt('Ilustración de una pareja comiendo bocadillos', 'Illustration of a couple eating sandwiches') },
   ] },
 ];
@@ -186,16 +200,51 @@ let n = 0; // alternation counter across the whole section
           const flip = n % 2 === 1;
           n++;
           return (
-            <article id={row.id} class={`row ${flip ? 'rev' : ''}`}>
-              <figure class={`art ${row.photo ? 'art-photo' : ''} ${row.img ? '' : 'art-ph'}`} aria-hidden={row.img ? undefined : 'true'}>
-                {row.img
-                  ? <img src={row.img} alt={row.alt} loading="lazy" />
-                  : <span>{es ? 'Foto' : 'Photo'}</span>}
-              </figure>
-              <div class="body">
-                <h3 class={`t ${row.level}`}>{row.title}</h3>
-                {row.paras.map((p) => (<p>{p}</p>))}
-              </div>
+            <article id={row.id} class={`row ${flip ? 'rev' : ''} ${row.list ? 'with-list' : ''} ${row.stack ? 'stack' : ''}`}>
+              {row.stack ? (
+                /* Two columns: text with the picture under it | list */
+                <>
+                  <div class="col">
+                    <div class="body">
+                      <h3 class={`t ${row.level}`}>{row.title}</h3>
+                      {row.paras.map((p) => (<p>{p}</p>))}
+                    </div>
+                    <figure class="art art-sm"><img src={row.img} alt={row.alt} loading="lazy" /></figure>
+                  </div>
+                  <ul class="mini">
+                    {row.list!.map((item) => (
+                      item.startsWith('raw:')
+                        ? <li class="eyebrow raw">{item.slice(4)}</li>
+                        : <li class="eyebrow">{item}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <>
+                  <div class="side">
+                    {(row.img || !row.list) && (
+                      <figure class={`art ${row.photo ? 'art-photo' : ''} ${row.img ? '' : 'art-ph'}`} aria-hidden={row.img ? undefined : 'true'}>
+                        {row.img
+                          ? <img src={row.img} alt={row.alt} loading="lazy" />
+                          : <span>{es ? 'Foto' : 'Photo'}</span>}
+                      </figure>
+                    )}
+                    {row.list && (
+                      <ul class="mini">
+                        {row.list.map((item) => (
+                          item.startsWith('raw:')
+                            ? <li class="eyebrow raw">{item.slice(4)}</li>
+                            : <li class="eyebrow">{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <div class="body">
+                    <h3 class={`t ${row.level}`}>{row.title}</h3>
+                    {row.paras.map((p) => (<p>{p}</p>))}
+                  </div>
+                </>
+              )}
             </article>
           );
         })}
@@ -227,9 +276,21 @@ let n = 0; // alternation counter across the whole section
   @media (min-width: 900px) {
     .row { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 4.5rem; padding: 3.2rem 0; }
     .row.rev { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
-    .row.rev .art { order: 2; }
+    .row.rev .side { order: 2; }
   }
 
+  /* A short list of conditions under the picture, divided by thin lines */
+  .mini { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(74, 29, 51, 0.22); }
+  .mini li { padding: 1.05rem 0; border-bottom: 1px solid rgba(74, 29, 51, 0.22); line-height: 1.55; }
+  .row.with-list { align-items: start; }
+  .row.with-list .body { padding-top: 0; }
+  .row.with-list .side .art img { max-height: 9.5rem; margin-inline: auto; width: auto; }
+  .row.with-list .side .mini { margin-top: 0; }
+  /* Digestive row: text with the picture underneath on the left, list on the right */
+  .stack .art-sm { margin: 1.8rem auto 0; max-width: 19rem; }
+  .stack .body { padding-top: 0; }
+  @media (max-width: 899px) { .stack .mini { margin-top: 1.6rem; } }
+  @media (min-width: 900px) { .row.stack { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); } }
   .art { margin: 0; }
   .art img { display: block; width: 100%; max-height: 26rem; object-fit: contain; }
   .art.art-photo img { aspect-ratio: 4 / 3; max-height: none; object-fit: cover; border-radius: 1.4rem; box-shadow: 0 30px 60px -38px rgba(74, 29, 51, 0.45); }

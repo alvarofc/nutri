@@ -78,13 +78,13 @@ const socials = [
       </div>
 
       <!-- Photo: spans the three rows; registration number in the bottom-right corner -->
-      <div data-hero-photo class="relative z-10 order-1 mx-auto w-full max-w-[clamp(15rem,58vw,26rem)] lg:order-none lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mx-0 lg:mt-[0.6rem] lg:mb-[0.4rem] lg:max-w-none">
-        <div class="relative aspect-[4/5] lg:absolute lg:inset-0 lg:aspect-auto">
+      <div data-hero-photo class="relative z-10 order-1 mx-auto w-full max-w-[28rem] lg:order-none lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mx-0 lg:mt-[0.6rem] lg:mb-[0.4rem] lg:max-w-none">
+        <div class="relative aspect-[434/500] lg:absolute lg:inset-0 lg:aspect-auto">
           <div class="absolute inset-0 overflow-hidden rounded-2xl bg-brand-blush">
             <img
               src="/assets/alex-front-2.webp"
               alt="Alexandra Ivanova"
-              class="absolute inset-0 h-full w-full origin-[50%_35%] scale-[1.12] object-cover object-[50%_45%] lg:origin-[50%_35%] lg:scale-[1.15] lg:object-[50%_62%]"
+              class="absolute inset-0 h-full w-full origin-[50%_35%] scale-[1.15] object-cover object-[50%_62%]"
             />
           </div>
           <div class="absolute bottom-2 right-2 rounded-xl bg-white p-1.5 shadow-lg sm:bottom-4 sm:right-4 sm:rounded-2xl sm:p-3">
@@ -117,18 +117,13 @@ const socials = [
     if (!section) return;
     const s = section.getBoundingClientRect();
     const p = photo.getBoundingClientRect();
-    if (window.matchMedia('(max-width: 1023px)').matches) {
-      const width = Math.min(s.width * 0.82, 360);
-      const photoRight = p.right - s.left;
-      img.style.width = `${width}px`;
-      img.style.left = `${photoRight - width * 0.32}px`;
-      img.style.top = `${p.top + p.height / 2 - s.top}px`;
-      return;
-    }
     const mid = p.left + p.width / 2 - s.left;
     img.style.left = `${mid}px`;
-    img.style.width = `${2 * (s.width - mid)}px`;
-    img.style.top = '';
+    // On small screens the plate is made bigger so it also shows above and below the portrait
+    const small = window.matchMedia('(max-width: 1023px)').matches;
+    img.style.width = `${2 * (s.width - mid) * (small ? 1.3 : 1)}px`;
+    // On small screens the photo sits in the middle of the section, so the plate follows its vertical centre
+    img.style.top = small ? `${p.top + p.height / 2 - s.top}px` : '';
   }
   document.addEventListener('astro:page-load', placeBerries);
   window.addEventListener('resize', placeBerries);

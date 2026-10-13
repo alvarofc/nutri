@@ -36,7 +36,7 @@ const isHome = here === (homePath.replace(/\/$/, '') || '/');
 <header
   x-data="{ open: false }"
   @keydown.escape.window="open = false"
-  class="fixed top-0 left-0 right-0 z-50 bg-[rgba(255,255,255,0.75)] backdrop-blur-md border-b border-brand-black/5"
+  class="site-header fixed top-0 left-0 right-0 z-50 bg-[rgba(255,255,255,0.75)] backdrop-blur-md border-b border-brand-black/5"
   role="banner"
   itemscope
   itemtype="https://schema.org/WPHeader"
@@ -124,15 +124,15 @@ const isHome = here === (homePath.replace(/\/$/, '') || '/');
     id="mobile-menu"
     x-show="open"
     x-cloak
-    x-collapse
-    class="mx-4 mb-3 mt-2 overflow-hidden rounded-2xl border border-white/25 bg-[rgba(74,29,51,0.78)] shadow-xl shadow-brand-black/15 backdrop-blur-xl sm:mx-6 lg:hidden"
+    x-transition.opacity.duration.200ms
+    class="mobile-panel absolute left-4 right-4 top-full mt-2 overflow-hidden rounded-[1.6rem] sm:left-6 sm:right-6 lg:hidden"
   >
     <nav class="flex flex-col items-center gap-4 px-6 py-7 text-center sm:gap-5 sm:py-8" aria-label={t('header.navigation.aria')}>
       <a
         href={homePath}
         aria-current={isHome ? 'page' : undefined}
         @click="open = false"
-        class={`font-sans text-base font-medium uppercase tracking-[0.1em] text-white/90 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-lg ${isHome ? '!font-semibold !text-white' : ''}`}
+        class={`font-sans text-base font-medium uppercase tracking-[0.1em] text-brand-black/75 transition-colors hover:text-brand-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-accent sm:text-lg ${isHome ? '!font-semibold !text-brand-black' : ''}`}
       >
         {lang === 'es' ? 'Inicio' : 'Home'}
       </a>
@@ -142,7 +142,7 @@ const isHome = here === (homePath.replace(/\/$/, '') || '/');
           href={link.href}
           aria-current={isActive(link.href) ? 'page' : undefined}
           @click="open = false"
-          class={`font-sans text-base font-medium uppercase tracking-[0.1em] text-white/90 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-lg ${isActive(link.href) ? '!font-semibold !text-white' : ''}`}
+          class={`font-sans text-base font-medium uppercase tracking-[0.1em] text-brand-black/75 transition-colors hover:text-brand-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-accent sm:text-lg ${isActive(link.href) ? '!font-semibold !text-brand-black' : ''}`}
         >
           {link.name}
         </a>
@@ -152,17 +152,17 @@ const isHome = here === (homePath.replace(/\/$/, '') || '/');
         href={bookingPath}
         aria-current={isActive(bookingPath) ? 'page' : undefined}
         @click="open = false"
-        class="mt-1 font-sans text-base font-bold uppercase tracking-[0.1em] text-white transition-colors hover:text-white/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-lg"
+        class="mt-1 font-sans text-base font-bold uppercase tracking-[0.1em] text-brand-black transition-colors hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-accent sm:text-lg"
       >
         {t('nav.booking')}
       </a>
 
       <!-- Mobile Language Switcher -->
-      <div class="mt-2 flex items-center justify-center gap-5 border-t border-white/20 pt-4">
+      <div class="mt-2 flex items-center justify-center gap-5 border-t border-brand-black/15 pt-4">
         {Object.entries(languages).map(([code]) => (
           <a
             href={getLocalizedPath(Astro.url.pathname, code as keyof typeof languages)}
-            class={`text-xs font-medium uppercase tracking-[0.12em] transition-colors ${lang === code ? 'text-white' : 'text-white/60 hover:text-white'}`}
+            class={`text-xs font-medium uppercase tracking-[0.12em] transition-colors ${lang === code ? 'text-brand-black' : 'text-brand-black/50 hover:text-brand-black'}`}
             data-lang-preference={code}
             @click="open = false"
           >
@@ -175,6 +175,20 @@ const isHome = here === (homePath.replace(/\/$/, '') || '/');
 </header>
 
 <style>
+  /* Phones and tablets: cream translucent bar with rounded bottom corners, always at the top; the menu is a floating cream card */
+  @media (max-width: 1023px) {
+    .site-header {
+      background: rgba(255, 255, 255, 0.75);
+      -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+      border-bottom: 0; border-radius: 0 0 1.6rem 1.6rem;
+    }
+  }
+  .mobile-panel {
+    background: rgba(250, 249, 247, 0.94);
+    border: 1px solid rgba(34, 34, 34, 0.06);
+    -webkit-backdrop-filter: blur(28px); backdrop-filter: blur(28px);
+    box-shadow: 0 24px 50px -24px rgba(34, 34, 34, 0.3);
+  }
   /* "Pide cita": bold text that turns into a round pill with an arrow on hover */
   .nav-cta {
     position: relative; display: inline-flex; align-items: center; border-radius: 9999px;

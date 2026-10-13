@@ -103,84 +103,48 @@ const steps = [
   },
 ];
 
-// One line icon per block, same order as the blocks of each step
-const iconPaths: Record<string, string> = {
-  search: 'M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z',
-  eye: 'M2.5 12s3.5-7 9.5-7 9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7zM12 15a3 3 0 100-6 3 3 0 000 6z',
-  doc: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
-  flag: 'M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2z',
-  bulb: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
-  check: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
-  chat: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
-  chart: 'M7 14l3-3 3 3 4-5M4 4v15a1 1 0 001 1h15',
-  sliders: 'M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4',
-  refresh: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
-  mail: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
-};
-const blockIcons = [
-  ['search', 'eye', 'doc', 'flag'],
-  ['bulb', 'check', 'chat'],
-  ['chart', 'sliders', 'refresh', 'mail'],
-];
 ---
 
-<section id="en-que-consisten-las-sesiones" class="relative scroll-mt-[var(--hdr,88px)] bg-[#E4D3D3] py-14 sm:py-20" data-process>
+<section id="en-que-consisten-las-sesiones" class="process relative scroll-mt-[var(--hdr,88px)] py-14 sm:py-20" data-process>
   <div class="sec-top mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
     <span class="eyebrow">{es ? 'En qué consisten las sesiones' : 'What your sessions involve'}</span>
     <span class="sec-rule" aria-hidden="true"></span>
   </div>
-  <h2 class="px-4 pt-0 text-center font-serif text-3xl leading-[1.05] text-brand-black sm:text-4xl lg:text-[2.9rem]">
+  <h2 class="px-4 pt-0 text-center font-serif text-3xl font-light leading-[1.05] text-brand-black sm:text-4xl lg:text-[2.9rem]">
     {t('pricing.title')}
   </h2>
 
-  <!-- Three steps, one after the other, joined by a thread -->
-  <ol class="steps mx-auto mt-12 max-w-6xl px-4 sm:px-6 lg:mt-16 lg:px-8">
-    {steps.map((step, i) => (
+  <!-- Light timeline: a thin line, three dots, three soft cards -->
+  <ol class="tl mx-auto mt-12 max-w-7xl px-4 sm:px-6 lg:mt-14 lg:px-8">
+    {steps.map((step) => (
       <li class="step">
-        <div class="step-rail" aria-hidden="true">
-          <span class="step-num">{step.n}</span>
-          <span class="step-line"></span>
-        </div>
+        <span class="dot" aria-hidden="true"></span>
+        <div class="glass">
+          <p class="label">{step.n} · {step.eyebrow}</p>
+          <h3 class="step-title">{step.title}</h3>
+          <ul class="chips">
+            {step.chips.map((chip) => (<li class="chip">{chip}</li>))}
+          </ul>
+          {step.lead && <p class="lead-p">{step.lead}</p>}
 
-        <div class="step-body">
-          <!-- Which step it is, how long it lasts and what it is for -->
-          <div class="step-left">
-            <p class="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-brand-muted">{step.eyebrow}</p>
-            <h3 class="step-title">{step.title}</h3>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              {step.chips.map((chip) => (
-                <li class="rounded-full bg-brand-accent/10 px-3 py-1 text-xs font-medium tracking-wide text-brand-accent">{chip}</li>
-              ))}
-            </ul>
-            {step.lead && <p class="step-lead">{step.lead}</p>}
-          </div>
-
-          <!-- The same kind of card every time, one idea per card -->
-          <div class={`proc-cards grid gap-3 ${step.blocks.length === 4 ? 'md:grid-cols-2' : ''}`}>
-            {step.blocks.map((block, j) => (
-              <section class={`proc-card ${block.highlight ? 'is-key' : ''} ${block.big ? 'is-big' : ''}`}>
-                <h4 class="proc-card-h">
-                  <span class="proc-ico" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d={iconPaths[blockIcons[i][j]]} /></svg>
-                  </span>
-                  {block.label}
-                </h4>
-                {block.text && <p class="proc-card-p">{block.text}</p>}
-                {block.items && (
-                  <ul class="proc-card-ul">
-                    {block.items.map((item) => (<li>{item}</li>))}
-                  </ul>
-                )}
-              </section>
-            ))}
-          </div>
+          {step.blocks.map((block) => (
+            <div class={`blk ${block.highlight ? 'is-key' : ''}`}>
+              <h4 class="label">{block.label}</h4>
+              {block.text && <p class="txt">{block.text}</p>}
+              {block.items && (
+                <ul class="txt-ul">
+                  {block.items.map((item) => (<li>{item}</li>))}
+                </ul>
+              )}
+            </div>
+          ))}
         </div>
       </li>
     ))}
   </ol>
 
   <!-- Booking -->
-  <div class="mt-14 px-4 text-center lg:mt-20">
+  <div class="mt-12 px-4 text-center lg:mt-16">
     <a
       href={getLocalizedPath('/booking', lang)}
       class="cta-gradient-btn relative inline-flex items-center justify-center overflow-hidden rounded-full bg-brand-accent px-10 py-4 text-base font-medium text-white transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
@@ -191,61 +155,33 @@ const blockIcons = [
 </section>
 
 <style>
-  .steps { list-style: none; }
-  .step { position: relative; display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); column-gap: 1rem; padding-bottom: 3.25rem; }
-  .step:last-child { padding-bottom: 0; }
-  .step-rail { display: flex; flex-direction: column; align-items: center; }
-  .step-num {
-    display: flex; height: 2.75rem; width: 2.75rem; flex: none; align-items: center; justify-content: center; border-radius: 9999px;
-    background: linear-gradient(145deg, #79264D, #4A1D33); color: #fff; font-family: 'Cormorant', serif; font-size: 1.6rem; font-weight: 500; line-height: 1;
-    box-shadow: 0 10px 22px -12px rgba(74, 29, 51, 0.7);
+  .process { background: linear-gradient(180deg, #FAF8F4, #F3EBE3); }
+  .tl { list-style: none; display: grid; gap: 1.6rem; position: relative; padding-block: 0; }
+  .step { position: relative; display: flex; flex-direction: column; }
+  .dot { display: none; }
+  .glass {
+    flex: 1; border-radius: 1.2rem; padding: 1.5rem 1.4rem 1.7rem;
+    background: rgba(255, 255, 255, 0.66); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 22px 46px -36px rgba(74, 29, 51, 0.38);
   }
-  .step-line { margin-top: 0.7rem; width: 1px; flex: 1; background: linear-gradient(to bottom, rgba(121, 38, 77, 0.5), rgba(121, 38, 77, 0.12)); }
-  .step:last-child .step-line { display: none; }
-  .step-body { display: grid; gap: 1.4rem; min-width: 0; }
-  .step-title { font-family: 'Cormorant', serif; font-weight: 500; font-size: 2.1rem; line-height: 1.05; color: var(--tw-prose, #222); }
-  .step-lead { margin-top: 1.1rem; border-left: 2px solid rgba(74, 29, 51, 0.4); padding-left: 1rem; font-family: 'Cormorant', serif; font-style: italic; font-size: 1.3rem; line-height: 1.3; color: #222; }
+  .label { font-family: 'Montserrat', sans-serif !important; font-size: 0.7rem !important; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #79264D; margin: 0; }
+  .step-title { font-family: 'Cormorant', serif; font-weight: 500; font-size: 1.9rem; line-height: 1.08; color: #2b2326; margin: 0.35rem 0 0.7rem; }
+  .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; margin: 0 0 0.9rem; }
+  .chip { font-family: 'Montserrat', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6b5f63; border: 1px solid rgba(43, 35, 38, 0.14); border-radius: 9999px; padding: 0.28rem 0.75rem; background: rgba(255, 255, 255, 0.6); }
+  .lead-p { font-size: 0.95rem; line-height: 1.65; color: #4a4044; margin: 0; }
+  .blk { margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid rgba(43, 35, 38, 0.13); }
+  .blk .label { margin-bottom: 0.4rem; }
+  .txt { font-size: 0.93rem; line-height: 1.65; color: #4a4044; margin: 0; }
+  .txt-ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+  .txt-ul li { position: relative; padding-left: 1rem; font-size: 0.93rem; line-height: 1.6; color: #4a4044; }
+  .txt-ul li::before { content: ''; position: absolute; left: 0; top: 0.68em; height: 0.3rem; width: 0.3rem; border-radius: 9999px; background: #79264D; }
+  /* What you take home: a soft rose tint and a thin line, nothing dark */
+  .blk.is-key { background: #F6EAE6; border-top: 0; border-left: 2px solid #79264D; border-radius: 0.8rem; padding: 0.9rem 1rem; }
 
-  @media (min-width: 640px) {
-    .step { grid-template-columns: 3.25rem minmax(0, 1fr); column-gap: 1.5rem; }
-    .step-num { height: 3.25rem; width: 3.25rem; font-size: 1.85rem; }
-    .step-title { font-size: 2.4rem; }
-  }
   @media (min-width: 1024px) {
-    .step { grid-template-columns: 3.75rem minmax(0, 1fr); column-gap: 2rem; padding-bottom: 4.5rem; }
-    .step-num { height: 3.75rem; width: 3.75rem; font-size: 2.1rem; }
-    .step-title { font-size: 2.7rem; }
+    .tl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; }
+    .tl::before { content: ''; position: absolute; left: 2rem; right: 2rem; top: 9px; height: 1px; background: rgba(43, 35, 38, 0.16); }
+    .step { padding-top: 2.4rem; }
+    .dot { display: block; position: absolute; top: 3px; left: 0; height: 13px; width: 13px; border-radius: 9999px; background: #FAF8F4; border: 1.5px solid #79264D; }
   }
-  /* Wide screens: text on the left (it stays in view while you read the cards), cards on the right */
-  @media (min-width: 1280px) {
-    .step-body { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem; align-items: start; }
-    .step-left { position: sticky; top: calc(var(--hdr, 88px) + 1.5rem); }
-  }
-
-  /* The cards: same shape in the three steps */
-  .proc-card {
-    border-radius: 1rem; border: 1px solid rgba(74, 29, 51, 0.1); background: rgba(255, 255, 255, 0.78);
-    padding: 1.1rem 1.25rem; box-shadow: 0 10px 28px -22px rgba(74, 29, 51, 0.5);
-  }
-  .proc-card-h {
-    display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.65rem;
-    font-family: 'Montserrat', sans-serif !important; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
-    text-transform: uppercase; color: #79264D;
-  }
-  .proc-ico { display: inline-flex; height: 1.9rem; width: 1.9rem; flex: none; align-items: center; justify-content: center; border-radius: 9999px; background: rgba(121, 38, 77, 0.1); color: #79264D; }
-  .proc-ico svg { height: 1.05rem; width: 1.05rem; }
-  .proc-card-p, .proc-card-ul { font-size: 1rem; line-height: 1.6; color: #3f3f3f; }
-  .proc-card-ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
-  .proc-card-ul li { position: relative; padding-left: 1.05rem; }
-  .proc-card-ul li::before { content: ''; position: absolute; left: 0; top: 0.66em; height: 0.32rem; width: 0.32rem; border-radius: 9999px; background: #79264D; }
-  /* Step 3: a single card with one sentence */
-  .proc-card.is-big { padding: 1.5rem 1.6rem; }
-  .proc-card.is-big .proc-card-p { font-family: 'Cormorant', serif; font-size: 1.5rem; line-height: 1.3; color: #3a1d2b; }
-  /* The one card that holds what you take home */
-  .proc-card.is-key { background: linear-gradient(145deg, #79264D, #4A1D33); border-color: transparent; }
-  .proc-card.is-key .proc-card-h { color: #F3E6E1; }
-  .proc-card.is-key .proc-ico { background: rgba(255, 255, 255, 0.16); color: #fff; }
-  .proc-card.is-key .proc-card-p, .proc-card.is-key .proc-card-ul { color: #F8EDEA; }
-  .proc-card.is-key .proc-card-p, .proc-card.is-key .proc-card-ul li { text-align: justify; hyphens: none; }
-  .proc-card.is-key .proc-card-ul li::before { background: #E8C9D4; }
 </style>
