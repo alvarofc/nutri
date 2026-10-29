@@ -32,16 +32,16 @@ const socials = [
       <!-- Row 1: name -->
       <div class="order-2 mt-6 lg:order-none lg:col-start-1 lg:row-start-1 lg:mt-0">
         <h1 class="text-[#2E2367] leading-[1.05]" style="font-size: clamp(2.25rem, 4.4vw, 3.25rem);">
-          {lang === 'es' ? 'Soy Alexandra Ivanova' : "I'm Alexandra Ivanova"}
+          {lang === 'es' ? '¡Hola! Soy Alexandra.' : "Hi! I'm Alexandra."}
         </h1>
       </div>
 
       <!-- Row 2: title + specialty, as wide as the name; the thin separator runs under the whole column -->
-      <div class="order-3 mt-4 border-b border-brand-accent/20 pb-6 lg:order-none lg:col-start-1 lg:row-start-2">
+      <div class="order-3 mt-4 border-b border-brand-accent/20 pb-6 lg:order-none lg:col-start-1 lg:row-start-2 lg:w-[calc(8.3*clamp(2.25rem,4.4vw,3.25rem))]">
         <div class="[container-type:inline-size] lg:w-[calc(8.3*clamp(2.25rem,4.4vw,3.25rem))]">
-          <p class="text-brand-accent" style="font-family: 'Cormorant', serif; font-style: italic; font-weight: 600; font-size: clamp(1.05rem, 6.6cqw, 1.85rem); line-height: 1.3; letter-spacing: 0; text-align: justify; text-align-last: justify;" set:html={lang === 'es'
-              ? 'Dietista<span style="font-family: Montserrat, sans-serif; font-style: normal; font-weight: 500; position: relative; top: 0.1em">-</span>nutricionista especializada en salud hormonal y relación con la comida.'
-              : 'Dietitian<span style="font-family: Montserrat, sans-serif; font-style: normal; font-weight: 500; position: relative; top: 0.1em">-</span>nutritionist for hormonal health and your relationship with food.'}></p>
+          <p class="text-brand-accent" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 600; text-transform: uppercase; font-size: clamp(0.66rem, 3.5cqw, 1.2rem); line-height: 1.35; letter-spacing: -0.02em; text-align: justify; text-align-last: justify;">{lang === 'es'
+              ? 'Dietista-nutricionista integrativa, especializada en salud hormonal y relación con la comida.'
+              : 'Integrative dietitian-nutritionist for hormonal health and your relationship with food.'}</p>
         </div>
       </div>
 
