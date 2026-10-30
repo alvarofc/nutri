@@ -1,6 +1,6 @@
 /** WhatsApp number in international format, digits only (Spain +34). */
-export const WHATSAPP_NUMBER = '34644381191';
-export const WHATSAPP_DISPLAY = '+34 644 381 191';
+export const WHATSAPP_NUMBER = '34623030390';
+export const WHATSAPP_DISPLAY = '+34 623 03 03 90';
 
 /** Link that opens a chat with a ready-to-send message (works on the phone app; on desktop it opens WhatsApp Web). */
 export function whatsappUrl(lang: string): string {

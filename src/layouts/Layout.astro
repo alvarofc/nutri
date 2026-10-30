@@ -12,6 +12,7 @@ import '@fontsource/cormorant/latin-400-italic.css';
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
+import FloatingContact from '../components/layout/FloatingContact.astro';
 import { getLangFromUrl, getLocalizedPath, useTranslations } from '../i18n/ui';
 
 interface Props {
@@ -141,7 +142,7 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
           "logo": new URL("/assets/alexandra-2.png", site).toString(),
           "image": socialImageURL.toString(),
           "description": description,
-          "telephone": "+34-644-381-191",
+          "telephone": "+34-623-030-390",
           "priceRange": "€€",
           "founder": { "@id": personId },
           "availableLanguage": ["es", "en"],
@@ -192,6 +193,7 @@ const enAlternateURL = new URL(getLocalizedPath(Astro.url.pathname, 'en'), site)
       <slot />
     </main>
     <Footer />
+    <FloatingContact lang={lang} />
     <style is:global>
       /* Film grain over the whole site: turns flat screens into paper */
       body::after {

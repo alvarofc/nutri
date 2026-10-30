@@ -1,0 +1,117 @@
+---
+import { WHATSAPP_ICON_PATH, WHATSAPP_NUMBER, whatsappUrl } from '../../config/contact';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const es = lang !== 'en';
+const labels = es
+  ? { open: 'Contactar', title: '¿Hablamos?', wa: 'Escríbeme por WhatsApp', call: 'Llámame', close: 'Cerrar' }
+  : { open: 'Get in touch', title: 'Shall we talk?', wa: 'Message me on WhatsApp', call: 'Call me', close: 'Close' };
+---
+
+<!-- Fixed contact button: opens a small cream card with WhatsApp and phone -->
+<div
+  class="fc"
+  x-data="{ open: false }"
+  @keydown.escape.window="open = false"
+  @click.outside="open = false"
+>
+  <div class="fc-card" x-show="open" x-cloak x-transition.opacity.duration.200ms role="dialog" aria-label={labels.title}>
+    <p class="fc-title">{labels.title}</p>
+    <a class="fc-row" href={whatsappUrl(lang)} target="_blank" rel="noopener noreferrer">
+      <span class="fc-ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d={WHATSAPP_ICON_PATH}></path></svg></span>
+      <span>{labels.wa}</span>
+    </a>
+    <a class="fc-row" href={`tel:+${WHATSAPP_NUMBER}`}>
+      <span class="fc-ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"></path></svg></span>
+      <span>{labels.call}</span>
+    </a>
+  </div>
+
+  <button
+    type="button"
+    class="fc-btn"
+    @click="open = !open"
+    :aria-expanded="open"
+    aria-label={labels.open}
+  >
+    <svg x-show="!open" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d={WHATSAPP_ICON_PATH}></path></svg>
+    <svg x-show="open" x-cloak viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+  </button>
+</div>
+
+<style>
+  .fc {
+    position: fixed;
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+  .fc-btn {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background: #79264d;
+    box-shadow: 0 12px 28px -10px rgba(74, 29, 51, 0.6);
+    transition: background 0.25s, transform 0.25s;
+  }
+  .fc-btn:hover {
+    background: #4a1d33;
+    transform: translateY(-2px);
+  }
+  .fc-card {
+    width: min(18rem, calc(100vw - 2rem));
+    padding: 1rem;
+    border-radius: 1.25rem;
+    background: rgba(250, 249, 247, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(121, 38, 77, 0.12);
+    box-shadow: 0 18px 40px -18px rgba(74, 29, 51, 0.45);
+  }
+  .fc-title {
+    margin: 0 0 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #79264d;
+  }
+  .fc-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 0.5rem;
+    border-top: 1px solid rgba(43, 35, 38, 0.1);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #2b2326;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .fc-row:hover {
+    color: #79264d;
+  }
+  .fc-ico {
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    flex: none;
+    border-radius: 9999px;
+    background: #f6eae6;
+    color: #79264d;
+  }
+</style>
