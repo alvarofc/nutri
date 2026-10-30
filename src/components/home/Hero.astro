@@ -39,7 +39,7 @@ const socials = [
       <!-- Row 2: title + specialty, as wide as the name; the thin separator runs under the whole column -->
       <div class="order-3 mt-4 border-b border-brand-accent/20 pb-6 lg:order-none lg:col-start-1 lg:row-start-2 lg:w-[calc(8.3*clamp(2.25rem,4.4vw,3.25rem))]">
         <div class="[container-type:inline-size] lg:w-[calc(8.3*clamp(2.25rem,4.4vw,3.25rem))]">
-          <p class="text-brand-accent" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 600; text-transform: uppercase; font-size: clamp(0.66rem, 3.5cqw, 1.2rem); line-height: 1.35; letter-spacing: -0.02em; text-align: justify; text-align-last: justify;">{lang === 'es'
+          <p class="hero-spec text-brand-accent" style="font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 500; text-transform: uppercase; text-align: justify; text-align-last: justify;">{lang === 'es'
               ? 'Dietista-nutricionista integrativa, especializada en salud hormonal y relación con la comida.'
               : 'Integrative dietitian-nutritionist for hormonal health and your relationship with food.'}</p>
         </div>
@@ -148,3 +148,20 @@ const socials = [
   document.addEventListener('astro:page-load', setupScrollLinks);
   setupScrollLinks();
 </script>
+
+<style>
+  /* Specialty line: as large as fits in two lines; on phones it runs over three */
+  .hero-spec {
+    font-size: max(0.66rem, 3.67cqw);
+    line-height: 1.6;
+    letter-spacing: -0.04em;
+  }
+  @media (max-width: 540px) {
+    .hero-spec {
+      font-size: 4.8cqw;
+      line-height: 1.5;
+      letter-spacing: 0;
+      text-align-last: left !important;
+    }
+  }
+</style>
