@@ -33,7 +33,7 @@ Hay cosas que **ya son tuyas y no se mueven**: tu correo y tu calendario de Goog
 | Servicio | Hoy | Después | Coste |
 | --- | --- | --- | --- |
 | **GitHub** (los archivos) | Cuenta de Álvaro | Tu cuenta | Gratis |
-| **Vercel** (publicación) | Cuenta de Álvaro | Tu cuenta | El plan gratuito (*Hobby*) es solo para uso personal. Como es la web de tu consulta, las condiciones de Vercel piden el plan *Pro* (20 $/mes). Decídelo con Álvaro. |
+| **Vercel** (publicación) | Cuenta de Álvaro | Tu cuenta | Gratis (plan *Hobby*) |
 | **Porkbun** (el dominio) | Cuenta de Álvaro | Tu cuenta | Unos 11 $ al año. Ahora está pagado hasta el **25 de julio de 2027**. |
 
 ---
